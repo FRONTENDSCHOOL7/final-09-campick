@@ -1,47 +1,53 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const BtnWrap = styled.div`
-  background-color: black;
-  border-radius: 20px 20px 0 0;
-  padding: 50px 34px;
-`;
-
-export const SocialLogin = styled.button`
+export const SocialLoginButton = styled.button`
   border-radius: 44px;
-  border: 1px solid ${props => props.color};
+  border: 1px solid ${props => props.borderColor};
 
   width: 322px;
   height: 44px;
   color: #767676;
   font-size: 14px;
 
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background-color: #fff;
+  text-align: center;
+  box-sizing: border-box;
   position: relative;
-
-  margin-bottom: 10px;
+  cursor: pointer;
 
   &::before {
     content: "";
-    position: absolute;
-    background-image: url(${props => props.img});
-    background-color: black;
-    background-repeat: no-repeat;
-    top: 10px;
-    left: 10px;
-    width: 24px;
+    display: block;
     height: 24px;
+    width: 24px;
+    margin: 10px;
+    position: absolute;
+    top: 30%;
+    left: 3%;
+    transform: translateY(-50%);
+    background: url(${props => props.Img});
+  }
+  &:hover {
+    background-color: ${({ socialImage }) =>
+      socialImage === "kakao"
+        ? "#f3dfa3"
+        : socialImage === "google"
+        ? "#cac8c8"
+        : "#69b2dd"};
+    border-color: transparent;
+    color: #fff;
   }
 `;
 
-export const LoginLink = styled.a`
+export const LoginJoin = styled(Link)`
+  display: block;
+  text-align: center;
+  font-size: 14px;
   color: #767676;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
-export const SignUpLink = styled.a`
-  color: #767676;
-  text-decoration: none;
-  margin-left: 10px;
   cursor: pointer;
 
   &::before {
@@ -50,6 +56,30 @@ export const SignUpLink = styled.a`
   }
 `;
 
-export const LinkWrap = styled.div`
-  text-align: center;
+export const FlexWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 10px 10px 10px;
+  color: #767676;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 390px;
+  gap: 20px;
+  padding: 60px 20px 40px 20px;
+  background-color: #ffff;
+  border-radius: 20px 20px 0 0;
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
+  z-index: 22;
+
+  transition: 0.7s;
+  transform: translate3d(0, 0, 0);
 `;
