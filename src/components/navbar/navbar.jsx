@@ -9,6 +9,7 @@ import postIcon from "../../assets/icons/icon-edit.svg";
 import postIconFill from "../../assets/icons/icon-edit-fill.svg";
 import profileIcon from "../../assets/icons/icon-user.svg";
 import profileIconFill from "../../assets/icons/icon-user-fill.svg";
+
 const NavContainer = styled.nav`
   width: 100%;
   border-top: solid 1px #dbdbdb;

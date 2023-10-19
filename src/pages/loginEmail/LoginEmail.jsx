@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SignUpContainer, WrapperLoginEmail } from './loginEmail.style'
+import { SignUpContainer, WrapperLoginEmail } from './LoginEmail.style'
 import { Incorrect, InputStyle, LabelStyle, Submitbutton, Title, WrapEmailPw, WrapForm } from '../../components/form/form.style'
 import { Helmet } from 'react-helmet-async';
 import { api } from "../../api/loginApi"
