@@ -1,10 +1,30 @@
-import { instance } from "./axiosInstance";
+export const api = () => {
+  const baseUrl = "https://api.mandarin.weniv.co.kr";
 
-export const postLogin = async data => {
-  try {
-    const res = await instance.post("/user/login", data);
-    return res.data;
-  } catch (error) {
-    console.error(error);
-  }
+  const login = async (email, password) => {
+    const reqPath = "/user/login";
+    const reqUrl = baseUrl + reqPath;
+    const loginData = {
+      user: {
+        email: email,
+        password: password,
+      },
+    };
+
+    try {
+      const res = await fetch(reqUrl, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+      const json = await res.json();
+
+      return json;
+    } catch (error) {
+      console.error("API 응답에 실패하였습니다.", error);
+    }
+  };
+  return { login };
 };

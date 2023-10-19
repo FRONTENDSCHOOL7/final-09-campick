@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { SignUpContainer, WrapperLoginEmail } from './loginEmail.style'
 import { Incorrect, InputStyle, LabelStyle, Submitbutton, Title, WrapEmailPw, WrapForm } from '../../components/form/form.style'
-import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { postLogin } from '../../api/loginApi.js';
+import { api } from "../../api/loginApi"
 
 export default function LoginEmail() {
 	const [emailValid, setEmailValid] = useState(false);
@@ -29,32 +28,20 @@ export default function LoginEmail() {
 			setPw(pwValue);
 		}
 	}
-
-	// const postLoginMutation = useMutation(postLogin, {
-	// 	onSuccess: (data) => {
-	// 		if (data.user) {
-	// 			localStorage.setItem('token', data.user['token']);
-	// 			localStorage.setItem('userAccountName', data.user['accountname']);
-	// 			navigate('/home');
-	// 		} else if (data.message) {
-	// 			setCorrect(true);
-	// 		}
-	// 	},
-	// 	onError: () => {
-	// 		console.error('실패');
-	// 	},
-	// });
-
+	
 	async function userLogin(e) {
 		e.preventDefault();
-		const data = {
-			user: {
-				email: email,
-				password: pw,
-			},
-		};
-		//postLoginMutation.mutate(data);
-	}
+    const { login } = api();
+    const res = await login(email, pw);
+    if (res.hasOwnProperty("user")) {
+      localStorage.setItem("token", res.user.token);
+      localStorage.setItem("accountname", res.user.accountname);
+      // 홈화면으로 가는 코드
+			console.log("로그인 성공~!")
+    } else {
+      console.log(res.message);
+    }
+  };
 
 	return (
 		<>
