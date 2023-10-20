@@ -31,6 +31,17 @@ const GlobalStyles = createGlobalStyle`
         justify-content:center;
         background-color:#f5f5f5;
     }
-
+    img {
+        vertical-align: top;
+    }
+    a{
+        text-decoration: none;
+        color:inherit
+    }
+    button{
+        border:none;
+        background-color:inherit;
+        padding:0;
+    }
 `;
 export default GlobalStyles;
