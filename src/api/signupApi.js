@@ -1,4 +1,5 @@
-const emailValid = async userEmail => {
+export const emailValid = async userEmail => {
+  const baseUrl = "https://api.mandarin.weniv.co.kr";
   const reqPath = "/user/emailvalid";
   const reqUrl = baseUrl + reqPath;
   try {

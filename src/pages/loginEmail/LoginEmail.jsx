@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { SignUpContainer, WrapperLoginEmail } from "./loginEmail.style";
 import {
@@ -12,6 +13,14 @@ import {
 import { Helmet } from "react-helmet-async";
 import { api } from "../../api/loginApi";
 import { useNavigate } from "react-router-dom";
+=======
+import React, { useState, useEffect } from 'react';
+import { SignUpContainer, WrapperLoginEmail } from './LoginEmail.style'
+import { Incorrect, InputStyle, LabelStyle, Submitbutton, Title, WrapEmailPw, WrapForm } from '../../components/form/form.style'
+import { Helmet } from 'react-helmet-async';
+import { login } from "../../api/loginApi"
+import { useNavigate } from 'react-router-dom';
+>>>>>>> a612610e78e4195f24fc0379f77adeb658b98e0f
 
 export default function LoginEmail() {
   const [emailValid, setEmailValid] = useState(false);
@@ -26,6 +35,7 @@ export default function LoginEmail() {
     setDisabled(!(emailValid && pw.length >= 6));
   }, [emailValid, pw]);
 
+<<<<<<< HEAD
   function validation(e) {
     const emailValue = e.target.value;
     const pwValue = e.target.value;
@@ -41,6 +51,22 @@ export default function LoginEmail() {
   async function userLogin(e) {
     e.preventDefault();
     const { login } = api();
+=======
+	function validation(e) {
+		const emailValue = e.target.value;
+		const pwValue = e.target.value;
+		if (e.target.id === 'user-email') {
+			setEmail(emailValue);
+			setEmailValid(emailPattern.test(emailValue));
+		}
+		if (e.target.id === 'user-pw') {
+			setPw(pwValue);
+		}
+	}
+	
+	async function userLogin(e) {
+		e.preventDefault();
+>>>>>>> a612610e78e4195f24fc0379f77adeb658b98e0f
     const res = await login(email, pw);
     if (res.hasOwnProperty("user")) {
       localStorage.setItem("token", res.user.token);
@@ -52,6 +78,7 @@ export default function LoginEmail() {
     }
   }
 
+<<<<<<< HEAD
   return (
     <>
       <Helmet>
@@ -92,3 +119,47 @@ export default function LoginEmail() {
     </>
   );
 }
+=======
+	return (
+		<>
+    	<Helmet>
+				<title>Campick | 로그인</title>
+			</Helmet>
+			<WrapperLoginEmail onSubmit={userLogin}
+      >
+				<Title>로그인</Title>
+				<WrapForm>
+					<WrapEmailPw>
+						<LabelStyle htmlFor='user-email'>이메일</LabelStyle>
+						<InputStyle
+							id='user-email'
+							type='email'
+							value={email}
+							onChange={validation}
+							required
+						/>
+					</WrapEmailPw>
+					<WrapEmailPw>
+						<LabelStyle htmlFor='user-pw'>비밀번호</LabelStyle>
+						<InputStyle
+							id='user-pw'
+							type='password'
+							value={pw}
+							onChange={validation}
+							required
+						/>
+						{correct && (
+							<Incorrect>*이메일 또는 비밀번호가 일치하지 않습니다.</Incorrect>
+						)}
+						<Submitbutton disabled={disabled}>로그인</Submitbutton> 
+					</WrapEmailPw>
+				</WrapForm>
+				<SignUpContainer to={'/login/signup'}
+        >
+					이메일로 회원가입
+				</SignUpContainer>
+			</WrapperLoginEmail>
+		</>
+	);
+}
+>>>>>>> a612610e78e4195f24fc0379f77adeb658b98e0f

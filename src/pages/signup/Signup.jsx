@@ -24,7 +24,6 @@ export default function Signup() {
   const navigate = useNavigate();
 
   const checkValidEmail = async () => {
-    // const { emailValid } = api();
     if (email.length >= 1) {
       if (exptext.test(email)) {
         const res = await emailValid({ user: { email: email } });
@@ -99,7 +98,7 @@ export default function Signup() {
             )}
           </WrapEmailPw>
           <WrapEmailPw>
-            <label htmlFor="passwordInput">비밀번호</label>
+            <LabelStyle htmlFor="passwordInput">비밀번호</LabelStyle>
             <InputStyle
               type="password"
               name="password"
