@@ -7,7 +7,7 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginEmail />} />
+        <Route path="/" element={<Homefeed />} />
         {/* <Route path="/homefeed" element={<Homefeed />} />
 
         <Route path="/account/" element={<Outlet />}>

@@ -11,7 +11,7 @@ import {
   WrapForm,
 } from "../../components/form/form.style";
 import { Helmet } from "react-helmet-async";
-import { api } from "../../api/signupApi";
+import { emailValid } from "../../api/signupApi";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
@@ -22,7 +22,6 @@ export default function Signup() {
   const [validPassword, setValidPassword] = useState(true);
   const navigate = useNavigate();
   const checkValidEmail = async () => {
-    const { emailValid } = api();
     if (email.length >= 1) {
       if (exptext.test(email)) {
         const res = await emailValid({ user: { email: email } });

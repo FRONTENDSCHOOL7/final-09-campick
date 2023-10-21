@@ -13,9 +13,11 @@ export const ProfileNav = styled(Link)`
   margin-right: 16px;
 `;
 export const ProfileImg = styled.img`
+  display: block;
   width: 42px;
   height: 42px;
   border-radius: 50%;
+  overflow: hidden;
 `;
 export const ProfileNavs = styled(Link)`
   display: flex;
