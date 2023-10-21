@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { WrapperLoginEmail } from "../loginEmail/LoginEmail.style";
+import { WrapperLoginEmail } from "../loginEmail/loginEmail.style";
 import {
   Incorrect,
   InputStyle,

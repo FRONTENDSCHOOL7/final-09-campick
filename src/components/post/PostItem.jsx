@@ -22,6 +22,11 @@ import {
 } from "./post.style";
 
 export default function PostItem({ data }) {
+  const formatCreatedAt = createdAt => {
+    const date = new Date(createdAt);
+    const options = { year: "numeric", month: "numeric", day: "numeric" };
+    return date.toLocaleDateString("ko-KR", options);
+  };
   return (
     <PostArticle>
       <ProfileDiv>
@@ -54,7 +59,7 @@ export default function PostItem({ data }) {
           </Link>
           <IconSpan>1</IconSpan>
         </Icons>
-        <PostData>2023. 9. 7.</PostData>
+        <PostData>{data && formatCreatedAt(data.createdAt)}</PostData>
       </WrapperDiv>
     </PostArticle>
   );

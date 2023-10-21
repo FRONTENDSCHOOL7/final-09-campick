@@ -36,6 +36,7 @@ const NavIcon = styled.img`
     transform: rotate(360deg);
   }
 `;
+
 export default function Navbar(props) {
   const [isHomeMouseOver, setIsHomeMouseOver] = useState(false);
   const [isMessageMouseOver, setIsMessageMouseOver] = useState(false);
@@ -67,7 +68,7 @@ export default function Navbar(props) {
   return (
     <>
       <NavContainer>
-        <NavLink to="/home">
+        <NavLink to="/homefeed">
           <NavIcon
             id="home"
             src={
