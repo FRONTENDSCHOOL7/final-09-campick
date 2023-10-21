@@ -26,7 +26,7 @@ export const InputStyle = styled.input`
 	border-bottom: 1px solid #dbdbdb;
 	&:focus {
 		outline: none;
-		border-color: #7CB45B;
+		border-color: var(--primary-disabled-color);
     // 비밀번호가 틀렸으면 색상 바꿔야함
 	}
 	&::placeholder {
@@ -57,7 +57,7 @@ export const Title = styled.h1`
 export const Submitbutton = styled.button`
 	font-family: 'Suit-Regular';
 	font-size: 14px;
-	background-color: #7CB45B;
+	background-color: var(--primary-color);
 	opacity: ${({ disabled }) => (disabled === true ? 0.3 : 1)};
 	display: block;
 	width: 100%;
