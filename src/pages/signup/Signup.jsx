@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { WrapperLoginEmail } from "../loginEmail/LoginEmail.style";
+import { WrapperLoginEmail } from "../loginEmail/loginEmail.style";
 import {
   Incorrect,
   InputStyle,
@@ -11,7 +11,7 @@ import {
   WrapForm,
 } from "../../components/form/form.style";
 import { Helmet } from "react-helmet-async";
-import { api } from "../../api/signupApi";
+import { emailValid } from "../../api/signupApi";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
@@ -24,7 +24,7 @@ export default function Signup() {
   const navigate = useNavigate();
 
   const checkValidEmail = async () => {
-    const { emailValid } = api();
+    // const { emailValid } = api();
     if (email.length >= 1) {
       if (exptext.test(email)) {
         const res = await emailValid({ user: { email: email } });
