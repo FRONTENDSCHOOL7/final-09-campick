@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SignUpContainer, WrapperLoginEmail } from './LoginEmail.style'
 import { Incorrect, InputStyle, LabelStyle, Submitbutton, Title, WrapEmailPw, WrapForm } from '../../components/form/form.style'
 import { Helmet } from 'react-helmet-async';
-import { api } from "../../api/loginApi"
+import { login } from "../../api/loginApi"
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginEmail() {
@@ -32,7 +32,6 @@ export default function LoginEmail() {
 	
 	async function userLogin(e) {
 		e.preventDefault();
-    const { login } = api();
     const res = await login(email, pw);
     if (res.hasOwnProperty("user")) {
       localStorage.setItem("token", res.user.token);
@@ -78,7 +77,7 @@ export default function LoginEmail() {
 						<Submitbutton disabled={disabled}>로그인</Submitbutton> 
 					</WrapEmailPw>
 				</WrapForm>
-				<SignUpContainer to={'/account/signup'}
+				<SignUpContainer to={'/login/signup'}
         >
 					이메일로 회원가입
 				</SignUpContainer>
