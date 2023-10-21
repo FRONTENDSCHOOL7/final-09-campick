@@ -1,8 +1,10 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "../pages/home/Home";
+import Signup from "../pages/signup/Signup";
 import LoginEmail from "../pages/loginEmail/LoginEmail";
 import Homefeed from "../pages/home/Homefeed";
-import Signup from "../pages/signup/Signup";
+
 export default function Router() {
   return (
     <BrowserRouter>

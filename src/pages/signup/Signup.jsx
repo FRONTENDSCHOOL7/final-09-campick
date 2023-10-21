@@ -20,7 +20,9 @@ export default function Signup() {
   const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(true);
+
   const navigate = useNavigate();
+
   const checkValidEmail = async () => {
     if (email.length >= 1) {
       if (exptext.test(email)) {
@@ -96,7 +98,7 @@ export default function Signup() {
             )}
           </WrapEmailPw>
           <WrapEmailPw>
-            <label htmlFor="passwordInput">비밀번호</label>
+            <LabelStyle htmlFor="passwordInput">비밀번호</LabelStyle>
             <InputStyle
               type="password"
               name="password"
