@@ -11,7 +11,7 @@ export const WrapperLoginEmail = styled.section`
 	box-sizing: border-box;
 `;
 
-export const SignUpContainer = styled.div`
+export const SignUpContainer = styled(Link)`
 	display: block;
 	text-align: center;
 	color: #767676;

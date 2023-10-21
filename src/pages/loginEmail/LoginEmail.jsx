@@ -3,6 +3,7 @@ import { SignUpContainer, WrapperLoginEmail } from './LoginEmail.style'
 import { Incorrect, InputStyle, LabelStyle, Submitbutton, Title, WrapEmailPw, WrapForm } from '../../components/form/form.style'
 import { Helmet } from 'react-helmet-async';
 import { api } from "../../api/loginApi"
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginEmail() {
 	const [emailValid, setEmailValid] = useState(false);
@@ -10,7 +11,7 @@ export default function LoginEmail() {
 	const [pw, setPw] = useState('');
 	const [correct, setCorrect] = useState(false);
 	const [disabled, setDisabled] = useState(true);
-	//const navigate = useNavigate();
+	const navigate = useNavigate();
 	const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
 	useEffect(() => {
@@ -36,9 +37,9 @@ export default function LoginEmail() {
     if (res.hasOwnProperty("user")) {
       localStorage.setItem("token", res.user.token);
       localStorage.setItem("accountname", res.user.accountname);
-      // 홈화면으로 가는 코드
-			console.log("로그인 성공~!")
+      navigate('/') // 로그인 성공하면 홈화면으로 가기
     } else {
+			setCorrect(true);
       console.log(res.message);
     }
   };
@@ -77,7 +78,7 @@ export default function LoginEmail() {
 						<Submitbutton disabled={disabled}>로그인</Submitbutton> 
 					</WrapEmailPw>
 				</WrapForm>
-				<SignUpContainer //to={'/account/signup'}
+				<SignUpContainer to={'/account/signup'}
         >
 					이메일로 회원가입
 				</SignUpContainer>
