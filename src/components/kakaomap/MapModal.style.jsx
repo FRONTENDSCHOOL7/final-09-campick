@@ -17,6 +17,7 @@ export const WrapperAddress = styled.div`
   width:310px;
   border: 3px solid var(--primary-disabled-color);
   border-radius: 8px;
+  margin-top: 20px;
   padding:4px;
   cursor: pointer;
   &:hover{
