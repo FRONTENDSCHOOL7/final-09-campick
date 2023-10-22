@@ -10,11 +10,11 @@ export const WrapperMap = styled.section`
   padding: 6px;
   border-radius: 10px;
   border: 3px solid var(--primary-color);
-
+  height: 710px;
 `;
 export const WrapperAddress = styled.div`
   background-color: white;
-  width:310px;
+  width:300px;
   border: 3px solid var(--primary-disabled-color);
   border-radius: 8px;
   margin-top: 20px;
@@ -46,6 +46,9 @@ export const AddressInputStyle = styled.input`
 export const ResultList = styled.div`
   overflow-y: auto;
   height: 250px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 export const Pagination = styled.div`
@@ -54,4 +57,9 @@ export const Pagination = styled.div`
   margin-top: 10px;
   gap:10px;
   color: var(--primary-color);
+`
+export const CampSiteAddressIsNull = styled.div`
+  height: 300px;
+  text-align: center;
+  margin-top: 277px;
 `

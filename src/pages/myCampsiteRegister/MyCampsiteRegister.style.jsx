@@ -9,3 +9,6 @@ export const WrapperMyCampsiteRegister = styled.section`
 	padding: 34px 34px 0px;
 	box-sizing: border-box;
 `;
+export const WrapperLabel = styled.section`
+	display: flex;
+`;

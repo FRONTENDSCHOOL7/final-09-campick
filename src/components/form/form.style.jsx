@@ -69,3 +69,20 @@ export const Submitbutton = styled.button`
 
 	cursor: ${({ disabled }) => (disabled === true ? 'not-allowed' : 'pointer')};
 `;
+
+export const Label = styled.span`
+	font-size: 12px;
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+	border-radius: 44px;
+	display: inline;
+	width: auto;
+	padding: 5px 8px 5px 8px;
+	cursor: pointer;
+
+	&:hover{
+		color: #FFF;
+		border: 1px solid #FFF;
+		background-color: var(--primary-color);
+	}
+`
