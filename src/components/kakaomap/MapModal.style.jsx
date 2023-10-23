@@ -11,6 +11,7 @@ export const WrapperMap = styled.section`
   border-radius: 10px;
   border: 3px solid var(--primary-color);
   height: 710px;
+  z-index: 100;
 `;
 export const WrapperAddress = styled.div`
   background-color: white;

@@ -79,10 +79,19 @@ export const Label = styled.span`
 	width: auto;
 	padding: 5px 8px 5px 8px;
 	cursor: pointer;
+	margin:3px;
+	transition: 0.3s;
 
 	&:hover{
 		color: #FFF;
 		border: 1px solid #FFF;
-		background-color: var(--primary-color);
+		background-color: var(--primary-disabled-color);
+		transition: 0.3s;
 	}
+	&.selected {
+    color: #FFF;
+		border: 1px solid #FFF;
+		background-color: var(--primary-color);
+		transition: 0.3s;
+  }
 `

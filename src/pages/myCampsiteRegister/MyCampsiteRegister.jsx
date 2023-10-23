@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
-import { WrapperLabel, WrapperMyCampsiteRegister } from './MyCampsiteRegister.style'
-import { InputStyle, Label, LabelStyle, Submitbutton } from '../../components/form/form.style'
+import { FileUploadContainer, HiddenFileInput, UploadButtonText, WrapperLabel, WrapperMyCampsiteInput, WrapperMyCampsiteRegister } from './MyCampsiteRegister.style'
+import { Incorrect, InputStyle, Label, LabelStyle, Submitbutton } from '../../components/form/form.style'
 
 import MapModal from '../../components/kakaomap/MapModal'
 
 export default function MyCampsiteRegister() {
-  const [price, setPrice] = useState()
+  const [price, setPrice] = useState('')
   const [companyName, setCompanyName] = useState('')
   const [location, setLocation] = useState('')
   const [registerLink,setRegisterLink] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  const [selectedLabels, setSelectedLabels] = useState([]);
+  const [warnings, setWarnings] = useState({
+    image: null,
+    companyName: null,
+    price: null,
+    location: null,
+    registerLink: null,
+    labels: null
+  });
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -26,14 +35,17 @@ export default function MyCampsiteRegister() {
     }
 
   };
+  const formatCurrency = (value) => {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   function validation(e) {
   const value = e.target.value;
   switch (e.target.id) {
     case 'campsite-register-price':
       // 숫자만 입력되도록 검사
-      if (/^[0-9]*$/.test(value)) {
-        setPrice(value);
-      }
+      const newValue = e.target.value.replace(/[^0-9]/g, '');
+      setPrice(formatCurrency(newValue));
       break;
     case 'campsite-register-company-name':
       setCompanyName(value);
@@ -48,14 +60,54 @@ export default function MyCampsiteRegister() {
       break;
   }
 }
-const handleImageUpload = (event) => {
-  // 이미지 업로드를 위한 함수
+  const handleImageUpload = (event) => {
+    // 이미지 업로드를 위한 함수
     const file = event.target.files[0];
     if (file) {
         // 선택한 파일을 처리하거나 서버에 업로드
-        setPreviewImage(URL.createObjectURL(file));
+      setPreviewImage(URL.createObjectURL(file));
     }
-};
+  };
+
+
+
+  const handleLabelClick = (label) => {
+    if (selectedLabels.includes(label)) {
+      // 라벨이 이미 선택되어 있으면 배열에서 제거
+        setSelectedLabels(prevLabels => prevLabels.filter(l => l !== label));
+    } else {
+        // 라벨이 선택되어 있지 않으면 배열에 추가
+        setSelectedLabels(prevLabels => [...prevLabels, label]);
+    }
+  };
+
+  const handleSubmitButton = ()=>{
+    let newWarnings = {};
+
+    if (!previewImage) newWarnings.image = "이미지를 업로드해주세요.";
+    if (!companyName) newWarnings.companyName = "업체명을 입력해주세요.";
+    if (!price) newWarnings.price = "가격을 입력해주세요.";
+    if (!location) newWarnings.location = "위치를 입력해주세요.";
+    if (!registerLink) newWarnings.registerLink = "예약 링크를 입력해주세요.";
+    if (selectedLabels.length === 0) newWarnings.labels = "캠핑장 분위기를 하나 이상 선택해주세요.";
+
+    setWarnings(newWarnings);
+
+    if (!Object.values(newWarnings).some(w => w)) {
+      console.log(previewImage, companyName, price, location, registerLink, selectedLabels);
+    }
+
+    if (!newWarnings){
+      console.log() // 이미지
+      console.log(companyName) // 업체명
+      console.log(price) // 가격
+      console.log(location) // 위치
+      console.log(registerLink) // 예약 링크
+      console.log(selectedLabels) // 캠핑장 분위기
+    }
+
+
+  }
 
 
 
@@ -63,10 +115,22 @@ const handleImageUpload = (event) => {
     <>
       <header>header</header>
       <WrapperMyCampsiteRegister>
+                <MapModal isOpen={isModalOpen} closeModal={closeModal} onAddressSelected={handleAddressSelected}/>
+        <WrapperMyCampsiteInput>
         <LabelStyle>이미지 등록</LabelStyle>
-        <input type="file" onChange={handleImageUpload} />
-        <img src={previewImage} alt="Preview" />
-        <Submitbutton onClick={openModal}>지도에서 위치 선택하기</Submitbutton>
+      <FileUploadContainer 
+    onClick={() => document.getElementById("imageUpload").click()}
+    $previewImage={previewImage}
+    >
+    <UploadButtonText $previewImage={previewImage}>클릭해서 이미지 업로드 하기</UploadButtonText>
+    <HiddenFileInput id="imageUpload" type="file" onChange={handleImageUpload} />
+      </FileUploadContainer>
+      {warnings.image && <Incorrect>{warnings.image}</Incorrect>}
+      </WrapperMyCampsiteInput>
+
+        <Submitbutton onClick={openModal} style = {{margin:"0"}}>지도에서 위치 선택하기</Submitbutton>
+
+        <WrapperMyCampsiteInput>
         <LabelStyle htmlFor='campsite-register-company-name'>업체명</LabelStyle>
         <InputStyle 
           id='campsite-register-company-name'
@@ -75,19 +139,24 @@ const handleImageUpload = (event) => {
 					onChange={validation}
 					required
           placeholder='2-15자 이내여야 합니다.'/>
+          {warnings.companyName && <Incorrect>{warnings.companyName}</Incorrect>}
+        </WrapperMyCampsiteInput>
 
+        <WrapperMyCampsiteInput>
         <LabelStyle htmlFor='campsite-register-price'>가격</LabelStyle>
         <InputStyle 
 					id='campsite-register-price'
-					type="number"
+					type="text"
 					value={price}
 					onChange={validation}
 					required
           placeholder='숫자만 입력가능 합니다.'/>
+        {warnings.price && <Incorrect>{warnings.price}</Incorrect>}
+        </WrapperMyCampsiteInput>
 
+        <WrapperMyCampsiteInput>
         <LabelStyle htmlFor='campsite-register-location'>위치</LabelStyle>
 
-        <MapModal isOpen={isModalOpen} closeModal={closeModal} onAddressSelected={handleAddressSelected}/>
         <InputStyle 
           id = "campsite-register-location"
           type="text"
@@ -95,6 +164,10 @@ const handleImageUpload = (event) => {
           onChange={validation}
           placeholder='위치 입력'
         />
+        {warnings.location && <Incorrect>{warnings.location}</Incorrect>}
+        </WrapperMyCampsiteInput>
+
+        <WrapperMyCampsiteInput>
         <LabelStyle htmlFor='campsite-register-register-link'>예약 링크</LabelStyle>
         <InputStyle 
           id = "campsite-register-register-link"
@@ -103,12 +176,27 @@ const handleImageUpload = (event) => {
           onChange={validation}
           placeholder='URL을 입력해주세요'
         />
+        {warnings.registerLink && <Incorrect>{warnings.registerLink}</Incorrect>}
+        </WrapperMyCampsiteInput>
 
+        <WrapperMyCampsiteInput>
         <LabelStyle>캠핑장 분위기</LabelStyle>
         <WrapperLabel>
-        <Label>불멍</Label> <Label>아늑함</Label>
-        <Label>활발함</Label>
+            {['불멍', '시끌벅적', '아늑함', '활발함', '가족과 함께', '조용한', '계곡이 있는'].map(label => (
+                <Label 
+                    key={label}
+                    onClick={() => handleLabelClick(label)}
+                    className={selectedLabels.includes(label) ? 'selected' : ''}
+                >
+                    {label}
+                </Label>
+                ))}
         </WrapperLabel>
+        {warnings.labels && <Incorrect>{warnings.labels}</Incorrect>}
+        </WrapperMyCampsiteInput>
+
+        <Submitbutton onClick={handleSubmitButton} >저장 - 이거 헤더로 올려야함</Submitbutton>
+
       </WrapperMyCampsiteRegister>
     </>
   )
