@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Signup from "../pages/signup/Signup";
+import ProfileSetup from "../pages/profileSetup/ProfileSetup";
 import LoginEmail from "../pages/loginEmail/LoginEmail";
 import Homefeed from "../pages/home/Homefeed";
 import SignIn from "../pages/signin/Signin";
