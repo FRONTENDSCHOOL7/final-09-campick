@@ -108,7 +108,7 @@ export default function Kakaomap({searchPlace, onSelectedAddress}) {
       })
 
       kakao.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
+        infowindow.setContent('<div style="padding:7px;font-size:12px;">' + place.place_name + '</div>')
         infowindow.open(map, marker)
       })
     }
@@ -118,27 +118,43 @@ export default function Kakaomap({searchPlace, onSelectedAddress}) {
   return (
     <>
     <div id="map" style={{
-      width:'310px',
-      height:'300px'
+      width:'100%',
+      height:'300px',
+      borderRadius : '10px',
     }}></div>
     <ResultList id="result-list">
         {Places.map((item, i) => (
-          <WrapperAddress key={i} style={{ backgroundColor : item === selectedAddress ? 'lightgray': 'white' }} onClick = {()=>handleAddressClick(item)}>
+          <WrapperAddress 
+          key={i} 
+          style={{ 
+            backgroundColor : item === selectedAddress ? 'var(--primary-color)': 'white',
+          }} 
+            onClick = {()=>handleAddressClick(item)}>
             <div>
-              <h5>{i + 1}. {item.place_name}</h5>
-              {item.road_address_name ? (
-                <div>
+              <h5 style = {{fontSize :"14px", color : item === selectedAddress ? 'white': '#264653', fontWeight:"1000"}}>{item.place_name}</h5>
+              <div style = {{
+                  padding: "9px 0 4px", 
+                  fontSize:"12px", 
+                  color : item === selectedAddress ? 'white': 'var(--font-primary-color)'
+                  }}>
+                    {item.road_address_name ? (
                   <span>주소 : {item.road_address_name}</span>
-                </div>
               ) : (
                 <span>주소 : {item.address_name}</span>
               )}
-              {item.phone ? <span>전화번호 : {item.phone}</span> : null}
+              </div>
+
+              {item.phone ? <span 
+              style = {{                  
+                color : item === selectedAddress ? 'white': 'var(--font-primary-color)', 
+                fontSize:"12px"
+              }}>전화번호 : {item.phone}</span> : null}
             </div>
           </WrapperAddress>
         ))}
+        <Pagination id="pagination"/>
         </ResultList>
-      <Pagination id="pagination"/>
+      
     </>
   )
 }

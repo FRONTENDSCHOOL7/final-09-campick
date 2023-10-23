@@ -3,6 +3,7 @@ import { FileUploadContainer, HiddenFileInput, UploadButtonText, WrapperLabel, W
 import { Incorrect, InputStyle, Label, LabelStyle, Submitbutton } from '../../components/form/form.style'
 
 import MapModal from '../../components/kakaomap/MapModal'
+import { ModalBackdrop } from '../../components/kakaomap/MapModal.style'
 
 export default function MyCampsiteRegister() {
   const [price, setPrice] = useState('')
@@ -115,7 +116,8 @@ export default function MyCampsiteRegister() {
     <>
       <header>header</header>
       <WrapperMyCampsiteRegister>
-                <MapModal isOpen={isModalOpen} closeModal={closeModal} onAddressSelected={handleAddressSelected}/>
+        {isModalOpen && <ModalBackdrop onClick={closeModal}/>} {/* Modal이 열렸을 때만 배경 렌더링 */}
+        <MapModal isOpen={isModalOpen} closeModal={closeModal} onAddressSelected={handleAddressSelected} />
         <WrapperMyCampsiteInput>
         <LabelStyle>이미지 등록</LabelStyle>
       <FileUploadContainer 
@@ -180,9 +182,9 @@ export default function MyCampsiteRegister() {
         </WrapperMyCampsiteInput>
 
         <WrapperMyCampsiteInput>
-        <LabelStyle>캠핑장 분위기</LabelStyle>
+        <LabelStyle>캠핑장 태그 선택</LabelStyle>
         <WrapperLabel>
-            {['불멍', '시끌벅적', '아늑함', '활발함', '가족과 함께', '조용한', '계곡이 있는'].map(label => (
+            {['가족','커플','축제','반려견 동반', '힐링', '아늑함', '활발함', '문화유적', '조용한', '시끌벅적', '깨끗한','익스트림','별보기 좋은','수영장 있는', '계곡이 있는','캠핑카','봄','여름','가을','겨울','주차 편함','바다가 보이는'].map(label => (
                 <Label 
                     key={label}
                     onClick={() => handleLabelClick(label)}

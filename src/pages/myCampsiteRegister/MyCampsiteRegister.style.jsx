@@ -28,7 +28,6 @@ export const FileUploadContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 200px;
   border: 2px dashed #cccccc;
   cursor: pointer;

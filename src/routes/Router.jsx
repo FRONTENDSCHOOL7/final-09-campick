@@ -8,7 +8,7 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login/email" element = {<LoginEmail/>}/>
         <Route path="/login/signup" element = {<Signup/>}/>
         <Route path="/profile/mycampsiteregister" element = {<MyCampsiteRegister/>}/>
