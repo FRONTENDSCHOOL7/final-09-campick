@@ -4,6 +4,7 @@ import { Incorrect, InputStyle, Label, LabelStyle, Submitbutton } from '../../co
 
 import MapModal from '../../components/kakaomap/MapModal'
 import { ModalBackdrop } from '../../components/kakaomap/MapModal.style'
+import { Helmet } from 'react-helmet-async'
 
 export default function MyCampsiteRegister() {
   const [price, setPrice] = useState('')
@@ -114,6 +115,9 @@ export default function MyCampsiteRegister() {
 
   return (
     <>
+      <Helmet>
+				<title>Campick | 캠핑장 등록</title>
+			</Helmet>
       <header>header</header>
       <WrapperMyCampsiteRegister>
         {isModalOpen && <ModalBackdrop onClick={closeModal}/>} {/* Modal이 열렸을 때만 배경 렌더링 */}
