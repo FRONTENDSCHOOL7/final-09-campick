@@ -18,14 +18,13 @@ import {
   ImageInput,
   LabelStyleImg,
   ToastContainer,
-  ToastIcon,
   ToastMsg,
   ToastMsgBold,
 } from "./profileSetup.style.jsx";
 import profilePic from "../../assets/icons/profilePic.svg";
 import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
 import { Helmet } from "react-helmet-async";
-// import imageValidation from "../../imageValidation.js";
+import imageValidation from "../../imageValidation.js";
 import { accountNameValid } from "../../api/accountNameApi.js";
 import { emailValid } from "../../api/signupApi.js";
 
@@ -57,6 +56,17 @@ const ProfileSetup = () => {
     };
   }, [userId]);
 
+  useEffect(() => {
+    const isUserNameValid = userName.length >= 2 && userName.length <= 10;
+    const isUserIdValid = exptext.test(userId) && validUserId === false;
+
+    if (isUserNameValid && isUserIdValid) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [userName, userId, validUserId]);
+
   const onChange = event => {
     if (event.target.name === "username") {
       setUserName(event.target.value);
@@ -77,16 +87,17 @@ const ProfileSetup = () => {
       setIsValid(false);
     }
   };
-  // const handleImageInputChange = async e => {
-  //   imageValidation(
-  //     e,
-  //     1,
-  //     150,
-  //     setSelectedImage,
-  //     setShowSizeOverToast,
-  //     setShowWrongExtensionToast,
-  //   );
-  // };
+
+  const handleImageInputChange = async e => {
+    imageValidation(
+      e,
+      1,
+      150,
+      setSelectedImage,
+      setShowSizeOverToast,
+      setShowWrongExtensionToast,
+    );
+  };
 
   const checkValidUserId = async () => {
     if (userId.length >= 1) {
@@ -143,7 +154,6 @@ const ProfileSetup = () => {
     <>
       {showProfileEditToast && (
         <ToastContainer>
-          <ToastIcon>😆</ToastIcon>
           <ToastMsg>
             <ToastMsgBold>회원가입</ToastMsgBold>이 완료되었습니다.
           </ToastMsg>
@@ -156,7 +166,6 @@ const ProfileSetup = () => {
     <>
       {showWrongExtensionToast && (
         <ToastContainer>
-          <ToastIcon>😵‍💫</ToastIcon>
           <ToastMsg>
             <ToastMsgBold>이미지</ToastMsgBold>만 업로드 해주세요!
           </ToastMsg>
@@ -169,7 +178,6 @@ const ProfileSetup = () => {
     <>
       {showSizeOverToast && (
         <ToastContainer>
-          <ToastIcon>😵</ToastIcon>
           <ToastMsg>
             <ToastMsgBold>10MB</ToastMsgBold>이하의 파일만 업로드 해주세요!
           </ToastMsg>
@@ -194,7 +202,7 @@ const ProfileSetup = () => {
               type="file"
               id="user-image"
               accept="image/*"
-              // onChange={handleImageInputChange}
+              onChange={handleImageInputChange}
             />
             <ProfileImage src={selectedImage || profilePic} alt="" />{" "}
             <ImageButton src={profileImageUploadButton} alt="" />
@@ -222,7 +230,6 @@ const ProfileSetup = () => {
               value={userId}
               onChange={onChange}
               placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
-              // pattern="^[A-Za-z0-9._]+$"
             />
             {validUserId === "validUserId" && (
               <Incorrect>

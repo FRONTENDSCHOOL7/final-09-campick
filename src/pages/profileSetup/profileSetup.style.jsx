@@ -91,11 +91,6 @@ export const ToastMsg = styled.span`
 `;
 
 export const ToastMsgBold = styled.span`
-  color: #81d8d0;
+  color: #7cb45b;
   font-weight: bold;
-`;
-
-export const ToastIcon = styled.span`
-  margin-left: -3px;
-  margin-bottom: 3px;
 `;
