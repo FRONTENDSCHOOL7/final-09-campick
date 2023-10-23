@@ -1,17 +1,15 @@
-export const homefeedApi = async token => {
-  const reqUrl = "https://api.mandarin.weniv.co.kr/post/feed";
-
+export const myInfo = async () => {
+  const reqUrl = "https://api.mandarin.weniv.co.kr/user/myinfo";
   try {
     const res = await fetch(reqUrl, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-type": "application/json",
       },
     });
     const json = await res.json();
-    return json;
+    return json.user;
   } catch (error) {
-    console.log("Api 응답 실패", error);
+    console.error("Api 응답 실패", error);
   }
 };

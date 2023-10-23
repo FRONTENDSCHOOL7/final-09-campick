@@ -1,6 +1,5 @@
-export const homefeedApi = async token => {
-  const reqUrl = "https://api.mandarin.weniv.co.kr/post/feed";
-
+export const userInfo = async accountname => {
+  const reqUrl = `https://api.mandarin.weniv.co.kr/profile/${accountname}`;
   try {
     const res = await fetch(reqUrl, {
       method: "GET",
@@ -10,8 +9,8 @@ export const homefeedApi = async token => {
       },
     });
     const json = await res.json();
-    return json;
+    return json.profile;
   } catch (error) {
-    console.log("Api 응답 실패", error);
+    console.error("Api 응답 실패", error);
   }
 };

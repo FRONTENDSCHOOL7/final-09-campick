@@ -30,7 +30,7 @@ export default function PostItem({ data }) {
   return (
     <PostArticle>
       <ProfileDiv>
-        <ProfileNav>
+        <ProfileNav to={`/profile/${data && data.author.accountname}`}>
           <ProfileImg
             src={data && data.author.image}
             alt={`${data && data.author.username}의 프로필 이미지입니다.`}
