@@ -37,7 +37,7 @@ export default function ProfileCard({ data, accountUsername, setLender }) {
           <Follow>followers</Follow>
         </ProfileFollow>
         <ProfileImg src={data && data.image} />
-        <ProfileFollow>
+        <ProfileFollow to="following">
           <FollowNumber>{data && `${data.followingCount}`}</FollowNumber>
           <Follow>followings</Follow>
         </ProfileFollow>
