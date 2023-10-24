@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 
 export const WrapForm = styled.form`
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -20,10 +21,13 @@ export const LabelStyle = styled.label`
 `;
 
 export const InputStyle = styled.input`
-	font-family: 'Suit-Regular';
+	font-family:'TheJamsil5',sans-serif;
 	border: none;
-	padding-bottom: 8px;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	border-bottom: 1px solid #dbdbdb;
+	
+
 	&:focus {
 		outline: none;
 		border-color: var(--primary-disabled-color);
@@ -47,7 +51,7 @@ export const Incorrect = styled.span`
 `;
 
 export const Title = styled.h1`
-	font-family: 'Suit-Bold';
+
 	display: block;
 	text-align: center;
 	font-size: 24px;
@@ -55,7 +59,7 @@ export const Title = styled.h1`
 `;
 
 export const Submitbutton = styled.button`
-	font-family: 'Suit-Regular';
+	font-family:'TheJamsil5',sans-serif;
 	font-size: 14px;
 	background-color: var(--primary-color);
 	opacity: ${({ disabled }) => (disabled === true ? 0.3 : 1)};
@@ -66,8 +70,15 @@ export const Submitbutton = styled.button`
 	border-radius: 44px;
 	border: none;
 	margin-top: 14px;
+	transition:0.5s;
 
 	cursor: ${({ disabled }) => (disabled === true ? 'not-allowed' : 'pointer')};
+	&:hover{
+		transition: 0.5s;
+		color: var(--primary-color);
+		background-color:white;
+		border: 3px solid var(--primary-color);
+	}
 `;
 
 export const Label = styled.span`

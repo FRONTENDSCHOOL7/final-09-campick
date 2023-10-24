@@ -39,7 +39,6 @@ export const WrapperAddress = styled.div`
 `;
 
 export const AddressInputStyle = styled.input`
-	font-family: 'Suit-Regular';
 	border: none;
 	padding-bottom: 8px;
 	border-bottom: 1px solid #dbdbdb;

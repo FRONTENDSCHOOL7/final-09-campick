@@ -3,6 +3,10 @@ import Navbar from "../../components/navbar/Navbar";
 import PostList from "../../components/post/PostList";
 import { homefeedApi } from "../../api/homefeedApi";
 import { Header } from "../../components/header/Header.style";
+import Logo from "../../assets/icons/logo-header.png"
+import SearchImg from "../../assets/icons/icon-search.svg"
+import { LogoImg, Search } from "./Homefeed.style";
+
 export default function Homefeed() {
   const [data, setData] = useState("");
 
@@ -15,7 +19,7 @@ export default function Homefeed() {
   }, []);
   return (
     <div>
-      <Header></Header>
+      <Header><LogoImg src={Logo} alt="캠픽 로고"/><Search src ={SearchImg} alt = "검색 버튼"/></Header>
       <PostList data={data} />
       <Navbar />
     </div>

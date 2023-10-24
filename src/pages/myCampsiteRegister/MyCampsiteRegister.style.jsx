@@ -38,8 +38,10 @@ export const FileUploadContainer = styled.div`
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
+	transition: 0.3s;
 	&:hover{
-		border: 0.5px solid var(--primary-disabled-color);
+		transition: 0.3s;
+		border: 1px solid var(--primary-disabled-color);
 	}
 `;
 
@@ -50,8 +52,14 @@ export const HiddenFileInput = styled.input`
 export const UploadButtonText = styled.p`
   margin: 0;
   color: #666666;
+	opacity: 30%;
   font-size: 16px;
+	transition: 0.3s;
   display: ${props => props.$previewImage ? 'none' : 'block'};
+	${FileUploadContainer}:hover & {
+		transition: 0.3s;
+		opacity: 50%;
+	}
 `;
 
 export const GoBackButton = styled.img`
