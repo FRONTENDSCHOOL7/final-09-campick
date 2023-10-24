@@ -12,7 +12,7 @@ import profileIconFill from "../../assets/icons/icon-user-fill.svg";
 
 const NavContainer = styled.nav`
   width: 100%;
-  border-top: solid 1px #dbdbdb;
+  border-top: solid 1px var(--font-placeholder-color);
   height: 50px;
   display: flex;
 `;
@@ -24,7 +24,7 @@ const NavLink = styled(Link)`
   flex-grow: 1;
   gap: 4px;
   font-size: 10px;
-  color: #767676;
+  color: var(--font-primary-color);
   text-decoration: none;
   padding: 12px 0px 6px 0px;
 `;
@@ -36,6 +36,7 @@ const NavIcon = styled.img`
     transform: rotate(360deg);
   }
 `;
+
 export default function Navbar(props) {
   const [isHomeMouseOver, setIsHomeMouseOver] = useState(false);
   const [isMessageMouseOver, setIsMessageMouseOver] = useState(false);
@@ -67,7 +68,7 @@ export default function Navbar(props) {
   return (
     <>
       <NavContainer>
-        <NavLink to="/home">
+        <NavLink to="/homefeed">
           <NavIcon
             id="home"
             src={

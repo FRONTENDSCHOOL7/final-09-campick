@@ -22,10 +22,15 @@ import {
 } from "./post.style";
 
 export default function PostItem({ data }) {
+  const formatCreatedAt = createdAt => {
+    const date = new Date(createdAt);
+    const options = { year: "numeric", month: "numeric", day: "numeric" };
+    return date.toLocaleDateString("ko-KR", options);
+  };
   return (
     <PostArticle>
       <ProfileDiv>
-        <ProfileNav>
+        <ProfileNav to={`/profile/${data && data.author.accountname}`}>
           <ProfileImg
             src={data && data.author.image}
             alt={`${data && data.author.username}의 프로필 이미지입니다.`}
@@ -54,7 +59,7 @@ export default function PostItem({ data }) {
           </Link>
           <IconSpan>1</IconSpan>
         </Icons>
-        <PostData>2023. 9. 7.</PostData>
+        <PostData>{data && formatCreatedAt(data.createdAt)}</PostData>
       </WrapperDiv>
     </PostArticle>
   );

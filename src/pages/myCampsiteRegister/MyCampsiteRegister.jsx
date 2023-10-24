@@ -7,7 +7,6 @@ import { ModalBackdrop } from '../../components/kakaomap/MapModal.style'
 import { Helmet } from 'react-helmet-async'
 import { campsiteregister } from '../../api/campsiteregisterApi'
 import { Navigate } from 'react-router'
-import { image } from '../../api/imageApi'
 import imageValidation from '../../imageValidation'
 
 export default function MyCampsiteRegister() {
@@ -67,16 +66,8 @@ export default function MyCampsiteRegister() {
   }
 }
   const handleImageUpload = async (event) => {
-    // 이미지 업로드를 위한 함수
-    imageValidation(
-      // 머지 하고 수정해야될거같은데..
-
-    )
+    
     const file = event.target.files[0];
-
-    const data = await image(file);
-    const imageUrl = `https://api.mandarin.weniv.co.kr/${data.filename}`;
-    setPreviewImage(imageUrl);
 
     if (file) {
         // 선택한 파일을 처리하거나 서버에 업로드
