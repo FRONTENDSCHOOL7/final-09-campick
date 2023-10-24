@@ -69,8 +69,8 @@ export const Pagination = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  gap:10px;
-  color: var(--primary-disabled-color);
+  gap:15px;
+  color: var(--primary-color);
 `
 export const CampSiteAddressIsNull = styled.div`
   height: 273px;

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { FileUploadContainer, HiddenFileInput, UploadButtonText, WrapperLabel, WrapperMyCampsiteInput, WrapperMyCampsiteRegister } from './MyCampsiteRegister.style'
+import React, { useState } from 'react'
+import { FileUploadContainer, GoBackButton, HiddenFileInput, UploadButtonText, WrapperLabel, WrapperMyCampsiteInput, WrapperMyCampsiteRegister } from './MyCampsiteRegister.style'
 import { Incorrect, InputStyle, Label, LabelStyle, Submitbutton } from '../../components/form/form.style'
-
+import arrow from "../../assets/icons/arrow-left.svg";
 import MapModal from '../../components/kakaomap/MapModal'
 import { ModalBackdrop } from '../../components/kakaomap/MapModal.style'
 import { Helmet } from 'react-helmet-async'
 import { campsiteregister } from '../../api/campsiteregisterApi'
-import { Navigate } from 'react-router'
 import imageValidation from '../../imageValidation'
+import { ToastContainer, ToastMsg, ToastMsgBold } from '../profileSetup/profileSetup.style'
+import { Header } from '../../components/header/Header.style'
 
 export default function MyCampsiteRegister() {
   let [price, setPrice] = useState('')
@@ -16,8 +17,10 @@ export default function MyCampsiteRegister() {
   const [registerLink,setRegisterLink] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
   const [selectedLabels, setSelectedLabels] = useState([]);
+  const [showSizeOverToast, setShowSizeOverToast] = useState(false);
+  const [showWrongExtensionToast, setShowWrongExtensionToast] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
   const [warnings, setWarnings] = useState({
     image: null,
     companyName: null,
@@ -65,17 +68,40 @@ export default function MyCampsiteRegister() {
       break;
   }
 }
-  const handleImageUpload = async (event) => {
-    
-    const file = event.target.files[0];
+  const WrongExtensionToast = () => (
+    <>
+      {showWrongExtensionToast && (
+        <ToastContainer>
+          <ToastMsg>
+            <ToastMsgBold>이미지</ToastMsgBold>만 업로드 해주세요!
+          </ToastMsg>
+        </ToastContainer>
+      )}
+    </>
+  );
 
-    if (file) {
-        // 선택한 파일을 처리하거나 서버에 업로드
-      setPreviewImage(URL.createObjectURL(file));
-    }
-    
+  const SizeOverToast = () => (
+    <>
+      {showSizeOverToast && (
+        <ToastContainer>
+          <ToastMsg>
+            <ToastMsgBold>10MB</ToastMsgBold>이하의 파일만 업로드 해주세요!
+          </ToastMsg>
+        </ToastContainer>
+      )}
+    </>
+  );
+
+  const handleImageInputChange = async e => {
+    imageValidation(
+      e,
+      1,
+      150,
+      setSelectedImage,
+      setShowSizeOverToast,
+      setShowWrongExtensionToast,
+    );
   };
-
 
   const handleLabelClick = (label) => {
     if (selectedLabels.includes(label)) {
@@ -92,7 +118,7 @@ export default function MyCampsiteRegister() {
     // 동기 처리
     let newWarnings = {};
 
-    if (!previewImage) newWarnings.image = "이미지를 업로드해주세요.";
+    if (!selectedImage) newWarnings.image = "이미지를 업로드해주세요.";
     if (!companyName) newWarnings.companyName = "업체명을 입력해주세요.";
     if (!price) newWarnings.price = "가격을 입력해주세요.";
     if (!location) newWarnings.location = "위치를 입력해주세요.";
@@ -104,24 +130,31 @@ export default function MyCampsiteRegister() {
     if (!Object.values(newWarnings).some(w => w)) {
       price = parseInt(price.replaceAll(",",''));
       // 정수형으로 변환 후 전달
+      const formData = new FormData();
+      formData.append("image", selectedImage);
 
       try {
 
-        const res = await campsiteregister(companyName, location, selectedLabels, price, registerLink, previewImage ); 
+        const res = await campsiteregister(companyName, location, selectedLabels, price, registerLink, selectedImage ); 
         
         if (res.hasOwnProperty("product")) {
-          console.log("res123",res)
+          console.log("캠핑장 등록 성공",res)
           //Navigate('/') // 상품등록 성공시
         } else {
-          console.log("else",res.message);
+          console.log("캠핑장 등록 실패",res.message);
       }
         } catch (error) {
           console.error("API 호출에서 오류 발생:", error);
       }
-  }
+  }else{alert("모든 항목을 입력해주세요")}
 
 
   };
+
+  function goBack() {
+  window.history.back();
+}
+  
 
 
 
@@ -130,7 +163,10 @@ export default function MyCampsiteRegister() {
       <Helmet>
 				<title>Campick | 캠핑장 등록</title>
 			</Helmet>
-      <header>header</header>
+      <Header>
+        <GoBackButton src={arrow} alt="뒤로가기" onClick={goBack}/>
+        <Submitbutton onClick={handleSubmitButton} style={{width:"90px", height:"32px",margin:"0"}}>저장</Submitbutton>
+      </Header>
       <WrapperMyCampsiteRegister>
         {isModalOpen && <ModalBackdrop onClick={closeModal}/>} {/* Modal이 열렸을 때만 배경 렌더링 */}
         <MapModal isOpen={isModalOpen} closeModal={closeModal} onAddressSelected={handleAddressSelected} />
@@ -140,15 +176,12 @@ export default function MyCampsiteRegister() {
         <LabelStyle>이미지 등록</LabelStyle>
         <FileUploadContainer 
           onClick={() => document.getElementById("imageUpload").click()}
-          $previewImage={previewImage} >
-        <UploadButtonText $previewImage={previewImage}>클릭해서 이미지 업로드 하기</UploadButtonText>
-        <HiddenFileInput id="imageUpload" type="file" onChange={handleImageUpload} />
+          $previewImage={selectedImage} >
+        <UploadButtonText $previewImage={selectedImage}>클릭해서 이미지 업로드 하기</UploadButtonText>
+        <HiddenFileInput id="imageUpload" type="file" onChange={handleImageInputChange} />
         </FileUploadContainer>
         {warnings.image && <Incorrect>{warnings.image}</Incorrect>}
         </WrapperMyCampsiteInput>
-
-
-        <Submitbutton onClick={openModal} style = {{margin:"0"}}>지도에서 위치 선택하기</Submitbutton>
 
 
         <WrapperMyCampsiteInput>
@@ -203,6 +236,8 @@ export default function MyCampsiteRegister() {
         </WrapperMyCampsiteInput>
 
 
+        <Submitbutton onClick={openModal} style = {{margin:"0"}}>지도에서 위치 선택하기</Submitbutton>
+
         <WrapperMyCampsiteInput>
         <LabelStyle>캠핑장 태그 선택</LabelStyle>
         <WrapperLabel>
@@ -220,8 +255,9 @@ export default function MyCampsiteRegister() {
         </WrapperMyCampsiteInput>
 
 
-        <Submitbutton onClick={handleSubmitButton} >저장 - 이거 헤더로 올려야함</Submitbutton>
-
+        
+        <WrongExtensionToast />
+        <SizeOverToast />
       </WrapperMyCampsiteRegister>
     </>
   )

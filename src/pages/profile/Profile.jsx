@@ -5,6 +5,7 @@ import { userInfo } from "../../api/userInfoApi";
 import { userPost } from "../../api/userpostApi";
 import { Helmet } from "react-helmet-async";
 import ProfileCard from "../../components/userProfile/ProfileCard";
+import Navbar from "../../components/navbar/Navbar";
 
 //import UserPostList from "../../components/post/UserPostList";
 //import ProfileProduct from "../../components/userProfile/ProfileProduct";
@@ -45,6 +46,7 @@ export default function Profile() {
       />
       {/*<ProfileProduct />
        <UserPostList data={userPosts} accountUsername={accountUsername} /> */}
+      <Navbar/>
     </div>
   );
 }

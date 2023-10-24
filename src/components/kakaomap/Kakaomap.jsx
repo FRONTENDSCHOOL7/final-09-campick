@@ -12,11 +12,7 @@ export default function Kakaomap({searchPlace, onSelectedAddress}) {
   const mapRef = useRef(null);
   // map 객체를 저장하기 위한 참조 생성
 
-  
-
-
   function handleAddressClick(item) {
-  console.log(item)
   setSelectedAddress(item); // 지도의 중심을 선택된 위치로 설정
   onSelectedAddress(item); // 선택한 주소를 부모 컴포넌트로 전달
     
@@ -34,8 +30,13 @@ export default function Kakaomap({searchPlace, onSelectedAddress}) {
   useEffect(()=>{
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
     //var markers = []
+
     var container = document.getElementById('map'); 
     //지도를 담을 영역의 DOM 레퍼런스;
+
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
     
     var options = { 
     //지도를 생성할 때 필요한 기본 옵션
