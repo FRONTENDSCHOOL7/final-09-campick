@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Pagination, ResultList, WrapperAddress } from './MapModal.style';
+import { ModalMapListItemAddress, ModalMapListItemTitle, ModalMapListPhoneNumber, Pagination, ResultList, WrapperAddress } from './MapModal.style';
 
 const { kakao } = window;
 //함수형 컴포넌트에 인지 시키고 window에서 kakao객체를 뽑아서 사용
@@ -11,6 +11,8 @@ export default function Kakaomap({searchPlace, onSelectedAddress}) {
   // 해당 주소를 클릭할 때 
   const mapRef = useRef(null);
   // map 객체를 저장하기 위한 참조 생성
+
+  
 
 
   function handleAddressClick(item) {
@@ -123,37 +125,26 @@ export default function Kakaomap({searchPlace, onSelectedAddress}) {
       borderRadius : '10px',
     }}></div>
     <ResultList id="result-list">
-        {Places.map((item, i) => (
-          <WrapperAddress 
+      {Places.map((item, i) => (
+        <WrapperAddress 
           key={i} 
-          style={{ 
-            backgroundColor : item === selectedAddress ? 'var(--primary-color)': 'white',
-          }} 
-            onClick = {()=>handleAddressClick(item)}>
-            <div>
-              <h5 style = {{fontSize :"14px", color : item === selectedAddress ? 'white': '#264653', fontWeight:"1000"}}>{item.place_name}</h5>
-              <div style = {{
-                  padding: "9px 0 4px", 
-                  fontSize:"12px", 
-                  color : item === selectedAddress ? 'white': 'var(--font-primary-color)'
-                  }}>
-                    {item.road_address_name ? (
-                  <span>주소 : {item.road_address_name}</span>
-              ) : (
-                <span>주소 : {item.address_name}</span>
-              )}
-              </div>
-
-              {item.phone ? <span 
-              style = {{                  
-                color : item === selectedAddress ? 'white': 'var(--font-primary-color)', 
-                fontSize:"12px"
-              }}>전화번호 : {item.phone}</span> : null}
-            </div>
-          </WrapperAddress>
-        ))}
-        <Pagination id="pagination"/>
-        </ResultList>
+          selected={item === selectedAddress}
+          onClick = {()=>handleAddressClick(item)}>
+          <div>
+            <ModalMapListItemTitle selected={item === selectedAddress}>{item.place_name}</ModalMapListItemTitle>
+          <ModalMapListItemAddress selected={item === selectedAddress}>
+              <span>주소 : {item.road_address_name || item.address_name}</span>
+          </ModalMapListItemAddress>
+          {item.phone && 
+            <ModalMapListPhoneNumber selected={item === selectedAddress}>
+              전화번호 : {item.phone}
+            </ModalMapListPhoneNumber>
+          }
+        </div>
+      </WrapperAddress>
+    ))}
+    <Pagination id="pagination"/>
+</ResultList>
       
     </>
   )

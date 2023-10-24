@@ -24,8 +24,9 @@ export const WrapperMap = styled.section`
   width: 322px;
   z-index: 100;
 `;
+
 export const WrapperAddress = styled.div`
-  background-color: white;
+  background-color: ${props => props.selected ? 'var(--primary-color)' : 'white'};
   width:auto;
   border: 2px solid var(--primary-disabled-color);
   border-radius: 10px;
@@ -35,7 +36,7 @@ export const WrapperAddress = styled.div`
   &:hover{
     border: 2px solid var(--primary-color);
   }
-`
+`;
 
 export const AddressInputStyle = styled.input`
 	font-family: 'Suit-Regular';
@@ -76,3 +77,20 @@ export const CampSiteAddressIsNull = styled.div`
   text-align: center;
   margin-top: 277px;
 `
+
+export const ModalMapListItemTitle = styled.h5`
+  font-size: 14px;
+  color: ${props => props.selected ? 'white' : '#264653'};
+  font-weight: 1000;
+`;
+
+export const ModalMapListItemAddress = styled.div`
+  padding: 9px 0 4px;
+  font-size: 12px;
+  color: ${props => props.selected ? 'white' : 'var(--font-primary-color)'};
+`;
+
+export const ModalMapListPhoneNumber = styled.span`
+  color: ${props => props.selected ? 'white' : 'var(--font-primary-color)'};
+  font-size: 12px;
+`;

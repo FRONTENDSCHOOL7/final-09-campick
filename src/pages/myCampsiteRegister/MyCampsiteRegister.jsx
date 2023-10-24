@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FileUploadContainer, HiddenFileInput, UploadButtonText, WrapperLabel, WrapperMyCampsiteInput, WrapperMyCampsiteRegister } from './MyCampsiteRegister.style'
 import { Incorrect, InputStyle, Label, LabelStyle, Submitbutton } from '../../components/form/form.style'
 
 import MapModal from '../../components/kakaomap/MapModal'
 import { ModalBackdrop } from '../../components/kakaomap/MapModal.style'
 import { Helmet } from 'react-helmet-async'
+import { campsiteregister } from '../../api/campsiteregisterApi'
+import { Navigate } from 'react-router'
 
 export default function MyCampsiteRegister() {
-  const [price, setPrice] = useState('')
+  let [price, setPrice] = useState('')
   const [companyName, setCompanyName] = useState('')
   const [location, setLocation] = useState('')
   const [registerLink,setRegisterLink] = useState('')
@@ -83,7 +85,9 @@ export default function MyCampsiteRegister() {
     }
   };
 
-  const handleSubmitButton = ()=>{
+
+  async function handleSubmitButton (){
+    // 동기 처리
     let newWarnings = {};
 
     if (!previewImage) newWarnings.image = "이미지를 업로드해주세요.";
@@ -96,20 +100,26 @@ export default function MyCampsiteRegister() {
     setWarnings(newWarnings);
 
     if (!Object.values(newWarnings).some(w => w)) {
-      console.log(previewImage, companyName, price, location, registerLink, selectedLabels);
-    }
+      price = parseInt(price.replaceAll(",",''));
+      // 정수형으로 변환 후 전달
 
-    if (!newWarnings){
-      console.log() // 이미지
-      console.log(companyName) // 업체명
-      console.log(price) // 가격
-      console.log(location) // 위치
-      console.log(registerLink) // 예약 링크
-      console.log(selectedLabels) // 캠핑장 분위기
-    }
+      try {
 
-
+        const res = await campsiteregister(companyName, location, selectedLabels, price, registerLink, previewImage ); 
+        
+        if (res.hasOwnProperty("product")) {
+          console.log("res123",res)
+          //Navigate('/') // 상품등록 성공시
+        } else {
+          console.log("else",res.message);
+      }
+        } catch (error) {
+          console.error("API 호출에서 오류 발생:", error);
+      }
   }
+
+
+  };
 
 
 
