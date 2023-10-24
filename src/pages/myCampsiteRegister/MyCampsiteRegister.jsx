@@ -7,6 +7,8 @@ import { ModalBackdrop } from '../../components/kakaomap/MapModal.style'
 import { Helmet } from 'react-helmet-async'
 import { campsiteregister } from '../../api/campsiteregisterApi'
 import { Navigate } from 'react-router'
+import { image } from '../../api/imageApi'
+import imageValidation from '../../imageValidation'
 
 export default function MyCampsiteRegister() {
   let [price, setPrice] = useState('')
@@ -64,15 +66,23 @@ export default function MyCampsiteRegister() {
       break;
   }
 }
-  const handleImageUpload = (event) => {
+  const handleImageUpload = async (event) => {
     // 이미지 업로드를 위한 함수
+    imageValidation(
+      // 머지 하고 수정해야될거같은데..
+
+    )
     const file = event.target.files[0];
+
+    const data = await image(file);
+    const imageUrl = `https://api.mandarin.weniv.co.kr/${data.filename}`;
+    setPreviewImage(imageUrl);
+
     if (file) {
         // 선택한 파일을 처리하거나 서버에 업로드
       setPreviewImage(URL.createObjectURL(file));
     }
   };
-
 
 
   const handleLabelClick = (label) => {
@@ -132,19 +142,22 @@ export default function MyCampsiteRegister() {
       <WrapperMyCampsiteRegister>
         {isModalOpen && <ModalBackdrop onClick={closeModal}/>} {/* Modal이 열렸을 때만 배경 렌더링 */}
         <MapModal isOpen={isModalOpen} closeModal={closeModal} onAddressSelected={handleAddressSelected} />
+
+
         <WrapperMyCampsiteInput>
         <LabelStyle>이미지 등록</LabelStyle>
-      <FileUploadContainer 
-    onClick={() => document.getElementById("imageUpload").click()}
-    $previewImage={previewImage}
-    >
-    <UploadButtonText $previewImage={previewImage}>클릭해서 이미지 업로드 하기</UploadButtonText>
-    <HiddenFileInput id="imageUpload" type="file" onChange={handleImageUpload} />
-      </FileUploadContainer>
-      {warnings.image && <Incorrect>{warnings.image}</Incorrect>}
-      </WrapperMyCampsiteInput>
+        <FileUploadContainer 
+          onClick={() => document.getElementById("imageUpload").click()}
+          $previewImage={previewImage} >
+        <UploadButtonText $previewImage={previewImage}>클릭해서 이미지 업로드 하기</UploadButtonText>
+        <HiddenFileInput id="imageUpload" type="file" onChange={handleImageUpload} />
+        </FileUploadContainer>
+        {warnings.image && <Incorrect>{warnings.image}</Incorrect>}
+        </WrapperMyCampsiteInput>
+
 
         <Submitbutton onClick={openModal} style = {{margin:"0"}}>지도에서 위치 선택하기</Submitbutton>
+
 
         <WrapperMyCampsiteInput>
         <LabelStyle htmlFor='campsite-register-company-name'>업체명</LabelStyle>
@@ -158,6 +171,7 @@ export default function MyCampsiteRegister() {
           {warnings.companyName && <Incorrect>{warnings.companyName}</Incorrect>}
         </WrapperMyCampsiteInput>
 
+
         <WrapperMyCampsiteInput>
         <LabelStyle htmlFor='campsite-register-price'>가격</LabelStyle>
         <InputStyle 
@@ -170,9 +184,9 @@ export default function MyCampsiteRegister() {
         {warnings.price && <Incorrect>{warnings.price}</Incorrect>}
         </WrapperMyCampsiteInput>
 
+
         <WrapperMyCampsiteInput>
         <LabelStyle htmlFor='campsite-register-location'>위치</LabelStyle>
-
         <InputStyle 
           id = "campsite-register-location"
           type="text"
@@ -182,6 +196,7 @@ export default function MyCampsiteRegister() {
         />
         {warnings.location && <Incorrect>{warnings.location}</Incorrect>}
         </WrapperMyCampsiteInput>
+
 
         <WrapperMyCampsiteInput>
         <LabelStyle htmlFor='campsite-register-register-link'>예약 링크</LabelStyle>
@@ -194,6 +209,7 @@ export default function MyCampsiteRegister() {
         />
         {warnings.registerLink && <Incorrect>{warnings.registerLink}</Incorrect>}
         </WrapperMyCampsiteInput>
+
 
         <WrapperMyCampsiteInput>
         <LabelStyle>캠핑장 태그 선택</LabelStyle>
@@ -210,6 +226,7 @@ export default function MyCampsiteRegister() {
         </WrapperLabel>
         {warnings.labels && <Incorrect>{warnings.labels}</Incorrect>}
         </WrapperMyCampsiteInput>
+
 
         <Submitbutton onClick={handleSubmitButton} >저장 - 이거 헤더로 올려야함</Submitbutton>
 
