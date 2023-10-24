@@ -4,7 +4,7 @@ import { myInfo } from "../../api/myInfoApi";
 import { userInfo } from "../../api/userInfoApi";
 import { userPost } from "../../api/userpostApi";
 import { Helmet } from "react-helmet-async";
-//import ProfileCard from "../../components/userProfile/ProfileCard";
+import ProfileCard from "../../components/userProfile/ProfileCard";
 
 //import UserPostList from "../../components/post/UserPostList";
 //import ProfileProduct from "../../components/userProfile/ProfileProduct";
@@ -38,13 +38,13 @@ export default function Profile() {
       <Helmet>
         <title>Campick | 프로필</title>
       </Helmet>
-      {/* <ProfileCard
+      <ProfileCard
         data={userData}
         accountUsername={accountUsername}
         setLender={setLender}
       />
-      <ProfileProduct />
-      <UserPostList data={userPosts} accountUsername={accountUsername} /> */}
+      {/*<ProfileProduct />
+       <UserPostList data={userPosts} accountUsername={accountUsername} /> */}
     </div>
   );
 }

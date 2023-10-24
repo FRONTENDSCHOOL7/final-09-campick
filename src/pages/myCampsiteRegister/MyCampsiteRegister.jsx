@@ -73,6 +73,7 @@ export default function MyCampsiteRegister() {
         // 선택한 파일을 처리하거나 서버에 업로드
       setPreviewImage(URL.createObjectURL(file));
     }
+    
   };
 
 
