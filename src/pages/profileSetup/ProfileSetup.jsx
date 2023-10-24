@@ -252,7 +252,7 @@ const ProfileSetup = () => {
             />
           </FormElement>
 
-          <Submitbutton disabled={disabled}>캠픽 하러가기</Submitbutton>
+          <Submitbutton disabled={disabled} >캠픽 하러가기</Submitbutton>
         </WrapForm>
         <ProfileSetupToast />
         <WrongExtensionToast />
