@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ProfileWrapper,
   ProfileInfoWrap,
@@ -14,8 +14,19 @@ import {
   ProfileBtn,
   ChatShare,
 } from "./profile.style";
+import { unfollow } from "../../api/unfollowApi";
+import { follow } from "../../api/followApi";
+export default function ProfileCard({ data, accountUsername, setLender }) {
+  const handlefollowBtn = async () => {
+    if (data.isfollow) {
+      await unfollow(data.accountname);
+      setLender(pre => !pre);
+    } else {
+      await follow(data.accountname);
+      setLender(pre => !pre);
+    }
+  };
 
-export default function ProfileCard({ data, accountUsername }) {
   return (
     <ProfileWrapper>
       <ProfileInfoWrap>
@@ -44,8 +55,11 @@ export default function ProfileCard({ data, accountUsername }) {
       ) : (
         <ProfileBtnWrap>
           <ChatShare $chat="true" />
-          <ProfileBtn $follow={data.isfollow === true ? "false" : "true"}>
-            {data.isfollow === true ? "팔로우 취소" : "팔로우"}
+          <ProfileBtn
+            $follow={data && data.isfollow === true ? "false" : "true"}
+            onClick={e => handlefollowBtn(e)}
+          >
+            {data && data.isfollow ? "팔로우 취소" : "팔로우"}
           </ProfileBtn>
           <ChatShare />
         </ProfileBtnWrap>
