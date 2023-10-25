@@ -1,14 +1,31 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "../pages/home/Home";
-import Signin from "../pages/signin/Signin";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Signup from "../pages/signup/Signup";
+import ProfileSetup from "../pages/profileSetup/ProfileSetup";
+import LoginEmail from "../pages/loginEmail/LoginEmail";
+import MyCampsiteRegister from "../pages/myCampsiteRegister/MyCampsiteRegister";
+import Homefeed from "../pages/home/Homefeed";
+import Profile from "../pages/profile/Profile";
+import Followlist from "../pages/follow/Followlist";
 export default function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/signin" element={<Signin />} />
-      <Route path="signup" element={<Signup />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginEmail />} />
+        <Route path="/homefeed" element={<Homefeed />} />
+        <Route path="/account/" element={<Outlet />}>
+          <Route path="login/" element={<LoginEmail />} />
+          <Route path="signup/" element={<Signup />} />
+          <Route path="signup/profileSetup" element={<ProfileSetup />} />
+        </Route>
+        <Route path="/profile/" element={<Outlet />}>
+          <Route path="" element={<Profile />} />
+          <Route path=":accountUsername" element={<Outlet />}>
+            <Route path="" element={<Profile />} />
+            <Route path=":follow/" element={<Followlist />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }

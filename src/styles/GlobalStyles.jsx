@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
         // --gray:#C4C4C4;
         /* 메인 색상 */
         --primary-color:#7CB45B;
-        --primary-disabled-color::#B9D2AB; 
+        --primary-disabled-color:#B9D2AB; 
         /* 폰트 색상 */
         --font-primary-color:#767676;
         --font-white-color:#fff;
@@ -31,6 +31,18 @@ const GlobalStyles = createGlobalStyle`
         justify-content:center;
         background-color:#f5f5f5;
     }
-
+    img {
+        vertical-align: top;
+    }
+    a{
+        text-decoration: none;
+        color:inherit
+    }
+    button{
+        border:none;
+        background-color:inherit;
+        padding:0;
+    }
 `;
+<div></div>;
 export default GlobalStyles;
