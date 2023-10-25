@@ -1,7 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 import {
-  FollowListWrap,
   UserWrap,
   ProfileLink,
   UserImg,
@@ -10,21 +8,46 @@ import {
   UserIntro,
   FollowBtn,
 } from "../follow/followListItem.style";
-export default function FollowListItem() {
+import { unfollow } from "../../api/unfollowApi";
+import { follow } from "../../api/followApi";
+
+export default function FollowListItem({ data: initialize, followPage }) {
+  const [data, setData] = useState(initialize);
+
+  const handleUnfollowBtn = async () => {
+    if (data.isfollow) {
+      await unfollow(data.accountname);
+      setData(pre => ({ ...pre, isfollow: !pre.isfollow }));
+    } else {
+      await follow(data.accountname);
+      setData(pre => ({ ...pre, isfollow: !pre.isfollow }));
+    }
+  };
+
   return (
-    <FollowListWrap>
-      <UserWrap>
-        <ProfileLink to="../../1234565">
-          <UserImg src="#" alt="" />
-          <UserInfoWrap>
-            <Username>김건희</Username>
-            <UserIntro>
-              안녕하세요.캠핑을 좋아하는 김건희입니다. ㅎㅎㅎㅎ
-            </UserIntro>
-          </UserInfoWrap>
-        </ProfileLink>
-        <FollowBtn>팔로우</FollowBtn>
-      </UserWrap>
-    </FollowListWrap>
+    <UserWrap>
+      <ProfileLink to={`../../${data.accountname}`}>
+        <UserImg
+          src={data.image}
+          alt={`${data.username}의 프로필 이미지입니다.`}
+        />
+        <UserInfoWrap>
+          <Username>{data.username}</Username>
+          <UserIntro>{data.intro}</UserIntro>
+        </UserInfoWrap>
+      </ProfileLink>
+      <FollowBtn
+        onClick={handleUnfollowBtn}
+        follow={`${data.isfollow}`}
+        accountname={`${
+          data.accountname === localStorage.getItem("accountname")
+        }`}
+      >
+        {data.isfollow ? "취소" : "팔로우"}
+      </FollowBtn>
+      {/* <FollowBtn onClick={handleUnfollowBtn} follow={`${data.isfollow}`}>
+        {data.isfollow ? "취소" : "팔로우"}
+      </FollowBtn> */}
+    </UserWrap>
   );
 }
