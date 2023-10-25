@@ -41,10 +41,12 @@ export default function LoginEmail() {
   async function userLogin(e) {
     e.preventDefault();
     const res = await login(email, pw);
-    if (res.hasOwnProperty("user")) {
+    console.log(res);
+    if (res && res.hasOwnProperty("user")) {
       localStorage.setItem("token", res.user.token);
       localStorage.setItem("accountname", res.user.accountname);
-      navigate("/"); // 로그인 성공하면 홈화면으로 가기
+
+      navigate("/homefeed"); // 로그인 성공하면 홈화면으로 가기
     } else {
       setCorrect(true);
       console.log(res.message);
@@ -84,7 +86,7 @@ export default function LoginEmail() {
             <Submitbutton disabled={disabled}>로그인</Submitbutton>
           </WrapEmailPw>
         </WrapForm>
-        <SignUpContainer to={"/login/signup"}>
+        <SignUpContainer to={"/account/signup"}>
           이메일로 회원가입
         </SignUpContainer>
       </WrapperLoginEmail>
