@@ -2,6 +2,8 @@ import Slider from "react-slick";
 import styled from "styled-components";
 
 export const StyledSlider = styled(Slider)`
+    margin:0 8px 0 8px; 
+    border-radius:10px;
 
   .slick-prev {
     z-index: 1;
@@ -35,5 +37,5 @@ export const StyledSlider = styled(Slider)`
   }
 `;
 export const SliderItem = styled.img`
-  
+  border-radius:10px;
 `

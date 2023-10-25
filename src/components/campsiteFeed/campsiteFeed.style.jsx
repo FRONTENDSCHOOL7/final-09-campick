@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ProductContainer = styled.div`
-  width: 100%;
+  margin: 0 8px 0 8px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   border: 0.5px solid #dbdbdb;

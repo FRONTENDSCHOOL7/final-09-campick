@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 export const PostArticle = styled.article`
   padding: 20px 16px;
 

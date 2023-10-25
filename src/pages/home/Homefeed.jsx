@@ -8,6 +8,7 @@ import SearchImg from "../../assets/icons/icon-search.svg"
 import { Home, LogoImg, Search } from "./Homefeed.style";
 import MainSlider from "../../components/slider/MainSlider";
 import Feed from "../../components/campsiteFeed/campsiteFeed";
+import HomeCampsiteFeed from "../../components/campsiteFeed/HomeCampsiteFeed";
 
 export default function Homefeed() {
   const [data, setData] = useState("");
@@ -19,16 +20,20 @@ export default function Homefeed() {
     }
     fetchHomefeed();
   }, []);
-  return (
+  return (<>
+  <Header><LogoImg src={Logo} alt="캠픽 로고"/><Search src ={SearchImg} alt = "검색 버튼"/></Header>
     <Home>
-      <Header><LogoImg src={Logo} alt="캠픽 로고"/><Search src ={SearchImg} alt = "검색 버튼"/></Header>
 
       <MainSlider/>
 
-      <Feed/>
+      <HomeCampsiteFeed/>
 
       <PostList data={data} />
-      <Navbar />
+      
     </Home>
+
+    <Navbar home/>
+
+    </>
   );
 }

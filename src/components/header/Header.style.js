@@ -8,4 +8,5 @@ export const Header = styled.header`
   align-items: center;
   padding: 0px 16px 0px 16px;
   background-color: white;
+  box-sizing: border-box;
 `;

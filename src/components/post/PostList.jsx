@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import PostItem from "./PostItem";
 import styled from "styled-components";
 const PostSection = styled.section`
-  overflow-y: scroll;
-  height: calc(100vh - 50px - 50px);
   background-color: white;
+  border-radius: 10px;
+  border: 0.5px solid #dbdbdb;
+  margin : 0 8px 0 8px ;
   &::-webkit-scrollbar {
     display: none;
   }
