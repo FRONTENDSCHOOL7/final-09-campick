@@ -1,109 +1,72 @@
 import React, { useState, useEffect } from "react";
-import styled, { keyframes } from "styled-components";
 import Logo from "../../assets/image/LogoAll.svg";
 import SubLogo from "../../assets/image/SubLogo.svg";
+import { SocialLoginButton } from "../../components/login/Login.style";
+import {
+  Background,
+  FlexWrapper,
+  LoginJoin,
+  LogoAll,
+  SubLogoAll,
+  LoginModal,
+  ButtonWrapper,
+  moveUpSub,
+} from "./Login.style";
 
-export default function LoginMain() {
-  const [isModalVisible, setIsModalVisible] = useState(false); // 초기 상태값을 false로 설정
+const Login = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
-    // 1초 후에 모달 표시
     const timer = setTimeout(() => {
       setIsModalVisible(true);
-    });
-
-    // 컴포넌트 언마운트 시 타이머 제거
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (isModalVisible) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    }, 1000);
 
     return () => {
-      document.body.style.overflow = "auto";
+      clearTimeout(timer);
     };
-  }, [isModalVisible]);
+  }, []);
 
-  const Background = styled.div`
-    background-color: var(--primary-color);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  `;
-
-  const moveUpLogo = keyframes`
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    scale: .75;
-    transform: translateY(-50px);
-  }
-`;
-
-  const LogoAll = styled.img`
-    width: 305px;
-    height: 276.037px;
-    margin-top: 127px;
-    display: flex;
-    animation: ${moveUpLogo} 1s forwards 1s;
-  `;
-
-  const moveUpSub = keyframes`
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100px);
-  }
-`;
-
-  const SubLogoAll = styled.img`
-    width: 368.481px;
-    height: 146.666px;
-    flex-shrink: 0;
-    margin-top: 120px;
-    margin-bottom: 7px;
-    animation: ${moveUpSub} 1s forwards 1s;
-  `;
-
-  // 애니메이션 정의
-  const moveUpModal = keyframes`
-   0% {
-    transform: translateY(100vh);
-  }
-  100% {
-    transform: translateY(0);  // 0으로 설정하여 원래 위치에 고정
-  }
-`;
-
-  const LoginModal = styled.div`
-    position: absolute;
-    margin-top: 580px;
-    background-color: #fff; // 배경색 추가
-    width: 390px; // 모달의 가로 크기 지정
-    height: 320px; // 모달의 세로 크기 지정
-    color: black; // 텍스트 색상 변경
-    border-radius: 20px 20px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: ${moveUpModal} 1s forwards 1s;
-    z-index: 20; // z-index 증가
-    transform: translateY(100vh); // 초기 위치 설정
-  `;
+  const handleAlert = () => {
+    alert("아직 준비중인 페이지에요.");
+  };
 
   return (
     <Background>
-      <LogoAll src={Logo} />
-      <SubLogoAll src={SubLogo} />
-      {isModalVisible && <LoginModal />}
+      <LogoAll src={Logo} $isVisible={isModalVisible} />
+      <SubLogoAll src={SubLogo} id="subLogo" $isVisible={isModalVisible} />
+      {isModalVisible && (
+        <LoginModal isVisible={isModalVisible}>
+          <ButtonWrapper>
+            <SocialLoginButton
+              bordercolor={"#F2C94C"}
+              socialImage={"kakao"}
+              onClick={handleAlert}
+            >
+              카카오톡 계정으로 로그인
+            </SocialLoginButton>
+            <SocialLoginButton
+              bordercolor={"#767676"}
+              socialImage={"google"}
+              onClick={handleAlert}
+            >
+              구글 계정으로 로그인
+            </SocialLoginButton>
+            <SocialLoginButton
+              bordercolor={"#2D9CDB"}
+              socialImage={"facebook"}
+              onClick={handleAlert}
+            >
+              페이스북 계정으로 로그인
+            </SocialLoginButton>
+            <FlexWrapper>
+              <LoginJoin to={"/account/login"}>이메일로 로그인</LoginJoin>|
+              <LoginJoin to={"/account/signup"}>회원가입</LoginJoin>
+            </FlexWrapper>
+          </ButtonWrapper>
+        </LoginModal>
+      )}
     </Background>
   );
-}
+};
+
+export default Login;

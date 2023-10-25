@@ -7,15 +7,16 @@ import MyCampsiteRegister from "../pages/myCampsiteRegister/MyCampsiteRegister";
 import Homefeed from "../pages/home/Homefeed";
 import Profile from "../pages/profile/Profile";
 import Followlist from "../pages/follow/Followlist";
+import Login from "../pages/login/Login";
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginEmail />} />
+        <Route path="/" element={<Login />} />
         <Route path="/homefeed" element={<Homefeed />} />
         <Route path="/account/" element={<Outlet />}>
-          <Route path="login/" element={<LoginEmail />} />
-          <Route path="signup/" element={<Signup />} />
+          <Route path="login" element={<LoginEmail />} />
+          <Route path="signup" element={<Signup />} />
           <Route path="signup/profileSetup" element={<ProfileSetup />} />
         </Route>
         <Route path="/profile/" element={<Outlet />}>
