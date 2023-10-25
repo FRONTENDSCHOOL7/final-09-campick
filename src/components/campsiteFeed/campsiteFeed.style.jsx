@@ -6,6 +6,7 @@ export const ProductContainer = styled.div`
   flex-direction: column;
   border: 0.5px solid #dbdbdb;
   padding: 23px 0 32px 0;
+  background-color: white;
 `;
 
 export const WrapContents = styled.div`

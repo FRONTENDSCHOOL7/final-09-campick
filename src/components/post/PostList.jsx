@@ -5,6 +5,7 @@ import styled from "styled-components";
 const PostSection = styled.section`
   overflow-y: scroll;
   height: calc(100vh - 50px - 50px);
+  background-color: white;
   &::-webkit-scrollbar {
     display: none;
   }

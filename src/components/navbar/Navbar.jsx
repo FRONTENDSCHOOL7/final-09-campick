@@ -15,6 +15,9 @@ const NavContainer = styled.nav`
   border-top: solid 1px var(--font-placeholder-color);
   height: 50px;
   display: flex;
+  position: sticky;
+  bottom: 0;
+  background-color: white;
 `;
 const NavLink = styled(Link)`
   display: flex;

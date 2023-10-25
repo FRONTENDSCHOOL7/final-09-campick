@@ -22,7 +22,9 @@ export default function Router() {
         <Route path="/profile/" element={<Outlet />}>
           <Route path="" element={<Profile />} />
           <Route path=":accountUsername" element={<Profile />} />
-          <Route path="mycampsiteregister" element = {<MyCampsiteRegister/>}/>
+        </Route>
+        <Route path="/product/" element={<Outlet />}>
+          <Route path="upload/" element={<MyCampsiteRegister />} />
         </Route>
           
       </Routes>

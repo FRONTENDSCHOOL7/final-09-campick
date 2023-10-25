@@ -23,8 +23,7 @@ export const LabelStyle = styled.label`
 export const InputStyle = styled.input`
 	font-family:'TheJamsil5',sans-serif;
 	border: none;
-	padding-top: 6px;
-	padding-bottom: 6px;
+	padding : 6px 0 6px 6px;
 	border-bottom: 1px solid #dbdbdb;
 	
 

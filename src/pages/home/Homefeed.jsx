@@ -5,7 +5,9 @@ import { homefeedApi } from "../../api/homefeedApi";
 import { Header } from "../../components/header/Header.style";
 import Logo from "../../assets/icons/logo-header.png"
 import SearchImg from "../../assets/icons/icon-search.svg"
-import { LogoImg, Search } from "./Homefeed.style";
+import { Home, LogoImg, Search } from "./Homefeed.style";
+import MainSlider from "../../components/slider/MainSlider";
+import Feed from "../../components/campsiteFeed/campsiteFeed";
 
 export default function Homefeed() {
   const [data, setData] = useState("");
@@ -18,10 +20,15 @@ export default function Homefeed() {
     fetchHomefeed();
   }, []);
   return (
-    <div>
+    <Home>
       <Header><LogoImg src={Logo} alt="캠픽 로고"/><Search src ={SearchImg} alt = "검색 버튼"/></Header>
+
+      <MainSlider/>
+
+      <Feed/>
+
       <PostList data={data} />
       <Navbar />
-    </div>
+    </Home>
   );
 }
