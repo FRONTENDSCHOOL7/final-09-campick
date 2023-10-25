@@ -17,6 +17,7 @@ import {
 import { unfollow } from "../../api/unfollowApi";
 import { follow } from "../../api/followApi";
 export default function ProfileCard({ data, accountUsername, setLender }) {
+  const myAccountname = localStorage.getItem("accountname");
   const handlefollowBtn = async () => {
     if (data.isfollow) {
       await unfollow(data.accountname);
@@ -30,14 +31,18 @@ export default function ProfileCard({ data, accountUsername, setLender }) {
   return (
     <ProfileWrapper>
       <ProfileInfoWrap>
-        <ProfileFollow>
+        <ProfileFollow
+          to={accountUsername ? `follower` : `${myAccountname}/follower`}
+        >
           <FollowNumber $follower="follower">
             {data && `${data.followerCount}`}
           </FollowNumber>
           <Follow>followers</Follow>
         </ProfileFollow>
         <ProfileImg src={data && data.image} />
-        <ProfileFollow>
+        <ProfileFollow
+          to={accountUsername ? `following` : `${myAccountname}/following`}
+        >
           <FollowNumber>{data && `${data.followingCount}`}</FollowNumber>
           <Follow>followings</Follow>
         </ProfileFollow>

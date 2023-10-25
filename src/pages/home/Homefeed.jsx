@@ -13,11 +13,13 @@ export default function Homefeed() {
     }
     fetchHomefeed();
   }, []);
+
   return (
     <div>
       <Header></Header>
       <PostList data={data} />
-      <Navbar />
+
+      <Navbar homefeed />
     </div>
   );
 }

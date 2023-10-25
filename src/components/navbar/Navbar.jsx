@@ -74,7 +74,7 @@ export default function Navbar(props) {
             src={
               isHomeMouseOver
                 ? homeIconFill
-                : props.home === true
+                : props.homefeed === true
                 ? homeIconFill
                 : homeIcon
             }

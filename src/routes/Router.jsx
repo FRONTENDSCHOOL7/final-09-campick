@@ -5,9 +5,8 @@ import ProfileSetup from "../pages/profileSetup/ProfileSetup";
 import LoginEmail from "../pages/loginEmail/LoginEmail";
 import MyCampsiteRegister from "../pages/myCampsiteRegister/MyCampsiteRegister";
 import Homefeed from "../pages/home/Homefeed";
-import SignIn from "../pages/signin/Signin";
 import Profile from "../pages/profile/Profile";
-
+import Followlist from "../pages/follow/Followlist";
 export default function Router() {
   return (
     <BrowserRouter>
@@ -21,10 +20,11 @@ export default function Router() {
         </Route>
         <Route path="/profile/" element={<Outlet />}>
           <Route path="" element={<Profile />} />
-          <Route path=":accountUsername" element={<Profile />} />
-          <Route path="mycampsiteregister" element = {<MyCampsiteRegister/>}/>
+          <Route path=":accountUsername" element={<Outlet />}>
+            <Route path="" element={<Profile />} />
+            <Route path=":follow/" element={<Followlist />} />
+          </Route>
         </Route>
-          
       </Routes>
     </BrowserRouter>
   );
