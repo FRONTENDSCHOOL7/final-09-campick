@@ -3,8 +3,8 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Signup from "../pages/signup/Signup";
 import ProfileSetup from "../pages/profileSetup/ProfileSetup";
 import LoginEmail from "../pages/loginEmail/LoginEmail";
+import MyCampsiteRegister from "../pages/myCampsiteRegister/MyCampsiteRegister";
 import Homefeed from "../pages/home/Homefeed";
-import SignIn from "../pages/signin/Signin";
 import Profile from "../pages/profile/Profile";
 import Followlist from "../pages/follow/Followlist";
 export default function Router() {
@@ -16,7 +16,7 @@ export default function Router() {
         <Route path="/account/" element={<Outlet />}>
           <Route path="login/" element={<LoginEmail />} />
           <Route path="signup/" element={<Signup />} />
-          <Route path="signup/profileSetup" element={<SignIn />} />
+          <Route path="signup/profileSetup" element={<ProfileSetup />} />
         </Route>
         <Route path="/profile/" element={<Outlet />}>
           <Route path="" element={<Profile />} />

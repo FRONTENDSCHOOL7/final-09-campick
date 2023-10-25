@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SignUpContainer, WrapperLoginEmail } from "./loginEmail.style";
+import { SignUpContainer, WrapperLoginEmail } from "./LoginEmail.style";
 import {
   Incorrect,
   InputStyle,
@@ -41,11 +41,9 @@ export default function LoginEmail() {
   async function userLogin(e) {
     e.preventDefault();
     const res = await login(email, pw);
-    console.log(res);
     if (res && res.hasOwnProperty("user")) {
       localStorage.setItem("token", res.user.token);
       localStorage.setItem("accountname", res.user.accountname);
-
       navigate("/homefeed"); // 로그인 성공하면 홈화면으로 가기
     } else {
       setCorrect(true);

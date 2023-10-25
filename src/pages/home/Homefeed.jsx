@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import PostList from "../../components/post/PostList";
 import { homefeedApi } from "../../api/homefeedApi";
-import ProfileCard from "../../components/userProfile/ProfileCard";
+import { Header } from "../../components/header/Header.style";
 export default function Homefeed() {
   const [data, setData] = useState("");
 
@@ -16,7 +16,7 @@ export default function Homefeed() {
 
   return (
     <div>
-      <header style={{ height: "50px", backgroundColor: "red" }}></header>
+      <Header></Header>
       <PostList data={data} />
 
       <Navbar homefeed />

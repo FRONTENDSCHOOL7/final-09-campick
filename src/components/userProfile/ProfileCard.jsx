@@ -55,7 +55,7 @@ export default function ProfileCard({ data, accountUsername, setLender }) {
       {!accountUsername ? (
         <ProfileBtnWrap>
           <ProfileBtn>프로필 수정</ProfileBtn>
-          <ProfileBtn>내 캠핑장 등록</ProfileBtn>
+          <ProfileBtn to={"mycampsiteregister"}>내 캠핑장 등록</ProfileBtn>
         </ProfileBtnWrap>
       ) : (
         <ProfileBtnWrap>
