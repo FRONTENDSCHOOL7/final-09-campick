@@ -6,12 +6,14 @@ import {
   HomeCampsiteImg,
 } from "./HomeCampsiteFeed.style";
 
-export default function HomeCampsiteItem() {
+export default function HomeCampsiteItem({ data }) {
+  const itemName = JSON.parse(data.itemName);
+
   return (
     <CampSiteItemWrapper>
-      <HomeCampsiteImg />
-      <HomeCampSiteName>캠핑장 이름</HomeCampSiteName>
-      <HomeCampSitePrice>가격</HomeCampSitePrice>
+      <HomeCampsiteImg src={data.itemImage} />
+      <HomeCampSiteName>{itemName.name}</HomeCampSiteName>
+      <HomeCampSitePrice>{data.price}</HomeCampSitePrice>
     </CampSiteItemWrapper>
   );
 }
