@@ -3,6 +3,9 @@ import PostItem from "./PostItem";
 
 export default function UserPostList({ data, accountUsername }) {
   return (
-    data.post && data.post.map(item => <PostItem key={item.id} data={item} />)
+    <section style={{ backgroundColor: "#fff" }}>
+      {data.post &&
+        data.post.map(item => <PostItem key={item.id} data={item} />)}
+    </section>
   );
 }

@@ -25,6 +25,9 @@ export default function Router() {
             <Route path=":follow/" element={<Followlist />} />
           </Route>
         </Route>
+        <Route path="/product/" element={<Outlet />}>
+          <Route path="upload/" element={<MyCampsiteRegister />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
