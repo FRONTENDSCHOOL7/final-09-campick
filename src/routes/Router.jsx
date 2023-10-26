@@ -8,6 +8,7 @@ import Homefeed from "../pages/home/Homefeed";
 import Profile from "../pages/profile/Profile";
 import Followlist from "../pages/follow/Followlist";
 import Login from "../pages/login/Login";
+import Community from "../pages/community/Community";
 export default function Router() {
   return (
     <BrowserRouter>
@@ -26,7 +27,11 @@ export default function Router() {
             <Route path=":follow/" element={<Followlist />} />
           </Route>
         </Route>
+        <Route path="/product/" element={<Outlet />}>
+          <Route path="upload/" element={<MyCampsiteRegister />} />
+        </Route>
       </Routes>
+      {/* <Community /> */}
     </BrowserRouter>
   );
 }
