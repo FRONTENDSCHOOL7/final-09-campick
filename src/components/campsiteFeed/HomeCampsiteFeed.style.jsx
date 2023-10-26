@@ -36,7 +36,13 @@ export const HomeCampSitePrice = styled.h3`
 `;
 
 export const HomeCampSiteTitle = styled.h2``;
+
 export const HomeCampSiteList = styled.div`
   display: flex;
   gap: 10px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
