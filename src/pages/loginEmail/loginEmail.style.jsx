@@ -7,7 +7,7 @@ export const WrapperLoginEmail = styled.section`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 34px 34px 0px 0px;
+  padding: 34px 34px 0px;
   box-sizing: border-box;
 `;
 
