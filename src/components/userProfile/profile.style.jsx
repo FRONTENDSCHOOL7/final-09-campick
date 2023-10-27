@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import chat from "../../assets/icons/icon-message-circle.svg";
 import share from "../../assets/icons/icon-share.svg";
 export const ProfileWrapper = styled.section`
-  height: calc(100vh - 50px - 50px);
+  background-color: #fff;
+  padding: 27px;
 `;
 export const ProfileInfoWrap = styled.div`
   display: flex;

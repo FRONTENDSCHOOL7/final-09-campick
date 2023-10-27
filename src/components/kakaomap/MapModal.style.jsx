@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ModalBackdrop = styled.div`
   position: fixed; // 페이지 전체를 덮도록 fixed 포지션 적용
@@ -11,12 +11,12 @@ export const ModalBackdrop = styled.div`
 `;
 
 export const WrapperMap = styled.section`
-  position:absolute;
-	margin: 0 auto;
-	display: flex;
+  position: absolute;
+  margin: 0 auto;
+  display: flex;
   background-color: white;
-	flex-direction: column;
-	box-sizing: border-box;
+  flex-direction: column;
+  box-sizing: border-box;
   padding: 19px 12px 19px 12px;
   border-radius: 20px;
   border: 2px solid var(--primary-color);
@@ -26,34 +26,35 @@ export const WrapperMap = styled.section`
 `;
 
 export const WrapperAddress = styled.div`
-  background-color: ${props => props.selected ? 'var(--primary-color)' : 'white'};
-  width:auto;
+  background-color: ${props =>
+    props.selected ? "var(--primary-color)" : "white"};
+  width: auto;
   border: 2px solid var(--primary-disabled-color);
   border-radius: 10px;
   margin-top: 8px;
   cursor: pointer;
-  padding:9px 0 9px 11px;
-  &:hover{
+  padding: 9px 0 9px 11px;
+  &:hover {
     border: 2px solid var(--primary-color);
   }
 `;
 
 export const AddressInputStyle = styled.input`
-	font-family:'TheJamsil5',sans-serif;
-	border: none;
-  padding : 6px 0 6px 6px;
-	border-bottom: 1px solid #dbdbdb;
+  font-family: "TheJamsil5", sans-serif;
+  border: none;
+  padding: 6px 0 6px 6px;
+  border-bottom: 1px solid #dbdbdb;
   margin-bottom: 10px;
   width: 100%;
   height: 25px;
-	&:focus {
-		outline: none;
-		border-color: var(--primary-disabled-color);
+  &:focus {
+    outline: none;
+    border-color: var(--primary-disabled-color);
     // 비밀번호가 틀렸으면 색상 바꿔야함
-	}
-	&::placeholder {
-		color: #dbdbdb;
-	}
+  }
+  &::placeholder {
+    color: #dbdbdb;
+  }
 `;
 
 export const ResultList = styled.div`
@@ -63,34 +64,34 @@ export const ResultList = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-`
+`;
 
 export const Pagination = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  gap:15px;
+  gap: 15px;
   color: var(--primary-color);
-`
+`;
 export const CampSiteAddressIsNull = styled.div`
   height: 273px;
   text-align: center;
   margin-top: 277px;
-`
+`;
 
 export const ModalMapListItemTitle = styled.h5`
   font-size: 14px;
-  color: ${props => props.selected ? 'white' : '#264653'};
+  color: ${props => (props.selected ? "white" : "#264653")};
   font-weight: 1000;
 `;
 
 export const ModalMapListItemAddress = styled.div`
   padding: 9px 0 4px;
   font-size: 12px;
-  color: ${props => props.selected ? 'white' : 'var(--font-primary-color)'};
+  color: ${props => (props.selected ? "white" : "var(--font-primary-color)")};
 `;
 
 export const ModalMapListPhoneNumber = styled.span`
-  color: ${props => props.selected ? 'white' : 'var(--font-primary-color)'};
+  color: ${props => (props.selected ? "white" : "var(--font-primary-color)")};
   font-size: 12px;
 `;

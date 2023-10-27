@@ -63,7 +63,7 @@ export default function Homefeed() {
         <PostList data={data} />
       </Home>
 
-      <Navbar home />
+      <Navbar homefeed />
     </>
   );
 }

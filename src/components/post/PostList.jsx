@@ -13,12 +13,11 @@ const PostSection = styled.section`
     display: none;
   }
 `;
-export default function PostList(props) {
+export default function PostList({ data }) {
   return (
     <PostSection>
       <HomePostTitle>친구들의 로그</HomePostTitle>
-      {props.data &&
-        props.data.map(item => <PostItem key={item.id} data={item} />)}
+      {data && data.map(item => <PostItem key={item.id} data={item} />)}
     </PostSection>
   );
 }

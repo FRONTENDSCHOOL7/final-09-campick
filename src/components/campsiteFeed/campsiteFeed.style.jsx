@@ -5,9 +5,10 @@ export const ProductContainer = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  border: 0.5px solid #dbdbdb;
+  background-color: #fff;
   padding: 23px 0 32px 0;
-  background-color: white;
+  height: 205px;
+  box-sizing: border-box;
 `;
 
 export const WrapContents = styled.div`

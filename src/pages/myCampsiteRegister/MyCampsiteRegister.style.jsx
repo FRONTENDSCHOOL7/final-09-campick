@@ -3,12 +3,17 @@ import { Label } from "../../components/form/form.style";
 
 export const WrapperMyCampsiteRegister = styled.section`
   width: 100%;
+  height: calc(100vh - 50px);
   gap: 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 34px 34px 34px 34px;
   box-sizing: border-box;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const WrapperMyCampsiteInput = styled.div`
@@ -42,7 +47,7 @@ export const FileUploadContainer = styled.div`
   transition: 0.3s;
   &:hover {
     transition: 0.3s;
-    border: 1px solid var(--primary-disabled-color);
+    border: 0.5px solid var(--primary-disabled-color);
   }
 `;
 

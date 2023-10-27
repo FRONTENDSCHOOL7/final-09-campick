@@ -291,7 +291,10 @@ export default function MyCampsiteRegister() {
             <Incorrect>{warnings.registerLink}</Incorrect>
           )}
         </WrapperMyCampsiteInput>
-        <Submitbutton onClick={openModal} style={{ margin: "0" }}>
+        <Submitbutton
+          onClick={openModal}
+          style={{ margin: "0", padding: "13px 0 13px 0" }}
+        >
           지도에서 위치 선택하기
         </Submitbutton>
         <WrapperMyCampsiteInput>
