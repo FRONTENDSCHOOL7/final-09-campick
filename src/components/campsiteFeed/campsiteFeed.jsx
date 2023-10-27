@@ -1,3 +1,4 @@
+import { Label } from "../form/form.style";
 import {
   WrapContents,
   ProductTitle,
@@ -23,8 +24,8 @@ export default function Feed() {
             <ProductPrice>가격</ProductPrice>
             <ProductLocation>위치</ProductLocation>
             <WrapProductTag>
-              <ProductTag>태그입니다</ProductTag>
-              <ProductTag>입니다</ProductTag>
+              <Label>태그입니다</Label>
+              <Label>입니다</Label>
             </WrapProductTag>
           </WrapSpan>
         </WrapContents>

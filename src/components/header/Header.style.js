@@ -7,5 +7,6 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0px 16px 0px 16px;
+  background-color: white;
   box-sizing: border-box;
 `;

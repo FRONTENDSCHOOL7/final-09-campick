@@ -80,7 +80,7 @@ const moveUpModal = keyframes`
     transform: translateY(100vh);
   }
   100% {
-    transform: translateY(60%);
+    transform: translateY(65%);
   }
 `;
 
@@ -96,7 +96,7 @@ export const LoginModal = styled.div`
   flex-direction: column;
   align-items: center;
   animation: ${props =>
-    props.isVisible
+    props.isvisible === "true"
       ? css`
           ${moveUpModal} 1s forwards
         `

@@ -35,25 +35,25 @@ const Login = () => {
       <LogoAll src={Logo} $isVisible={isModalVisible} />
       <SubLogoAll src={SubLogo} id="subLogo" $isVisible={isModalVisible} />
       {isModalVisible && (
-        <LoginModal isVisible={isModalVisible}>
+        <LoginModal isvisible={`${isModalVisible}`}>
           <ButtonWrapper>
             <SocialLoginButton
               bordercolor={"#F2C94C"}
-              socialImage={"kakao"}
+              socialimage={"kakao"}
               onClick={handleAlert}
             >
               카카오톡 계정으로 로그인
             </SocialLoginButton>
             <SocialLoginButton
               bordercolor={"#767676"}
-              socialImage={"google"}
+              socialimage={"google"}
               onClick={handleAlert}
             >
               구글 계정으로 로그인
             </SocialLoginButton>
             <SocialLoginButton
               bordercolor={"#2D9CDB"}
-              socialImage={"facebook"}
+              socialimage={"facebook"}
               onClick={handleAlert}
             >
               페이스북 계정으로 로그인
