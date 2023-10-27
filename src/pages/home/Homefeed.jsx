@@ -10,6 +10,7 @@ import MainSlider from "../../components/slider/MainSlider";
 import HomeCampsiteFeed from "../../components/campsiteFeed/HomeCampsiteFeed";
 import { followList } from "../../api/followListApi";
 import { productList } from "../../api/productListApi";
+import { Helmet } from "react-helmet-async";
 
 export default function Homefeed() {
   const [data, setData] = useState("");
@@ -47,6 +48,9 @@ export default function Homefeed() {
 
   return (
     <>
+      <Helmet>
+        <title>Campick | 홈화면</title>
+      </Helmet>
       <Header>
         <LogoImg src={Logo} alt="캠픽 로고" />
         <Search src={SearchImg} alt="검색 버튼" />
