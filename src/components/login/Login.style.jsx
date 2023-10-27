@@ -2,24 +2,24 @@ import styled from "styled-components";
 import socialImage from "../../assets/image/social_login_sprites.png";
 
 export const BtnWrap = styled.div`
-  background-color: black;
+  /* background-color: black; */
   border-radius: 20px 20px 0 0;
   padding: 50px 34px;
 `;
 
 export const SocialLoginButton = styled.button`
-  font-family: "Suit-Regular";
   display: block;
   width: 100%;
-  padding: 8px;
+  padding: 12px;
+  color: var(--font-primary-color);
   font-size: 14px;
-  color: #767676;
   background-color: #fff;
   text-align: center;
   border-radius: 44px;
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
+  margin-bottom: 10px;
   border: 1px solid ${props => props.bordercolor};
   &::before {
     content: "";
@@ -52,13 +52,13 @@ export const SocialLoginButton = styled.button`
 `;
 
 export const LoginLink = styled.a`
-  color: #767676;
+  color: var(--font-primary-color);
   text-decoration: none;
   cursor: pointer;
 `;
 
 export const SignUpLink = styled.a`
-  color: #767676;
+  color: var(--font-primary-color);
   text-decoration: none;
   margin-left: 10px;
   cursor: pointer;
@@ -70,5 +70,6 @@ export const SignUpLink = styled.a`
 `;
 
 export const LinkWrap = styled.div`
+  color: var(--font-primary-color);
   text-align: center;
 `;
