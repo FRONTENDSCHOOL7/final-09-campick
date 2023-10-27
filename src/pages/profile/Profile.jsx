@@ -3,15 +3,18 @@ import { useParams } from "react-router-dom";
 import { myInfo } from "../../api/myInfoApi";
 import { userInfo } from "../../api/userInfoApi";
 import { userPost } from "../../api/userpostApi";
+import { productList } from "../../api/productListApi";
 import { Helmet } from "react-helmet-async";
 import ProfileCard from "../../components/userProfile/ProfileCard";
 import Navbar from "../../components/navbar/Navbar";
-
-//import UserPostList from "../../components/post/UserPostList";
-//import ProfileProduct from "../../components/userProfile/ProfileProduct";
+import { Header } from "../../components/header/Header.style";
+import UserPostList from "../../components/post/UserPostList";
+import ProfileProduct from "../../components/userProfile/ProfileProduct";
+import styled from "styled-components";
 export default function Profile() {
   const [userData, setData] = useState("");
   const [userPosts, setUserPosts] = useState("");
+  const [userProducts, setUserProducts] = useState("");
   const { accountUsername } = useParams();
   const [lender, setLender] = useState(true);
   useEffect(() => {
@@ -19,34 +22,53 @@ export default function Profile() {
       const getUserInfo = async () => {
         const res = await userInfo(accountUsername);
         const postRes = await userPost(accountUsername);
+        const productRes = await productList(accountUsername);
         setData(res);
         setUserPosts(postRes);
+        setUserProducts(productRes);
       };
       getUserInfo();
     } else {
       const getMyInfo = async () => {
         const res = await myInfo();
         const postRes = await userPost(localStorage.getItem("accountname"));
+        const productRes = await productList(
+          localStorage.getItem("accountname"),
+        );
         setData(res);
         setUserPosts(postRes);
+        setUserProducts(productRes);
       };
       getMyInfo();
     }
   }, [accountUsername, lender]);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#f5f5f5" }}>
       <Helmet>
         <title>Campick | 프로필</title>
       </Helmet>
-      <ProfileCard
-        data={userData}
-        accountUsername={accountUsername}
-        setLender={setLender}
-      />
-      {/*<ProfileProduct />
-       <UserPostList data={userPosts} accountUsername={accountUsername} /> */}
-      <Navbar/>
+      <Header />
+      <Main>
+        <ProfileCard
+          data={userData}
+          accountUsername={accountUsername}
+          setLender={setLender}
+        />
+        <ProfileProduct data={userProducts} />
+        <UserPostList data={userPosts} accountUsername={accountUsername} />
+      </Main>
+      <Navbar />
     </div>
   );
 }
+const Main = styled.main`
+  height: calc(100vh - 50px - 50px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
