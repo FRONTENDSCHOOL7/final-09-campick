@@ -30,8 +30,8 @@ export default function Router() {
         <Route path="/product/" element={<Outlet />}>
           <Route path="upload/" element={<MyCampsiteRegister />} />
         </Route>
+        <Route path="/community" element={<Community />} />
       </Routes>
-      {/* <Community /> */}
     </BrowserRouter>
   );
 }

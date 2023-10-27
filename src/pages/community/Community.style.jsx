@@ -2,7 +2,7 @@ import styled, { keyframes, css } from "styled-components";
 export const Background = styled.div`
   background-color: white;
   width: 390px;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 110px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
