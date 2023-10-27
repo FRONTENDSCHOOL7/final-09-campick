@@ -2,11 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import PostItem from "./PostItem";
 import styled from "styled-components";
+import { HomeCampSiteTitle } from "../campsiteFeed/HomeCampsiteFeed.style";
+import { HomePostTitle } from "./post.style";
 const PostSection = styled.section`
   background-color: white;
   border-radius: 10px;
   border: 0.5px solid #dbdbdb;
-  margin : 0 8px 0 8px ;
+  margin: 0 8px 0 8px;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -14,6 +16,7 @@ const PostSection = styled.section`
 export default function PostList(props) {
   return (
     <PostSection>
+      <HomePostTitle>친구들의 로그</HomePostTitle>
       {props.data &&
         props.data.map(item => <PostItem key={item.id} data={item} />)}
     </PostSection>

@@ -23,7 +23,7 @@ export default function HomeCampsiteFeed(props) {
 
   return (
     <WrapperHomeCampsite>
-      <HomeCampSiteTitle>내가 팔로우한 사람들의 캠핑장</HomeCampSiteTitle>
+      <HomeCampSiteTitle>내 친구들의 캠핑장</HomeCampSiteTitle>
 
       <HomeCampSiteList>
         {/* <Slider {...settings}> */}

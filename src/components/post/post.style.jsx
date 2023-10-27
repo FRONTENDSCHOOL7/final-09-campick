@@ -79,3 +79,6 @@ export const PostData = styled.p`
   font-size: 10px;
   color: var(--font-primary-color);
 `;
+export const HomePostTitle = styled.h2`
+  margin: 12px auto 0 10px;
+`;
