@@ -29,7 +29,7 @@ const Community = () => {
             {evenImages.map((image, index) => (
               <DynamicImageComponent
                 key={index}
-                imageUrl={image.image}
+                imageurl={image.image}
                 address={image.address || "주소를 입력해주세요"}
               />
             ))}
@@ -45,7 +45,7 @@ const Community = () => {
             {oddImages.map((image, index) => (
               <DynamicImageComponent
                 key={index}
-                imageUrl={image.image}
+                imageurl={image.image}
                 address={image.address || "주소를 입력해주세요"}
               />
             ))}
