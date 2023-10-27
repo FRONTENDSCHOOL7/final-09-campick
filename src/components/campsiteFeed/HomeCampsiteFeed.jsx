@@ -5,6 +5,12 @@ import {
   WrapperHomeCampsite,
 } from "./HomeCampsiteFeed.style";
 import HomeCampsiteItem from "./HomeCampsiteItem";
+import { Swiper, SwiperSlide } from "swiper/react"; // basic
+
+import "swiper/css"; //basic
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { FreeMode, Pagination } from "swiper/modules";
 
 export default function HomeCampsiteFeed(props) {
   const handleOnClickItem = item => {
@@ -16,17 +22,19 @@ export default function HomeCampsiteFeed(props) {
       <HomeCampSiteTitle>내 친구들의 캠핑장</HomeCampSiteTitle>
 
       <HomeCampSiteList>
-        {props.productInfo &&
-          props.productInfo.map(item => (
-            <HomeCampsiteItem
-              key={item.id}
-              data={item}
-              onClick={handleOnClickItem}
-            />
-          ))}
-        <h2>sdsafdf</h2>
-        <h2>sdsdff</h2>
-        <h2>sdsdff</h2>
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={2}
+          freeMode={true}
+          modules={[FreeMode]}
+        >
+          {props.productInfo &&
+            props.productInfo.map(item => (
+              <SwiperSlide key={item.id}>
+                <HomeCampsiteItem data={item} onClick={handleOnClickItem} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </HomeCampSiteList>
     </WrapperHomeCampsite>
   );
