@@ -26,8 +26,8 @@ export default function UserPostList({ data }) {
   return (
     <PostSection>
       <PostHeader>
-        <ListBtn liston={listView} onClick={handleListView} />
-        <AlbumBtn albumon={albumView} onClick={handleAlbumView} />
+        <ListBtn liston={`${listView}`} onClick={handleListView} />
+        <AlbumBtn albumon={`${albumView}`} onClick={handleAlbumView} />
       </PostHeader>
       {listView ? (
         <section>

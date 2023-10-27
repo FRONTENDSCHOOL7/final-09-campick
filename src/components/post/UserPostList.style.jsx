@@ -15,14 +15,14 @@ export const PostHeader = styled.header`
 `;
 export const ListBtn = styled.button`
   background: ${props =>
-      props.liston === true ? `url(${postListon})` : `url(${postListoff})`}
+      props.liston === "true" ? `url(${postListon})` : `url(${postListoff})`}
     no-repeat;
   padding: 12px;
   cursor: pointer;
 `;
 export const AlbumBtn = styled.button`
   background: ${props =>
-      props.albumon === true ? `url(${postAlbumon})` : `url(${postAlbumoff})`}
+      props.albumon === "true" ? `url(${postAlbumon})` : `url(${postAlbumoff})`}
     no-repeat;
   padding: 12px;
   cursor: pointer;
