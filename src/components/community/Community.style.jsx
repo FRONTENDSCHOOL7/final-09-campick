@@ -39,7 +39,7 @@ export const CommunityImageContainer = styled.div`
 export const BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(${props => props.imageUrl});
+  background-image: url(${props => props.imageurl});
   background-size: cover;
   position: absolute; // 절대 위치로 설정
   top: 0;
@@ -70,10 +70,10 @@ export const Icon = styled.img`
   margin-bottom: 1px;
 `;
 
-const DynamicImageComponent = ({ imageUrl, address }) => {
+const DynamicImageComponent = ({ imageurl, address }) => {
   return (
     <CommunityImageContainer>
-      <BackgroundImage imageUrl={imageUrl} /> <GradientOverlay />
+      <BackgroundImage imageurl={imageurl} /> <GradientOverlay />
       <TextWithIcon>
         <Icon src={point} alt="icon" /> {address}
       </TextWithIcon>

@@ -32,9 +32,10 @@ const NavLink = styled(Link)`
 const NavIcon = styled.img`
   width: 24px;
   height: 24px;
+  transition: transform 0.4s, box-shadow 0.4s;
+
   &:hover {
-    transition: transform 0.4s;
-    transform: rotate(360deg);
+    transform: scale(1.2);
   }
 `;
 
