@@ -8,11 +8,8 @@ import Homefeed from "../pages/home/Homefeed";
 import Profile from "../pages/profile/Profile";
 import Followlist from "../pages/follow/Followlist";
 import Login from "../pages/login/Login";
-<<<<<<< HEAD
 import Reservation from "../pages/reservation/Reservation";
-=======
 import Community from "../pages/community/Community";
->>>>>>> develop
 export default function Router() {
   return (
     <BrowserRouter>
