@@ -11,9 +11,10 @@ import {
 import { unfollow } from "../../api/unfollowApi";
 import { follow } from "../../api/followApi";
 
-export default function FollowListItem({ data: initialize, followPage }) {
+export default function FollowListItem({ data: initialize }) {
   const [data, setData] = useState(initialize);
 
+  const myAccoutname = localStorage.getItem("accountname");
   const handleUnfollowBtn = async () => {
     if (data.isfollow) {
       await unfollow(data.accountname);
@@ -26,7 +27,13 @@ export default function FollowListItem({ data: initialize, followPage }) {
 
   return (
     <UserWrap>
-      <ProfileLink to={`../../${data.accountname}`}>
+      <ProfileLink
+        to={
+          data.accountname === myAccoutname
+            ? `../../`
+            : `../../${data.accountname}`
+        }
+      >
         <UserImg
           src={data.image}
           alt={`${data.username}의 프로필 이미지입니다.`}

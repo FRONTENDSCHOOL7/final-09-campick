@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, usememo } from "react";
 import { useParams } from "react-router-dom";
 import { myInfo } from "../../api/myInfoApi";
 import { userInfo } from "../../api/userInfoApi";
@@ -17,13 +17,16 @@ export default function Profile() {
   const [userProducts, setUserProducts] = useState("");
   const { accountUsername } = useParams();
   const [lender, setLender] = useState(true);
+
   useEffect(() => {
     if (accountUsername) {
       const getUserInfo = async () => {
         const res = await userInfo(accountUsername);
         const postRes = await userPost(accountUsername);
+        const productRes = await productList(accountUsername, 5);
         setData(res);
         setUserPosts(postRes);
+        setUserProducts(productRes);
       };
       getUserInfo();
     } else {
@@ -32,6 +35,7 @@ export default function Profile() {
         const postRes = await userPost(localStorage.getItem("accountname"));
         const productRes = await productList(
           localStorage.getItem("accountname"),
+          1,
         );
         setData(res);
         setUserPosts(postRes);
@@ -56,7 +60,7 @@ export default function Profile() {
         <ProfileProduct data={userProducts} />
         <UserPostList data={userPosts} accountUsername={accountUsername} />
       </Main>
-      <Navbar />
+      <Navbar profile />
     </div>
   );
 }
