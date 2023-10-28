@@ -9,6 +9,7 @@ import Profile from "../pages/profile/Profile";
 import Followlist from "../pages/follow/Followlist";
 import Login from "../pages/login/Login";
 import Community from "../pages/community/Community";
+import Search from "../pages/search/Search";
 export default function Router() {
   return (
     <BrowserRouter>
@@ -31,6 +32,7 @@ export default function Router() {
           <Route path="upload/" element={<MyCampsiteRegister />} />
         </Route>
         <Route path="/community" element={<Community />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );
