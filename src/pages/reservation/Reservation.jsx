@@ -8,7 +8,7 @@ import Feed from "../../components/campsiteFeed/campsiteFeed";
 export default function Reservation() {
   const [followingList, setFollowingList] = useState("");
   const [productInfo, setProductInfo] = useState([]);
-  const [sort, setSort] = useState([]);
+  const [sortProduct, setSortProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const accountname = localStorage.getItem("accountname");
@@ -28,24 +28,9 @@ export default function Reservation() {
         });
     }
     getProduct();
-    // setProductInfo(
-    //   [...productInfo].sort((a, b) => {
-    //     return new Date(a.createdAt) - new Date(b.createdAt);
-    //   }),
-    // );
   }, [followingList]);
-  // useEffect(() => {
-  //   productInfo.sort((a, b) => {
-  //     console.log("안녕");
-  //     return new Date(b.createdAt) - new Date(a.createdAt);
-  //   });
-  // }, [productInfo]);
-  // productInfo.sort((a, b) => {
-  //   console.log("안녕");
-  //   return new Date(b.createdAt) - new Date(a.createdAt);
-  // });
   useEffect(() => {
-    setSort(
+    setSortProduct(
       [...productInfo].sort((a, b) => {
         console.log("안녕");
         return new Date(b.createdAt) - new Date(a.createdAt);
@@ -65,7 +50,7 @@ export default function Reservation() {
               유저가 등록한 상품을 예약하기 위한 페이지입니다.
             </h1>
             <ProductSection>
-              {productInfo.map(item => (
+              {sortProduct.map(item => (
                 <Feed key={item.id} data={item} />
               ))}
             </ProductSection>
