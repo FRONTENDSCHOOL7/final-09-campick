@@ -14,6 +14,7 @@ export const WrapperHomeCampsite = styled.section`
 export const CampSiteItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 140px;
 `;
 
 export const HomeCampsiteImg = styled.img`
@@ -29,7 +30,7 @@ export const HomeCampSiteName = styled.h3`
   margin: 9px 0 0 2px;
 `;
 
-export const HomeCampSitePrice = styled.h3`
+export const HomeCampSitePrice = styled.p`
   font-size: 12px;
   margin: 4px 0 0 2px;
   color: var(--primary-color);

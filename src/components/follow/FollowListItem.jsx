@@ -13,10 +13,6 @@ import { follow } from "../../api/followApi";
 
 export default function FollowListItem({ data: initialize }) {
   const [data, setData] = useState(initialize);
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
   const myAccoutname = localStorage.getItem("accountname");
   const handleUnfollowBtn = async () => {
     if (data.isfollow) {

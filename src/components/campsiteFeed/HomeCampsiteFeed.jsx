@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Scrollbar } from "swiper/modules";
 
 export default function HomeCampsiteFeed(props) {
   const handleOnClickItem = item => {
@@ -23,10 +23,14 @@ export default function HomeCampsiteFeed(props) {
 
       <HomeCampSiteList>
         <Swiper
-          spaceBetween={30}
+          spaceBetween={-40}
+          //centeredSlides={true}
           slidesPerView={2}
           freeMode={true}
-          modules={[FreeMode]}
+          scrollbar={{
+            hide: true,
+          }}
+          modules={[FreeMode, Scrollbar]}
         >
           {props.productInfo &&
             props.productInfo.map(item => (
