@@ -4,7 +4,7 @@ export const WrapCommentWrite = styled.section`
   width: 390px;
   box-sizing: border-box;
   background-color: #fff;
-  padding: 3px 10px 3px 10px;
+  padding: 12px 12px 12px 16px;
   border-top: 1px solid #dbdbdb;
   position: fixed;
   bottom: 0;
@@ -28,9 +28,10 @@ export const CommentInputArea = styled.textarea`
   font-size: 14px;
   overflow: hidden;
   flex-grow: 1;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   max-height: 30px;
   overflow-y: scroll;
+  line-height: 2.5;
 
   &::placeholder {
     font-size: 14px;
@@ -44,17 +45,18 @@ export const CommentInputArea = styled.textarea`
 export const CommentUploadButton = styled.button`
   color: ${props =>
     props.disabled
-      ? "var(--font-white-color)"
-      : "var(--primary-disabled-color)"};
+      ? "var(--primary-disabled-color)"
+      : "var(--font-white-color)"};
   background-color: ${props =>
-    props.disabled ? "var(--primary-color)" : "white"};
+    props.disabled ? "white" : "var(--primary-color)"};
   font-size: 14px;
   font-weight: 600;
+  transition: all 0.1s;
 
   width: 65px;
-  height: 35px;
+  height: 32px;
   border: none;
   border-radius: 10px;
-  cursor: ${props => (props.disabled ? "pointer" : "not-allowed")};
-  /* line-height: 1.5; */
+  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
+  line-height: 2.5;
 `;
