@@ -27,8 +27,6 @@ export default function ProductItem({ data }) {
             {JSON.parse(data.itemName).labels.map(item => (
               <ProductTag key={item}>{item}</ProductTag>
             ))}
-            {/* <ProductTag>태그입니다</ProductTag>
-            <ProductTag>입니다</ProductTag> */}
           </WrapProductTag>
         </WrapSpan>
       </WrapContents>

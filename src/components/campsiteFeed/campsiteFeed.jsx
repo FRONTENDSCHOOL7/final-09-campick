@@ -11,21 +11,31 @@ import {
   WrapProductTag,
   ProductContainer,
 } from "./campsiteFeed.style";
+import React from "react";
+import { Link } from "react-router-dom";
+export default function Feed({ data }) {
+  // console.log(data);
 
-export default function Feed() {
+  // console.log("Feed 렌더링");
   return (
     <>
       <ProductContainer>
-        <ProductTitle>님의 캠핑장</ProductTitle>
+        <ProductTitle>{`${data.author.username}님의 캠핑장`}</ProductTitle>
         <WrapContents>
-          <ProductImage src="https://i.namu.wiki/i/6o7twe3AB4CC5z3C-LvW3P5cpe9V8KKqbzH3W4EKUgDqMMLMlaB3UvOyw3Y14kHQmZRNLFjCQcPVVqM72vCvYZXnPvMAyziYUNcbx6PWwU6TT8QLff7hyZBkz0Tlkmx3dUAACNOyd2ksEoGakhcSnQ.webp" />
+          <Link>
+            <ProductImage src={data.itemImage} />
+          </Link>
+
           <WrapSpan>
-            <ProductName>님의 캠핑장</ProductName>
-            <ProductPrice>가격</ProductPrice>
-            <ProductLocation>위치</ProductLocation>
+            <ProductName>{JSON.parse(data.itemName).name}</ProductName>
+            <ProductPrice>{data.price.toLocaleString()}\</ProductPrice>
+            <ProductLocation>
+              {JSON.parse(data.itemName).location}
+            </ProductLocation>
             <WrapProductTag>
-              <Label>태그입니다</Label>
-              <Label>입니다</Label>
+              {JSON.parse(data.itemName).labels.map(item => (
+                <ProductTag key={item}>{item}</ProductTag>
+              ))}
             </WrapProductTag>
           </WrapSpan>
         </WrapContents>

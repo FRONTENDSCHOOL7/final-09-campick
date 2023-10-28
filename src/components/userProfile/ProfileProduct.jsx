@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import ProductItem from "./ProductItem";
+import Feed from "../campsiteFeed/campsiteFeed";
 export default function ProfileProduct({ data }) {
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
     setProducts(data);
   }, [data]);
-  console.log(products.length);
+
   return products.length > 0 ? (
     <ProductSection>
       {products.map(item => (
-        <ProductItem key={item.id} data={item} />
+        <Feed key={item.id} data={item} />
       ))}
     </ProductSection>
   ) : (
