@@ -35,7 +35,7 @@ export default function Profile() {
         const postRes = await userPost(localStorage.getItem("accountname"));
         const productRes = await productList(
           localStorage.getItem("accountname"),
-          1,
+          10,
         );
         setData(res);
         setUserPosts(postRes);
