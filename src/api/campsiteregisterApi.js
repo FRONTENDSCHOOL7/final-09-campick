@@ -32,6 +32,10 @@ export const campsiteregister = async (
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
+<<<<<<< HEAD
+        //Authorization: `Bearer ${localStorage.getItem("token")}`,
+=======
+>>>>>>> develop
         "Content-type": "application/json",
       },
       body: JSON.stringify(productData),
