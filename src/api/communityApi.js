@@ -1,5 +1,5 @@
-export const followList = async (accountname, followPage) => {
-  const reqUrl = `https://api.mandarin.weniv.co.kr/profile/${accountname}/${followPage}`;
+export const homefeedApi = async token => {
+  const reqUrl = "https://api.mandarin.weniv.co.kr/post/feed";
 
   try {
     const res = await fetch(reqUrl, {
@@ -12,6 +12,6 @@ export const followList = async (accountname, followPage) => {
     const json = await res.json();
     return json;
   } catch (error) {
-    console.error("Api 응답 실패", error);
+    console.log("Api 응답 실패", error);
   }
 };

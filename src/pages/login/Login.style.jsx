@@ -14,14 +14,17 @@ export const Background = styled.div`
 
 export const FlexWrapper = styled.div`
   display: flex;
+  margin-top: 10px;
+  color: var(--font-primary-color);
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
 `;
 
 export const LoginJoin = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: var(--font-primary-color);
+
   margin: 0 12px;
   font-size: 12px;
   cursor: pointer;
@@ -32,7 +35,7 @@ const moveUpLogo = keyframes`
     transform: translateY(0);
   }
   100% {
-    transform: scale(0.75) translateY(-50px);
+    transform: scale(0.75) ;
   }
 `;
 
@@ -54,17 +57,16 @@ const moveUpSub = keyframes`
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-100px);
+    transform: translateY(-80%);
   }
 `;
 
 export const SubLogoAll = styled.img`
-  position: relative;
+  /* position: relative; */
   width: 368.481px;
   height: 146.666px;
   flex-shrink: 0;
   margin-top: 120px;
-  margin-bottom: 7px;
   animation: ${props =>
     props.$isVisible
       ? css`
@@ -78,7 +80,7 @@ const moveUpModal = keyframes`
     transform: translateY(100vh);
   }
   100% {
-    transform: translateY(590px);
+    transform: translateY(65%);
   }
 `;
 
@@ -89,13 +91,12 @@ export const LoginModal = styled.div`
   height: 100%;
   width: 390px;
   background-color: #fff;
-  color: black;
   border-radius: 20px 20px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   animation: ${props =>
-    props.isVisible
+    props.isvisible === "true"
       ? css`
           ${moveUpModal} 1s forwards
         `
@@ -105,14 +106,11 @@ export const LoginModal = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 50px;
   width: 322px;
-  gap: 10px;
-  background-color: #ffff;
   border-radius: 20px 20px 0 0;
   z-index: 30;
   text-align: center;

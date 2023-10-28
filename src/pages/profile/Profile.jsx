@@ -23,7 +23,7 @@ export default function Profile() {
       const getUserInfo = async () => {
         const res = await userInfo(accountUsername);
         const postRes = await userPost(accountUsername);
-        const productRes = await productList(accountUsername, 5);
+        const productRes = await productList(accountUsername);
         setData(res);
         setUserPosts(postRes);
         setUserProducts(productRes);

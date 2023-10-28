@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export const productList = async (accountname, limit) => {
   const reqUrl = `https://api.mandarin.weniv.co.kr/product/${accountname}/?limit=${limit}`;
   try {
@@ -14,3 +15,21 @@ export const productList = async (accountname, limit) => {
     console.error("Api 응답 실패", error);
   }
 };
+=======
+export const productList = async accountname => {
+  const reqUrl = `https://api.mandarin.weniv.co.kr/product/${accountname}/?limit=1`;
+  try {
+    const res = await fetch(reqUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-type": "application/json",
+      },
+    });
+    const json = await res.json();
+    return json.product;
+  } catch (error) {
+    console.error("Api 응답 실패", error);
+  }
+};
+>>>>>>> develop
