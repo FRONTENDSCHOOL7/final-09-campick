@@ -38,6 +38,7 @@ export const SearchResultProfileImg = styled.img`
   border-radius: 50%;
 `;
 export const SearchResultAccountWrapper = styled.div`
+  max-width: calc(100% - 70px);
   display: flex;
   flex-direction: column;
   margin: 6px auto 6px 15px;
@@ -46,9 +47,17 @@ export const SearchResultAccountWrapper = styled.div`
 
 export const SearchResultUserName = styled.h3`
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 `;
 
 export const SearchResultAccountName = styled.p`
   color: var(--767676, #767676);
   font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 `;

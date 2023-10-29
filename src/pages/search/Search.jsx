@@ -13,6 +13,7 @@ import {
 } from "./Search.style";
 import { searchUser } from "../../api/searchUserApi";
 import { useNavigate } from "react-router-dom";
+import defaultProfileImage from "../../assets/image/profile-default-image.jpg";
 
 export default function Search() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -66,7 +67,14 @@ export default function Search() {
               key={id}
               onClick={() => navigate(`/profile/${data.accountname}`)}
             >
-              <SearchResultProfileImg src={data.image} alt="프로필 이미지" />
+              <SearchResultProfileImg
+                src={data.image}
+                alt="프로필 이미지"
+                onError={e => {
+                  e.target.onError = null;
+                  e.target.src = defaultProfileImage;
+                }}
+              />
 
               <SearchResultAccountWrapper>
                 <SearchResultUserName>{data.username}</SearchResultUserName>
