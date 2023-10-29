@@ -10,6 +10,7 @@ import Followlist from "../pages/follow/Followlist";
 import Login from "../pages/login/Login";
 import Reservation from "../pages/reservation/Reservation";
 import Community from "../pages/community/Community";
+import CommunityPost from "../pages/community/CommunityPost";
 export default function Router() {
   return (
     <BrowserRouter>
@@ -32,7 +33,10 @@ export default function Router() {
         <Route path="/product/" element={<Outlet />}>
           <Route path="upload/" element={<MyCampsiteRegister />} />
         </Route>
-        <Route path="/community" element={<Community />} />
+        <Route path="/community" element={<Outlet />}>
+          <Route path="" element={<Community />} />
+          <Route path="communitypost" element={<CommunityPost />} />{" "}
+        </Route>
       </Routes>
     </BrowserRouter>
   );
