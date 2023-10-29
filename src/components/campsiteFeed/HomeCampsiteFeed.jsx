@@ -23,14 +23,22 @@ export default function HomeCampsiteFeed(props) {
 
       <HomeCampSiteList>
         <Swiper
-          spaceBetween={-40}
-          //centeredSlides={true}
-          slidesPerView={2}
+          spaceBetween={
+            props.productInfo && props.productInfo.length >= 3
+              ? -40
+              : props.productInfo.length === 2
+              ? 0
+              : 40
+          }
+          slidesPerView={
+            props.productInfo && props.productInfo.length >= 3
+              ? 2
+              : props.productInfo.length === 2
+              ? 2
+              : 1
+          } // 기본값 (이 값을 원하는대로 설정 가능)}
           freeMode={true}
-          scrollbar={{
-            hide: true,
-          }}
-          modules={[FreeMode, Scrollbar]}
+          modules={[FreeMode]}
         >
           {props.productInfo &&
             props.productInfo.map(item => (
