@@ -2,6 +2,19 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle`
+    @font-face { 
+        font-family: 'TheJamsil5Bold'; 
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2'); 
+        font-weight: 700; 
+        font-style: normal; 
+    }
+    @font-face { 
+        font-family: 'TheJamsil5'; 
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2'); 
+        font-weight: 300; 
+        font-style: normal; 
+    }
+
     :root {
         //예시 
         // --gray:#C4C4C4;
@@ -12,7 +25,8 @@ const GlobalStyles = createGlobalStyle`
         --font-primary-color:#767676;
         --font-white-color:#fff;
         --font-placeholder-color:#DBDBDB;
-        --font-message-color:#EB5757 
+        --font-message-color:#EB5757 ;
+        font-family:'TheJamsil5',sans-serif;
     }
     
    .a11y-hidden {

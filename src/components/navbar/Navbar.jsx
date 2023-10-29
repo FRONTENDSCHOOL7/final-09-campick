@@ -33,6 +33,8 @@ const NavIcon = styled.img`
   width: 24px;
   height: 24px;
   transition: transform 0.4s, box-shadow 0.4s;
+  //재웅 추가
+  margin: 2px 0;
 
   &:hover {
     transform: scale(1.2);

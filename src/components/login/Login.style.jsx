@@ -32,18 +32,18 @@ export const SocialLoginButton = styled.button`
     left: 3%;
     transform: translateY(-50%);
     background: url(${socialImage})
-      ${({ socialImage }) =>
-        socialImage === "kakao"
+      ${({ socialimage }) =>
+        socialimage === "kakao"
           ? `-48px -10px;`
-          : socialImage === "google"
+          : socialimage === "google"
           ? `-10px -10px`
           : `-86px -10px`};
   }
   &:hover {
     background-color: ${props =>
-      props.socialImage === "kakao"
+      props.socialimage === "kakao"
         ? "#f3dfa3"
-        : props.socialImage === "google"
+        : props.socialimage === "google"
         ? "#cac8c8"
         : "#69b2dd"};
     border-color: transparent;
