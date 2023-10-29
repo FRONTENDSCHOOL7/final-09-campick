@@ -28,12 +28,20 @@ export const HomeCampsiteImg = styled.img`
 export const HomeCampSiteName = styled.h3`
   font-size: 14px;
   margin: 9px 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 `;
 
 export const HomeCampSitePrice = styled.p`
   font-size: 12px;
   margin: 4px 0 0 2px;
   color: var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 `;
 
 export const HomeCampSiteTitle = styled.h2``;
