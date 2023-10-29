@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SliderWrapper = styled.section`
-  height: 390px;
+  min-height: 186.998px;
 `;
 
 export const SliderItem = styled.img`

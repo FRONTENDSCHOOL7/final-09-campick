@@ -9,6 +9,7 @@ export const WrapperHomeCampsite = styled.section`
   border: 0.5px solid #dbdbdb;
   padding: 12px 10px 19px 10px;
   gap: 18px;
+  min-height: 164.195px;
 `;
 
 export const CampSiteItemWrapper = styled.div`

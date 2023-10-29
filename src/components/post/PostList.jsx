@@ -9,6 +9,7 @@ const PostSection = styled.section`
   border-radius: 10px;
   border: 0.5px solid #dbdbdb;
   margin: 0 8px 0 8px;
+  min-height: 300px;
   &::-webkit-scrollbar {
     display: none;
   }
