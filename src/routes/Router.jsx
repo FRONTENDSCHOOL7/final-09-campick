@@ -11,6 +11,7 @@ import Login from "../pages/login/Login";
 import Reservation from "../pages/reservation/Reservation";
 import Community from "../pages/community/Community";
 import Search from "../pages/search/Search";
+import CommunityPost from "../pages/community/CommunityPost";
 export default function Router() {
   return (
     <BrowserRouter>
@@ -35,6 +36,10 @@ export default function Router() {
         </Route>
         <Route path="/community" element={<Community />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/community" element={<Outlet />}>
+          <Route path="" element={<Community />} />
+          <Route path="communitypost" element={<CommunityPost />} />{" "}
+        </Route>
       </Routes>
     </BrowserRouter>
   );
