@@ -27,6 +27,7 @@ import {
   ToastMsgBold,
 } from "../profileSetup/profileSetup.style";
 import { Header } from "../../components/header/Header.style";
+import { useNavigate } from "react-router-dom";
 
 export default function MyCampsiteRegister() {
   let [price, setPrice] = useState("");
@@ -37,6 +38,8 @@ export default function MyCampsiteRegister() {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [showSizeOverToast, setShowSizeOverToast] = useState(false);
+  const [showRegisterCompleteToast, setShowRegisterCompleteToast] =
+    useState(false);
   const [showWrongExtensionToast, setShowWrongExtensionToast] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [warnings, setWarnings] = useState({
@@ -47,6 +50,7 @@ export default function MyCampsiteRegister() {
     registerLink: null,
     labels: null,
   });
+  const navigate = useNavigate();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -91,6 +95,18 @@ export default function MyCampsiteRegister() {
         <ToastContainer>
           <ToastMsg>
             <ToastMsgBold>이미지</ToastMsgBold>만 업로드 해주세요!
+          </ToastMsg>
+        </ToastContainer>
+      )}
+    </>
+  );
+
+  const RegisterCompleteToast = () => (
+    <>
+      {showRegisterCompleteToast && (
+        <ToastContainer>
+          <ToastMsg>
+            <ToastMsgBold>캠핑장 등록</ToastMsgBold>이 완료되었습니다.
           </ToastMsg>
         </ToastContainer>
       )}
@@ -162,7 +178,11 @@ export default function MyCampsiteRegister() {
 
         if (res.hasOwnProperty("product")) {
           console.log("캠핑장 등록 성공", res);
-          //Navigate('/') // 상품등록 성공시
+          setShowRegisterCompleteToast(true);
+          setTimeout(() => {
+            setShowRegisterCompleteToast(false);
+            navigate(-1);
+          }, 1000);
         } else {
           console.log("캠핑장 등록 실패", res.message);
         }
@@ -271,7 +291,10 @@ export default function MyCampsiteRegister() {
             <Incorrect>{warnings.registerLink}</Incorrect>
           )}
         </WrapperMyCampsiteInput>
-        <Submitbutton onClick={openModal} style={{ margin: "0" }}>
+        <Submitbutton
+          onClick={openModal}
+          style={{ margin: "0", padding: "13px 0 13px 0" }}
+        >
           지도에서 위치 선택하기
         </Submitbutton>
         <WrapperMyCampsiteInput>
@@ -312,6 +335,7 @@ export default function MyCampsiteRegister() {
           </WrapperLabel>
           {warnings.labels && <Incorrect>{warnings.labels}</Incorrect>}
         </WrapperMyCampsiteInput>
+        <RegisterCompleteToast />
         <WrongExtensionToast />
         <SizeOverToast />
       </WrapperMyCampsiteRegister>

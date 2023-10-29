@@ -8,6 +8,7 @@ import Homefeed from "../pages/home/Homefeed";
 import Profile from "../pages/profile/Profile";
 import Followlist from "../pages/follow/Followlist";
 import Login from "../pages/login/Login";
+import Reservation from "../pages/reservation/Reservation";
 import Community from "../pages/community/Community";
 import CommunityPost from "../pages/community/CommunityPost";
 export default function Router() {
@@ -16,6 +17,7 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/homefeed" element={<Homefeed />} />
+        <Route path="/reservation" element={<Reservation />} />
         <Route path="/account/" element={<Outlet />}>
           <Route path="login" element={<LoginEmail />} />
           <Route path="signup" element={<Signup />} />

@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
+
 const GlobalStyles = createGlobalStyle`
     @font-face { 
         font-family: 'TheJamsil5Bold'; 
