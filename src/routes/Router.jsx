@@ -11,6 +11,8 @@ import Login from "../pages/login/Login";
 import Reservation from "../pages/reservation/Reservation";
 import Community from "../pages/community/Community";
 import CommunityPost from "../pages/community/CommunityPost";
+import ViewPost from "../pages/viewPost/ViewPost";
+
 export default function Router() {
   return (
     <BrowserRouter>
@@ -35,7 +37,8 @@ export default function Router() {
         </Route>
         <Route path="/community" element={<Outlet />}>
           <Route path="" element={<Community />} />
-          <Route path="communitypost" element={<CommunityPost />} />{" "}
+          <Route path="communitypost" element={<CommunityPost />} />
+          <Route path=":post_id" element={<ViewPost />} />
         </Route>
       </Routes>
     </BrowserRouter>
