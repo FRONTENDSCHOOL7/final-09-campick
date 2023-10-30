@@ -74,7 +74,7 @@ export default function Reservation() {
 }
 const UserProductMain = styled.main`
   overflow-y: scroll;
-  height: calc(100vh - 50px - 50px);
+  height: calc(100vh - 105px);
   &::-webkit-scrollbar {
     display: none;
   }

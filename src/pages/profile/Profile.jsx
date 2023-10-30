@@ -66,7 +66,7 @@ export default function Profile() {
   );
 }
 const Main = styled.main`
-  height: calc(100vh - 50px - 50px);
+  height: calc(100vh - 105px);
   display: flex;
   flex-direction: column;
   gap: 10px;
