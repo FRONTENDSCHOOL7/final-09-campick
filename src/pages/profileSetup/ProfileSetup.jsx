@@ -26,7 +26,7 @@ import profileImageUploadButton from "../../assets/icons/profileImageUploadButto
 import { Helmet } from "react-helmet-async";
 import imageValidation from "../../imageValidation.js";
 import { accountNameValid } from "../../api/accountNameApi.js";
-import { emailValid } from "../../api/signupApi.js";
+import { emailValid, signup } from "../../api/signupApi.js";
 
 const ProfileSetup = () => {
   const exptext = /^[A-Za-z0-9._]+$/;
@@ -139,7 +139,7 @@ const ProfileSetup = () => {
     };
 
     try {
-      await emailValid(data);
+      await signup(data);
       setShowProfileEditToast(true);
       setTimeout(() => {
         setShowProfileEditToast(false);

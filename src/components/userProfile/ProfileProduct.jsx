@@ -13,7 +13,11 @@ export default function ProfileProduct({ data }) {
   return products.length > 0 ? (
     <ProductSection>
       <Swiper
+<<<<<<< HEAD
         spaceBetween={-30}
+=======
+        spaceBetween={30}
+>>>>>>> develop
         slidesPerView={1}
         freeMode={true}
         modules={[FreeMode]}
@@ -31,6 +35,12 @@ export default function ProfileProduct({ data }) {
 }
 const ProductSection = styled.section`
   min-height: 205px;
+<<<<<<< HEAD
 
   background-color: #fff;
+=======
+  display: flex;
+  justify-content: center;
+  align-items: center;
+>>>>>>> develop
 `;
