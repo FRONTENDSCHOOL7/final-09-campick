@@ -73,23 +73,18 @@ export default function ViewPost() {
   }, []);
 
   useEffect(() => {
-    const getPost = async () => {
+    const getPostAndComments = async () => {
       try {
         const fetchedPost = await viewPost(post_id);
         setPostData(fetchedPost);
+
+        const fetchedComments = await getCommentList(post_id);
+        setComments(fetchedComments);
       } catch (error) {
         console.error("error", error);
       }
     };
-    getPost();
-  }, [post_id]);
-
-  useEffect(() => {
-    const getComments = async () => {
-      const res = await getCommentList(post_id);
-      setComments(res);
-    };
-    getComments();
+    getPostAndComments();
   }, [post_id]);
 
   return (
@@ -98,7 +93,7 @@ export default function ViewPost() {
         <title>Campic | 게시글 상세</title>
       </Helmet>
       <WrapViewPost>
-        {data && <PostItem data={data} />}
+        {data && <PostItem data={data} commentCount={comments.length} />}
         <CommentSection>
           {comments &&
             comments.map(comment => (
