@@ -10,9 +10,12 @@ import Followlist from "../pages/follow/Followlist";
 import Login from "../pages/login/Login";
 import Reservation from "../pages/reservation/Reservation";
 import Community from "../pages/community/Community";
+<<<<<<< HEAD
+=======
 import CommunityPost from "../pages/community/CommunityPost";
 import ViewPost from "../pages/viewPost/ViewPost";
 
+>>>>>>> 147061988da3ba187a0fc2354c4c1f5d13da4e24
 export default function Router() {
   return (
     <BrowserRouter>
