@@ -7,10 +7,11 @@ import { productList } from "../../api/productListApi";
 import { Helmet } from "react-helmet-async";
 import ProfileCard from "../../components/userProfile/ProfileCard";
 import Navbar from "../../components/navbar/Navbar";
-import { Header } from "../../components/header/Header.style";
 import UserPostList from "../../components/post/UserPostList";
 import ProfileProduct from "../../components/userProfile/ProfileProduct";
 import styled from "styled-components";
+import Header from "../../components/header/Header";
+
 export default function Profile() {
   const [userData, setData] = useState("");
   const [userPosts, setUserPosts] = useState("");

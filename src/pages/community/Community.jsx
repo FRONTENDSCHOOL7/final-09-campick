@@ -5,9 +5,9 @@ import DynamicImageComponent from "../../components/community/Community.style";
 import { Background } from "./Community.style";
 import Navbar from "../../components/navbar/Navbar";
 import { homefeedApi } from "../../api/homefeedApi";
-import { Header } from "../../components/header/Header.style";
 import upload from "../../assets/icons/uploadButton.svg";
 import { UploadLink } from "./Community.style";
+import Header from "../../components/header/Header";
 
 const Community = () => {
   const [data, setData] = useState([]);
@@ -25,7 +25,7 @@ const Community = () => {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <Background>
         <div style={{ display: "flex" }}>
           <div className="left-images" style={{ flex: 1, marginRight: "8px" }}>
