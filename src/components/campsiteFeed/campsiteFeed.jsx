@@ -14,21 +14,26 @@ import {
 } from "./campsiteFeed.style";
 import React from "react";
 
-export default function Feed({ data, setProductId, setOpModal }) {
+export default function Feed({ data, setProductId, setOpModal, reservation }) {
   return (
     <>
       <ProductContainer>
         <ProductTitle>{`${data.author.username}님의 캠핑장`}</ProductTitle>
         <WrapContents>
-          <ProductBtn
-            onClick={() => {
-              setProductId(data.id);
-              setOpModal(true);
-            }}
-          >
-            <ProductImage src={data.itemImage} />
-          </ProductBtn>
-
+          {reservation ? (
+            <ProductBtn
+              onClick={() => {
+                setProductId(data.id);
+                setOpModal(true);
+              }}
+            >
+              <ProductImage src={data.itemImage} />
+            </ProductBtn>
+          ) : (
+            <ProductBtn>
+              <ProductImage src={data.itemImage} />
+            </ProductBtn>
+          )}
           <WrapSpan>
             <ProductName>{JSON.parse(data.itemName).name}</ProductName>
             <ProductPrice>{data.price.toLocaleString()}원 ~</ProductPrice>

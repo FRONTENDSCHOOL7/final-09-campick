@@ -57,6 +57,7 @@ export default function Reservation() {
             <ProductSection>
               {sortProduct.map(item => (
                 <Feed
+                  reservation
                   key={item.id}
                   data={item}
                   setProductId={setProductId}
