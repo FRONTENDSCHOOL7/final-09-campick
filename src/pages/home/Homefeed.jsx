@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import PostList from "../../components/post/PostList";
 import { homefeedApi } from "../../api/homefeedApi";
-import { Header } from "../../components/header/Header.style";
-import Logo from "../../assets/icons/logo-header.png";
-import SearchImg from "../../assets/icons/icon-search.svg";
+
 import { Home, LogoImg, Search } from "./Homefeed.style";
 import MainSlider from "../../components/slider/MainSlider";
 import HomeCampsiteFeed from "../../components/campsiteFeed/HomeCampsiteFeed";
@@ -12,6 +10,7 @@ import { followList } from "../../api/followListApi";
 import { productList } from "../../api/productListApi";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router";
+import Header from "../../components/header/Header";
 
 export default function Homefeed() {
   const [data, setData] = useState("");
@@ -48,19 +47,12 @@ export default function Homefeed() {
     getProduct();
   }, [followingList]);
 
-  const handleOnClickSearch = () => {
-    navigate("/search");
-  };
-
   return (
     <>
       <Helmet>
         <title>Campick | 홈화면</title>
       </Helmet>
-      <Header>
-        <LogoImg src={Logo} alt="캠픽 로고" />
-        <Search src={SearchImg} alt="검색 버튼" onClick={handleOnClickSearch} />
-      </Header>
+      <Header />
       <Home>
         <MainSlider />
 

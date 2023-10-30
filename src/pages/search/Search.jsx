@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Header } from "../../components/header/Header.style";
-import arrow from "../../assets/icons/arrow-left.svg";
-import { GoBackButton } from "../myCampsiteRegister/MyCampsiteRegister.style";
 import {
-  SearchInputStyle,
   SearchResultAccountName,
   SearchResultAccountWrapper,
   SearchResultForm,
@@ -14,6 +10,7 @@ import {
 import { searchUser } from "../../api/searchUserApi";
 import { useNavigate } from "react-router-dom";
 import defaultProfileImage from "../../assets/image/profile-default-image.jpg";
+import HeaderSearch from "../../components/header/HeaderSearch";
 
 export default function Search() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -47,19 +44,10 @@ export default function Search() {
   }, [searchKeyword]);
 
   const navigate = useNavigate();
-  function goBack() {
-    window.history.back();
-  }
+
   return (
     <>
-      <Header>
-        <GoBackButton src={arrow} alt="뒤로가기" onClick={goBack} />
-        <SearchInputStyle
-          placeholder="찾고자하는 계정을 입력해주세요"
-          id="searchinput"
-          onChange={handleInputChange}
-        />
-      </Header>
+      <HeaderSearch handleInputChange={handleInputChange} />
       <SearchResultWrapper>
         {searchResults.map((data, id) => {
           return (

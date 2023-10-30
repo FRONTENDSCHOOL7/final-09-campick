@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { followList } from "../../api/followListApi";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import FollowList from "../../components/follow/FollowList";
 import Navbar from "../../components/navbar/Navbar";
 import { Helmet } from "react-helmet-async";
+import HeaderText from "../../components/header/HeaderText";
 export default function Followlist() {
   const [data, setData] = useState("");
 
@@ -26,7 +27,9 @@ export default function Followlist() {
           followPage === "follower" ? "팔로워" : "팔로잉"
         }`}</title>
       </Helmet>
-      <header style={{ backgroundColor: "red", height: "50px" }} />
+      <HeaderText
+        text={followPage === "follower" ? "Followers" : "Following"}
+      />
       <main>
         <h1 className="a11y-hidden">
           {`${accountUsername}의 ${followPage}페이지`}

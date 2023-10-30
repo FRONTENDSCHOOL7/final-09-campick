@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
+export const HeaderWrapper = styled.header`
   height: 50px;
   border-bottom: 0.5px solid #dbdbdb;
   display: flex;

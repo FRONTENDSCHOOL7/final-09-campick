@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   FileUploadContainer,
-  GoBackButton,
   HiddenFileInput,
   TextareaStyle,
   UploadButtonText,
@@ -25,7 +24,7 @@ import {
   ToastMsg,
   ToastMsgBold,
 } from "../profileSetup/profileSetup.style";
-import { Header } from "../../components/header/Header.style";
+import HeaderSubmit from "../../components/header/HeaderSubmit";
 
 export default function CommunityPost() {
   const [location, setLocation] = useState("");
@@ -131,10 +130,6 @@ export default function CommunityPost() {
     }
   }
 
-  function goBack() {
-    window.history.back();
-  }
-
   function autoGrowTextArea(e) {
     e.target.style.height = "inherit";
     e.target.style.height = `${e.target.scrollHeight}px`;
@@ -146,15 +141,8 @@ export default function CommunityPost() {
       <Helmet>
         <title>Campick | 게시물 작성</title>
       </Helmet>
-      <Header>
-        <GoBackButton src={arrow} alt="뒤로가기" onClick={goBack} />
-        <Submitbutton
-          onClick={handleSubmitButton}
-          style={{ width: "90px", height: "32px", margin: "0" }}
-        >
-          업로드
-        </Submitbutton>
-      </Header>
+      <HeaderSubmit handleSubmitButton={handleSubmitButton} />
+
       <WrapperMyCampsiteRegister>
         {isModalOpen && <ModalBackdrop onClick={closeModal} />}{" "}
         {/* Modal이 열렸을 때만 배경 렌더링 */}
