@@ -11,6 +11,7 @@ import Login from "../pages/login/Login";
 import Reservation from "../pages/reservation/Reservation";
 import Community from "../pages/community/Community";
 import CommunityPost from "../pages/community/CommunityPost";
+import Error from "../pages/error/Error";
 export default function Router() {
   return (
     <BrowserRouter>
@@ -19,11 +20,15 @@ export default function Router() {
         <Route path="/homefeed" element={<Homefeed />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/account/" element={<Outlet />}>
+          <Route path="" element={<Error />} />
+          <Route path="*" element={<Error />} />
           <Route path="login" element={<LoginEmail />} />
           <Route path="signup" element={<Signup />} />
           <Route path="signup/profileSetup" element={<ProfileSetup />} />
         </Route>
         <Route path="/profile/" element={<Outlet />}>
+          <Route path="" element={<Profile />} />
+          <Route path="*" element={<Error />} />
           <Route path="" element={<Profile />} />
           <Route path=":accountUsername" element={<Outlet />}>
             <Route path="" element={<Profile />} />
@@ -31,12 +36,17 @@ export default function Router() {
           </Route>
         </Route>
         <Route path="/product/" element={<Outlet />}>
+          <Route path="" element={<Error />} />
+          <Route path="*" element={<Error />} />
           <Route path="upload/" element={<MyCampsiteRegister />} />
         </Route>
         <Route path="/community" element={<Outlet />}>
           <Route path="" element={<Community />} />
+          <Route path="*" element={<Error />} />
+          <Route path="" element={<Community />} />
           <Route path="communitypost" element={<CommunityPost />} />{" "}
         </Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
