@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export const ProductContainer = styled.div`
-  width: 100%;
+  margin: 0 8px 0 8px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  border: 0.5px solid #dbdbdb;
+  background-color: #fff;
   padding: 23px 0 32px 0;
+  border-bottom: 1px solid #dbdbdb;
+  box-sizing: border-box;
 `;
 
 export const WrapContents = styled.div`
@@ -13,7 +16,7 @@ export const WrapContents = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-export const ProductTitle = styled.h1`
+export const ProductTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
   margin: 0 0 9px 30px;
@@ -22,11 +25,12 @@ export const ProductTitle = styled.h1`
 export const WrapSpan = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  justify-content: center;
   margin-left: 10px;
 `;
 export const ProductName = styled.span`
   font-size: 14px;
-  margin: 24px 0 5px 0;
   width: 10rem;
   overflow: hidden;
   white-space: nowrap;
@@ -40,7 +44,6 @@ export const ProductPrice = styled.span`
 `;
 export const ProductLocation = styled.span`
   font-size: 12px;
-  margin: 12px 0 12px 0;
   width: 10rem;
   overflow: hidden;
   white-space: nowrap;
@@ -55,7 +58,11 @@ export const ProductImage = styled.img`
   object-fit: cover;
 `;
 
-export const WrapProductTag = styled.div``;
+export const WrapProductTag = styled.div`
+  display: flex;
+  gap: 1px;
+  flex-wrap: wrap;
+`;
 export const ProductTag = styled.span`
   font-size: 10px;
   color: #7cb45b;

@@ -15,6 +15,8 @@ const NavContainer = styled.nav`
   border-top: solid 1px var(--font-placeholder-color);
   height: 50px;
   display: flex;
+  background-color: white;
+  box-sizing: border-box;
 `;
 const NavLink = styled(Link)`
   display: flex;
@@ -31,9 +33,12 @@ const NavLink = styled(Link)`
 const NavIcon = styled.img`
   width: 24px;
   height: 24px;
+  transition: transform 0.4s, box-shadow 0.4s;
+  //재웅 추가
+  margin: 2px 0;
+
   &:hover {
-    transition: transform 0.4s;
-    transform: rotate(360deg);
+    transform: scale(1.2);
   }
 `;
 
@@ -74,7 +79,7 @@ export default function Navbar(props) {
             src={
               isHomeMouseOver
                 ? homeIconFill
-                : props.home === true
+                : props.homefeed === true
                 ? homeIconFill
                 : homeIcon
             }

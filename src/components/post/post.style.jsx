@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 export const PostArticle = styled.article`
   padding: 20px 16px;
 
@@ -77,4 +78,7 @@ export const IconSpan = styled.span`
 export const PostData = styled.p`
   font-size: 10px;
   color: var(--font-primary-color);
+`;
+export const HomePostTitle = styled.h2`
+  margin: 12px auto 0 10px;
 `;
