@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   FileUploadContainer,
-  GoBackButton,
   HiddenFileInput,
   UploadButtonText,
   WrapperLabel,
@@ -15,7 +14,6 @@ import {
   LabelStyle,
   Submitbutton,
 } from "../../components/form/form.style";
-import arrow from "../../assets/icons/arrow-left.svg";
 import MapModal from "../../components/kakaomap/MapModal";
 import { ModalBackdrop } from "../../components/kakaomap/MapModal.style";
 import { Helmet } from "react-helmet-async";
@@ -26,8 +24,8 @@ import {
   ToastMsg,
   ToastMsgBold,
 } from "../profileSetup/profileSetup.style";
-import { Header } from "../../components/header/Header.style";
 import { useNavigate } from "react-router-dom";
+import HeaderSubmit from "../../components/header/HeaderSubmit";
 
 export default function MyCampsiteRegister() {
   let [price, setPrice] = useState("");
@@ -194,24 +192,12 @@ export default function MyCampsiteRegister() {
     }
   }
 
-  function goBack() {
-    window.history.back();
-  }
-
   return (
     <>
       <Helmet>
         <title>Campick | 캠핑장 등록</title>
       </Helmet>
-      <Header>
-        <GoBackButton src={arrow} alt="뒤로가기" onClick={goBack} />
-        <Submitbutton
-          onClick={handleSubmitButton}
-          style={{ width: "90px", height: "32px", margin: "0" }}
-        >
-          저장
-        </Submitbutton>
-      </Header>
+      <HeaderSubmit handleSubmitButton={handleSubmitButton} />
       <WrapperMyCampsiteRegister>
         {isModalOpen && <ModalBackdrop onClick={closeModal} />}{" "}
         {/* Modal이 열렸을 때만 배경 렌더링 */}

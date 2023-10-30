@@ -70,4 +70,5 @@ export const UploadButtonText = styled.p`
 
 export const GoBackButton = styled.img`
   cursor: pointer;
+  margin-right: 10px;
 `;
