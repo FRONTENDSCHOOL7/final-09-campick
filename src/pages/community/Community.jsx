@@ -1,10 +1,13 @@
+// Community.jsx
+
 import React, { useEffect, useState } from "react";
 import DynamicImageComponent from "../../components/community/Community.style";
 import { Background } from "./Community.style";
 import Navbar from "../../components/navbar/Navbar";
-
 import { homefeedApi } from "../../api/homefeedApi";
 import { Header } from "../../components/header/Header.style";
+import upload from "../../assets/icons/uploadButton.svg";
+import { UploadLink } from "./Community.style";
 
 const Community = () => {
   const [data, setData] = useState([]);
@@ -38,8 +41,8 @@ const Community = () => {
             className="right-images"
             style={{
               flex: 1,
-              marginLeft: "8px", // index 참조 제거
-              marginTop: "36px", // index 참조 제거
+              marginLeft: "8px",
+              marginTop: "36px",
             }}
           >
             {oddImages.map((image, index) => (
@@ -51,6 +54,9 @@ const Community = () => {
             ))}
           </div>
         </div>
+        <UploadLink to="/community/communitypost">
+          <img src={upload} alt="게시물 업로드 버튼" />
+        </UploadLink>
       </Background>
       <Navbar community />
     </>

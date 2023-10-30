@@ -70,6 +70,23 @@ export const Icon = styled.img`
   margin-bottom: 1px;
 `;
 
+export const CommunityPostButton = styled.div`
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+`;
+
+export const communityPostLink = {
+  textDecoration: "none",
+  color: "blue",
+};
+
+export const communityPostImage = styled.img`
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+`;
+
 const DynamicImageComponent = ({ imageurl, address }) => {
   return (
     <CommunityImageContainer>
