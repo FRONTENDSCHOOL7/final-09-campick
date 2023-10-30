@@ -38,7 +38,7 @@ export default function Search() {
         setSearchResults(results);
         console.log(searchResults);
       }
-    }, 700);
+    }, 400);
     setTimer(newTimer);
 
     return () => {
