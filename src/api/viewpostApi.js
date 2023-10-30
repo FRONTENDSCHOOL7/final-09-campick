@@ -1,6 +1,5 @@
-export const productList = async (accountname, limit) => {
-  const reqUrl = `https://api.mandarin.weniv.co.kr/product/${accountname}/?limit=${limit}`;
-
+export const viewPost = async post_id => {
+  const reqUrl = `https://api.mandarin.weniv.co.kr/post/${post_id}`;
   try {
     const res = await fetch(reqUrl, {
       method: "GET",
@@ -10,7 +9,7 @@ export const productList = async (accountname, limit) => {
       },
     });
     const json = await res.json();
-    return json.product;
+    return json.post;
   } catch (error) {
     console.error("Api 응답 실패", error);
   }
