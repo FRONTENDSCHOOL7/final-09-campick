@@ -44,9 +44,11 @@ export default function LoginEmail() {
     if (res && res.hasOwnProperty("user")) {
       localStorage.setItem("token", res.user.token);
       localStorage.setItem("accountname", res.user.accountname);
+
       navigate("/homefeed"); // 로그인 성공하면 홈화면으로 가기
     } else {
       setCorrect(true);
+
       console.log(res.message);
     }
   }

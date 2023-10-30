@@ -7,17 +7,22 @@ import Slide3 from "../../assets/temp-img/homefeed-ad-3.jpg";
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 export default function MainSlider() {
   return (
     <SliderWrapper>
       <Swiper
-        spaceBetween={50}
+        spaceBetween={30}
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           dynamicBullets: true,
         }}
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination]}
       >
         <SwiperSlide>
           <SliderItem src={Slide1} alt="첫번째 슬라이드" />

@@ -293,7 +293,7 @@ export default function MyCampsiteRegister() {
         </WrapperMyCampsiteInput>
         <Submitbutton
           onClick={openModal}
-          style={{ margin: "0", padding: "13px 0 13px 0" }}
+          style={{ margin: "0 0 20px 0", padding: "13px 0 13px 0" }}
         >
           지도에서 위치 선택하기
         </Submitbutton>
@@ -321,8 +321,6 @@ export default function MyCampsiteRegister() {
               "여름",
               "가을",
               "겨울",
-              "주차 편함",
-              "바다가 보이는",
             ].map(label => (
               <Label
                 key={label}
