@@ -6,29 +6,37 @@ import {
   ProductPrice,
   ProductLocation,
   ProductImage,
+  ProductBtn,
   ProductTag,
   WrapSpan,
   WrapProductTag,
   ProductContainer,
 } from "./campsiteFeed.style";
 import React from "react";
-import { Link } from "react-router-dom";
-export default function Feed({ data }) {
-  // console.log(data);
 
-  // console.log("Feed 렌더링");
+export default function Feed({ data, setProductId, setOpModal, reservation }) {
   return (
     <>
       <ProductContainer>
         <ProductTitle>{`${data.author.username}님의 캠핑장`}</ProductTitle>
         <WrapContents>
-          <Link>
-            <ProductImage src={data.itemImage} />
-          </Link>
-
+          {reservation ? (
+            <ProductBtn
+              onClick={() => {
+                setProductId(data.id);
+                setOpModal(true);
+              }}
+            >
+              <ProductImage src={data.itemImage} />
+            </ProductBtn>
+          ) : (
+            <ProductBtn>
+              <ProductImage src={data.itemImage} />
+            </ProductBtn>
+          )}
           <WrapSpan>
             <ProductName>{JSON.parse(data.itemName).name}</ProductName>
-            <ProductPrice>{data.price.toLocaleString()}\</ProductPrice>
+            <ProductPrice>{data.price.toLocaleString()}원 ~</ProductPrice>
             <ProductLocation>
               {JSON.parse(data.itemName).location}
             </ProductLocation>

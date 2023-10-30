@@ -6,20 +6,19 @@ export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  padding: 23px 0 32px 0;
-  border-bottom: 1px solid #dbdbdb;
+  padding: 20px 0 20px 0;
+  gap: 10px;
   box-sizing: border-box;
 `;
 
 export const WrapContents = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
 `;
 
 export const ProductTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
-  margin: 0 0 9px 30px;
 `;
 
 export const WrapSpan = styled.div`
@@ -49,10 +48,15 @@ export const ProductLocation = styled.span`
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
+export const ProductBtn = styled.button`
+  width: 147px;
+  height: 125px;
+  cursor: pointer;
+`;
 export const ProductImage = styled.img`
   display: block;
   margin: 0 auto;
-  width: 147px;
+  width: 100%;
   height: 125px;
   border-radius: 8px;
   object-fit: cover;

@@ -51,9 +51,6 @@ export default function FollowListItem({ data: initialize }) {
       >
         {data.isfollow ? "취소" : "팔로우"}
       </FollowBtn>
-      {/* <FollowBtn onClick={handleUnfollowBtn} follow={`${data.isfollow}`}>
-        {data.isfollow ? "취소" : "팔로우"}
-      </FollowBtn> */}
     </UserWrap>
   );
 }

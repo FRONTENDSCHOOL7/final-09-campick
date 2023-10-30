@@ -23,7 +23,7 @@ export default function Profile() {
       const getUserInfo = async () => {
         const res = await userInfo(accountUsername);
         const postRes = await userPost(accountUsername);
-        const productRes = await productList(accountUsername);
+        const productRes = await productList(accountUsername, 10);
         setData(res);
         setUserPosts(postRes);
         setUserProducts(productRes);
@@ -35,7 +35,7 @@ export default function Profile() {
         const postRes = await userPost(localStorage.getItem("accountname"));
         const productRes = await productList(
           localStorage.getItem("accountname"),
-          1,
+          10,
         );
         setData(res);
         setUserPosts(postRes);
@@ -65,7 +65,7 @@ export default function Profile() {
   );
 }
 const Main = styled.main`
-  height: calc(100vh - 50px - 50px);
+  height: calc(100vh - 105px);
   display: flex;
   flex-direction: column;
   gap: 10px;

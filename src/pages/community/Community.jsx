@@ -2,12 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import DynamicImageComponent from "../../components/community/Community.style";
-import { Background } from "./Community.style";
+import { Background, GradientDiv } from "./Community.style";
 import Navbar from "../../components/navbar/Navbar";
 import { homefeedApi } from "../../api/homefeedApi";
 import { Header } from "../../components/header/Header.style";
 import upload from "../../assets/icons/uploadButton.svg";
 import { UploadLink } from "./Community.style";
+import CommunityItem from "../../components/community/CommunityItem";
 
 const Community = () => {
   const [data, setData] = useState([]);
@@ -30,7 +31,7 @@ const Community = () => {
         <div style={{ display: "flex" }}>
           <div className="left-images" style={{ flex: 1, marginRight: "8px" }}>
             {evenImages.map((data, index) => (
-              <DynamicImageComponent
+              <CommunityItem
                 key={index}
                 imageurl={data.image}
                 address={
@@ -48,7 +49,7 @@ const Community = () => {
             }}
           >
             {oddImages.map((data, index) => (
-              <DynamicImageComponent
+              <CommunityItem
                 key={index}
                 imageurl={data.image}
                 address={
@@ -61,6 +62,7 @@ const Community = () => {
         <UploadLink to="/community/communitypost">
           <img src={upload} alt="게시물 업로드 버튼" />
         </UploadLink>
+        <GradientDiv></GradientDiv>
       </Background>
       <Navbar community />
     </>

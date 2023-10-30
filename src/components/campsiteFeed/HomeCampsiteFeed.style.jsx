@@ -9,11 +9,13 @@ export const WrapperHomeCampsite = styled.section`
   border: 0.5px solid #dbdbdb;
   padding: 12px 10px 19px 10px;
   gap: 18px;
+  min-height: 164.195px;
 `;
 
 export const CampSiteItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 140px;
 `;
 
 export const HomeCampsiteImg = styled.img`
@@ -27,12 +29,20 @@ export const HomeCampsiteImg = styled.img`
 export const HomeCampSiteName = styled.h3`
   font-size: 14px;
   margin: 9px 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 `;
 
-export const HomeCampSitePrice = styled.h3`
+export const HomeCampSitePrice = styled.p`
   font-size: 12px;
   margin: 4px 0 0 2px;
   color: var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 `;
 
 export const HomeCampSiteTitle = styled.h2``;

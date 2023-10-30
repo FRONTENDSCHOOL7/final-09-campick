@@ -5,11 +5,14 @@ import styled from "styled-components";
 import { productList } from "../../api/productListApi";
 import { followList } from "../../api/followListApi";
 import Feed from "../../components/campsiteFeed/campsiteFeed";
+import ReservationModal from "./ReservationModal";
 export default function Reservation() {
   const [followingList, setFollowingList] = useState("");
   const [productInfo, setProductInfo] = useState([]);
   const [sortProduct, setSortProduct] = useState([]);
+  const [opModal, setOpModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [productId, setProductId] = useState("");
   useEffect(() => {
     const accountname = localStorage.getItem("accountname");
     async function getFollowingList() {
@@ -32,7 +35,6 @@ export default function Reservation() {
   useEffect(() => {
     setSortProduct(
       [...productInfo].sort((a, b) => {
-        console.log("안녕");
         return new Date(b.createdAt) - new Date(a.createdAt);
       }),
     );
@@ -41,17 +43,26 @@ export default function Reservation() {
   return (
     <>
       <Header />
+
+      <Screen onClick={() => setOpModal(false)} close={opModal} />
       <UserProductMain>
         {isLoading ? (
-          <div>Loading...</div>
+          <div>isLoading...</div>
         ) : (
           <>
             <h1 className="a11y-hidden">
               유저가 등록한 상품을 예약하기 위한 페이지입니다.
             </h1>
+            {opModal && <ReservationModal productId={productId} />}
             <ProductSection>
               {sortProduct.map(item => (
-                <Feed key={item.id} data={item} />
+                <Feed
+                  reservation
+                  key={item.id}
+                  data={item}
+                  setProductId={setProductId}
+                  setOpModal={setOpModal}
+                />
               ))}
             </ProductSection>
           </>
@@ -64,12 +75,23 @@ export default function Reservation() {
 }
 const UserProductMain = styled.main`
   overflow-y: scroll;
-  height: calc(100vh - 50px - 50px);
+  height: calc(100vh - 105px);
   &::-webkit-scrollbar {
     display: none;
   }
+  position: relative;
 `;
 const ProductSection = styled.section`
   display: flex;
   flex-direction: column;
+`;
+const Screen = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: ${props => (props.close === true ? "block" : "none")};
 `;

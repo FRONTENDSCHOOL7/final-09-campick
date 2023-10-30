@@ -11,12 +11,14 @@ import HomeCampsiteFeed from "../../components/campsiteFeed/HomeCampsiteFeed";
 import { followList } from "../../api/followListApi";
 import { productList } from "../../api/productListApi";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router";
 
 export default function Homefeed() {
   const [data, setData] = useState("");
   const [followingList, setFollowingList] = useState("");
   const [productInfo, setProductInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchHomefeed() {
@@ -46,6 +48,10 @@ export default function Homefeed() {
     getProduct();
   }, [followingList]);
 
+  const handleOnClickSearch = () => {
+    navigate("/search");
+  };
+
   return (
     <>
       <Helmet>
@@ -53,7 +59,7 @@ export default function Homefeed() {
       </Helmet>
       <Header>
         <LogoImg src={Logo} alt="캠픽 로고" />
-        <Search src={SearchImg} alt="검색 버튼" />
+        <Search src={SearchImg} alt="검색 버튼" onClick={handleOnClickSearch} />
       </Header>
       <Home>
         <MainSlider />

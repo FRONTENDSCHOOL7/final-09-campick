@@ -38,8 +38,7 @@ const ProfileSetup = () => {
   const [validUserId, setValidUserId] = useState("");
   const [intro, setIntro] = useState("");
   const [isValid, setIsValid] = useState(true);
-
-  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedImage, setSelectedImage] = useState(profilePic);
   const [disabled, setDisabled] = useState(true);
   const [showWrongExtensionToast, setShowWrongExtensionToast] = useState(false);
   const [showSizeOverToast, setShowSizeOverToast] = useState(false);
@@ -131,10 +130,7 @@ const ProfileSetup = () => {
         password: password,
         accountname: userId,
         intro: intro,
-        image:
-          selectedImage === ""
-            ? "https://api.mandarin.weniv.co.kr/Ellipse.png"
-            : selectedImage,
+        image: selectedImage,
       },
     };
 

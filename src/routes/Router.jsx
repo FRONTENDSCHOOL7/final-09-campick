@@ -10,8 +10,11 @@ import Followlist from "../pages/follow/Followlist";
 import Login from "../pages/login/Login";
 import Reservation from "../pages/reservation/Reservation";
 import Community from "../pages/community/Community";
+import Search from "../pages/search/Search";
 import CommunityPost from "../pages/community/CommunityPost";
 import Error from "../pages/error/Error";
+import ViewPost from "../pages/viewPost/ViewPost";
+
 export default function Router() {
   return (
     <BrowserRouter>
@@ -40,11 +43,14 @@ export default function Router() {
           <Route path="*" element={<Error />} />
           <Route path="upload/" element={<MyCampsiteRegister />} />
         </Route>
+        <Route path="/community" element={<Community />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/community" element={<Outlet />}>
           <Route path="" element={<Community />} />
           <Route path="*" element={<Error />} />
           <Route path="" element={<Community />} />
-          <Route path="communitypost" element={<CommunityPost />} />{" "}
+          <Route path="communitypost" element={<CommunityPost />} />
+          <Route path=":post_id" element={<ViewPost />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>

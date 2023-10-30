@@ -21,7 +21,7 @@ import {
   PostData,
 } from "./post.style";
 
-export default function PostItem({ data }) {
+export default function PostItem({ data, commentCount }) {
   const formatCreatedAt = createdAt => {
     const date = new Date(createdAt);
     const options = { year: "numeric", month: "numeric", day: "numeric" };
@@ -46,7 +46,9 @@ export default function PostItem({ data }) {
           </ModalBtn>
         </WrapperDiv>
       </ProfileDiv>
-      <ProfileContent>{data && data.content}</ProfileContent>
+      <ProfileContent>
+        {data && JSON.parse(data.content).content}
+      </ProfileContent>
       <ImgBox>
         <Cover src={data && data.image} alt="업로드한 이미지" />
       </ImgBox>
@@ -57,7 +59,7 @@ export default function PostItem({ data }) {
           <Link>
             <Icon src={message} alt="댓글 이동 버튼"></Icon>
           </Link>
-          <IconSpan>1</IconSpan>
+          <IconSpan>{commentCount}</IconSpan>
         </Icons>
         <PostData>{data && formatCreatedAt(data.createdAt)}</PostData>
       </WrapperDiv>
