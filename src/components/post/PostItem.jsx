@@ -46,7 +46,9 @@ export default function PostItem({ data, commentCount }) {
           </ModalBtn>
         </WrapperDiv>
       </ProfileDiv>
-      <ProfileContent>{data && data.content}</ProfileContent>
+      <ProfileContent>
+        {data && JSON.parse(data.content).content}
+      </ProfileContent>
       <ImgBox>
         <Cover src={data && data.image} alt="업로드한 이미지" />
       </ImgBox>

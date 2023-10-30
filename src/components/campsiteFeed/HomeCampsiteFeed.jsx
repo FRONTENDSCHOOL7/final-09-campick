@@ -27,7 +27,7 @@ export default function HomeCampsiteFeed(props) {
             props.productInfo && props.productInfo.length >= 3
               ? -40
               : props.productInfo.length === 2
-              ? 0
+              ? 40
               : 40
           }
           slidesPerView={
