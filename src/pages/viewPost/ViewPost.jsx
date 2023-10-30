@@ -52,13 +52,16 @@ export default function ViewPost() {
 
       if (response && response.comment) {
         setTimeout(() => {
-          setComments(prevComments => [response.comment, ...prevComments]);
+          setComments(prevComments => [...prevComments, response.comment]);
         }, 100); // 새로운 댓글 리스트
         {
           setCommentContent("");
         } // 입력창 초기화
 
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
       }
     } catch (error) {
       console.error("댓글 업로드 실패: ", error);
