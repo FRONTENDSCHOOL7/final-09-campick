@@ -19,7 +19,7 @@ export default function ProductItem({ data }) {
         <ProductImage src={data.itemImage} />
         <WrapSpan>
           <ProductName>{JSON.parse(data.itemName).name}</ProductName>
-          <ProductPrice>{data.price.toLocaleString()}\</ProductPrice>
+          <ProductPrice>{data.price.toLocaleString()}</ProductPrice>
           <ProductLocation>
             {JSON.parse(data.itemName).location}
           </ProductLocation>

@@ -13,10 +13,6 @@ import { follow } from "../../api/followApi";
 
 export default function FollowListItem({ data: initialize }) {
   const [data, setData] = useState(initialize);
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
   const myAccoutname = localStorage.getItem("accountname");
   const handleUnfollowBtn = async () => {
     if (data.isfollow) {
@@ -55,9 +51,6 @@ export default function FollowListItem({ data: initialize }) {
       >
         {data.isfollow ? "취소" : "팔로우"}
       </FollowBtn>
-      {/* <FollowBtn onClick={handleUnfollowBtn} follow={`${data.isfollow}`}>
-        {data.isfollow ? "취소" : "팔로우"}
-      </FollowBtn> */}
     </UserWrap>
   );
 }
