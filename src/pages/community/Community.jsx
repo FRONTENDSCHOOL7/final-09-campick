@@ -29,11 +29,13 @@ const Community = () => {
       <Background>
         <div style={{ display: "flex" }}>
           <div className="left-images" style={{ flex: 1, marginRight: "8px" }}>
-            {evenImages.map((image, index) => (
+            {evenImages.map((data, index) => (
               <DynamicImageComponent
                 key={index}
-                imageurl={image.image}
-                address={image.address || "주소를 입력해주세요"}
+                imageurl={data.image}
+                address={
+                  JSON.parse(data.content).location || "주소를 입력해주세요"
+                }
               />
             ))}
           </div>
@@ -45,11 +47,13 @@ const Community = () => {
               marginTop: "36px",
             }}
           >
-            {oddImages.map((image, index) => (
+            {oddImages.map((data, index) => (
               <DynamicImageComponent
                 key={index}
-                imageurl={image.image}
-                address={image.address || "주소를 입력해주세요"}
+                imageurl={data.image}
+                address={
+                  JSON.parse(data.content).location || "주소를 입력해주세요"
+                }
               />
             ))}
           </div>
