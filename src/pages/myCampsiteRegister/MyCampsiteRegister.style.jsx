@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Label } from "../../components/form/form.style";
 
 export const WrapperMyCampsiteRegister = styled.section`
   width: 100%;
@@ -71,4 +70,23 @@ export const UploadButtonText = styled.p`
 export const GoBackButton = styled.img`
   cursor: pointer;
   margin-right: 10px;
+`;
+
+export const MapSelectedBtn = styled.button`
+  font-family: "TheJamsil5", sans-serif;
+  font-size: 14px;
+  margin: 0 0 20px 0;
+  padding: 13px 0 13px 0;
+  display: block;
+  width: 100%;
+  color: var(--primary-color);
+  border-radius: 44px;
+  border: 2px solid var(--primary-color);
+  transition: 0.5s;
+  &:hover {
+    transition: 0.5s;
+    color: white;
+    background-color: var(--primary-disabled-color);
+    border: 2px solid white;
+  }
 `;
