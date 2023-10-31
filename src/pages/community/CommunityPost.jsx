@@ -13,18 +13,16 @@ import {
   LabelStyle,
   Submitbutton,
 } from "../../components/form/form.style";
-import arrow from "../../assets/icons/arrow-left.svg";
 import MapModal from "../../components/kakaomap/MapModal";
 import { ModalBackdrop } from "../../components/kakaomap/MapModal.style";
 import { Helmet } from "react-helmet-async";
 import { communityPost } from "../../api/communityPostApi";
 import imageValidation from "../../imageValidation";
-import {
-  ToastContainer,
-  ToastMsg,
-  ToastMsgBold,
-} from "../profileSetup/profileSetup.style";
 import HeaderSubmit from "../../components/header/HeaderSubmit";
+import {
+  SizeOverToast,
+  WrongExtensionToast,
+} from "../../components/toast/Toast";
 
 export default function CommunityPost() {
   const [location, setLocation] = useState("");
@@ -63,29 +61,6 @@ export default function CommunityPost() {
         break;
     }
   }
-  const WrongExtensionToast = () => (
-    <>
-      {showWrongExtensionToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>이미지</ToastMsgBold>만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
-  const SizeOverToast = () => (
-    <>
-      {showSizeOverToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>10MB</ToastMsgBold>이하의 파일만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
 
   const handleImageInputChange = async e => {
     imageValidation(
@@ -194,8 +169,10 @@ export default function CommunityPost() {
           />
           {warnings.postText && <Incorrect>{warnings.postText}</Incorrect>}
         </WrapperMyCampsiteInput>
-        <WrongExtensionToast />
-        <SizeOverToast />
+        <WrongExtensionToast
+          showWrongExtensionToast={showWrongExtensionToast}
+        />
+        <SizeOverToast showSizeOverToast={showSizeOverToast} />
       </WrapperMyCampsiteRegister>
     </>
   );

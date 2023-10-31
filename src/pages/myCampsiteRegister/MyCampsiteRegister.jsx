@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   FileUploadContainer,
   HiddenFileInput,
+  MapSelectedBtn,
   UploadButtonText,
   WrapperLabel,
   WrapperMyCampsiteInput,
@@ -26,6 +27,11 @@ import {
 } from "../profileSetup/profileSetup.style";
 import { useNavigate } from "react-router-dom";
 import HeaderSubmit from "../../components/header/HeaderSubmit";
+import {
+  CompleteToast,
+  SizeOverToast,
+  WrongExtensionToast,
+} from "../../components/toast/Toast";
 
 export default function MyCampsiteRegister() {
   let [price, setPrice] = useState("");
@@ -87,41 +93,6 @@ export default function MyCampsiteRegister() {
         break;
     }
   }
-  const WrongExtensionToast = () => (
-    <>
-      {showWrongExtensionToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>이미지</ToastMsgBold>만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
-  const RegisterCompleteToast = () => (
-    <>
-      {showRegisterCompleteToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>캠핑장 등록</ToastMsgBold>이 완료되었습니다.
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
-  const SizeOverToast = () => (
-    <>
-      {showSizeOverToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>10MB</ToastMsgBold>이하의 파일만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
 
   const handleImageInputChange = async e => {
     imageValidation(
@@ -277,12 +248,9 @@ export default function MyCampsiteRegister() {
             <Incorrect>{warnings.registerLink}</Incorrect>
           )}
         </WrapperMyCampsiteInput>
-        <Submitbutton
-          onClick={openModal}
-          style={{ margin: "0 0 20px 0", padding: "13px 0 13px 0" }}
-        >
+        <MapSelectedBtn onClick={openModal}>
           지도에서 위치 선택하기
-        </Submitbutton>
+        </MapSelectedBtn>
         <WrapperMyCampsiteInput>
           <LabelStyle>캠핑장 태그 선택</LabelStyle>
           <WrapperLabel>
@@ -319,9 +287,14 @@ export default function MyCampsiteRegister() {
           </WrapperLabel>
           {warnings.labels && <Incorrect>{warnings.labels}</Incorrect>}
         </WrapperMyCampsiteInput>
-        <RegisterCompleteToast />
-        <WrongExtensionToast />
-        <SizeOverToast />
+        <CompleteToast
+          showCompleteToast={showRegisterCompleteToast}
+          text="캠핑장 등록"
+        />
+        <WrongExtensionToast
+          showWrongExtensionToast={showWrongExtensionToast}
+        />
+        <SizeOverToast showSizeOverToast={showSizeOverToast} />
       </WrapperMyCampsiteRegister>
     </>
   );

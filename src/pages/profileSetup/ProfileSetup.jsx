@@ -17,16 +17,18 @@ import {
   LabelStyle,
   ImageInput,
   LabelStyleImg,
-  ToastContainer,
-  ToastMsg,
-  ToastMsgBold,
 } from "./profileSetup.style.jsx";
 import profilePic from "../../assets/icons/profilePic.svg";
 import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
 import { Helmet } from "react-helmet-async";
 import imageValidation from "../../imageValidation.js";
 import { accountNameValid } from "../../api/accountNameApi.js";
-import { emailValid, signup } from "../../api/signupApi.js";
+import { signup } from "../../api/signupApi.js";
+import { CompleteToast } from "../../components/toast/Toast.jsx";
+import {
+  WrongExtensionToast,
+  SizeOverToast,
+} from "./../../components/toast/Toast";
 
 const ProfileSetup = () => {
   const exptext = /^[A-Za-z0-9._]+$/;
@@ -146,42 +148,6 @@ const ProfileSetup = () => {
     }
   };
 
-  const ProfileSetupToast = () => (
-    <>
-      {showProfileEditToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>회원가입</ToastMsgBold>이 완료되었습니다.
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
-  const WrongExtensionToast = () => (
-    <>
-      {showWrongExtensionToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>이미지</ToastMsgBold>만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
-  const SizeOverToast = () => (
-    <>
-      {showSizeOverToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>10MB</ToastMsgBold>이하의 파일만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
   return (
     <>
       <Helmet>
@@ -250,9 +216,14 @@ const ProfileSetup = () => {
 
           <Submitbutton disabled={disabled}>캠픽 하러가기</Submitbutton>
         </WrapForm>
-        <ProfileSetupToast />
-        <WrongExtensionToast />
-        <SizeOverToast />
+        <CompleteToast
+          showCompleteToast={showProfileEditToast}
+          text="회원가입"
+        />
+        <WrongExtensionToast
+          showWrongExtensionToast={showWrongExtensionToast}
+        />
+        <SizeOverToast showSizeOverToast={showSizeOverToast} />
       </WrapperProfileSetup>
     </>
   );
