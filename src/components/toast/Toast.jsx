@@ -35,3 +35,17 @@ export const SizeOverToast = ({ showSizeOverToast }) => (
     )}
   </>
 );
+export const DeletePostToast = ({ deleteMsg }) => {
+  console.log(deleteMsg);
+  return (
+    <>
+      {deleteMsg && (
+        <ToastContainer>
+          <ToastMsg>
+            <ToastMsgBold>{deleteMsg.message}</ToastMsgBold>
+          </ToastMsg>
+        </ToastContainer>
+      )}
+    </>
+  );
+};

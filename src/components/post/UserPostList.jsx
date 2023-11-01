@@ -8,7 +8,9 @@ import {
   AlbumBtn,
   AlbumSection,
 } from "./UserPostList.style";
-export default function UserPostList({ data, setOpenModal }) {
+import { DeletePostToast } from "../toast/Toast";
+
+export default React.memo(function UserPostList({ data, setLender }) {
   const [listView, setListView] = useState(true);
   const [albumView, setAlbumView] = useState(false);
   const handleListView = () => {
@@ -24,22 +26,26 @@ export default function UserPostList({ data, setOpenModal }) {
     }
   };
   return (
-    <PostSection>
-      <PostHeader>
-        <ListBtn liston={`${listView}`} onClick={handleListView} />
-        <AlbumBtn albumon={`${albumView}`} onClick={handleAlbumView} />
-      </PostHeader>
-      {listView ? (
-        <section>
-          {data.post &&
-            data.post.map(item => <PostItem key={item.id} data={item} />)}
-        </section>
-      ) : (
-        <AlbumSection>
-          {data.post &&
-            data.post.map(item => <AlbumList key={item.id} data={item} />)}
-        </AlbumSection>
-      )}
-    </PostSection>
+    <>
+      <PostSection>
+        <PostHeader>
+          <ListBtn liston={`${listView}`} onClick={handleListView} />
+          <AlbumBtn albumon={`${albumView}`} onClick={handleAlbumView} />
+        </PostHeader>
+        {listView ? (
+          <section>
+            {data.post &&
+              data.post.map(item => (
+                <PostItem key={item.id} data={item} setLender={setLender} />
+              ))}
+          </section>
+        ) : (
+          <AlbumSection>
+            {data.post &&
+              data.post.map(item => <AlbumList key={item.id} data={item} />)}
+          </AlbumSection>
+        )}
+      </PostSection>
+    </>
   );
-}
+});

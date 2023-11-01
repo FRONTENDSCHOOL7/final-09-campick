@@ -11,7 +11,7 @@ export const DarkBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  z-index: 999;
+  z-index: 99;
   overflow: hidden;
 `;
 const slideUp = keyframes`
@@ -50,21 +50,7 @@ export const ModalWrap = styled.div`
   animation-name: ${slideUp};
   animation-fill-mode: forwards;
 `;
-export const ModalBtns = styled.button`
-  border: 0px;
-  display: flex;
-  justify-content: center;
-  font-size: 14px;
-  padding: 10px 5px;
-  cursor: pointer;
-  font-family: TheJamsil5;
-  font-weight: 700;
-  &:hover {
-    border-radius: 10px;
-    color: white;
-    background-color: var(--primary-color);
-  }
-`;
+
 export const CheckModalWrap = styled.div`
   width: 250px;
   height: 110px;
@@ -79,6 +65,7 @@ export const CheckModalWrap = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 100;
 `;
 export const CheckMsg = styled.span`
   font-size: 16px;

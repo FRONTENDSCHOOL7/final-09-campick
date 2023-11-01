@@ -50,7 +50,7 @@ export default function ProfileCard({ accountUsername }) {
       setLenders(pre => !pre);
     }
   };
-  console.log(accountUsername);
+
   return (
     <ProfileWrapper>
       <ProfileInfoWrap>

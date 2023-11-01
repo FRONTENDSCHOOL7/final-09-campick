@@ -7,13 +7,10 @@ import Navbar from "../../components/navbar/Navbar";
 import { homefeedApi } from "../../api/homefeedApi";
 import upload from "../../assets/icons/uploadButton.svg";
 import { UploadLink } from "./Community.style";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
-=======
 import CommunityItem from "../../components/community/CommunityItem";
 import Header from "../../components/header/Header";
 
->>>>>>> develop
 const Community = () => {
   const [data, setData] = useState([]);
 
@@ -35,9 +32,8 @@ const Community = () => {
         <div style={{ display: "flex" }}>
           <div className="left-images" style={{ flex: 1, marginRight: "8px" }}>
             {evenImages.map((data, index) => (
-<<<<<<< HEAD
               <Link to={`${data.id}`}>
-                <DynamicImageComponent
+                <CommunityItem
                   key={index}
                   imageurl={data.image}
                   address={
@@ -45,15 +41,6 @@ const Community = () => {
                   }
                 />
               </Link>
-=======
-              <CommunityItem
-                key={index}
-                imageurl={data.image}
-                address={
-                  JSON.parse(data.content).location || "주소를 입력해주세요"
-                }
-              />
->>>>>>> develop
             ))}
           </div>
           <div
@@ -65,9 +52,8 @@ const Community = () => {
             }}
           >
             {oddImages.map((data, index) => (
-<<<<<<< HEAD
               <Link to={`${data.id}`}>
-                <DynamicImageComponent
+                <CommunityItem
                   key={index}
                   imageurl={data.image}
                   address={
@@ -75,15 +61,6 @@ const Community = () => {
                   }
                 />
               </Link>
-=======
-              <CommunityItem
-                key={index}
-                imageurl={data.image}
-                address={
-                  JSON.parse(data.content).location || "주소를 입력해주세요"
-                }
-              />
->>>>>>> develop
             ))}
           </div>
         </div>
