@@ -10,7 +10,7 @@ export default function ProfileProduct({ data }) {
     setProducts(data);
   }, [data]);
 
-  return products.length > 0 ? (
+  return (products && products.length > 0) ? (
     <ProductSection>
       <Swiper
         spaceBetween={-30}

@@ -23,11 +23,24 @@ import {
   PostData,
 } from "./post.style";
 import { heart, unheart } from "../../api/viewpostApi";
+import {
+  DarkBackground,
+  ModalWrap,
+  ModalBtns,
+  CheckModalWrap,
+  CheckButtonWrap,
+  CheckLogout,
+  CheckMsg,
+  CheckConfirm,
+  ModalText,
+} from "../modal/Modal.style";
 
 export default function PostItem({ data, commentCount }) {
   const [isHearted, setIsHearted] = useState(false);
   const [heartCount, setHeartCount] = useState(data.heartCount);
-
+  const [isPostModal, setIsPostModal] = useState(false);
+  const [isPostDeleteCheckModal, setIsPostDeleteCheckModal] = useState(false);
+  const [isReportModal, setIsReportModal] = useState(false);
   const formatCreatedAt = createdAt => {
     const date = new Date(createdAt);
     const options = { year: "numeric", month: "numeric", day: "numeric" };
@@ -68,33 +81,49 @@ export default function PostItem({ data, commentCount }) {
     setIsHearted(data.hearted);
   }, [data.hearted]);
 
+  const handlePostModalOptionClick = () => {
+    data.author.accountname === localStorage.getItem("accountname")
+      ? setIsPostModal(true)
+      : setIsReportModal(true);
+  };
+  const handlePostModalClose = () => {
+    setIsPostModal(false);
+  };
+  const handlePostDeleteClick = () => {
+    setIsPostDeleteCheckModal(true);
+  };
+  const handlePostDeleteCheckModalClose = () => {
+    setIsPostDeleteCheckModal(false);
+  };
+
   return (
-    <PostArticle>
-      <ProfileDiv>
-        <ProfileNav to={`/profile/${data && data.author.accountname}`}>
-          <ProfileImg
-            src={data && data.author.image}
-            alt={`${data && data.author.username}의 프로필 이미지입니다.`}
-          />
-        </ProfileNav>
+    <>
+      <PostArticle>
+        <ProfileDiv>
+          <ProfileNav to={`/profile/${data && data.author.accountname}`}>
+            <ProfileImg
+              src={data && data.author.image}
+              alt={`${data && data.author.username}의 프로필 이미지입니다.`}
+            />
+          </ProfileNav>
+          <WrapperDiv>
+            <ProfileNavs>
+              <span>{data && data.author.username}</span>
+              <span>{data && data.author.accountname}</span>
+            </ProfileNavs>
+            <ModalBtn onClick={handlePostModalOptionClick}>
+              <DotImg src={iconDot} alt="아이콘 버튼 " />
+            </ModalBtn>
+          </WrapperDiv>
+        </ProfileDiv>
+        <ProfileContent>
+          {data && JSON.parse(data.content).content}
+        </ProfileContent>
+        <ImgBox>
+          <Cover src={data && data.image} alt="업로드한 이미지" />
+        </ImgBox>
         <WrapperDiv>
-          <ProfileNavs>
-            <span>{data && data.author.username}</span>
-            <span>{data && data.author.accountname}</span>
-          </ProfileNavs>
-          <ModalBtn>
-            <DotImg src={iconDot} alt="아이콘 버튼" />
-          </ModalBtn>
-        </WrapperDiv>
-      </ProfileDiv>
-      <ProfileContent>
-        {data && JSON.parse(data.content).content}
-      </ProfileContent>
-      <ImgBox>
-        <Cover src={data && data.image} alt="업로드한 이미지" />
-      </ImgBox>
-      <WrapperDiv>
-        <Icons>
+         <Icons>
           <IconHeart
             src={isHearted ? iconHeartedActive : iconHeartedInactive}
             alt="좋아요 아이콘"
@@ -106,8 +135,37 @@ export default function PostItem({ data, commentCount }) {
           </Link>
           <IconSpan>{commentCount}</IconSpan>
         </Icons>
-        <PostData>{data && formatCreatedAt(data.createdAt)}</PostData>
-      </WrapperDiv>
-    </PostArticle>
+          <PostData>{data && formatCreatedAt(data.createdAt)}</PostData>
+        </WrapperDiv>
+      </PostArticle>
+      {isPostModal && (
+        <DarkBackground onClick={handlePostModalClose}>
+          <ModalWrap>
+            <ModalBtns onClick={handlePostDeleteClick}>삭제하기</ModalBtns>
+            <ModalBtns>수정하기</ModalBtns>
+          </ModalWrap>
+        </DarkBackground>
+      )}
+      {isPostDeleteCheckModal && (
+        <DarkBackground onClick={handlePostDeleteCheckModalClose}>
+          <CheckModalWrap>
+            <CheckMsg>게시글을 삭제하시겠어요?</CheckMsg>
+            <CheckButtonWrap>
+              <CheckConfirm onClick={handlePostDeleteCheckModalClose}>
+                취소
+              </CheckConfirm>
+              <CheckConfirm check>삭제</CheckConfirm>
+            </CheckButtonWrap>
+          </CheckModalWrap>
+        </DarkBackground>
+      )}
+      {isReportModal && (
+        <DarkBackground onClick={() => setIsReportModal(false)}>
+          <ModalWrap>
+            <ModalText>신고하기</ModalText>
+          </ModalWrap>
+        </DarkBackground>
+      )}
+    </>
   );
 }

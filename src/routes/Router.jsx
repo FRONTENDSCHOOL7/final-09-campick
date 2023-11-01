@@ -14,6 +14,7 @@ import Search from "../pages/search/Search";
 import CommunityPost from "../pages/community/CommunityPost";
 import Error from "../pages/error/Error";
 import ViewPost from "../pages/viewPost/ViewPost";
+import EditProfile from "../pages/profile/EditProfile";
 
 export default function Router() {
   return (
@@ -33,8 +34,11 @@ export default function Router() {
           <Route path="" element={<Profile />} />
           <Route path="community/:post_id" element={<ViewPost />} />
           <Route path="*" element={<Error />} />
+          <Route path="" element={<Profile />} />
+          <Route path = "edit" element={<EditProfile/>}/>
           <Route path=":accountUsername" element={<Outlet />}>
             <Route path="" element={<Profile />} />
+            
             <Route path=":follow/" element={<Followlist />} />
           </Route>
         </Route>
