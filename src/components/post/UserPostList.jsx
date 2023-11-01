@@ -8,7 +8,7 @@ import {
   AlbumBtn,
   AlbumSection,
 } from "./UserPostList.style";
-export default function UserPostList({ data }) {
+export default function UserPostList({ data, setOpenModal }) {
   const [listView, setListView] = useState(true);
   const [albumView, setAlbumView] = useState(false);
   const handleListView = () => {
