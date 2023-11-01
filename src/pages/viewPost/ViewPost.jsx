@@ -26,6 +26,7 @@ export default function ViewPost() {
   const [myProfilePic, setMyProfilePic] = useState("");
   const [myAccountName, setMyAccountName] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+  const [commentCount, setCommentCount] = useState(0);
 
   const loadMyInfo = async () => {
     try {
@@ -53,8 +54,8 @@ export default function ViewPost() {
 
       if (response && response.comment) {
         setTimeout(() => {
-          setComments(prevComments => [...prevComments, response.comment]);
-        }, 100); // 새로운 댓글 리스트
+          setComments(prevComments => [response.comment, ...prevComments]);
+        }, 500); // 새로운 댓글 리스트
         {
           setCommentContent("");
         } // 입력창 초기화
@@ -63,6 +64,7 @@ export default function ViewPost() {
           top: document.body.scrollHeight,
           behavior: "smooth",
         });
+        setCommentCount(prevCount => prevCount + 1);
       }
     } catch (error) {
       console.error("댓글 업로드 실패: ", error);
@@ -81,6 +83,7 @@ export default function ViewPost() {
       try {
         const fetchedPost = await viewPost(post_id);
         setPostData(fetchedPost);
+        setCommentCount(fetchedPost.commentCount);
 
         const fetchedComments = await getCommentList(post_id);
         setComments(fetchedComments);
@@ -98,19 +101,18 @@ export default function ViewPost() {
       </Helmet>
       <HeaderText text={""} />
       <WrapViewPost>
-        {data && <PostItem data={data} commentCount={comments.length} />}
+        {data && <PostItem data={data} commentCount={commentCount} />}
         <CommentSection>
           {comments &&
-            comments.map(comment => (
-              <Comment
-                key={comment.id}
-                comment={comment}
-                currentUsername={myAccountName}
-              />
+            [...comments].reverse().map(comment => (
+              <ProfileNav to={`/profile/${comment.author.accountname}`}>
+                <Comment
+                  key={comment.id}
+                  comment={comment}
+                  currentUsername={myAccountName}
+                />
+              </ProfileNav>
             ))}
-          <ProfileNav
-            to={`/profile/${data && data.author.accountname}`}
-          ></ProfileNav>
         </CommentSection>
 
         <WrapCommentWrite>

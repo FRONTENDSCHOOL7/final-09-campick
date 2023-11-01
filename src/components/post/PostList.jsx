@@ -18,7 +18,14 @@ export default function PostList({ data }) {
   return (
     <PostSection>
       <HomePostTitle>친구들의 로그</HomePostTitle>
-      {data && data.map(item => <PostItem key={item.id} data={item} />)}
+      {data &&
+        data.map(item => (
+          <PostItem
+            key={item.id}
+            data={item}
+            commentCount={item.commentCount}
+          />
+        ))}
     </PostSection>
   );
 }

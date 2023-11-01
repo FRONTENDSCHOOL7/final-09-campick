@@ -31,8 +31,8 @@ export default function Router() {
         </Route>
         <Route path="/profile/" element={<Outlet />}>
           <Route path="" element={<Profile />} />
+          <Route path="community/:post_id" element={<ViewPost />} />
           <Route path="*" element={<Error />} />
-          <Route path="" element={<Profile />} />
           <Route path=":accountUsername" element={<Outlet />}>
             <Route path="" element={<Profile />} />
             <Route path=":follow/" element={<Followlist />} />
@@ -45,12 +45,12 @@ export default function Router() {
         </Route>
         <Route path="/community" element={<Community />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/community" element={<Outlet />}>
+        <Route path="/community/" element={<Outlet />}>
           <Route path="" element={<Community />} />
           <Route path="*" element={<Error />} />
           <Route path="" element={<Community />} />
           <Route path="communitypost" element={<CommunityPost />} />
-          <Route path=":post_id" element={<ViewPost />} />
+          <Route path=":post_id/" element={<ViewPost />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>
