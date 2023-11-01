@@ -48,6 +48,7 @@ export const UserIntro = styled.span`
   color: var(--font-primary-color);
 `;
 export const FollowBtn = styled.button`
+  font-family: 'TheJamsil';
   width: 56px;
   font-size: 12px;
   padding: 7px 0px;

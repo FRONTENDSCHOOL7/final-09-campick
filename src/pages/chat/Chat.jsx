@@ -16,7 +16,6 @@ import {
   ChatText,
   ChatTextRight,
   Time,
-  ChatImg,
   HomeContainer,
   ChatTitle,
 } from "./Chat.style";

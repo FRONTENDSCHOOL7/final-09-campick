@@ -98,7 +98,7 @@ export default function MyCampsiteRegister() {
     imageValidation(
       e,
       1,
-      150,
+      320,
       setSelectedImage,
       setShowSizeOverToast,
       setShowWrongExtensionToast,

@@ -66,7 +66,7 @@ export default function CommunityPost() {
     imageValidation(
       e,
       1,
-      150,
+      320,
       setSelectedImage,
       setShowSizeOverToast,
       setShowWrongExtensionToast,
