@@ -77,7 +77,7 @@ export default function ProfileCard({ accountUsername }) {
         <UserAccountName>
           {userData && `@${userData.accountname}`}
         </UserAccountName>
-        <UserIntro>{userData && userData.intro}</UserIntro>
+        <UserIntro>" {userData && userData.intro} "</UserIntro>
       </ProfileIntro>
       {!accountUsername ? (
         <ProfileBtnWrap>

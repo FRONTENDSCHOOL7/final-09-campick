@@ -9,12 +9,13 @@ const PostSection = styled.section`
   border-radius: 10px;
   border: 0.5px solid #dbdbdb;
   margin: 0 8px 0 8px;
-  min-height: 300px;
+  flex-basis: 300px;
   &::-webkit-scrollbar {
     display: none;
   }
 `;
 export default function PostList({ data }) {
+  console.log("Post",data)
   return (
     <PostSection>
       <HomePostTitle>친구들의 로그</HomePostTitle>

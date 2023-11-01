@@ -41,6 +41,9 @@ export const DotImg = styled.img`
 export const ProfileContent = styled.pre`
   white-space: pre-wrap;
   word-break: break-all;
+  font-size: 14px;
+  line-height: 1.2;
+  color:#444;
 `;
 export const WrapperDiv = styled.div`
   display: flex;

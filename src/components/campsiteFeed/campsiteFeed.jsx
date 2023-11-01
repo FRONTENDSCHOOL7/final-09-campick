@@ -14,11 +14,11 @@ import {
 } from "./campsiteFeed.style";
 import React from "react";
 
-export default function Feed({ data, setProductId, setOpModal, reservation }) {
+export default function Feed({ data, setProductId, setOpModal, reservation , title}) {
   return (
     <>
       <ProductContainer>
-        <ProductTitle>{`${data.author.username}님의 캠핑장`}</ProductTitle>
+        {title ?<ProductTitle>{`${data.author.username}님의 캠핑장`}</ProductTitle> : null }
         <WrapContents>
           {reservation ? (
             <ProductBtn

@@ -26,7 +26,7 @@ export default function Chat() {
   return (
     <>
       <Helmet>
-        <title>Campic | 예약</title>
+        <title>Campic | 예약 채팅창</title>
       </Helmet>
       <HeaderText text={"campic"} />
       <HomeContainer>
