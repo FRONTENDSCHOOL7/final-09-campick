@@ -74,6 +74,7 @@ export const IconHeart = styled.img`
   height: 19px;
   margin-right: 5px;
   cursor: pointer;
+  
 `;
 export const IconComment = styled.img`
   width: 21px;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { InputStyle } from "../../components/form/form.style";
 
 export const WrapperMyCampsiteRegister = styled.section`
   width: 100%;
@@ -65,6 +64,7 @@ export const GoBackButton = styled.img`
 
 //게시글작성 input style
 export const TextareaStyle = styled.textarea`
+  font-family: 'TheJamsil';
   width: 302px;
   min-height: 100px;
   resize: none; // 사용자가 크기를 변경할 수 없도록 함
@@ -73,7 +73,7 @@ export const TextareaStyle = styled.textarea`
   border: 1px solid #dbdbdb;
   border-radius: 10px;
   padding: 10px;
-  font-size: 1em;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
