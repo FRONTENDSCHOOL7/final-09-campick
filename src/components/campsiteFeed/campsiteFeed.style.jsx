@@ -20,6 +20,7 @@ export const WrapContents = styled.div`
 export const ProductTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
+  margin-left: 5px;
 `;
 
 export const WrapSpan = styled.div`

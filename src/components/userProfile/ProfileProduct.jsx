@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Feed from "../campsiteFeed/campsiteFeed";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode } from "swiper/modules";
 import { ProductTitle } from "../campsiteFeed/campsiteFeed.style";
 export default function ProfileProduct({ data }) {
   const [products, setProducts] = useState([]);
