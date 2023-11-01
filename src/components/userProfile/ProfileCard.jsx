@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   ProfileWrapper,
   ProfileInfoWrap,
@@ -16,18 +16,41 @@ import {
 } from "./profile.style";
 import { unfollow } from "../../api/unfollowApi";
 import { follow } from "../../api/followApi";
-export default function ProfileCard({ data, accountUsername, setLender }) {
+import { userInfo } from "../../api/userInfoApi";
+import { myInfo } from "../../api/myInfoApi";
+export default function ProfileCard({ accountUsername }) {
+  const [userData, setUserData] = useState("");
   const myAccountname = localStorage.getItem("accountname");
-  const handlefollowBtn = async () => {
-    if (data.isfollow) {
-      await unfollow(data.accountname);
-      setLender(pre => !pre);
+  const [lenders, setLenders] = useState(true);
+
+  useEffect(() => {
+    if (accountUsername) {
+      const getUserInfo = async () => {
+        const res = await userInfo(accountUsername);
+
+        setUserData(res);
+      };
+      getUserInfo();
     } else {
-      await follow(data.accountname);
-      setLender(pre => !pre);
+      const getMyInfo = async () => {
+        const res = await myInfo();
+
+        setUserData(res);
+      };
+      getMyInfo();
+    }
+  }, [accountUsername, lenders]);
+
+  const handlefollowBtn = async () => {
+    if (userData.isfollow) {
+      await unfollow(userData.accountname);
+      setLenders(pre => !pre);
+    } else {
+      await follow(userData.accountname);
+      setLenders(pre => !pre);
     }
   };
-
+  console.log(accountUsername);
   return (
     <ProfileWrapper>
       <ProfileInfoWrap>
@@ -35,22 +58,26 @@ export default function ProfileCard({ data, accountUsername, setLender }) {
           to={accountUsername ? `follower` : `${myAccountname}/follower`}
         >
           <FollowNumber $follower="follower">
-            {data && `${data.followerCount}`}
+            {userData && `${userData.followerCount}`}
           </FollowNumber>
           <Follow>followers</Follow>
         </ProfileFollow>
-        <ProfileImg src={data && data.image} />
+        <ProfileImg src={userData && userData.image} />
         <ProfileFollow
           to={accountUsername ? `following` : `${myAccountname}/following`}
         >
-          <FollowNumber>{data && `${data.followingCount}`}</FollowNumber>
+          <FollowNumber>
+            {userData && `${userData.followingCount}`}
+          </FollowNumber>
           <Follow>followings</Follow>
         </ProfileFollow>
       </ProfileInfoWrap>
       <ProfileIntro>
-        <UserName>{data && data.username}</UserName>
-        <UserAccountName>{data && `@${data.accountname}`}</UserAccountName>
-        <UserIntro>{data && data.intro}</UserIntro>
+        <UserName>{userData && userData.username}</UserName>
+        <UserAccountName>
+          {userData && `@${userData.accountname}`}
+        </UserAccountName>
+        <UserIntro>{userData && userData.intro}</UserIntro>
       </ProfileIntro>
       {!accountUsername ? (
         <ProfileBtnWrap>
@@ -61,10 +88,10 @@ export default function ProfileCard({ data, accountUsername, setLender }) {
         <ProfileBtnWrap>
           <ChatShare $chat="true" />
           <ProfileBtn
-            $follow={data && data.isfollow === true ? "false" : "true"}
+            $follow={userData && userData.isfollow === true ? "false" : "true"}
             onClick={e => handlefollowBtn(e)}
           >
-            {data && data.isfollow ? "팔로우 취소" : "팔로우"}
+            {userData && userData.isfollow ? "팔로우 취소" : "팔로우"}
           </ProfileBtn>
           <ChatShare />
         </ProfileBtnWrap>

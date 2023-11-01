@@ -8,7 +8,7 @@ import { homefeedApi } from "../../api/homefeedApi";
 import { Header } from "../../components/header/Header.style";
 import upload from "../../assets/icons/uploadButton.svg";
 import { UploadLink } from "./Community.style";
-
+import { Link } from "react-router-dom";
 const Community = () => {
   const [data, setData] = useState([]);
 
@@ -30,13 +30,15 @@ const Community = () => {
         <div style={{ display: "flex" }}>
           <div className="left-images" style={{ flex: 1, marginRight: "8px" }}>
             {evenImages.map((data, index) => (
-              <DynamicImageComponent
-                key={index}
-                imageurl={data.image}
-                address={
-                  JSON.parse(data.content).location || "주소를 입력해주세요"
-                }
-              />
+              <Link to={`${data.id}`}>
+                <DynamicImageComponent
+                  key={index}
+                  imageurl={data.image}
+                  address={
+                    JSON.parse(data.content).location || "주소를 입력해주세요"
+                  }
+                />
+              </Link>
             ))}
           </div>
           <div
@@ -48,13 +50,15 @@ const Community = () => {
             }}
           >
             {oddImages.map((data, index) => (
-              <DynamicImageComponent
-                key={index}
-                imageurl={data.image}
-                address={
-                  JSON.parse(data.content).location || "주소를 입력해주세요"
-                }
-              />
+              <Link to={`${data.id}`}>
+                <DynamicImageComponent
+                  key={index}
+                  imageurl={data.image}
+                  address={
+                    JSON.parse(data.content).location || "주소를 입력해주세요"
+                  }
+                />
+              </Link>
             ))}
           </div>
         </div>
