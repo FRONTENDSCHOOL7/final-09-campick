@@ -6,9 +6,10 @@ export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  padding: 20px 0 20px 0;
+  padding: 20px 10px 20px 10px;
   gap: 10px;
   box-sizing: border-box;
+  
 `;
 
 export const WrapContents = styled.div`
@@ -19,6 +20,7 @@ export const WrapContents = styled.div`
 export const ProductTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
+  margin-left: 5px;
 `;
 
 export const WrapSpan = styled.div`
@@ -34,6 +36,7 @@ export const ProductName = styled.span`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-weight: 700;
 `;
 export const ProductPrice = styled.span`
   font-size: 14px;

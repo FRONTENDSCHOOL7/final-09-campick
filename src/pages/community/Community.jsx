@@ -34,14 +34,13 @@ const Community = () => {
             {evenImages.map((data, index) => (
               <Link to={`${data.id}`}>
                 <CommunityItem
-                key={index}
-                imageurl={data.image}
-                address={
-                  JSON.parse(data.content).location || "주소를 입력해주세요"
-                }
-              />
+                  key={index}
+                  imageurl={data.image}
+                  address={
+                    JSON.parse(data.content).location || "주소를 입력해주세요"
+                  }
+                />
               </Link>
-              
             ))}
           </div>
           <div
@@ -55,14 +54,13 @@ const Community = () => {
             {oddImages.map((data, index) => (
               <Link to={`${data.id}`}>
                 <CommunityItem
-                key={index}
-                imageurl={data.image}
-                address={
-                  JSON.parse(data.content).location || "주소를 입력해주세요"
-                }
-              />
+                  key={index}
+                  imageurl={data.image}
+                  address={
+                    JSON.parse(data.content).location || "주소를 입력해주세요"
+                  }
+                />
               </Link>
-              
             ))}
           </div>
         </div>

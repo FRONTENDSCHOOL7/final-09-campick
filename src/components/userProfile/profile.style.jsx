@@ -5,6 +5,7 @@ import share from "../../assets/icons/icon-share.svg";
 export const ProfileWrapper = styled.section`
   background-color: #fff;
   padding: 27px;
+  border-bottom: 0.5px solid #dbdbdb;
 `;
 export const ProfileInfoWrap = styled.div`
   display: flex;
@@ -40,17 +41,19 @@ export const ProfileIntro = styled.div`
 `;
 export const UserName = styled.h2`
   color: black;
+  font-size: 17px;
+  margin-top: 17px;
+  font-weight: 600;
 `;
 export const UserAccountName = styled.span`
   display: block;
-  font-size: 12px;
-  margin: 6px 0px 15px;
+  font-size: 11px;
+  margin: 6px 0px 10px;
 `;
 export const UserIntro = styled.p`
   font-size: 14px;
-  margin-bottom: 30px;
   width: 80%;
-  margin: 0 auto 30px;
+  margin: 0 auto 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

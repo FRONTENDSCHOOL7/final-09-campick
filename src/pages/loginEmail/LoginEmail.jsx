@@ -48,7 +48,6 @@ export default function LoginEmail() {
       navigate("/homefeed"); // 로그인 성공하면 홈화면으로 가기
     } else {
       setCorrect(true);
-
       console.log(res.message);
     }
   }

@@ -106,13 +106,15 @@ export default function MyCampsiteRegister() {
   };
 
   const handleLabelClick = label => {
+    
     if (selectedLabels.includes(label)) {
       // 라벨이 이미 선택되어 있으면 배열에서 제거
       setSelectedLabels(prevLabels => prevLabels.filter(l => l !== label));
-    } else {
-      // 라벨이 선택되어 있지 않으면 배열에 추가
-      setSelectedLabels(prevLabels => [...prevLabels, label]);
-    }
+      return;
+    } if (selectedLabels.length >= 3 ){
+      console.log("최대 3개의 라벨만 선택할 수 있습니다.")
+      return;
+    }setSelectedLabels(prevLabels => [...prevLabels, label]);
   };
 
   async function handleSubmitButton() {
@@ -252,7 +254,7 @@ export default function MyCampsiteRegister() {
           지도에서 위치 선택하기
         </MapSelectedBtn>
         <WrapperMyCampsiteInput>
-          <LabelStyle>캠핑장 태그 선택</LabelStyle>
+          <LabelStyle>캠핑장 태그 선택 (최대 3개)</LabelStyle>
           <WrapperLabel>
             {[
               "가족",

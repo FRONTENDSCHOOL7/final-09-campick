@@ -30,7 +30,7 @@ export default function Followlist() {
       <HeaderText
         text={followPage === "follower" ? "Followers" : "Following"}
       />
-      <main>
+      <main style ={{height: "calc(100vh - 105px)"}}>
         <h1 className="a11y-hidden">
           {`${accountUsername}의 ${followPage}페이지`}
         </h1>
