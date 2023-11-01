@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { ProductTitle } from "../campsiteFeed/campsiteFeed.style";
 import emptyCampsite from "../../assets/image/empty-campsite.jpg"
-export default function ProfileProduct({ data }) {
+export default React.memo(function ProfileProduct({ data }) {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     setProducts(data);
@@ -34,7 +34,7 @@ export default function ProfileProduct({ data }) {
   ) : (
     <ProductSection style = {{padding:"0"}}><EmptyImage src={emptyCampsite} alt="아직 등록된 캠핑장이 없어요"/></ProductSection>
   );
-}
+});
 const ProductSection = styled.section`
   padding : 20px 10px 20px 10px;
   background-color: #fff;

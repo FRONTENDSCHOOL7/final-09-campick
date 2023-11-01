@@ -8,7 +8,9 @@ import {
   AlbumBtn,
   AlbumSection,
 } from "./UserPostList.style";
-export default function UserPostList({ data, setOpenModal }) {
+import { DeletePostToast } from "../toast/Toast";
+
+export default React.memo(function UserPostList({ data, setLender }) {
   const [listView, setListView] = useState(true);
   const [albumView, setAlbumView] = useState(false);
   const handleListView = () => {
@@ -37,6 +39,7 @@ export default function UserPostList({ data, setOpenModal }) {
                 key={item.id}
                 data={item}
                 commentCount={item.commentCount}
+                setLender={setLender}
               />
             ))}
         </section>
@@ -48,4 +51,4 @@ export default function UserPostList({ data, setOpenModal }) {
       )}
     </PostSection>
   );
-}
+});
