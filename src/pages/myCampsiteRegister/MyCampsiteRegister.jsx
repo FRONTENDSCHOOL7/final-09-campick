@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {
   FileUploadContainer,
-  GoBackButton,
   HiddenFileInput,
+  MapSelectedBtn,
   UploadButtonText,
   WrapperLabel,
   WrapperMyCampsiteInput,
@@ -15,7 +15,6 @@ import {
   LabelStyle,
   Submitbutton,
 } from "../../components/form/form.style";
-import arrow from "../../assets/icons/arrow-left.svg";
 import MapModal from "../../components/kakaomap/MapModal";
 import { ModalBackdrop } from "../../components/kakaomap/MapModal.style";
 import { Helmet } from "react-helmet-async";
@@ -26,8 +25,13 @@ import {
   ToastMsg,
   ToastMsgBold,
 } from "../profileSetup/profileSetup.style";
-import { Header } from "../../components/header/Header.style";
 import { useNavigate } from "react-router-dom";
+import HeaderSubmit from "../../components/header/HeaderSubmit";
+import {
+  CompleteToast,
+  SizeOverToast,
+  WrongExtensionToast,
+} from "../../components/toast/Toast";
 
 export default function MyCampsiteRegister() {
   let [price, setPrice] = useState("");
@@ -89,41 +93,6 @@ export default function MyCampsiteRegister() {
         break;
     }
   }
-  const WrongExtensionToast = () => (
-    <>
-      {showWrongExtensionToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>이미지</ToastMsgBold>만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
-  const RegisterCompleteToast = () => (
-    <>
-      {showRegisterCompleteToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>캠핑장 등록</ToastMsgBold>이 완료되었습니다.
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
-  const SizeOverToast = () => (
-    <>
-      {showSizeOverToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>10MB</ToastMsgBold>이하의 파일만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
 
   const handleImageInputChange = async e => {
     imageValidation(
@@ -194,24 +163,12 @@ export default function MyCampsiteRegister() {
     }
   }
 
-  function goBack() {
-    window.history.back();
-  }
-
   return (
     <>
       <Helmet>
         <title>Campick | 캠핑장 등록</title>
       </Helmet>
-      <Header>
-        <GoBackButton src={arrow} alt="뒤로가기" onClick={goBack} />
-        <Submitbutton
-          onClick={handleSubmitButton}
-          style={{ width: "90px", height: "32px", margin: "0" }}
-        >
-          저장
-        </Submitbutton>
-      </Header>
+      <HeaderSubmit handleSubmitButton={handleSubmitButton} />
       <WrapperMyCampsiteRegister>
         {isModalOpen && <ModalBackdrop onClick={closeModal} />}{" "}
         {/* Modal이 열렸을 때만 배경 렌더링 */}
@@ -291,12 +248,9 @@ export default function MyCampsiteRegister() {
             <Incorrect>{warnings.registerLink}</Incorrect>
           )}
         </WrapperMyCampsiteInput>
-        <Submitbutton
-          onClick={openModal}
-          style={{ margin: "0 0 20px 0", padding: "13px 0 13px 0" }}
-        >
+        <MapSelectedBtn onClick={openModal}>
           지도에서 위치 선택하기
-        </Submitbutton>
+        </MapSelectedBtn>
         <WrapperMyCampsiteInput>
           <LabelStyle>캠핑장 태그 선택</LabelStyle>
           <WrapperLabel>
@@ -333,9 +287,14 @@ export default function MyCampsiteRegister() {
           </WrapperLabel>
           {warnings.labels && <Incorrect>{warnings.labels}</Incorrect>}
         </WrapperMyCampsiteInput>
-        <RegisterCompleteToast />
-        <WrongExtensionToast />
-        <SizeOverToast />
+        <CompleteToast
+          showCompleteToast={showRegisterCompleteToast}
+          text="캠핑장 등록"
+        />
+        <WrongExtensionToast
+          showWrongExtensionToast={showWrongExtensionToast}
+        />
+        <SizeOverToast showSizeOverToast={showSizeOverToast} />
       </WrapperMyCampsiteRegister>
     </>
   );

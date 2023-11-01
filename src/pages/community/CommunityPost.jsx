@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   FileUploadContainer,
-  GoBackButton,
   HiddenFileInput,
   TextareaStyle,
   UploadButtonText,
@@ -14,18 +13,16 @@ import {
   LabelStyle,
   Submitbutton,
 } from "../../components/form/form.style";
-import arrow from "../../assets/icons/arrow-left.svg";
 import MapModal from "../../components/kakaomap/MapModal";
 import { ModalBackdrop } from "../../components/kakaomap/MapModal.style";
 import { Helmet } from "react-helmet-async";
 import { communityPost } from "../../api/communityPostApi";
 import imageValidation from "../../imageValidation";
+import HeaderSubmit from "../../components/header/HeaderSubmit";
 import {
-  ToastContainer,
-  ToastMsg,
-  ToastMsgBold,
-} from "../profileSetup/profileSetup.style";
-import { Header } from "../../components/header/Header.style";
+  SizeOverToast,
+  WrongExtensionToast,
+} from "../../components/toast/Toast";
 
 export default function CommunityPost() {
   const [location, setLocation] = useState("");
@@ -64,29 +61,6 @@ export default function CommunityPost() {
         break;
     }
   }
-  const WrongExtensionToast = () => (
-    <>
-      {showWrongExtensionToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>이미지</ToastMsgBold>만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
-
-  const SizeOverToast = () => (
-    <>
-      {showSizeOverToast && (
-        <ToastContainer>
-          <ToastMsg>
-            <ToastMsgBold>10MB</ToastMsgBold>이하의 파일만 업로드 해주세요!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
 
   const handleImageInputChange = async e => {
     imageValidation(
@@ -131,10 +105,6 @@ export default function CommunityPost() {
     }
   }
 
-  function goBack() {
-    window.history.back();
-  }
-
   function autoGrowTextArea(e) {
     e.target.style.height = "inherit";
     e.target.style.height = `${e.target.scrollHeight}px`;
@@ -146,15 +116,8 @@ export default function CommunityPost() {
       <Helmet>
         <title>Campick | 게시물 작성</title>
       </Helmet>
-      <Header>
-        <GoBackButton src={arrow} alt="뒤로가기" onClick={goBack} />
-        <Submitbutton
-          onClick={handleSubmitButton}
-          style={{ width: "90px", height: "32px", margin: "0" }}
-        >
-          업로드
-        </Submitbutton>
-      </Header>
+      <HeaderSubmit handleSubmitButton={handleSubmitButton} />
+
       <WrapperMyCampsiteRegister>
         {isModalOpen && <ModalBackdrop onClick={closeModal} />}{" "}
         {/* Modal이 열렸을 때만 배경 렌더링 */}
@@ -206,8 +169,10 @@ export default function CommunityPost() {
           />
           {warnings.postText && <Incorrect>{warnings.postText}</Incorrect>}
         </WrapperMyCampsiteInput>
-        <WrongExtensionToast />
-        <SizeOverToast />
+        <WrongExtensionToast
+          showWrongExtensionToast={showWrongExtensionToast}
+        />
+        <SizeOverToast showSizeOverToast={showSizeOverToast} />
       </WrapperMyCampsiteRegister>
     </>
   );

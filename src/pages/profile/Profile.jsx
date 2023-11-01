@@ -5,11 +5,12 @@ import { productList } from "../../api/productListApi";
 import { Helmet } from "react-helmet-async";
 import ProfileCard from "../../components/userProfile/ProfileCard";
 import Navbar from "../../components/navbar/Navbar";
-import { Header } from "../../components/header/Header.style";
 import UserPostList from "../../components/post/UserPostList";
 import ProfileProduct from "../../components/userProfile/ProfileProduct";
 
 import styled from "styled-components";
+import Header from "../../components/header/Header";
+
 export default function Profile() {
   const [userPosts, setUserPosts] = useState("");
   const [userProducts, setUserProducts] = useState("");
@@ -55,7 +56,7 @@ export default function Profile() {
   );
 }
 const Main = styled.main`
-  height: calc(100vh - 50px - 50px);
+  height: calc(100vh - 105px);
   display: flex;
   flex-direction: column;
   gap: 10px;

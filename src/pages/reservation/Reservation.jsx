@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { Header } from "../../components/header/Header.style";
 import styled from "styled-components";
 import { productList } from "../../api/productListApi";
 import { followList } from "../../api/followListApi";
 import Feed from "../../components/campsiteFeed/campsiteFeed";
 import ReservationModal from "./ReservationModal";
+import Header from "../../components/header/Header";
 export default function Reservation() {
   const [followingList, setFollowingList] = useState("");
   const [productInfo, setProductInfo] = useState([]);
@@ -43,7 +43,6 @@ export default function Reservation() {
   return (
     <>
       <Header />
-
       <Screen onClick={() => setOpModal(false)} close={opModal} />
       <UserProductMain>
         {isLoading ? (
@@ -75,7 +74,7 @@ export default function Reservation() {
 }
 const UserProductMain = styled.main`
   overflow-y: scroll;
-  height: calc(100vh - 50px - 50px);
+  height: calc(100vh - 105px);
   &::-webkit-scrollbar {
     display: none;
   }
