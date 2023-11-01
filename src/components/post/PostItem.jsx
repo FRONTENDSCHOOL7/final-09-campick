@@ -26,21 +26,21 @@ import { heart, unheart } from "../../api/viewpostApi";
 import {
   DarkBackground,
   ModalWrap,
-  ModalBtns,
   CheckModalWrap,
   CheckButtonWrap,
-  CheckLogout,
   CheckMsg,
   CheckConfirm,
   ModalText,
 } from "../modal/Modal.style";
-
-export default function PostItem({ data, commentCount }) {
+import { userpostDelete } from "../../api/userpostDeleteApi";
+import { DeletePostToast } from "../../components/toast/Toast";
+export default function PostItem({ data, commentCount, setLender }) {
   const [isHearted, setIsHearted] = useState(false);
   const [heartCount, setHeartCount] = useState(data.heartCount);
   const [isPostModal, setIsPostModal] = useState(false);
   const [isPostDeleteCheckModal, setIsPostDeleteCheckModal] = useState(false);
   const [isReportModal, setIsReportModal] = useState(false);
+  const [deleteMsg, setDeleteMsg] = useState("");
   const formatCreatedAt = createdAt => {
     const date = new Date(createdAt);
     const options = { year: "numeric", month: "numeric", day: "numeric" };
@@ -123,26 +123,27 @@ export default function PostItem({ data, commentCount }) {
           <Cover src={data && data.image} alt="업로드한 이미지" />
         </ImgBox>
         <WrapperDiv>
-         <Icons>
-          <IconHeart
-            src={isHearted ? iconHeartedActive : iconHeartedInactive}
-            alt="좋아요 아이콘"
-            onClick={handleHeartClick}
-          ></IconHeart>
-          <IconSpan>{heartCount}</IconSpan>
-          <Link to={`../../community/${data && data.id}`}>
-            <IconComment src={comment} alt="댓글 이동 버튼"></IconComment>
-          </Link>
-          <IconSpan>{commentCount}</IconSpan>
-        </Icons>
+          <Icons>
+            <IconHeart
+              src={isHearted ? iconHeartedActive : iconHeartedInactive}
+              alt="좋아요 아이콘"
+              onClick={handleHeartClick}
+            ></IconHeart>
+            <IconSpan>{heartCount}</IconSpan>
+            <Link to={`../../community/${data && data.id}`}>
+              <IconComment src={comment} alt="댓글 이동 버튼"></IconComment>
+            </Link>
+            <IconSpan>{commentCount}</IconSpan>
+          </Icons>
           <PostData>{data && formatCreatedAt(data.createdAt)}</PostData>
         </WrapperDiv>
       </PostArticle>
+
       {isPostModal && (
         <DarkBackground onClick={handlePostModalClose}>
           <ModalWrap>
-            <ModalBtns onClick={handlePostDeleteClick}>삭제하기</ModalBtns>
-            <ModalBtns>수정하기</ModalBtns>
+            <ModalText onClick={handlePostDeleteClick}>삭제하기</ModalText>
+            <ModalText>수정하기</ModalText>
           </ModalWrap>
         </DarkBackground>
       )}
@@ -154,11 +155,22 @@ export default function PostItem({ data, commentCount }) {
               <CheckConfirm onClick={handlePostDeleteCheckModalClose}>
                 취소
               </CheckConfirm>
-              <CheckConfirm check>삭제</CheckConfirm>
+              <CheckConfirm
+                check
+                onClick={async () => {
+                  setDeleteMsg(await userpostDelete(data.id));
+                  setTimeout(async () => {
+                    setLender(pre => !pre);
+                  }, 500);
+                }}
+              >
+                삭제
+              </CheckConfirm>
             </CheckButtonWrap>
           </CheckModalWrap>
         </DarkBackground>
       )}
+
       {isReportModal && (
         <DarkBackground onClick={() => setIsReportModal(false)}>
           <ModalWrap>
@@ -166,6 +178,7 @@ export default function PostItem({ data, commentCount }) {
           </ModalWrap>
         </DarkBackground>
       )}
+      <DeletePostToast deleteMsg={deleteMsg} />
     </>
   );
 }

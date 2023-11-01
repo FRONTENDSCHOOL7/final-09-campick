@@ -4,7 +4,7 @@ import Feed from "../campsiteFeed/campsiteFeed";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { ProductTitle } from "../campsiteFeed/campsiteFeed.style";
-export default function ProfileProduct({ data }) {
+export default React.memo(function ProfileProduct({ data }) {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     setProducts(data);
@@ -33,7 +33,7 @@ export default function ProfileProduct({ data }) {
   ) : (
     <ProductSection></ProductSection>
   );
-}
+});
 const ProductSection = styled.section`
   min-height: 170px;
   padding : 20px 10px 20px 10px;
