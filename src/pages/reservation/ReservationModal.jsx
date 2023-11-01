@@ -25,13 +25,15 @@ export default function ReservationModal({ productId }) {
   console.log(data);
   return (
     <ModalWrap>
-      <ProductImg src={data && data.itemImage} />
       <ProductProfileWrapper>
         <ProfileUsername>{data && data.author.username}님의  캠핑장 </ProfileUsername>
         <ProfileAccountname>
           @ {data && data.author.accountname}
         </ProfileAccountname>
       </ProductProfileWrapper>
+      <ProductImg src={data && data.itemImage} />
+      
+      
       <ProductProfileWrapper>
       <ProductName>{data && JSON.parse(data.itemName).name}</ProductName>
       <ProductPrice>{data && data.price.toLocaleString()}원 ~</ProductPrice>

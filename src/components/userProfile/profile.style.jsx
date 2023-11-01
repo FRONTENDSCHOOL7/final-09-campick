@@ -5,6 +5,7 @@ import share from "../../assets/icons/icon-share.svg";
 export const ProfileWrapper = styled.section`
   background-color: #fff;
   padding: 27px;
+  border-bottom: 0.5px solid #dbdbdb;
 `;
 export const ProfileInfoWrap = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ export const UserName = styled.h2`
   color: black;
   font-size: 17px;
   margin-top: 17px;
+  font-weight: 600;
 `;
 export const UserAccountName = styled.span`
   display: block;

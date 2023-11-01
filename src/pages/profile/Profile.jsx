@@ -48,7 +48,7 @@ export default function Profile() {
       <Header />
       <Main>
         <ProfileCard accountUsername={accountUsername} />
-        <ProfileProduct data={userProducts} />
+        <ProfileProduct data={userProducts} accountUsername={accountUsername}/>
         <UserPostList data={userPosts} accountUsername={accountUsername} />
       </Main>
       <Navbar profile />

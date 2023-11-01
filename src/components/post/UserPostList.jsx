@@ -32,7 +32,7 @@ export default function UserPostList({ data, setOpenModal }) {
       {listView ? (
         <section>
           {data.post &&
-            data.post.map(item => <PostItem key={item.id} data={item} />)}
+            data.post.map(item => <PostItem key={item.id} data={item} commentCount={item.commentCount}/>)}
         </section>
       ) : (
         <AlbumSection>

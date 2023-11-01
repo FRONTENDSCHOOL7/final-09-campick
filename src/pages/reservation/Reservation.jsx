@@ -61,6 +61,7 @@ export default function Reservation() {
                   data={item}
                   setProductId={setProductId}
                   setOpModal={setOpModal}
+                  title = {true}
                 />
               ))}
             </ProductSection>

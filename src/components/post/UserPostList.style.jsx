@@ -12,6 +12,7 @@ export const PostHeader = styled.header`
   gap: 16px;
   padding: 8px 16px;
   border-bottom: 1px solid var(--font-placeholder-color);
+  border-top: 1px solid var(--font-placeholder-color);
 `;
 export const ListBtn = styled.button`
   background: ${props =>

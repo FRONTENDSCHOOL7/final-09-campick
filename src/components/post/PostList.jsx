@@ -15,6 +15,7 @@ const PostSection = styled.section`
   }
 `;
 export default function PostList({ data }) {
+  console.log("Post",data)
   return (
     <PostSection>
       <HomePostTitle>친구들의 로그</HomePostTitle>

@@ -36,6 +36,7 @@ export const ProductName = styled.span`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-weight: 700;
 `;
 export const ProductPrice = styled.span`
   font-size: 14px;
