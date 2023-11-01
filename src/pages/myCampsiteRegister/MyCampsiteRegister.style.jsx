@@ -73,7 +73,7 @@ export const GoBackButton = styled.img`
 `;
 
 export const MapSelectedBtn = styled.button`
-  font-family: "TheJamsil5", sans-serif;
+  font-family: "TheJamsil", sans-serif;
   font-size: 14px;
   margin: 0 0 20px 0;
   padding: 13px 0 13px 0;

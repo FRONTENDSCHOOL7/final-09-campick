@@ -1,40 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import {
-  Title,
-  WrapForm,
-  InputStyle,
-  Incorrect,
-  Submitbutton,
-} from "../../components/form/form.style.jsx";
-import {
-  WrapperProfileSetup,
-  DescriptionText,
-  Upload,
-  ProfileImage,
-  ImageButton,
-  FormElement,
-  LabelStyle,
-  ImageInput,
-  LabelStyleImg,
-} from "./profileSetup.style.jsx";
+import React, { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { DescriptionText, FormElement, ImageButton, ImageInput, LabelStyle, LabelStyleImg, ProfileImage, Upload, WrapperProfileSetup } from '../profileSetup/profileSetup.style'
+import { Incorrect, InputStyle, Title, WrapForm } from '../../components/form/form.style'
+import { Submitbutton } from '../../components/form/form.style';
+import { CompleteToast, SizeOverToast, WrongExtensionToast } from '../../components/toast/Toast';
+import { useNavigate } from 'react-router';
 import profilePic from "../../assets/icons/profilePic.svg";
+import imageValidation from '../../imageValidation';
+import { accountNameValid } from '../../api/accountNameApi';
 import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
-import { Helmet } from "react-helmet-async";
-import imageValidation from "../../imageValidation.js";
-import { accountNameValid } from "../../api/accountNameApi.js";
-import { signup } from "../../api/signupApi.js";
-import { CompleteToast } from "../../components/toast/Toast.jsx";
-import {
-  WrongExtensionToast,
-  SizeOverToast,
-} from "./../../components/toast/Toast";
+import { editprofile } from '../../api/editProfileApi';
+import HeaderText from '../../components/header/HeaderText';
 
-const ProfileSetup = () => {
+export default function EditProfile() {
+
   const exptext = /^[A-Za-z0-9._]+$/;
-  const location = useLocation();
-  const email = location.state.email;
-  const password = location.state.password;
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
   const [validUserId, setValidUserId] = useState("");
@@ -45,6 +25,7 @@ const ProfileSetup = () => {
   const [showWrongExtensionToast, setShowWrongExtensionToast] = useState(false);
   const [showSizeOverToast, setShowSizeOverToast] = useState(false);
   const [showProfileEditToast, setShowProfileEditToast] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -128,8 +109,6 @@ const ProfileSetup = () => {
     const data = {
       user: {
         username: userName,
-        email: email,
-        password: password,
         accountname: userId,
         intro: intro,
         image: selectedImage,
@@ -137,25 +116,28 @@ const ProfileSetup = () => {
     };
 
     try {
-      await signup(data);
+      const profileRes = await editprofile(data);
       setShowProfileEditToast(true);
       setTimeout(() => {
         setShowProfileEditToast(false);
-        navigate("/");
+        console.log(profileRes)
+        localStorage.setItem("accountname",userId)
+        navigate("/profile");
       }, 1000);
     } catch (error) {
-      console.error("회원가입 실패");
+      console.error("프로필 수정 실패");
     }
   };
 
   return (
     <>
       <Helmet>
-        <title>Campick | 회원가입</title>
+        <title>Campick | 프로필 수정</title>
       </Helmet>
+      <HeaderText text = {""}/>
       <WrapperProfileSetup>
-        <Title>프로필 설정</Title>
-        <DescriptionText>나중에 언제든지 변경할 수 있습니다.</DescriptionText>
+        <Title>프로필 수정</Title>
+        <DescriptionText>변경사항을 입력해주세요.</DescriptionText>
 
         <WrapForm onSubmit={handleSubmit}>
           <Upload>
@@ -214,11 +196,11 @@ const ProfileSetup = () => {
             />
           </FormElement>
 
-          <Submitbutton disabled={disabled}>캠픽 하러가기</Submitbutton>
+          <Submitbutton disabled={disabled}>저장</Submitbutton>
         </WrapForm>
         <CompleteToast
           showCompleteToast={showProfileEditToast}
-          text="회원가입"
+          text="프로필 수정"
         />
         <WrongExtensionToast
           showWrongExtensionToast={showWrongExtensionToast}
@@ -226,7 +208,5 @@ const ProfileSetup = () => {
         <SizeOverToast showSizeOverToast={showSizeOverToast} />
       </WrapperProfileSetup>
     </>
-  );
-};
-
-export default ProfileSetup;
+  )
+}

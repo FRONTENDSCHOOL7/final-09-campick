@@ -26,26 +26,28 @@ export default React.memo(function UserPostList({ data, setLender }) {
     }
   };
   return (
-    <>
-      <PostSection>
-        <PostHeader>
-          <ListBtn liston={`${listView}`} onClick={handleListView} />
-          <AlbumBtn albumon={`${albumView}`} onClick={handleAlbumView} />
-        </PostHeader>
-        {listView ? (
-          <section>
-            {data.post &&
-              data.post.map(item => (
-                <PostItem key={item.id} data={item} setLender={setLender} />
-              ))}
-          </section>
-        ) : (
-          <AlbumSection>
-            {data.post &&
-              data.post.map(item => <AlbumList key={item.id} data={item} />)}
-          </AlbumSection>
-        )}
-      </PostSection>
-    </>
+    <PostSection>
+      <PostHeader>
+        <ListBtn liston={`${listView}`} onClick={handleListView} />
+        <AlbumBtn albumon={`${albumView}`} onClick={handleAlbumView} />
+      </PostHeader>
+      {listView ? (
+        <section>
+          {data.post &&
+            data.post.map(item => (
+              <PostItem
+                key={item.id}
+                data={item}
+                commentCount={item.commentCount}
+              />
+            ))}
+        </section>
+      ) : (
+        <AlbumSection>
+          {data.post &&
+            data.post.map(item => <AlbumList key={item.id} data={item} />)}
+        </AlbumSection>
+      )}
+    </PostSection>
   );
 });

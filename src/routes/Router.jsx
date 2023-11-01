@@ -14,6 +14,8 @@ import Search from "../pages/search/Search";
 import CommunityPost from "../pages/community/CommunityPost";
 import Error from "../pages/error/Error";
 import ViewPost from "../pages/viewPost/ViewPost";
+import EditProfile from "../pages/profile/EditProfile";
+import Chat from "../pages/chat/Chat";
 
 export default function Router() {
   return (
@@ -21,7 +23,11 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/homefeed" element={<Homefeed />} />
-        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/reservation" element={<Outlet />}>
+          <Route path="" element={<Reservation />} />
+          <Route path = "chat" element = {<Chat/>}/>
+        </Route>
+          
         <Route path="/account/" element={<Outlet />}>
           <Route path="" element={<Error />} />
           <Route path="*" element={<Error />} />
@@ -31,10 +37,13 @@ export default function Router() {
         </Route>
         <Route path="/profile/" element={<Outlet />}>
           <Route path="" element={<Profile />} />
+          <Route path="community/:post_id" element={<ViewPost />} />
           <Route path="*" element={<Error />} />
           <Route path="" element={<Profile />} />
+          <Route path = "edit" element={<EditProfile/>}/>
           <Route path=":accountUsername" element={<Outlet />}>
             <Route path="" element={<Profile />} />
+            
             <Route path=":follow/" element={<Followlist />} />
           </Route>
         </Route>
@@ -45,12 +54,12 @@ export default function Router() {
         </Route>
         <Route path="/community" element={<Community />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/community" element={<Outlet />}>
+        <Route path="/community/" element={<Outlet />}>
           <Route path="" element={<Community />} />
           <Route path="*" element={<Error />} />
           <Route path="" element={<Community />} />
           <Route path="communitypost" element={<CommunityPost />} />
-          <Route path=":post_id" element={<ViewPost />} />
+          <Route path=":post_id/" element={<ViewPost />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>

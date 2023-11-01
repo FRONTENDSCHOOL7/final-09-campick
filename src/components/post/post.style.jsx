@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const PostArticle = styled.article`
-  padding: 20px 16px;
+  padding: 16px 16px 10px 16px;
 
   border-bottom: 1px solid #c4c4c4;
 `;
@@ -41,6 +41,9 @@ export const DotImg = styled.img`
 export const ProfileContent = styled.pre`
   white-space: pre-wrap;
   word-break: break-all;
+  font-size: 14px;
+  line-height: 1.2;
+  color:#444;
 `;
 export const WrapperDiv = styled.div`
   display: flex;
@@ -66,9 +69,15 @@ export const Cover = styled.img`
 export const Icons = styled.div`
   color: var(--font-primary-color);
 `;
-export const Icon = styled.img`
-  width: 20px;
-  height: 20px;
+export const IconHeart = styled.img`
+  width: 16px;
+  height: 19px;
+  margin-right: 5px;
+  cursor: pointer;
+`;
+export const IconComment = styled.img`
+  width: 21px;
+  height: 21px;
   margin-right: 5px;
 `;
 export const IconSpan = styled.span`

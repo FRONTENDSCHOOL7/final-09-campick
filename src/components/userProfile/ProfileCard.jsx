@@ -77,11 +77,11 @@ export default function ProfileCard({ accountUsername }) {
         <UserAccountName>
           {userData && `@${userData.accountname}`}
         </UserAccountName>
-        <UserIntro>{userData && userData.intro}</UserIntro>
+        <UserIntro>" {userData && userData.intro} "</UserIntro>
       </ProfileIntro>
       {!accountUsername ? (
         <ProfileBtnWrap>
-          <ProfileBtn>프로필 수정</ProfileBtn>
+          <ProfileBtn to = {"edit"}>프로필 수정</ProfileBtn>
           <ProfileBtn to={"/product/upload"}>내 캠핑장 등록</ProfileBtn>
         </ProfileBtnWrap>
       ) : (

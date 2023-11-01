@@ -10,16 +10,24 @@ const PostSection = styled.section`
   border-radius: 10px;
   border: 0.5px solid #dbdbdb;
   margin: 0 8px 0 8px;
-  min-height: 300px;
+  flex-basis: 300px;
   &::-webkit-scrollbar {
     display: none;
   }
 `;
 export default function PostList({ data }) {
+  console.log("Post",data)
   return (
     <PostSection style={{ position: "relative" }}>
       <HomePostTitle>친구들의 로그</HomePostTitle>
-      {data && data.map(item => <PostItem key={item.id} data={item} />)}
+      {data &&
+        data.map(item => (
+          <PostItem
+            key={item.id}
+            data={item}
+            commentCount={item.commentCount}
+          />
+        ))}
     </PostSection>
   );
 }
