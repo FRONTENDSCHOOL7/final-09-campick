@@ -15,6 +15,7 @@ import CommunityPost from "../pages/community/CommunityPost";
 import Error from "../pages/error/Error";
 import ViewPost from "../pages/viewPost/ViewPost";
 import EditProfile from "../pages/profile/EditProfile";
+import Chat from "../pages/chat/Chat";
 
 export default function Router() {
   return (
@@ -22,7 +23,11 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/homefeed" element={<Homefeed />} />
-        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/reservation" element={<Outlet />}>
+          <Route path="" element={<Reservation />} />
+          <Route path = "chat" element = {<Chat/>}/>
+        </Route>
+          
         <Route path="/account/" element={<Outlet />}>
           <Route path="" element={<Error />} />
           <Route path="*" element={<Error />} />

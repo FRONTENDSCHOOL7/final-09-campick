@@ -74,6 +74,7 @@ export default function Reservation() {
 }
 const UserProductMain = styled.main`
   overflow-y: scroll;
+  background: var(--Gray-6, #f2f2f2);
   height: calc(100vh - 105px);
   &::-webkit-scrollbar {
     display: none;
@@ -81,8 +82,10 @@ const UserProductMain = styled.main`
   position: relative;
 `;
 const ProductSection = styled.section`
+  margin:10px 0 10px 0;
   display: flex;
   flex-direction: column;
+  gap:10px;
 `;
 const Screen = styled.div`
   background-color: rgba(0, 0, 0, 0.5);

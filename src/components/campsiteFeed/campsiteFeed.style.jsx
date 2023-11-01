@@ -6,9 +6,10 @@ export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  padding: 20px 0 20px 0;
+  padding: 20px 10px 20px 10px;
   gap: 10px;
   box-sizing: border-box;
+  
 `;
 
 export const WrapContents = styled.div`
