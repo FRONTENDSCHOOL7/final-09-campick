@@ -50,7 +50,7 @@ export const Title = styled.h1`
   display: block;
   text-align: center;
   font-size: 24px;
-  margin-bottom: ${({ mb }) => (mb === true ? `16px` : 0)};
+  margin-bottom: 16px;
 `;
 
 export const Submitbutton = styled.button`
@@ -66,13 +66,14 @@ export const Submitbutton = styled.button`
   border: none;
   margin-top: 14px;
   transition: 0.5s;
+  border: 2px solid white;
 
   cursor: ${({ disabled }) => (disabled === true ? "not-allowed" : "pointer")};
   &:hover {
     transition: 0.5s;
-    color: var(--primary-color);
-    background-color: white;
-    border: 3px solid var(--primary-color);
+    color: ${({ disabled }) => (disabled === true ? "" : "var(--primary-color)")};
+    background-color: ${({ disabled }) => (disabled === true ? "" : "white")};
+    border: 2px solid ${({ disabled }) => (disabled === true ? "" : "var(--primary-color)")};
   }
 `;
 

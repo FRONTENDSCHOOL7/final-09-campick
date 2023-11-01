@@ -54,7 +54,7 @@ export default function ProfileCard({ data, accountUsername, setLender }) {
       </ProfileIntro>
       {!accountUsername ? (
         <ProfileBtnWrap>
-          <ProfileBtn>프로필 수정</ProfileBtn>
+          <ProfileBtn to = {"edit"}>프로필 수정</ProfileBtn>
           <ProfileBtn to={"/product/upload"}>내 캠핑장 등록</ProfileBtn>
         </ProfileBtnWrap>
       ) : (
