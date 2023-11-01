@@ -13,8 +13,12 @@ import {
   ProductProfileWrapper,
   ProductPrice,
 } from "./ReservationModal.style";
+import { CompleteToast } from "../../components/toast/Toast";
+
 export default function ReservationModal({ productId }) {
   const [data, setData] = useState("");
+  const [showReservationToast, setShowReservationToast] = useState(false);
+
   useEffect(() => {
     const getProductData = async () => {
       const res = await productDetail(productId);
@@ -23,34 +27,52 @@ export default function ReservationModal({ productId }) {
     getProductData();
   }, [productId]);
   console.log(data);
+
+  const onClick = async e => {
+    e.preventDefault();
+    try {
+      setShowReservationToast(true);
+      setTimeout(() => {
+        setShowReservationToast(false);
+      }, 1000);
+    } catch (error) {
+      console.error("예약 실패");
+    }
+  };
+
   return (
     <ModalWrap>
       <ProductProfileWrapper>
-        <ProfileUsername>{data && data.author.username}님의  캠핑장 </ProfileUsername>
+        <ProfileUsername>
+          {data && data.author.username}님의 캠핑장{" "}
+        </ProfileUsername>
         <ProfileAccountname>
           @ {data && data.author.accountname}
         </ProfileAccountname>
       </ProductProfileWrapper>
       <ProductImg src={data && data.itemImage} />
-      
-      
+
       <ProductProfileWrapper>
-      <ProductName>{data && JSON.parse(data.itemName).name}</ProductName>
-      <ProductPrice>{data && data.price.toLocaleString()}원 ~</ProductPrice>
-      <ProductTagWrap>
+        <ProductName>{data && JSON.parse(data.itemName).name}</ProductName>
+        <ProductPrice>{data && data.price.toLocaleString()}원 ~</ProductPrice>
+        <ProductTagWrap>
           {data &&
             JSON.parse(data.itemName).labels.map(label => (
               <ProductTag>{label}</ProductTag>
             ))}
-        </ProductTagWrap></ProductProfileWrapper>
-      
+        </ProductTagWrap>
+      </ProductProfileWrapper>
+
       <div style={{ padding: "10px" }}>
-        <Link to = {"chat"}>
-          <Submitbutton style={{marginTop :"5px"}}>
+        <Link to={"chat"}>
+          <Submitbutton style={{ marginTop: "5px" }}>
             채팅으로 캠핑장 문의하기
-            </Submitbutton>
+          </Submitbutton>
         </Link>
-        <Submitbutton style={{marginTop :"5px"}} >캠핑장 예약하기</Submitbutton>
+        <Submitbutton onClick={onClick} style={{ marginTop: "5px" }}>
+          캠핑장 예약하기
+        </Submitbutton>
+        <CompleteToast showCompleteToast={showReservationToast} text={"예약"} />
       </div>
     </ModalWrap>
   );
