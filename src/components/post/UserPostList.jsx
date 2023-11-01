@@ -39,6 +39,7 @@ export default React.memo(function UserPostList({ data, setLender }) {
                 key={item.id}
                 data={item}
                 commentCount={item.commentCount}
+                setLender={setLender}
               />
             ))}
         </section>
