@@ -2,13 +2,16 @@ const BASE_URL = "https://api.mandarin.weniv.co.kr";
 
 export const getCommentList = async post_id => {
   try {
-    const response = await fetch(`${BASE_URL}/post/${post_id}/comments`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${BASE_URL}/post/${post_id}/comments/?limit=infinity`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
     const json = await response.json();
     if (json && Array.isArray(json.comments)) {
       return json.comments;

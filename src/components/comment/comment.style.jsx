@@ -5,7 +5,6 @@ export const WrapComment = styled.div`
   align-items: flex-start;
   gap: 17px;
   flex-shrink: 0;
-  margin-bottom: 25px;
 `;
 
 export const WrapCommentContent = styled.div`
