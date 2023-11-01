@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import iconDot from "../../assets/icons/icon-dot.svg";
-import heart from "../../assets/icons/heart.svg";
-import message from "../../assets/icons/icon-message-circle.svg";
+import iconHeartedInactive from "../../assets/icons/heartInactive.png";
+import iconHeartedActive from "../../assets/icons/heartActive.png";
+import comment from "../../assets/icons/icon-comment.svg";
 import {
   PostArticle,
   ProfileDiv,
@@ -16,10 +17,12 @@ import {
   ImgBox,
   Cover,
   Icons,
-  Icon,
+  IconHeart,
+  IconComment,
   IconSpan,
   PostData,
 } from "./post.style";
+import { heart, unheart } from "../../api/viewpostApi";
 import {
   DarkBackground,
   ModalWrap,
@@ -31,7 +34,10 @@ import {
   CheckConfirm,
   ModalText,
 } from "../modal/Modal.style";
+
 export default function PostItem({ data, commentCount }) {
+  const [isHearted, setIsHearted] = useState(false);
+  const [heartCount, setHeartCount] = useState(data.heartCount);
   const [isPostModal, setIsPostModal] = useState(false);
   const [isPostDeleteCheckModal, setIsPostDeleteCheckModal] = useState(false);
   const [isReportModal, setIsReportModal] = useState(false);
@@ -40,6 +46,41 @@ export default function PostItem({ data, commentCount }) {
     const options = { year: "numeric", month: "numeric", day: "numeric" };
     return date.toLocaleDateString("ko-KR", options);
   };
+
+  const heartedActive = async () => {
+    try {
+      const res = await heart(data.id);
+      console.log(res.hearted);
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
+
+  const heartedInactive = async () => {
+    try {
+      const res = await unheart(data.id);
+      console.log(res.hearted);
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
+
+  const handleHeartClick = () => {
+    if (isHearted) {
+      heartedInactive();
+      setIsHearted(false);
+      setHeartCount(heartCount - 1);
+    } else {
+      heartedActive();
+      setIsHearted(true);
+      setHeartCount(heartCount + 1);
+    }
+  };
+
+  useEffect(() => {
+    setIsHearted(data.hearted);
+  }, [data.hearted]);
+
   const handlePostModalOptionClick = () => {
     data.author.accountname === localStorage.getItem("accountname")
       ? setIsPostModal(true)
@@ -54,6 +95,7 @@ export default function PostItem({ data, commentCount }) {
   const handlePostDeleteCheckModalClose = () => {
     setIsPostDeleteCheckModal(false);
   };
+
   return (
     <>
       <PostArticle>
@@ -81,14 +123,18 @@ export default function PostItem({ data, commentCount }) {
           <Cover src={data && data.image} alt="업로드한 이미지" />
         </ImgBox>
         <WrapperDiv>
-          <Icons>
-            <Icon src={heart} alt="좋아요 아이콘"></Icon>
-            <IconSpan>1</IconSpan>
-            <Link>
-              <Icon src={message} alt="댓글 이동 버튼"></Icon>
-            </Link>
-            <IconSpan>{commentCount}</IconSpan>
-          </Icons>
+         <Icons>
+          <IconHeart
+            src={isHearted ? iconHeartedActive : iconHeartedInactive}
+            alt="좋아요 아이콘"
+            onClick={handleHeartClick}
+          ></IconHeart>
+          <IconSpan>{heartCount}</IconSpan>
+          <Link to={`../../community/${data && data.id}`}>
+            <IconComment src={comment} alt="댓글 이동 버튼"></IconComment>
+          </Link>
+          <IconSpan>{commentCount}</IconSpan>
+        </Icons>
           <PostData>{data && formatCreatedAt(data.createdAt)}</PostData>
         </WrapperDiv>
       </PostArticle>

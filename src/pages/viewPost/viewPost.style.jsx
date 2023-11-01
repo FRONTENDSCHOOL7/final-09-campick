@@ -9,7 +9,7 @@ export const WrapViewPost = styled.section`
 export const CommentSection = styled.section`
   width: 100%;
   height: auto;
-  padding: 20px 16px 60px;
+  padding: 16px 16px 60px;
   box-sizing: border-box;
 `;
 
@@ -41,10 +41,9 @@ export const CommentInputArea = styled.textarea`
   font-size: 14px;
   overflow: hidden;
   flex-grow: 1;
-  /* padding-top: 20px; */
   max-height: 30px;
-  overflow-y: scroll;
-  line-height: 2.5;
+  overflow: hidden;
+  line-height: 2;
 
   &::placeholder {
     font-size: 14px;
