@@ -1,22 +1,31 @@
 import styled from "styled-components";
 
 export const SearchInputStyle = styled.input`
-  font-family: "TheJamsil5", sans-serif;
+  font-family: "TheJamsil", sans-serif;
   width: 300px;
   height: 32px;
   border-radius: 32px;
   background: var(--Gray-6, #f2f2f2);
   border: 0;
   padding-left: 16px;
+  &:focus-visible{
+    outline-color: var(--primary-color);
+  }
+  
 `;
 
 export const SearchResultWrapper = styled.div`
-  width: calc(100% - 32px);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px 16px 20px 16px;
+    width: 100%;
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 16px 20px 16px;
+    box-sizing: border-box;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const SearchResultForm = styled.form`

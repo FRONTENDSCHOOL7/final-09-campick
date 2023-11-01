@@ -109,7 +109,8 @@ export default function PostItem({ data, commentCount, setLender }) {
           <WrapperDiv>
             <ProfileNavs>
               <span>{data && data.author.username}</span>
-              <span>{data && data.author.accountname}</span>
+              <span>
+                @ {data && data.author.accountname}</span>
             </ProfileNavs>
             <ModalBtn onClick={handlePostModalOptionClick}>
               <DotImg src={iconDot} alt="아이콘 버튼 " />
