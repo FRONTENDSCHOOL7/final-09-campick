@@ -53,17 +53,8 @@ export default function ViewPost() {
       const response = await uploadComment(post_id, commentContent);
 
       if (response && response.comment) {
-        setTimeout(() => {
-          setComments(prevComments => [...prevComments, response.comment]);
-        }, 300); // 새로운 댓글 리스트
-        {
-          setCommentContent("");
-        } // 입력창 초기화
-
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: "smooth",
-        });
+        setComments(prevComments => [response.comment, ...prevComments]);
+        setCommentContent(""); // 입력창 초기화
         setCommentCount(prevCount => prevCount + 1);
       }
     } catch (error) {
@@ -111,15 +102,13 @@ export default function ViewPost() {
         {data && <PostItem data={data} commentCount={commentCount} location = {data && JSON.parse(data.content).location}/>}
         <CommentSection>
           {comments &&
-            [...comments]
-              .reverse()
-              .map(comment => (
-                <Comment
-                  key={comment.id}
-                  comment={comment}
-                  currentUsername={myAccountName}
-                />
-              ))}
+            [...comments].map(comment => (
+              <Comment
+                key={comment.id}
+                comment={comment}
+                currentUsername={myAccountName}
+              />
+            ))}
         </CommentSection>
         
 
@@ -136,7 +125,7 @@ export default function ViewPost() {
           />
           <CommentUploadButton
             onClick={handleCommentUpload}
-            disabled={!isActive || isUploading || commentContent.length === 0}
+            disabled={!commentContent.trim()}
           >
             게시
           </CommentUploadButton>
