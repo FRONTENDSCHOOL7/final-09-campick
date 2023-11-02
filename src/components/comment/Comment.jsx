@@ -15,7 +15,17 @@ import {
 export default function Comment({ comment, currentUsername }) {
   const { author, createdAt, content } = comment;
   moment.locale("ko");
-  const fromNow = moment(createdAt).fromNow();
+
+  const formatCommentTime = date => {
+    const now = moment();
+    const commentDate = moment(date);
+
+    if (now.diff(commentDate, "seconds", true) < 1) {
+      return "몇 초 전";
+    } else {
+      return commentDate.fromNow();
+    }
+  };
 
   const profileLink = `/${
     author.accountname === currentUsername
@@ -37,7 +47,7 @@ export default function Comment({ comment, currentUsername }) {
             <Link to={profileLink}>
               <CommentFollowerName>{author.username}</CommentFollowerName>
             </Link>
-            <CommentTime>{fromNow}</CommentTime>
+            <CommentTime>{formatCommentTime(createdAt)}</CommentTime>
           </WrapCommentFollower>
           <CommentText>{content}</CommentText>
         </WrapCommentContent>
