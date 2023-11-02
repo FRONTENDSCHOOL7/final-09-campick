@@ -14,7 +14,6 @@ import {
 
 export default function Comment({ comment, currentUsername }) {
   const { author, createdAt, content } = comment;
-
   moment.locale("ko");
   const fromNow = moment(createdAt).fromNow();
 
