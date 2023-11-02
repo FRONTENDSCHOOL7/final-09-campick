@@ -23,6 +23,7 @@ import {
   SizeOverToast,
   WrongExtensionToast,
 } from "../../components/toast/Toast";
+import { MapSelectedBtn } from "../myCampsiteRegister/MyCampsiteRegister.style";
 
 export default function CommunityPost() {
   const [location, setLocation] = useState("");
@@ -143,9 +144,9 @@ export default function CommunityPost() {
           </FileUploadContainer>
           {warnings.image && <Incorrect>{warnings.image}</Incorrect>}
         </WrapperMyCampsiteInput>
-        <Submitbutton onClick={openModal} style={{ margin: "0" }}>
+        <MapSelectedBtn onClick={openModal} style={{ margin: "0" }}>
           지도에서 위치 선택하기
-        </Submitbutton>
+        </MapSelectedBtn>
         <WrapperMyCampsiteInput>
           <LabelStyle htmlFor="campsite-register-location">캠핑장소</LabelStyle>
           <InputStyle

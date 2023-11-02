@@ -60,6 +60,7 @@ export const ImgBox = styled.div`
   border-radius: 10px;
   overflow: hidden;
   margin: 10px 0px;
+  position: relative;
 `;
 export const Cover = styled.img`
   width: 100%;

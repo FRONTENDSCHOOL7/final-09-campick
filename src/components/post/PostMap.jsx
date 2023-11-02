@@ -1,12 +1,12 @@
 import React from 'react'
-import { PointBlackIcon, PostMapWrapper } from './PostMap.style'
-import pointblack from "../../assets/image/pointblack.png";
+import { PointIcon, PostMapWrapper } from './PostMap.style'
+import point from "../../assets/image/point.png";
 
 
 export default function PostMap({location}) {
   return (
     <PostMapWrapper>
-      <PointBlackIcon src={pointblack} alt="pointIcon" />
+      <PointIcon src={point} alt="pointIcon" />
       {location}
     </PostMapWrapper>
   )

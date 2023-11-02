@@ -2,20 +2,18 @@ import styled from "styled-components";
 
 export const PostMapWrapper = styled.div`
   display: flex;
-  font-weight: 600;
+
   align-items: center;
-  font-size: 13px;
-  padding: 7px 0 0 10px;
+  font-size: 10px;
   cursor: pointer;
-  transition: 0.3s;
-  transform-origin: left center;
-  &:hover{
-    transform: scale(1.1);
-    transition: 0.3s;
-  }
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  color: #FFF;
+  z-index: 100;
 `; 
-export const PointBlackIcon = styled.img`
-  width : 15px;
-  height : 15px;
+export const PointIcon = styled.img`
+  width : 12px;
+  height : 14px;
   margin-right: 5px;
 `;

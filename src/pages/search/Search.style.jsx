@@ -20,7 +20,7 @@ export const SearchResultWrapper = styled.div`
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 13px;
     padding: 20px 16px 20px 16px;
     box-sizing: border-box;
   &::-webkit-scrollbar {
@@ -31,11 +31,10 @@ export const SearchResultWrapper = styled.div`
 export const SearchResultForm = styled.form`
   width: calc(100% - 8px);
   height: 50px;
-  padding: 3px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
-  border: 1px solid #dbdbdb;
-  border-radius: 10px;
+  border-bottom: 1px solid #f4f4f4;
   cursor: pointer;
 `;
 
