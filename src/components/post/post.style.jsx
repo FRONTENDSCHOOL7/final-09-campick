@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { Link } from "react-router-dom";
 
 export const PostArticle = styled.article`
@@ -43,7 +43,7 @@ export const ProfileContent = styled.pre`
   word-break: break-all;
   font-size: 14px;
   line-height: 1.2;
-  color:#444;
+  color: #444;
 `;
 export const WrapperDiv = styled.div`
   display: flex;
@@ -69,13 +69,30 @@ export const Cover = styled.img`
 export const Icons = styled.div`
   color: var(--font-primary-color);
 `;
+
+const pulse = keyframes`0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
 export const IconHeart = styled.img`
   width: 16px;
   height: 19px;
   margin-right: 5px;
   cursor: pointer;
-  
+  animation: ${props =>
+    props.isClicked
+      ? css`
+          ${pulse} 0.5s
+        `
+      : "none"}; // css 헬퍼 함수로 감싸줌
 `;
+
 export const IconComment = styled.img`
   width: 21px;
   height: 21px;

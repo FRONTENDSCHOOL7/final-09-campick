@@ -10,7 +10,6 @@ import {
   CommentProfileImage,
   CommentInputArea,
 } from "../viewPost/viewPost.style";
-import { ProfileNav } from "../../components/post/post.style";
 import { Helmet } from "react-helmet-async";
 import { viewPost } from "../../api/viewpostApi";
 import { myInfo } from "../../api/myInfoApi";
@@ -54,8 +53,8 @@ export default function ViewPost() {
 
       if (response && response.comment) {
         setTimeout(() => {
-          setComments(prevComments => [response.comment, ...prevComments]);
-        }, 500); // 새로운 댓글 리스트
+          setComments(prevComments => [...prevComments, response.comment]);
+        }, 300); // 새로운 댓글 리스트
         {
           setCommentContent("");
         } // 입력창 초기화
@@ -72,7 +71,6 @@ export default function ViewPost() {
       setIsUploading(false); // 업로드 종료
     }
   };
-  console.log(comments);
 
   useEffect(() => {
     loadMyInfo();

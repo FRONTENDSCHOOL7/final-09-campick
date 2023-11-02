@@ -41,6 +41,7 @@ export default function PostItem({ data, commentCount, setLender }) {
   const [isPostDeleteCheckModal, setIsPostDeleteCheckModal] = useState(false);
   const [isReportModal, setIsReportModal] = useState(false);
   const [deleteMsg, setDeleteMsg] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
   const formatCreatedAt = createdAt => {
     const date = new Date(createdAt);
     const options = { year: "numeric", month: "numeric", day: "numeric" };
@@ -75,6 +76,8 @@ export default function PostItem({ data, commentCount, setLender }) {
       setIsHearted(true);
       setHeartCount(heartCount + 1);
     }
+    setIsClicked(true);
+    setTimeout(() => setIsClicked(false), 500);
   };
 
   useEffect(() => {
@@ -128,6 +131,7 @@ export default function PostItem({ data, commentCount, setLender }) {
               src={isHearted ? iconHeartedActive : iconHeartedInactive}
               alt="좋아요 아이콘"
               onClick={handleHeartClick}
+              isClicked={isClicked}
             ></IconHeart>
             <IconSpan>{heartCount}</IconSpan>
             <Link to={`../../community/${data && data.id}`}>
