@@ -15,6 +15,7 @@ import { viewPost } from "../../api/viewpostApi";
 import { myInfo } from "../../api/myInfoApi";
 import { uploadComment, getCommentList } from "../../api/commentApi";
 import HeaderText from "../../components/header/HeaderText";
+import PostMap from "../../components/post/PostMap";
 
 export default function ViewPost() {
   const { post_id } = useParams();
@@ -97,7 +98,8 @@ export default function ViewPost() {
       </Helmet>
       <HeaderText text={""} />
       <WrapViewPost>
-        {data && <PostItem data={data} commentCount={commentCount} />}
+        
+        {data && <PostItem data={data} commentCount={commentCount} location = {data && JSON.parse(data.content).location}/>}
         <CommentSection>
           {comments &&
             [...comments].map(comment => (
@@ -108,6 +110,7 @@ export default function ViewPost() {
               />
             ))}
         </CommentSection>
+        
 
         <WrapCommentWrite>
           <CommentProfileImage

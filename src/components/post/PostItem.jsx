@@ -34,7 +34,9 @@ import {
 } from "../modal/Modal.style";
 import { userpostDelete } from "../../api/userpostDeleteApi";
 import { DeletePostToast } from "../../components/toast/Toast";
-export default function PostItem({ data, commentCount, setLender }) {
+import PostMap from "./PostMap";
+import { GradientOverlay } from "../community/Community.style";
+export default function PostItem({ data, commentCount, setLender, location }) {
   const [isHearted, setIsHearted] = useState(false);
   const [heartCount, setHeartCount] = useState(data.heartCount);
   const [isPostModal, setIsPostModal] = useState(false);
@@ -102,6 +104,7 @@ export default function PostItem({ data, commentCount, setLender }) {
   return (
     <>
       <PostArticle>
+        
         <ProfileDiv>
           <ProfileNav to={`/profile/${data && data.author.accountname}`}>
             <ProfileImg
@@ -112,19 +115,25 @@ export default function PostItem({ data, commentCount, setLender }) {
           <WrapperDiv>
             <ProfileNavs>
               <span>{data && data.author.username}</span>
-              <span>{data && data.author.accountname}</span>
+              <span>
+                @ {data && data.author.accountname}</span>
             </ProfileNavs>
             <ModalBtn onClick={handlePostModalOptionClick}>
               <DotImg src={iconDot} alt="아이콘 버튼 " />
             </ModalBtn>
           </WrapperDiv>
         </ProfileDiv>
+        
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
         <ImgBox>
+        
           <Cover src={data && data.image} alt="업로드한 이미지" />
+          <GradientOverlay/>
+          <PostMap location = {location}/>
         </ImgBox>
+        
         <WrapperDiv>
           <Icons>
             <IconHeart

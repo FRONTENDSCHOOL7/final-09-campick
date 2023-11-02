@@ -40,7 +40,7 @@ export const WrapperAddress = styled.div`
 `;
 
 export const AddressInputStyle = styled.input`
-  font-family: "TheJamsil5", sans-serif;
+  font-family: "TheJamsil", sans-serif;
   border: none;
   padding: 6px 0 6px 6px;
   border-bottom: 1px solid #dbdbdb;
