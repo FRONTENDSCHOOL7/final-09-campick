@@ -10,6 +10,7 @@ import { followList } from "../../api/followListApi";
 import { productList } from "../../api/productListApi";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router";
+import Splash from "../splash/Splash";
 import Header from "../../components/header/Header";
 
 export default function Homefeed() {
@@ -31,6 +32,7 @@ export default function Homefeed() {
     const accountname = localStorage.getItem("accountname");
     async function getFollowingList() {
       setFollowingList(await followList(accountname, "following"));
+      setIsLoading(false);
     }
     getFollowingList();
   }, []);
@@ -52,6 +54,8 @@ export default function Homefeed() {
       <Helmet>
         <title>Campick | 홈화면</title>
       </Helmet>
+      {isLoading ? <Splash /> : followingList.length === 0}
+
       <Header />
       <Home>
         <MainSlider />
