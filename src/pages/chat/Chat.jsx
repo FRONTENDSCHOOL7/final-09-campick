@@ -1,3 +1,4 @@
+import React, { useRef, useState, useEffect } from "react";
 import {
   WrapCommentWrite,
   CommentInputArea,
@@ -19,9 +20,47 @@ import {
   HomeContainer,
   ChatTitle,
 } from "./Chat.style";
-import chat from "../../assets/icons/chat.svg";
+import uploadPic from "../../assets/icons/img-button.svg";
 
 export default function Chat() {
+  const [messages, setMessages] = useState([]);
+  const [userInput, setUserInput] = useState("");
+  const messagesEndRef = useRef(null);
+
+  const handleInputChange = e => {
+    setUserInput(e.target.value);
+  };
+
+  const handleSendMessage = () => {
+    // 현재 시간을 HH:MM 형태로 가져오기
+    const currentTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    const newMessage = { text: userInput, time: currentTime, sender: "right" };
+    // 메시지 목록에 새 메시지 추가
+    setMessages([...messages, newMessage]);
+    setUserInput("");
+  };
+
+  const handleKeyDown = e => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      setTimeout(() => {
+        handleSendMessage();
+      }, 300);
+    }
+  };
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom(); // 컴포넌트가 업데이트될 때마다 스크롤
+  }, [messages]);
+
   return (
     <>
       <Helmet>
@@ -47,12 +86,33 @@ export default function Chat() {
               <Time>15:23</Time>
             </MessageRow2>
           </Column>
+          {messages.map((message, index) => (
+            <Column key={index}>
+              <MessageRow>
+                <Time>{message.time}</Time>
+                <MessageText>
+                  <ChatTextRight>{message.text}</ChatTextRight>
+                </MessageText>
+              </MessageRow>
+            </Column>
+          ))}
+          <div ref={messagesEndRef} />{" "}
         </ChatBox>
       </HomeContainer>
       <WrapCommentWrite>
-        <CommentProfileImage src={chat} />
-        <CommentInputArea placeholder="메세지 입력하기..." />
-        <CommentUploadButton disabled>전송</CommentUploadButton>
+        <CommentProfileImage src={uploadPic} />
+        <CommentInputArea
+          placeholder="메세지 입력하기..."
+          value={userInput}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+        />
+        <CommentUploadButton
+          onClick={handleSendMessage}
+          disabled={!userInput.trim()}
+        >
+          전송
+        </CommentUploadButton>
       </WrapCommentWrite>
     </>
   );
