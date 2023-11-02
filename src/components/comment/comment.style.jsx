@@ -3,14 +3,15 @@ import styled from "styled-components";
 export const WrapComment = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 17px;
+  gap: 15px;
   flex-shrink: 0;
+  margin-bottom: 20px;
 `;
 
 export const WrapCommentContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 6px;
   flex-shrink: 0;
 `;
 
@@ -29,14 +30,12 @@ export const CommentFollowerProfileImage = styled.img`
   border-radius: 50%;
   object-fit: cover;
   align-self: flex-start;
-  cursor: pointer;
-  margin-top: 1px;
+  margin-top: 2px;
 `;
 
 export const CommentFollowerName = styled.p`
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
 `;
 export const CommentTime = styled.p`
   font-size: 10px;
