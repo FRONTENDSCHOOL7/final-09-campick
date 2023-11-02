@@ -4,6 +4,11 @@ export const WrapViewPost = styled.section`
   width: 100%;
   position: relative;
   box-sizing: border-box;
+  overflow-y: scroll;
+  height: calc(100vh - 60px);
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const CommentSection = styled.section`
