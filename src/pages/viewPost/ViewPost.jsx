@@ -72,6 +72,13 @@ export default function ViewPost() {
     }
   };
 
+  const handleKeyDown = e => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleCommentUpload();
+    }
+  };
+
   useEffect(() => {
     loadMyInfo();
   }, []);
@@ -121,6 +128,7 @@ export default function ViewPost() {
           <CommentInputArea
             value={commentContent}
             onChange={handlecommentContentChange}
+            onKeyDown={handleKeyDown}
             placeholder="댓글을 입력하세요..."
           />
           <CommentUploadButton
