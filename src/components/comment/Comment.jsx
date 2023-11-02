@@ -10,20 +10,28 @@ import {
   CommentTime,
   WrapCommentFollower,
 } from "./comment.style";
-
+import { Link } from "react-router-dom";
 export default function Comment({ comment }) {
   const { author, createdAt, content } = comment;
-
+  const myAccountname = localStorage.getItem("accountname");
   moment.locale("ko");
   const fromNow = moment(createdAt).fromNow();
 
   return (
     <>
       <WrapComment>
-        <CommentFollowerProfileImage
-          src={author.image}
-          alt={`${author.username}의 프로필 이미지입니다.`}
-        />
+        <Link
+          to={
+            myAccountname === author.accountname
+              ? `../../profile`
+              : `../../profile/${author.accountname}`
+          }
+        >
+          <CommentFollowerProfileImage
+            src={author.image}
+            alt={`${author.username}의 프로필 이미지입니다.`}
+          />
+        </Link>
         <WrapCommentContent>
           <WrapCommentFollower>
             <CommentFollowerName>{author.username}</CommentFollowerName>

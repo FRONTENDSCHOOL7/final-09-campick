@@ -78,6 +78,11 @@ export default function MyCampsiteRegister() {
       case "campsite-register-price":
         // 숫자만 입력되도록 검사
         const newValue = e.target.value.replace(/[^0-9]/g, "");
+        if (parseInt(newValue) > 100000000) {
+          e.target.placeholder = "1억원 이상은 입력할 수 없습니다.";
+          setPrice("");
+          break;
+        }
         setPrice(formatCurrency(newValue));
         break;
       case "campsite-register-company-name":
@@ -106,15 +111,16 @@ export default function MyCampsiteRegister() {
   };
 
   const handleLabelClick = label => {
-    
     if (selectedLabels.includes(label)) {
       // 라벨이 이미 선택되어 있으면 배열에서 제거
       setSelectedLabels(prevLabels => prevLabels.filter(l => l !== label));
       return;
-    } if (selectedLabels.length >= 3 ){
-      console.log("최대 3개의 라벨만 선택할 수 있습니다.")
+    }
+    if (selectedLabels.length >= 3) {
+      console.log("최대 3개의 라벨만 선택할 수 있습니다.");
       return;
-    }setSelectedLabels(prevLabels => [...prevLabels, label]);
+    }
+    setSelectedLabels(prevLabels => [...prevLabels, label]);
   };
 
   async function handleSubmitButton() {

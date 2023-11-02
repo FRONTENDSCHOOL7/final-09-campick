@@ -104,15 +104,15 @@ export default function ViewPost() {
         {data && <PostItem data={data} commentCount={commentCount} />}
         <CommentSection>
           {comments &&
-            [...comments].reverse().map(comment => (
-              <ProfileNav to={`/profile/${comment.author.accountname}`}>
+            [...comments]
+              .reverse()
+              .map(comment => (
                 <Comment
                   key={comment.id}
                   comment={comment}
                   currentUsername={myAccountName}
                 />
-              </ProfileNav>
-            ))}
+              ))}
         </CommentSection>
 
         <WrapCommentWrite>
