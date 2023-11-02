@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/ko";
 import {
@@ -11,22 +12,31 @@ import {
   WrapCommentFollower,
 } from "./comment.style";
 
-export default function Comment({ comment }) {
+export default function Comment({ comment, currentUsername }) {
   const { author, createdAt, content } = comment;
-
   moment.locale("ko");
   const fromNow = moment(createdAt).fromNow();
+
+  const profileLink = `/${
+    author.accountname === currentUsername
+      ? "profile"
+      : `profile/${author.accountname}`
+  }`;
 
   return (
     <>
       <WrapComment>
-        <CommentFollowerProfileImage
-          src={author.image}
-          alt={`${author.username}의 프로필 이미지입니다.`}
-        />
+        <Link to={profileLink}>
+          <CommentFollowerProfileImage
+            src={author.image}
+            alt={`${author.username}의 프로필 이미지입니다.`}
+          />
+        </Link>
         <WrapCommentContent>
           <WrapCommentFollower>
-            <CommentFollowerName>{author.username}</CommentFollowerName>
+            <Link to={profileLink}>
+              <CommentFollowerName>{author.username}</CommentFollowerName>
+            </Link>
             <CommentTime>{fromNow}</CommentTime>
           </WrapCommentFollower>
           <CommentText>{content}</CommentText>

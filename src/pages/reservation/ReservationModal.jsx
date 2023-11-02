@@ -34,6 +34,7 @@ export default function ReservationModal({ productId }) {
       setShowReservationToast(true);
       setTimeout(() => {
         setShowReservationToast(false);
+        window.location.reload();
       }, 1000);
     } catch (error) {
       console.error("예약 실패");

@@ -2,12 +2,12 @@ import styled from "styled-components";
 import socialImage from "../../assets/image/social_login_sprites.png";
 
 export const BtnWrap = styled.div`
-  /* background-color: black; */
   border-radius: 20px 20px 0 0;
   padding: 50px 34px;
 `;
 
 export const SocialLoginButton = styled.button`
+  font-family: "TheJamsil";
   display: block;
   width: 100%;
   padding: 12px;
