@@ -47,13 +47,13 @@ export const UploadLink = styled(Link)`
   bottom: 8%;
   margin-left: 310px;
   z-index: 50;
-  transition: transform 0.4s, box-shadow 0.4s;
+  transition: transform 0.4s;
   padding-top: 16px;
 
   &:hover {
     transform: scale(108%); // 더 부드러운 확대
     transition: transform 0.4s;
-    box-shadow: 0 5px 18px -7px rgba(17, 44, 6, 1);
+
     border-radius: 50%;
     z-index: 100;
   }
