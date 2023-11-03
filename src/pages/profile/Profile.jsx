@@ -37,6 +37,7 @@ export default function Profile() {
         const productRes = await productList(accountUsername, 10);
         setUserPosts(postRes);
         setUserProducts(productRes);
+        setIsLoading(false);
       };
       getUserInfo();
     } else {

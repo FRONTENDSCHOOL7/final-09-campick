@@ -45,7 +45,7 @@ export const UploadLink = styled(Link)`
   border-radius: 50%; /* 50%로 설정하여 둥글게 처리 */
   position: fixed;
   bottom: 8%;
-  margin-left: 290px;
+  margin-left: 310px;
   z-index: 50;
   transition: transform 0.4s, box-shadow 0.4s;
   padding-top: 16px;
