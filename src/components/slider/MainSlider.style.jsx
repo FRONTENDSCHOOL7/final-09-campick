@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const SliderWrapper = styled.section`
   min-height: 186.998px;
+  margin-top: 10px;
   .swiper-pagination-bullet-active {
-  background-color: var(--primary-color);
-}
+    background-color: var(--primary-color);
+  }
 `;
 
 export const SliderItem = styled.img`

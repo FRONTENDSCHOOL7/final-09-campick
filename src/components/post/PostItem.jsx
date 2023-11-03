@@ -109,7 +109,6 @@ export default function PostItem({ data, commentCount, setLender, location }) {
   return (
     <>
       <PostArticle>
-        
         <ProfileDiv>
           <ProfileNav to={`/profile/${data && data.author.accountname}`}>
             <ProfileImg
@@ -120,18 +119,18 @@ export default function PostItem({ data, commentCount, setLender, location }) {
           <WrapperDiv>
             <ProfileNavs>
               <span>{data && data.author.username}</span>
-              <span>
-                @ {data && data.author.accountname}</span>
+              <span>@ {data && data.author.accountname}</span>
             </ProfileNavs>
             <ModalBtn onClick={handlePostModalOptionClick}>
               <DotImg src={iconDot} alt="아이콘 버튼 " />
             </ModalBtn>
           </WrapperDiv>
         </ProfileDiv>
-        
+
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
+        <Link to={`../community/${data.id}`}>
         <ImgBox>
         <Swiper
         slidesPerView={1}
@@ -150,7 +149,7 @@ export default function PostItem({ data, commentCount, setLender, location }) {
         
         </Swiper>
         </ImgBox>
-        
+        </Link>
         <WrapperDiv>
           <Icons>
             <IconHeart
