@@ -15,7 +15,6 @@ import { viewPost } from "../../api/viewpostApi";
 import { myInfo } from "../../api/myInfoApi";
 import { uploadComment, getCommentList } from "../../api/commentApi";
 import HeaderText from "../../components/header/HeaderText";
-import PostMap from "../../components/post/PostMap";
 
 export default function ViewPost() {
   const { post_id } = useParams();
