@@ -117,7 +117,11 @@ export default function CommunityPost() {
           closeModal={closeModal}
           onAddressSelected={handleAddressSelected}
         />
-        <SelectImages warnings = {warnings}/>
+        <SelectImages 
+        warnings = {warnings} 
+        images = {images} 
+        onUpload = {onUpload} 
+        onDelete = {onDelete} />
         
         <MapSelectedBtn onClick={openModal} style={{ margin: "0" }}>
           지도에서 위치 선택하기

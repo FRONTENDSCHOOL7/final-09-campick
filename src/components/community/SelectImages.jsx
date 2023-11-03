@@ -7,10 +7,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import 'swiper/css/scrollbar';
 import { Scrollbar } from 'swiper/modules';
-import useImagesUpload from '../../hooks/useImagesUpload'
 
-export default function SelectImages({warnings}) {
-  const { images, onUpload, onDelete } = useImagesUpload();
+export default function SelectImages({warnings, images, onUpload, onDelete}) {
+  
   
   const handleImageInputChange = e => {
     if (!e.target.files || e.target.files.length === 0) {

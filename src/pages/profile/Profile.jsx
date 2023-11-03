@@ -71,6 +71,7 @@ export default function Profile() {
   const handleLogoutModalClose = () => {
     setIsCheckModal(false);
   };
+
   return (
     <>
       <Helmet>
@@ -84,11 +85,12 @@ export default function Profile() {
           <>
             <ProfileCard accountUsername={accountUsername} />
             <ProfileProduct data={userProducts} />
+            {userPosts.length !== 0 ?
             <UserPostList
               data={userPosts}
               accountUsername={accountUsername}
               setLender={setLender}
-            />
+            />: null}
           </>
         )}
       </Main>
