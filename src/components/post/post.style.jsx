@@ -57,15 +57,31 @@ export const ModalBtn = styled.button`
 
 export const ImgBox = styled.div`
   width: 100%;
-  border-radius: 10px;
   overflow: hidden;
   margin: 10px 0px;
   position: relative;
+  .swiper-button-prev,
+  .swiper-button-next{
+    color: #FFF;
+    transform:scale(0.8) ;
+    transition: 0.2s;
+    opacity: 0.6;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  
+    &:hover{
+      transform:scale(0.9) ;
+      transition: 0.2s;
+      opacity: 1.5;
+    }
+  }
+
 `;
 export const Cover = styled.img`
   width: 100%;
-  height: auto;
+  height: 330px;
+  border-radius: 10px;
   object-fit: cover;
+  
 `;
 export const Icons = styled.div`
   color: var(--font-primary-color);

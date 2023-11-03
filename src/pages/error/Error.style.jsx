@@ -18,7 +18,7 @@ export const ErrorIcon = styled.div`
 export const ErrorText = styled.div`
   color: var(--767676, #767676);
   text-align: center;
-  font-family: The Jamsil OTF;
+  font-family: TheJamsil;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

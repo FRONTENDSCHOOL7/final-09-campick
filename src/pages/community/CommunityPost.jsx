@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import {
-  FileUploadContainer,
-  HiddenFileInput,
   TextareaStyle,
-  UploadButtonText,
   WrapperMyCampsiteInput,
   WrapperMyCampsiteRegister,
 } from "./CommunityPost.style";
@@ -11,19 +8,20 @@ import {
   Incorrect,
   InputStyle,
   LabelStyle,
-  Submitbutton,
 } from "../../components/form/form.style";
 import MapModal from "../../components/kakaomap/MapModal";
 import { ModalBackdrop } from "../../components/kakaomap/MapModal.style";
 import { Helmet } from "react-helmet-async";
 import { communityPost } from "../../api/communityPostApi";
-import imageValidation from "../../imageValidation";
 import HeaderSubmit from "../../components/header/HeaderSubmit";
 import {
   SizeOverToast,
   WrongExtensionToast,
 } from "../../components/toast/Toast";
 import { MapSelectedBtn } from "../myCampsiteRegister/MyCampsiteRegister.style";
+import useImagesUpload from '../../hooks/useImagesUpload';
+import SelectImages from "../../components/community/SelectImages";
+
 
 export default function CommunityPost() {
   const [location, setLocation] = useState("");
@@ -31,7 +29,7 @@ export default function CommunityPost() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSizeOverToast, setShowSizeOverToast] = useState(false);
   const [showWrongExtensionToast, setShowWrongExtensionToast] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
+  const { images, onUpload, onDelete } = useImagesUpload();
   const [warnings, setWarnings] = useState({
     image: null,
     location: null,
@@ -63,35 +61,26 @@ export default function CommunityPost() {
     }
   }
 
-  const handleImageInputChange = async e => {
-    imageValidation(
-      e,
-      1,
-      320,
-      setSelectedImage,
-      setShowSizeOverToast,
-      setShowWrongExtensionToast,
-    );
-  };
 
   async function handleSubmitButton() {
     // 동기 처리
     let newWarnings = {};
 
-    if (!selectedImage) newWarnings.image = "이미지를 업로드해주세요.";
+    if (images.length === 0) newWarnings.image = "이미지를 업로드해주세요.";
     if (!location) newWarnings.location = "위치를 입력해주세요.";
     if (!postText) newWarnings.postText = "게시글을 입력해주세요.";
 
     setWarnings(newWarnings);
 
     if (!Object.values(newWarnings).some(w => w)) {
-      const formData = new FormData();
-      formData.append("image", selectedImage);
 
       try {
-        const res = await communityPost(postText, selectedImage, location);
-        console.log(res);
-
+        let image;
+        if (images.length === 0) image = '';
+        else {
+          image = images.map((image) => `https://api.mandarin.weniv.co.kr/${image}`).join(',');
+        }
+        const res = await communityPost(postText, image, location);
         if (res.hasOwnProperty("post")) {
           console.log("게시물 등록 성공", res);
           window.history.back(); // 게시물등록 성공시
@@ -105,6 +94,7 @@ export default function CommunityPost() {
       alert("모든 항목을 입력해주세요");
     }
   }
+
 
   function autoGrowTextArea(e) {
     e.target.style.height = "inherit";
@@ -127,23 +117,12 @@ export default function CommunityPost() {
           closeModal={closeModal}
           onAddressSelected={handleAddressSelected}
         />
-        <WrapperMyCampsiteInput>
-          <LabelStyle>이미지 등록</LabelStyle>
-          <FileUploadContainer
-            onClick={() => document.getElementById("imageUpload").click()}
-            $previewImage={selectedImage}
-          >
-            <UploadButtonText $previewImage={selectedImage}>
-              클릭해서 이미지 업로드 하기
-            </UploadButtonText>
-            <HiddenFileInput
-              id="imageUpload"
-              type="file"
-              onChange={handleImageInputChange}
-            />
-          </FileUploadContainer>
-          {warnings.image && <Incorrect>{warnings.image}</Incorrect>}
-        </WrapperMyCampsiteInput>
+        <SelectImages 
+        warnings = {warnings} 
+        images = {images} 
+        onUpload = {onUpload} 
+        onDelete = {onDelete} />
+        
         <MapSelectedBtn onClick={openModal} style={{ margin: "0" }}>
           지도에서 위치 선택하기
         </MapSelectedBtn>
