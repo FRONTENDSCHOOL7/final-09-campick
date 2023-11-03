@@ -3,7 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import PostList from "../../components/post/PostList";
 import { homefeedApi } from "../../api/homefeedApi";
 
-import { Home, LogoImg, Search } from "./Homefeed.style";
+import { Home, LogoImg, MainSliderStyle, Search } from "./Homefeed.style";
 import MainSlider from "../../components/slider/MainSlider";
 import HomeCampsiteFeed from "../../components/campsiteFeed/HomeCampsiteFeed";
 import { followList } from "../../api/followListApi";
@@ -12,6 +12,7 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router";
 import Splash from "../splash/Splash";
 import Header from "../../components/header/Header";
+import { styled } from "styled-components";
 
 export default function Homefeed() {
   const [data, setData] = useState("");
@@ -54,17 +55,19 @@ export default function Homefeed() {
       <Helmet>
         <title>Campick | 홈화면</title>
       </Helmet>
-      {isLoading ? <Splash /> : followingList.length === 0}
-
       <Header />
+
       <Home>
-        <MainSlider />
-
-        <HomeCampsiteFeed productInfo={productInfo} />
-
-        <PostList data={data} />
+        {isLoading ? (
+          <Splash />
+        ) : (
+          <>
+            <MainSlider />
+            <HomeCampsiteFeed productInfo={productInfo} />
+            <PostList data={data} />
+          </>
+        )}
       </Home>
-
       <Navbar homefeed />
     </>
   );

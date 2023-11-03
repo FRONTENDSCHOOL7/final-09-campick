@@ -14,8 +14,10 @@ const Splash = () => {
         style={{
           transform: "scale(0.6)",
           position: "absolute",
-          bottom: "420px",
-          right: "87%",
+          margin: "300px 0 0 40px",
+
+          // bottom: "420px",
+          // right: "87%",
         }}
       >
         <div className="land">

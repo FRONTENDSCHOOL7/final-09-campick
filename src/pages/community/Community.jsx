@@ -1,7 +1,13 @@
 // Community.jsx
 
 import React, { useEffect, useState } from "react";
-import { Background, GradientDiv } from "./Community.style";
+import {
+  Background,
+  GradientDiv,
+  LeftImages,
+  NoFriendsImage,
+  SplashStyle,
+} from "./Community.style";
 import Navbar from "../../components/navbar/Navbar";
 import { homefeedApi } from "../../api/homefeedApi";
 import upload from "../../assets/icons/uploadButton.svg";
@@ -10,8 +16,10 @@ import { Link } from "react-router-dom";
 import CommunityItem from "../../components/community/CommunityItem";
 import Header from "../../components/header/Header";
 import Splash from "../splash/Splash";
-import NoFriendsMessage from "../../assets/image/nocamper.jpg";
+import NoFriendsMessage from "../../assets/image/nocamper.png";
 import { styled } from "styled-components";
+import { CommunityImageSet } from "./Community.style";
+import { RightImages } from "./Community.style";
 
 const Community = () => {
   const [data, setData] = useState([]);
@@ -32,70 +40,51 @@ const Community = () => {
   return (
     <>
       <Header />
-      {isLoading ? (
-        <Splash />
-      ) : (
-        <Background>
-          {data.length === 0 ? (
-            <NoFriendsImage src={NoFriendsMessage} alt="" />
-          ) : (
-            <>
-              <div style={{ display: "flex" }}>
-                <div
-                  className="left-images"
-                  style={{ flex: 1, marginRight: "8px" }}
-                >
-                  {evenImages.map((data, index) => (
-                    <Link to={`${data.id}`}>
-                      <CommunityItem
-                        key={index}
-                        imageurl={data.image}
-                        address={
-                          JSON.parse(data.content).location ||
-                          "주소를 입력해주세요"
-                        }
-                      />
-                    </Link>
-                  ))}
-                </div>
-                <div
-                  className="right-images"
-                  style={{
-                    flex: 1,
-                    marginLeft: "8px",
-                    marginTop: "36px",
-                  }}
-                >
-                  {oddImages.map((data, index) => (
-                    <Link to={`${data.id}`}>
-                      <CommunityItem
-                        key={index}
-                        imageurl={data.image}
-                        address={
-                          JSON.parse(data.content).location ||
-                          "주소를 입력해주세요"
-                        }
-                      />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-              <UploadLink to="/community/communitypost">
-                <img src={upload} alt="게시물 업로드 버튼" />
-              </UploadLink>
-              <GradientDiv></GradientDiv>
-            </>
-          )}
-        </Background>
-      )}
+      <Background>
+        {isLoading ? (
+          <Splash style={SplashStyle} />
+        ) : data.length === 0 ? (
+          <NoFriendsImage src={NoFriendsMessage} alt="" />
+        ) : (
+          <>
+            <CommunityImageSet>
+              <LeftImages>
+                {evenImages.map((data, index) => (
+                  <Link to={`${data.id}`} key={index}>
+                    <CommunityItem
+                      imageurl={data.image}
+                      address={
+                        JSON.parse(data.content).location ||
+                        "주소를 입력해주세요"
+                      }
+                    />
+                  </Link>
+                ))}
+              </LeftImages>
+              <RightImages>
+                {oddImages.map((data, index) => (
+                  <Link to={`${data.id}`} key={index}>
+                    <CommunityItem
+                      imageurl={data.image}
+                      address={
+                        JSON.parse(data.content).location ||
+                        "주소를 입력해주세요"
+                      }
+                    />
+                  </Link>
+                ))}
+              </RightImages>
+            </CommunityImageSet>
+            <UploadLink to="/community/communitypost">
+              <img src={upload} alt="게시물 업로드 버튼" />
+            </UploadLink>
+            <GradientDiv></GradientDiv>
+          </>
+        )}
+      </Background>
       <Navbar community />
     </>
   );
 };
-
-const NoFriendsImage = styled.img`
-  margin-top: 60%;
-  width: 100%;
-`;
 
 export default Community;
