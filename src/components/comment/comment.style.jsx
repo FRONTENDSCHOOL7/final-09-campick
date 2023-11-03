@@ -43,9 +43,11 @@ export const CommentTime = styled.p`
 `;
 export const CommentText = styled.p`
   width: 100%;
-  max-width: 260px;
+  max-width: 290px;
   font-size: 14px;
   color: #333333;
+  word-break:break-all;
   white-space: pre-line;
   line-height: 1.3em;
+  text-overflow: wrap;
 `;

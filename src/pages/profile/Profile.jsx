@@ -34,7 +34,7 @@ export default function Profile() {
     if (accountUsername) {
       const getUserInfo = async () => {
         const postRes = await userPost(accountUsername);
-        const productRes = await productList(accountUsername, 10);
+        const productRes = await productList(accountUsername, 3);
         setUserPosts(postRes);
         setUserProducts(productRes);
         setIsLoading(false);
@@ -45,7 +45,7 @@ export default function Profile() {
         const postRes = await userPost(localStorage.getItem("accountname"));
         const productRes = await productList(
           localStorage.getItem("accountname"),
-          10,
+          3,
         );
 
         setUserPosts(postRes);
