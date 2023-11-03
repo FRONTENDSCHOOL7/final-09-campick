@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Feed from "../campsiteFeed/campsiteFeed";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode } from "swiper/modules";
+import { Pagination } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/pagination';
 import { ProductTitle } from "../campsiteFeed/campsiteFeed.style";
 import emptyCampsite from "../../assets/image/empty-campsite.jpg"
 export default React.memo(function ProfileProduct({ data }) {
@@ -18,10 +20,12 @@ export default React.memo(function ProfileProduct({ data }) {
       >{`${data[0].author.username}님의 캠핑장`}
       </ProductTitle>
       <Swiper
-        spaceBetween={-30}
+        spaceBetween={0}
         slidesPerView={1}
-        freeMode={true}
-        modules={[FreeMode]}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[ Pagination ]}
       >
         
         {products.map(item => (
@@ -40,6 +44,13 @@ const ProductSection = styled.section`
   background-color: #fff;
   border-top: 0.5px solid #dbdbdb;
   border-bottom: 0.5px solid #dbdbdb;
+  .swiper-pagination{
+    bottom: -3px;
+    .swiper-pagination-bullet{
+      background-color: var(--primary-color);
+      margin : 0 5px;
+    }
+  }
 `;
 const EmptyImage = styled.img`
   width: 390px;
