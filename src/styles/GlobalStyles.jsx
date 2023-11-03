@@ -38,6 +38,7 @@ const GlobalStyles = createGlobalStyle`
         --font-placeholder-color:#DBDBDB;
         --font-message-color:#EB5757 ;
         font-family:'TheJamsil',sans-serif;
+
     }
     
    .a11y-hidden {
@@ -67,6 +68,17 @@ const GlobalStyles = createGlobalStyle`
         border:none;
         background-color:inherit;
         padding:0;
+    }
+    input{
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            transition: background-color 5000s ease-in-out 0s;
+            -webkit-transition: background-color 9999s ease-out;
+            -webkit-box-shadow: 0 0 0px 1000px 'var(--white);' inset !important;
+            -webkit-text-fill-color: 'var(--white);' !important;
+  }
     }
 `;
 <div></div>;

@@ -4,6 +4,10 @@ import iconDot from "../../assets/icons/icon-dot.svg";
 import iconHeartedInactive from "../../assets/icons/heartInactive.png";
 import iconHeartedActive from "../../assets/icons/heartActive.png";
 import comment from "../../assets/icons/icon-comment.svg";
+import { Swiper, SwiperSlide } from "swiper/react"; // basic
+import "swiper/css";
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 import {
   PostArticle,
   ProfileDiv,
@@ -106,6 +110,7 @@ export default function PostItem({
   const handlePostDeleteCheckModalClose = () => {
     setIsPostDeleteCheckModal(false);
   };
+  console.log("이미지",data.image.split(","))
 
   return (
     <>
@@ -131,14 +136,26 @@ export default function PostItem({
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
-        <Link to={!viewPost && `../community/${data.id}`}>
-          <ImgBox>
-            <Cover src={data && data.image} alt="업로드한 이미지" />
-            <GradientOverlay />
-            <PostMap location={location} />
-          </ImgBox>
+        <Link to={`../community/${data.id}`}>
+        <ImgBox>
+        <Swiper
+        slidesPerView={1}
+        spaceBetween={30}
+        navigation={true}
+        modules={[Navigation]}>
+          {data && data.image.split(",").map((item)=>
+          <SwiperSlide>
+            <Cover src={item} alt="업로드한 이미지" />
+            <GradientOverlay/>
+          <PostMap location = {location}/>
+            </SwiperSlide>
+          )}
+          
+          
+        
+        </Swiper>
+        </ImgBox>
         </Link>
-
         <WrapperDiv>
           <Icons>
             <IconHeart

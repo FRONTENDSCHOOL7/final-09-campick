@@ -1,4 +1,5 @@
 import imageCompression from "browser-image-compression";
+import { uploadImage } from "./api/imageApi";
 
 const API_URL = "https://api.mandarin.weniv.co.kr";
 
@@ -62,23 +63,11 @@ const handlingData = async (dataURL, setSelectedImage) => {
 
   const formData = new FormData();
   formData.append("image", file);
+  console.log(formData);
+  const resData = await uploadImage(formData);
 
-  try {
-    const response = await fetch(`${API_URL}/image/uploadfile`, {
-      method: "POST",
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const resData = await response.json();
-    const imageUrl = `${API_URL}/` + resData.filename;
-    setSelectedImage(imageUrl);
-  } catch (error) {
-    console.error(error);
-  }
+  const imageUrl = `${API_URL}/` + resData.filename;
+  setSelectedImage(imageUrl);
 };
 
 export default imageValidation;
