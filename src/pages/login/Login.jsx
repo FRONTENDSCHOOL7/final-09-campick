@@ -10,11 +10,16 @@ import {
   SubLogoAll,
   LoginModal,
   ButtonWrapper,
-  moveUpSub,
 } from "./Login.style";
+import {
+  ToastContainer,
+  ToastMsg,
+  ToastMsgBold,
+} from "../../components/toast/Toast.style";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [showNotAvailable, setShowNotAvailable] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,8 +32,21 @@ const Login = () => {
   }, []);
 
   const handleAlert = () => {
-    alert("아직 준비중인 페이지에요.");
+    setShowNotAvailable(true);
+    setTimeout(() => setShowNotAvailable(false), 3000);
   };
+
+  const NotAvailable = () => (
+    <>
+      {showNotAvailable && (
+        <ToastContainer>
+          <ToastMsg>
+            현재 <ToastMsgBold>지원하지 않는 기능</ToastMsgBold>입니다!
+          </ToastMsg>
+        </ToastContainer>
+      )}
+    </>
+  );
 
   return (
     <Background>
@@ -65,6 +83,7 @@ const Login = () => {
           </ButtonWrapper>
         </LoginModal>
       )}
+      <NotAvailable />
     </Background>
   );
 };

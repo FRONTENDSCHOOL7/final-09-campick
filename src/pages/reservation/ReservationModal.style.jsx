@@ -17,7 +17,6 @@ export const ProductImg = styled.img`
   width: 100%;
   height: auto;
   overflow: hidden;
-  border-radius: 10px 10px 0 0;
 `;
 
 export const ProductProfileWrapper = styled.div`
@@ -57,4 +56,21 @@ export const ProductTagWrap = styled.div`
   gap: 1px;
   flex-wrap: wrap;
   margin-top: 5px;
+`;
+export const SwiperWrapper = styled.div`
+  .swiper-button-prev,
+  .swiper-button-next{
+    color: #FFF;
+    transform:scale(0.8) ;
+    transition: 0.2s;
+    opacity: 0.6;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  
+    &:hover{
+      transform:scale(0.9) ;
+      transition: 0.2s;
+      opacity: 1.5;
+    }
+  }
+
 `;

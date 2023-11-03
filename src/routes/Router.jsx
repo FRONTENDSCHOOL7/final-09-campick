@@ -25,9 +25,9 @@ export default function Router() {
         <Route path="/homefeed" element={<Homefeed />} />
         <Route path="/reservation" element={<Outlet />}>
           <Route path="" element={<Reservation />} />
-          <Route path = "chat" element = {<Chat/>}/>
+          <Route path="chat" element={<Chat />} />
         </Route>
-          
+
         <Route path="/account/" element={<Outlet />}>
           <Route path="" element={<Error />} />
           <Route path="*" element={<Error />} />
@@ -40,10 +40,10 @@ export default function Router() {
           <Route path="community/:post_id" element={<ViewPost />} />
           <Route path="*" element={<Error />} />
           <Route path="" element={<Profile />} />
-          <Route path = "edit" element={<EditProfile/>}/>
+          <Route path="edit" element={<EditProfile />} />
           <Route path=":accountUsername" element={<Outlet />}>
             <Route path="" element={<Profile />} />
-            
+
             <Route path=":follow/" element={<Followlist />} />
           </Route>
         </Route>

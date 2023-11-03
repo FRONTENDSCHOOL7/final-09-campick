@@ -60,6 +60,7 @@ export const ImgBox = styled.div`
   border-radius: 10px;
   overflow: hidden;
   margin: 10px 0px;
+  position: relative;
 `;
 export const Cover = styled.img`
   width: 100%;
@@ -74,7 +75,7 @@ const pulse = keyframes`0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);

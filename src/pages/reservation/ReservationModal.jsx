@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { productDetail } from "../../api/productDetailApi";
 import { Submitbutton } from "../../components/form/form.style";
 import { ProductTag } from "../../components/campsiteFeed/campsiteFeed.style";
@@ -12,12 +12,32 @@ import {
   ProductTagWrap,
   ProductProfileWrapper,
   ProductPrice,
+  SwiperWrapper,
 } from "./ReservationModal.style";
 import { CompleteToast } from "../../components/toast/Toast";
+import { Swiper, SwiperSlide } from "swiper/react"; // basic
+import "swiper/css";
+import "swiper/css/pagination";
+import { Navigation } from 'swiper/modules';
+
+import KakaoMapMain from "../../components/kakaomap/KakaomapMain";
+
 
 export default function ReservationModal({ productId }) {
   const [data, setData] = useState("");
   const [showReservationToast, setShowReservationToast] = useState(false);
+    const [imageHeight, setImageHeight] = useState(0);
+
+  // 이미지 엘리먼트의 참조를 생성합니다.
+  const imageRef = useRef(null);
+
+  // 이미지가 로드되면 높이를 상태 변수에 설정하는 함수
+  const handleImageLoaded = () => {
+    const height = imageRef.current.clientHeight;
+    setImageHeight(height); // 이미지의 높이를 상태 변수에 저장
+    
+  };
+
 
   useEffect(() => {
     const getProductData = async () => {
@@ -34,8 +54,8 @@ export default function ReservationModal({ productId }) {
       setShowReservationToast(true);
       setTimeout(() => {
         setShowReservationToast(false);
+        window.location.reload();
       }, 1000);
-      window.location.reload();
     } catch (error) {
       console.error("예약 실패");
     }
@@ -51,8 +71,29 @@ export default function ReservationModal({ productId }) {
           @ {data && data.author.accountname}
         </ProfileAccountname>
       </ProductProfileWrapper>
-      <ProductImg src={data && data.itemImage} />
-
+      <SwiperWrapper>
+      <Swiper
+        spaceBetween={30}
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          dynamicBullets: true,
+        }}
+        navigation={true} 
+        modules={[Navigation]}
+      >
+        <SwiperSlide>
+          <ProductImg ref={imageRef} src={data && data.itemImage} onLoad={handleImageLoaded}/>
+        </SwiperSlide>
+        <SwiperSlide>
+          
+          <KakaoMapMain address={data && JSON.parse(data.itemName).location} mapheight = {imageHeight} />
+        </SwiperSlide>
+      </Swiper>
+    </SwiperWrapper>
       <ProductProfileWrapper>
         <ProductName>{data && JSON.parse(data.itemName).name}</ProductName>
         <ProductPrice>{data && data.price.toLocaleString()}원 ~</ProductPrice>
