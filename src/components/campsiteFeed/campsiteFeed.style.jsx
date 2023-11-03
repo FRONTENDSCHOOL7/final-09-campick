@@ -9,7 +9,6 @@ export const ProductContainer = styled.div`
   padding: 20px 10px 20px 10px;
   gap: 10px;
   box-sizing: border-box;
-  
 `;
 
 export const WrapContents = styled.div`
@@ -41,7 +40,7 @@ export const ProductName = styled.span`
 export const ProductPrice = styled.span`
   font-size: 14px;
   font-weight: 500;
-
+  word-break: break-all;
   color: #7cb45b;
 `;
 export const ProductLocation = styled.span`

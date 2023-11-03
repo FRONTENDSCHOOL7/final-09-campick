@@ -34,6 +34,7 @@ import {
 } from "../modal/Modal.style";
 import { userpostDelete } from "../../api/userpostDeleteApi";
 import { DeletePostToast } from "../../components/toast/Toast";
+
 export default function PostItem({ data, commentCount, setLender }) {
   const [isHearted, setIsHearted] = useState(false);
   const [heartCount, setHeartCount] = useState(data.heartCount);
@@ -122,9 +123,11 @@ export default function PostItem({ data, commentCount, setLender }) {
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
-        <ImgBox>
-          <Cover src={data && data.image} alt="업로드한 이미지" />
-        </ImgBox>
+        <Link to={`../community/${data.id}`}>
+          <ImgBox>
+            <Cover src={data && data.image} alt="업로드한 이미지" />
+          </ImgBox>
+        </Link>
         <WrapperDiv>
           <Icons>
             <IconHeart
