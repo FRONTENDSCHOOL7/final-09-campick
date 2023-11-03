@@ -40,6 +40,7 @@ export const CommentProfileImage = styled.img`
 `;
 
 export const CommentInputArea = styled.textarea`
+  font-family: "TheJamsil", sans-serif;
   width: 260px;
   resize: none;
   border: none;
@@ -60,6 +61,7 @@ export const CommentInputArea = styled.textarea`
 `;
 
 export const CommentUploadButton = styled.button`
+  font-family: "TheJamsil", sans-serif;
   color: ${props =>
     props.disabled
       ? "var(--primary-disabled-color)"
@@ -67,7 +69,7 @@ export const CommentUploadButton = styled.button`
   background-color: ${props =>
     props.disabled ? "white" : "var(--primary-color)"};
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   transition: all 0.1s;
 
   width: 65px;

@@ -136,7 +136,7 @@ export default function PostItem({
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
-        <Link to={`../community/${data.id}`}>
+        <Link to={!viewPost && `../community/${data.id}`}>
         <ImgBox>
         <Swiper
         slidesPerView={1}

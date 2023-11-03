@@ -57,7 +57,7 @@ export const CheckModalWrap = styled.div`
   background-color: #fff;
   border-radius: 10px;
   box-sizing: border-box;
-  padding-top: 22px;
+  padding: 25px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,9 +73,9 @@ export const CheckMsg = styled.span`
 export const ModalText = styled.button`
   display: flex;
   font-size: 14px;
-  padding: 10px 5px;
+  padding: 10px;
   cursor: pointer;
-  font-family: TheJamsil5;
+  font-family: "TheJamsil", sans-serif;
   &:hover {
     border-radius: 10px;
     color: white;
@@ -108,7 +108,7 @@ export const CheckLogout = styled.button`
     check === true ? `solid 1px #DBDBDB` : `initial`};
   box-sizing: border-box;
   cursor: pointer;
-  font-family: TheJamsil5;
+  font-family: "TheJamsil", sans-serif;
   &:hover {
     color: ${({ check }) => (check === true ? `#fff` : `#fff`)};
     background-color: var(--primary-color);
@@ -127,7 +127,7 @@ export const CheckConfirm = styled.button`
     check === true ? `solid 1px #DBDBDB` : `initial`};
   box-sizing: border-box;
   cursor: pointer;
-  font-family: TheJamsil5;
+  font-family: "TheJamsil", sans-serif;
   &:hover {
     color: #fff;
     background-color: var(--primary-color);
