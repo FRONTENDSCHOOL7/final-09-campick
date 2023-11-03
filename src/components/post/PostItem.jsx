@@ -36,7 +36,13 @@ import { userpostDelete } from "../../api/userpostDeleteApi";
 import { DeletePostToast } from "../../components/toast/Toast";
 import PostMap from "./PostMap";
 import { GradientOverlay } from "../community/Community.style";
-export default function PostItem({ data, commentCount, setLender, location }) {
+export default function PostItem({
+  data,
+  commentCount,
+  setLender,
+  location,
+  viewPost,
+}) {
   const [isHearted, setIsHearted] = useState(false);
   const [heartCount, setHeartCount] = useState(data.heartCount);
   const [isPostModal, setIsPostModal] = useState(false);
@@ -125,7 +131,7 @@ export default function PostItem({ data, commentCount, setLender, location }) {
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
-        <Link to={`../community/${data.id}`}>
+        <Link to={!viewPost && `../community/${data.id}`}>
           <ImgBox>
             <Cover src={data && data.image} alt="업로드한 이미지" />
             <GradientOverlay />
@@ -142,7 +148,7 @@ export default function PostItem({ data, commentCount, setLender, location }) {
               isClicked={isClicked}
             ></IconHeart>
             <IconSpan>{heartCount}</IconSpan>
-            <Link to={`../../community/${data && data.id}`}>
+            <Link to={`../community/${data && data.id}`}>
               <IconComment src={comment} alt="댓글 이동 버튼"></IconComment>
             </Link>
             <IconSpan>{commentCount}</IconSpan>
