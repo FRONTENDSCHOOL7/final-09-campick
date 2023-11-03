@@ -1,37 +1,50 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import styled from "styled-components";
 import { productList } from "../../api/productListApi";
 import { followList } from "../../api/followListApi";
 import Feed from "../../components/campsiteFeed/campsiteFeed";
 import ReservationModal from "./ReservationModal";
 import Header from "../../components/header/Header";
+import Splash from "../splash/Splash";
+import NoFriendsMessage from "../../assets/image/nocamper.png";
+import {
+  NoFriendsImage,
+  ProductSection,
+  Screen,
+  SplashStyle,
+  UserProductMain,
+} from "./Reservation.style";
+
 export default function Reservation() {
-  const [followingList, setFollowingList] = useState("");
+  const [followingList, setFollowingList] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
   const [sortProduct, setSortProduct] = useState([]);
   const [opModal, setOpModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [productId, setProductId] = useState("");
+
   useEffect(() => {
     const accountname = localStorage.getItem("accountname");
     async function getFollowingList() {
-      setFollowingList(await followList(accountname, "following"));
+      const list = await followList(accountname, "following");
+      setFollowingList(list);
+      setIsLoading(false); // 데이터 로딩이 끝났음을 표시
     }
     getFollowingList();
   }, []);
 
   useEffect(() => {
     async function getProduct() {
-      followingList &&
+      if (followingList.length > 0) {
         followingList.map(async item => {
           const products = await productList(item.accountname, 5);
           setProductInfo(pre => [...pre, ...products]);
-          setIsLoading(false);
         });
+      }
     }
     getProduct();
   }, [followingList]);
+
   useEffect(() => {
     setSortProduct(
       [...productInfo].sort((a, b) => {
@@ -46,7 +59,9 @@ export default function Reservation() {
       <Screen onClick={() => setOpModal(false)} close={opModal} />
       <UserProductMain>
         {isLoading ? (
-          <div>isLoading...</div>
+          <Splash style={SplashStyle} />
+        ) : followingList.length === 0 ? ( // 친구 목록이 비어있을 때
+          <NoFriendsImage src={NoFriendsMessage} alt="" />
         ) : (
           <>
             <h1 className="a11y-hidden">
@@ -61,40 +76,14 @@ export default function Reservation() {
                   data={item}
                   setProductId={setProductId}
                   setOpModal={setOpModal}
-                  title = {true}
+                  title={true}
                 />
               ))}
             </ProductSection>
           </>
         )}
       </UserProductMain>
-
       <Navbar reservation />
     </>
   );
 }
-const UserProductMain = styled.main`
-  overflow-y: scroll;
-  background: var(--Gray-6, #f2f2f2);
-  height: calc(100vh - 105px);
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  position: relative;
-`;
-const ProductSection = styled.section`
-  margin:10px 0 10px 0;
-  display: flex;
-  flex-direction: column;
-  gap:10px;
-`;
-const Screen = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  display: ${props => (props.close === true ? "block" : "none")};
-`;
