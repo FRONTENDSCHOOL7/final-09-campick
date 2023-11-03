@@ -75,7 +75,7 @@ export const ModalText = styled.button`
   font-size: 14px;
   padding: 10px 5px;
   cursor: pointer;
-  font-family: TheJamsil5;
+  font-family: TheJamsil;
   &:hover {
     border-radius: 10px;
     color: white;
