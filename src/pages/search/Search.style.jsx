@@ -8,21 +8,20 @@ export const SearchInputStyle = styled.input`
   background: var(--Gray-6, #f2f2f2);
   border: 0;
   padding-left: 16px;
-  &:focus-visible{
+  &:focus-visible {
     outline-color: var(--primary-color);
   }
-  
 `;
 
 export const SearchResultWrapper = styled.div`
-    width: 100%;
-    height: calc(100vh - 50px);
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    padding: 20px 16px 20px 16px;
-    box-sizing: border-box;
+  width: 100%;
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 20px 16px 20px 16px;
+  box-sizing: border-box;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -68,4 +67,28 @@ export const SearchResultAccountName = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+`;
+export const SearchNotice = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: calc(100vh - 65vh);
+  gap: 29px;
+`;
+export const NoticeImg = styled.img`
+  width: 110px;
+  height: 64px;
+`;
+export const NoticeText = styled.p`
+  color: var(--font-primary-color);
+  opacity: 0.6;
+`;
+export const SeeMoreBtn = styled.button`
+  padding: 10px 0px;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: Var(--primary-color);
+    color: #fff;
+  }
 `;
