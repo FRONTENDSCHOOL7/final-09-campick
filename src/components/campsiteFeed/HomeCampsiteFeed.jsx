@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import {
   HomeCampSiteList,
   HomeCampSiteTitle,
@@ -10,11 +10,16 @@ import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { FreeMode, Scrollbar } from "swiper/modules";
+import { FreeMode } from "swiper/modules";
 
-export default function HomeCampsiteFeed(props) {
+export default function HomeCampsiteFeed({
+  productInfo,
+  setOpModal,
+  setProductId,
+}) {
   const handleOnClickItem = item => {
-    console.log(item);
+    setProductId(item.id);
+    setOpModal(true);
   };
 
   return (
@@ -24,24 +29,24 @@ export default function HomeCampsiteFeed(props) {
       <HomeCampSiteList>
         <Swiper
           spaceBetween={
-            props.productInfo && props.productInfo.length >= 3
+            productInfo && productInfo.length >= 3
               ? -40
-              : props.productInfo.length === 2
+              : productInfo.length === 2
               ? 40
               : 40
           }
           slidesPerView={
-            props.productInfo && props.productInfo.length >= 3
+            productInfo && productInfo.length >= 3
               ? 2
-              : props.productInfo.length === 2
+              : productInfo.length === 2
               ? 2
               : 1
           } // 기본값 (이 값을 원하는대로 설정 가능)}
           freeMode={true}
           modules={[FreeMode]}
         >
-          {props.productInfo &&
-            props.productInfo.map(item => (
+          {productInfo &&
+            productInfo.map(item => (
               <SwiperSlide key={item.id}>
                 <HomeCampsiteItem data={item} onClick={handleOnClickItem} />
               </SwiperSlide>

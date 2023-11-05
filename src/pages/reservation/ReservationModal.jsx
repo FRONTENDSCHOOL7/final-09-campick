@@ -18,15 +18,14 @@ import { CompleteToast } from "../../components/toast/Toast";
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css";
 import "swiper/css/pagination";
-import { Navigation } from 'swiper/modules';
+import { Navigation } from "swiper/modules";
 
 import KakaoMapMain from "../../components/kakaomap/KakaomapMain";
-
 
 export default function ReservationModal({ productId }) {
   const [data, setData] = useState("");
   const [showReservationToast, setShowReservationToast] = useState(false);
-    const [imageHeight, setImageHeight] = useState(0);
+  const [imageHeight, setImageHeight] = useState(0);
 
   // 이미지 엘리먼트의 참조를 생성합니다.
   const imageRef = useRef(null);
@@ -35,9 +34,7 @@ export default function ReservationModal({ productId }) {
   const handleImageLoaded = () => {
     const height = imageRef.current.clientHeight;
     setImageHeight(height); // 이미지의 높이를 상태 변수에 저장
-    
   };
-
 
   useEffect(() => {
     const getProductData = async () => {
@@ -72,28 +69,34 @@ export default function ReservationModal({ productId }) {
         </ProfileAccountname>
       </ProductProfileWrapper>
       <SwiperWrapper>
-      <Swiper
-        spaceBetween={30}
-        loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          dynamicBullets: true,
-        }}
-        navigation={true} 
-        modules={[Navigation]}
-      >
-        <SwiperSlide>
-          <ProductImg ref={imageRef} src={data && data.itemImage} onLoad={handleImageLoaded}/>
-        </SwiperSlide>
-        <SwiperSlide>
-          
-          <KakaoMapMain address={data && JSON.parse(data.itemName).location} mapheight = {imageHeight} />
-        </SwiperSlide>
-      </Swiper>
-    </SwiperWrapper>
+        <Swiper
+          spaceBetween={30}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            dynamicBullets: true,
+          }}
+          navigation={true}
+          modules={[Navigation]}
+        >
+          <SwiperSlide>
+            <ProductImg
+              ref={imageRef}
+              src={data && data.itemImage}
+              onLoad={handleImageLoaded}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <KakaoMapMain
+              address={data && JSON.parse(data.itemName).location}
+              mapheight={imageHeight}
+            />
+          </SwiperSlide>
+        </Swiper>
+      </SwiperWrapper>
       <ProductProfileWrapper>
         <ProductName>{data && JSON.parse(data.itemName).name}</ProductName>
         <ProductPrice>{data && data.price.toLocaleString()}원 ~</ProductPrice>
@@ -106,7 +109,7 @@ export default function ReservationModal({ productId }) {
       </ProductProfileWrapper>
 
       <div style={{ padding: "10px" }}>
-        <Link to={"chat"}>
+        <Link to={"/reservation/chat"}>
           <Submitbutton style={{ marginTop: "5px" }}>
             채팅으로 캠핑장 문의하기
           </Submitbutton>
