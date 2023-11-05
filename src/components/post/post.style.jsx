@@ -48,6 +48,7 @@ export const ProfileContent = styled.pre`
 export const WrapperDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex: 1;
 `;
 
@@ -61,30 +62,30 @@ export const ImgBox = styled.div`
   margin: 10px 0px;
   position: relative;
   .swiper-button-prev,
-  .swiper-button-next{
-    color: #FFF;
-    transform:scale(0.8) ;
+  .swiper-button-next {
+    color: #fff;
+    transform: scale(0.8);
     transition: 0.2s;
     opacity: 0.6;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  
-    &:hover{
-      transform:scale(0.9) ;
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    &:hover {
+      transform: scale(0.9);
       transition: 0.2s;
       opacity: 1.5;
     }
   }
-
 `;
 export const Cover = styled.img`
   width: 100%;
   height: 330px;
   border-radius: 10px;
   object-fit: cover;
-  
 `;
 export const Icons = styled.div`
   color: var(--font-primary-color);
+  display: flex;
+  align-items: center;
 `;
 
 const pulse = keyframes`0% {
@@ -118,6 +119,7 @@ export const IconComment = styled.img`
 export const IconSpan = styled.span`
   font-size: 12px;
   margin-right: 15px;
+  margin-top: 2px;
 `;
 export const PostData = styled.p`
   font-size: 10px;

@@ -86,9 +86,12 @@ export default function Comment({
           </WrapCommentFollower>
           <CommentText>{content}</CommentText>
         </WrapCommentContent>
-        <ModalBtn onClick={handleCommentModalOptionClick}>
-          <DotImg src={iconDot} alt="아이콘 버튼 " />
-        </ModalBtn>
+
+        {currentUsername === author.accountname && (
+          <ModalBtn onClick={handleCommentModalOptionClick}>
+            <DotImg src={iconDot} alt="아이콘 버튼 " />
+          </ModalBtn>
+        )}
 
         {isCommentModal && (
           <DarkBackground onClick={handleCommentModalClose}>
@@ -106,7 +109,7 @@ export default function Comment({
                   취소
                 </CheckConfirm>
                 <CheckConfirm
-                  check
+                  // check
                   onClick={async () => {
                     setDeleteMsg(await deleteComment(postId, comment.id));
                     setTimeout(async () => {
