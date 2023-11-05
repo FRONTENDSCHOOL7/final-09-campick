@@ -39,7 +39,7 @@ export default function Comment({
     const commentDate = moment(date);
 
     if (now.diff(commentDate, "seconds", true) < 1) {
-      return "몇 초 전";
+      return "조금 전";
     } else {
       return commentDate.fromNow();
     }

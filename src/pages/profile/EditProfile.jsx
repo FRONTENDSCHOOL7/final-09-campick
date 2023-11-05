@@ -1,19 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import { Helmet } from 'react-helmet-async'
-import { DescriptionText, FormElement, ImageButton, ImageInput, LabelStyle, LabelStyleImg, ProfileImage, Upload, WrapperProfileSetup } from '../profileSetup/profileSetup.style'
-import { Incorrect, InputStyle, Title, WrapForm } from '../../components/form/form.style'
-import { Submitbutton } from '../../components/form/form.style';
-import { CompleteToast, SizeOverToast, WrongExtensionToast } from '../../components/toast/Toast';
-import { useNavigate } from 'react-router';
+import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import {
+  DescriptionText,
+  FormElement,
+  ImageButton,
+  ImageInput,
+  LabelStyle,
+  LabelStyleImg,
+  ProfileImage,
+  Upload,
+  WrapperProfileSetup,
+} from "../profileSetup/profileSetup.style";
+import {
+  Incorrect,
+  InputStyle,
+  Title,
+  WrapForm,
+} from "../../components/form/form.style";
+import { Submitbutton } from "../../components/form/form.style";
+import {
+  CompleteToast,
+  SizeOverToast,
+  WrongExtensionToast,
+} from "../../components/toast/Toast";
+import { useNavigate } from "react-router";
 import profilePic from "../../assets/icons/profilePic.svg";
-import imageValidation from '../../imageValidation';
-import { accountNameValid } from '../../api/accountNameApi';
+import imageValidation from "../../imageValidation";
+import { accountNameValid } from "../../api/accountNameApi";
 import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
-import { editprofile } from '../../api/editProfileApi';
-import HeaderText from '../../components/header/HeaderText';
+import { editprofile } from "../../api/editProfileApi";
+import HeaderText from "../../components/header/HeaderText";
 
 export default function EditProfile() {
-
   const exptext = /^[A-Za-z0-9._]+$/;
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
@@ -120,8 +138,8 @@ export default function EditProfile() {
       setShowProfileEditToast(true);
       setTimeout(() => {
         setShowProfileEditToast(false);
-        console.log(profileRes)
-        localStorage.setItem("accountname",userId)
+        console.log(profileRes);
+        localStorage.setItem("accountname", userId);
         navigate("/profile");
       }, 1000);
     } catch (error) {
@@ -134,7 +152,7 @@ export default function EditProfile() {
       <Helmet>
         <title>Campick | 프로필 수정</title>
       </Helmet>
-      <HeaderText text = {""}/>
+      <HeaderText text={""} />
       <WrapperProfileSetup>
         <Title>프로필 수정</Title>
         <DescriptionText>변경사항을 입력해주세요.</DescriptionText>
@@ -208,5 +226,5 @@ export default function EditProfile() {
         <SizeOverToast showSizeOverToast={showSizeOverToast} />
       </WrapperProfileSetup>
     </>
-  )
+  );
 }

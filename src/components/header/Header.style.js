@@ -10,3 +10,22 @@ export const HeaderWrapper = styled.header`
   background-color: white;
   box-sizing: border-box;
 `;
+
+export const LogoImg = styled.img`
+  width: 41px;
+  height: 25px;
+  cursor: pointer;
+`;
+export const SearchImg = styled.img`
+  cursor: pointer;
+`;
+
+export const LogoWrapper = styled.a``;
+
+export const SearchButton = styled.button``;
+
+export const GoBackImg = styled.img`
+  cursor: pointer;
+  margin-right: 10px;
+`;
+export const GobackButton = styled.button``;

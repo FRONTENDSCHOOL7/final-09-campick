@@ -85,7 +85,10 @@ export default function Reservation() {
   return (
     <>
       <Header />
-      <Screen onClick={() => setOpModal(false)} close={opModal} />
+      <Screen
+        onClick={() => setOpModal(false)}
+        close={opModal ? true : undefined}
+      />
       <UserProductMain>
         {isLoading ? (
           <Splash style={SplashStyle} />

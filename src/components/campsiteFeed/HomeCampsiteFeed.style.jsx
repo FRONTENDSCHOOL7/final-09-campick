@@ -12,10 +12,11 @@ export const WrapperHomeCampsite = styled.section`
   min-height: 164.195px;
 `;
 
-export const CampSiteItemWrapper = styled.div`
+export const CampSiteItemWrapper = styled.li`
   display: flex;
   flex-direction: column;
   width: 140px;
+  cursor: pointer;
 `;
 
 export const HomeCampsiteImg = styled.img`
@@ -47,7 +48,7 @@ export const HomeCampSitePrice = styled.p`
 
 export const HomeCampSiteTitle = styled.h2``;
 
-export const HomeCampSiteList = styled.div`
+export const HomeCampSiteList = styled.ul`
   display: flex;
   gap: 10px;
   white-space: nowrap;

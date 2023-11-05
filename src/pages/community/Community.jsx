@@ -17,7 +17,6 @@ import CommunityItem from "../../components/community/CommunityItem";
 import Header from "../../components/header/Header";
 import Splash from "../splash/Splash";
 import NoFriendsMessage from "../../assets/image/nocamper.png";
-import { styled } from "styled-components";
 import { CommunityImageSet } from "./Community.style";
 import { RightImages } from "./Community.style";
 
@@ -47,6 +46,9 @@ const Community = () => {
           <NoFriendsImage src={NoFriendsMessage} alt="" />
         ) : (
           <>
+            <h1 className="a11y-hidden">
+              팔로우한 유저들이 게시한 게시물을 볼 수 있는 화면입니다.
+            </h1>
             <CommunityImageSet>
               <LeftImages>
                 {evenImages.map((data, index) => (

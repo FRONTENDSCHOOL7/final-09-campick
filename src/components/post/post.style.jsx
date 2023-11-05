@@ -19,6 +19,7 @@ export const ProfileImg = styled.img`
   height: 42px;
   border-radius: 50%;
   overflow: hidden;
+  object-fit: cover;
 `;
 export const ProfileNavs = styled(Link)`
   display: flex;
@@ -104,7 +105,7 @@ export const IconHeart = styled.img`
   margin-right: 5px;
   cursor: pointer;
   animation: ${props =>
-    props.isClicked
+    props.isclicked
       ? css`
           ${pulse} 0.5s
         `

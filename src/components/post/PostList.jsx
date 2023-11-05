@@ -1,7 +1,6 @@
 import React from "react";
 import PostItem from "./PostItem";
 import styled from "styled-components";
-import { HomePostTitle } from "./post.style";
 const PostSection = styled.section`
   background-color: white;
   border-radius: 10px;
@@ -13,7 +12,6 @@ const PostSection = styled.section`
   }
 `;
 export default function PostList({ data }) {
-  console.log("Post",data)
   return (
     <PostSection style={{ position: "relative" }}>
       {data &&
@@ -22,7 +20,7 @@ export default function PostList({ data }) {
             key={item.id}
             data={item}
             commentCount={item.commentCount}
-            location = {item && JSON.parse(item.content).location}
+            location={item && JSON.parse(item.content).location}
           />
         ))}
     </PostSection>

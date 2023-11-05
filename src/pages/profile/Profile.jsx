@@ -71,7 +71,7 @@ export default function Profile() {
   const handleLogoutModalClose = () => {
     setIsCheckModal(false);
   };
-
+  console.log("userpost", userPosts.post);
   return (
     <>
       <Helmet>
@@ -83,14 +83,19 @@ export default function Profile() {
           <Splash />
         ) : (
           <>
+            <h1 className="a11y-hidden">
+              내가 팔로우, 팔로잉한 유저와 내가 올린 캠핑장과 게시물을 볼 수
+              있는 내 프로필 페이지 입니다.
+            </h1>
             <ProfileCard accountUsername={accountUsername} />
             <ProfileProduct data={userProducts} />
-            {userPosts.length !== 0 ?
-            <UserPostList
-              data={userPosts}
-              accountUsername={accountUsername}
-              setLender={setLender}
-            />: null}
+            {userPosts.post.length >= 1 ? (
+              <UserPostList
+                data={userPosts}
+                accountUsername={accountUsername}
+                setLender={setLender}
+              />
+            ) : null}
           </>
         )}
       </Main>
