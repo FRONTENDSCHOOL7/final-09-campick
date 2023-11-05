@@ -49,3 +49,14 @@ export const DeletePostToast = ({ deleteMsg }) => {
     </>
   );
 };
+export const NotAvailable = ({ showNotAvailable }) => (
+  <>
+    {showNotAvailable && (
+      <ToastContainer>
+        <ToastMsg>
+          현재 <ToastMsgBold>지원하지 않는 기능</ToastMsgBold>입니다!
+        </ToastMsg>
+      </ToastContainer>
+    )}
+  </>
+);

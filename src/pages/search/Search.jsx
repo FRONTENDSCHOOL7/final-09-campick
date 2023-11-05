@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   SearchResultAccountName,
   SearchResultAccountWrapper,
-  SearchResultForm,
+  SearchResultLi,
   SearchResultProfileImg,
   SearchResultUserName,
   SearchResultWrapper,
@@ -51,7 +51,7 @@ export default function Search() {
       <SearchResultWrapper>
         {searchResults.map((data, id) => {
           return (
-            <SearchResultForm
+            <SearchResultLi
               key={id}
               onClick={() => navigate(`/profile/${data.accountname}`)}
             >
@@ -70,7 +70,7 @@ export default function Search() {
                   @{data.accountname}
                 </SearchResultAccountName>
               </SearchResultAccountWrapper>
-            </SearchResultForm>
+            </SearchResultLi>
           );
         })}
       </SearchResultWrapper>

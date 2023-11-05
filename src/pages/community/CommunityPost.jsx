@@ -19,9 +19,8 @@ import {
   WrongExtensionToast,
 } from "../../components/toast/Toast";
 import { MapSelectedBtn } from "../myCampsiteRegister/MyCampsiteRegister.style";
-import useImagesUpload from '../../hooks/useImagesUpload';
+import useImagesUpload from "../../hooks/useImagesUpload";
 import SelectImages from "../../components/community/SelectImages";
-
 
 export default function CommunityPost() {
   const [location, setLocation] = useState("");
@@ -61,7 +60,6 @@ export default function CommunityPost() {
     }
   }
 
-
   async function handleSubmitButton() {
     // 동기 처리
     let newWarnings = {};
@@ -73,12 +71,13 @@ export default function CommunityPost() {
     setWarnings(newWarnings);
 
     if (!Object.values(newWarnings).some(w => w)) {
-
       try {
         let image;
-        if (images.length === 0) image = '';
+        if (images.length === 0) image = "";
         else {
-          image = images.map((image) => `https://api.mandarin.weniv.co.kr/${image}`).join(',');
+          image = images
+            .map(image => `https://api.mandarin.weniv.co.kr/${image}`)
+            .join(",");
         }
         const res = await communityPost(postText, image, location);
         if (res.hasOwnProperty("post")) {
@@ -94,7 +93,6 @@ export default function CommunityPost() {
       alert("모든 항목을 입력해주세요");
     }
   }
-
 
   function autoGrowTextArea(e) {
     e.target.style.height = "inherit";
@@ -117,12 +115,12 @@ export default function CommunityPost() {
           closeModal={closeModal}
           onAddressSelected={handleAddressSelected}
         />
-        <SelectImages 
-        warnings = {warnings} 
-        images = {images} 
-        onUpload = {onUpload} 
-        onDelete = {onDelete} />
-        
+        <SelectImages
+          warnings={warnings}
+          images={images}
+          onUpload={onUpload}
+          onDelete={onDelete}
+        />
         <MapSelectedBtn onClick={openModal} style={{ margin: "0" }}>
           지도에서 위치 선택하기
         </MapSelectedBtn>

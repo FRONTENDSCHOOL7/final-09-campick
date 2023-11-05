@@ -13,18 +13,12 @@ import {
   InputStyle,
   Label,
   LabelStyle,
-  Submitbutton,
 } from "../../components/form/form.style";
 import MapModal from "../../components/kakaomap/MapModal";
 import { ModalBackdrop } from "../../components/kakaomap/MapModal.style";
 import { Helmet } from "react-helmet-async";
 import { campsiteregister } from "../../api/campsiteregisterApi";
 import imageValidation from "../../imageValidation";
-import {
-  ToastContainer,
-  ToastMsg,
-  ToastMsgBold,
-} from "../profileSetup/profileSetup.style";
 import { useNavigate } from "react-router-dom";
 import HeaderSubmit from "../../components/header/HeaderSubmit";
 import {
