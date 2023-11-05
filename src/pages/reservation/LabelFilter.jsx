@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { WrapperLabel, LabelButton } from "./LabelFilter.style";
+import { Swiper, SwiperSlide } from "swiper/react"; // basic
+import { FreeMode } from "swiper/modules";
+
+import "swiper/css"; //basic
 
 const LabelFilter = ({ onLabelClick }) => {
   const [selectedLabels, setSelectedLabels] = useState(["전체상품"]);
@@ -46,15 +50,23 @@ const LabelFilter = ({ onLabelClick }) => {
 
   return (
     <WrapperLabel>
-      {labels.map(label => (
-        <LabelButton
-          key={label}
-          selected={selectedLabels.includes(label)}
-          onClick={() => handleClick(label)}
-        >
-          {label}
-        </LabelButton>
-      ))}
+      <Swiper
+        spaceBetween={0}
+        slidesPerView={"auto"}
+        freeMode={true}
+        modules={[FreeMode]}
+      >
+        {labels.map(label => (
+          <SwiperSlide key={label}>
+            <LabelButton
+              selected={selectedLabels.includes(label)}
+              onClick={() => handleClick(label)}
+            >
+              {label}
+            </LabelButton>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </WrapperLabel>
   );
 };

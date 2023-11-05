@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import removeIcon from "../../assets/icons/icon-delete.png";
 
-export const WrapperMyCampsiteRegister = styled.form`
+export const WrapperMyCampsiteRegister = styled.section`
   width: 100%;
   height: calc(100vh - 50px);
   gap: 20px;

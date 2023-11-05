@@ -19,6 +19,7 @@ export const ProfileImg = styled.img`
   height: 42px;
   border-radius: 50%;
   overflow: hidden;
+  object-fit: cover;
 `;
 export const ProfileNavs = styled(Link)`
   display: flex;
@@ -61,27 +62,25 @@ export const ImgBox = styled.div`
   margin: 10px 0px;
   position: relative;
   .swiper-button-prev,
-  .swiper-button-next{
-    color: #FFF;
-    transform:scale(0.8) ;
+  .swiper-button-next {
+    color: #fff;
+    transform: scale(0.8);
     transition: 0.2s;
     opacity: 0.6;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  
-    &:hover{
-      transform:scale(0.9) ;
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    &:hover {
+      transform: scale(0.9);
       transition: 0.2s;
       opacity: 1.5;
     }
   }
-
 `;
 export const Cover = styled.img`
   width: 100%;
   height: 330px;
   border-radius: 10px;
   object-fit: cover;
-  
 `;
 export const Icons = styled.div`
   color: var(--font-primary-color);
@@ -103,7 +102,7 @@ export const IconHeart = styled.img`
   margin-right: 5px;
   cursor: pointer;
   animation: ${props =>
-    props.isClicked
+    props.isclicked
       ? css`
           ${pulse} 0.5s
         `

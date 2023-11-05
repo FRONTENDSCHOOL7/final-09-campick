@@ -12,7 +12,6 @@ const PostSection = styled.section`
   }
 `;
 export default function PostList({ data }) {
-  console.log("Post", data);
   return (
     <PostSection style={{ position: "relative" }}>
       {data &&

@@ -57,7 +57,10 @@ export default function Homefeed() {
         <title>Campick | 홈화면</title>
       </Helmet>
       <Header />
-      <Screen onClick={() => setOpModal(false)} close={opModal} />
+      <Screen
+        onClick={() => setOpModal(false)}
+        close={opModal ? true : undefined}
+      />
 
       <Home>
         {isLoading ? (

@@ -4,6 +4,9 @@ export const WrapperLabel = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin: 0 10px;
+  .swiper-slide {
+    width: auto;
+  }
 `;
 
 export const LabelButton = styled.button`

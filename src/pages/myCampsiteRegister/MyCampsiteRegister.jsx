@@ -205,7 +205,6 @@ export default function MyCampsiteRegister() {
             type="text"
             value={companyName}
             onChange={validation}
-            required
             placeholder="2-15자 이내여야 합니다."
           />
           {warnings.companyName && (
@@ -219,7 +218,6 @@ export default function MyCampsiteRegister() {
             type="text"
             value={price}
             onChange={validation}
-            required
             placeholder="숫자만 입력가능 합니다."
           />
           {warnings.price && <Incorrect>{warnings.price}</Incorrect>}

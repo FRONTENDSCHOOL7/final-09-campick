@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WrapperMyCampsiteRegister = styled.form`
+export const WrapperMyCampsiteRegister = styled.section`
   width: 100%;
   height: calc(100vh - 50px);
   gap: 20px;

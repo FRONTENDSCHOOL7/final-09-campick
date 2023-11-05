@@ -108,7 +108,7 @@ export default function CommunityPost() {
       <HeaderSubmit handleSubmitButton={handleSubmitButton} />
 
       <WrapperMyCampsiteRegister>
-        {isModalOpen && <ModalBackdrop onClick={closeModal} />}{" "}
+        {isModalOpen && <ModalBackdrop onClick={closeModal} />}
         {/* Modal이 열렸을 때만 배경 렌더링 */}
         <MapModal
           isOpen={isModalOpen}
