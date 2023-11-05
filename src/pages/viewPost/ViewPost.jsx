@@ -26,6 +26,7 @@ export default function ViewPost() {
   const [myAccountName, setMyAccountName] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [commentCount, setCommentCount] = useState(0);
+  const [lender, setLender] = useState(true);
 
   const loadMyInfo = async () => {
     try {
@@ -88,7 +89,7 @@ export default function ViewPost() {
       }
     };
     getPostAndComments();
-  }, [post_id]);
+  }, [post_id, lender]);
 
   return (
     <>
@@ -112,6 +113,8 @@ export default function ViewPost() {
                 key={comment.id}
                 comment={comment}
                 currentUsername={myAccountName}
+                postId={post_id}
+                setLender={setLender}
               />
             ))}
         </CommentSection>

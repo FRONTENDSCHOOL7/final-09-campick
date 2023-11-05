@@ -77,12 +77,12 @@ const Community = () => {
                 ))}
               </RightImages>
             </CommunityImageSet>
-            <UploadLink to="/community/communitypost">
-              <img src={upload} alt="게시물 업로드 버튼" />
-            </UploadLink>
             <GradientDiv></GradientDiv>
           </>
         )}
+        <UploadLink to="/community/communitypost">
+          <img src={upload} alt="게시물 업로드 버튼" />
+        </UploadLink>
       </Background>
       <Navbar community />
     </>

@@ -49,6 +49,7 @@ export const ProfileContent = styled.pre`
 export const WrapperDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex: 1;
 `;
 
@@ -84,6 +85,8 @@ export const Cover = styled.img`
 `;
 export const Icons = styled.div`
   color: var(--font-primary-color);
+  display: flex;
+  align-items: center;
 `;
 
 const pulse = keyframes`0% {
@@ -117,6 +120,7 @@ export const IconComment = styled.img`
 export const IconSpan = styled.span`
   font-size: 12px;
   margin-right: 15px;
+  margin-top: 2px;
 `;
 export const PostData = styled.p`
   font-size: 10px;
