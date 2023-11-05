@@ -59,7 +59,11 @@ export default function ReservationModal({ productId }) {
   };
 
   return (
-    <ModalWrap>
+    <ModalWrap
+      role="dialog"
+      aria-labelledby="캠핑장 자세히보기"
+      aria-describedby="캠핑장에 대한 정보와 이미지를 볼 수 있고 채팅과 예약 버튼을 통해 캠핑장을 예약할 수 있습니다."
+    >
       <ProductProfileWrapper>
         <ProfileUsername>
           {data && data.author.username}님의 캠핑장{" "}
