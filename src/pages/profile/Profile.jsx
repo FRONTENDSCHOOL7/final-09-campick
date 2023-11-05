@@ -7,7 +7,9 @@ import ProfileCard from "../../components/userProfile/ProfileCard";
 import Navbar from "../../components/navbar/Navbar";
 import UserPostList from "../../components/post/UserPostList";
 import ProfileProduct from "../../components/userProfile/ProfileProduct";
+import Splash from "../splash/Splash";
 import styled from "styled-components";
+
 import Header from "../../components/header/Header";
 import {
   ModalWrap,
@@ -25,14 +27,17 @@ export default function Profile() {
   const [isModal, setIsModal] = useState(false);
   const [isCheckModal, setIsCheckModal] = useState(false);
   const [lender, setLender] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (accountUsername) {
       const getUserInfo = async () => {
         const postRes = await userPost(accountUsername);
-        const productRes = await productList(accountUsername, 10);
+        const productRes = await productList(accountUsername, 3);
         setUserPosts(postRes);
         setUserProducts(productRes);
+        setIsLoading(false);
       };
       getUserInfo();
     } else {
@@ -40,11 +45,12 @@ export default function Profile() {
         const postRes = await userPost(localStorage.getItem("accountname"));
         const productRes = await productList(
           localStorage.getItem("accountname"),
-          10,
+          3,
         );
 
         setUserPosts(postRes);
         setUserProducts(productRes);
+        setIsLoading(false);
       };
       getMyInfo();
     }
@@ -65,25 +71,30 @@ export default function Profile() {
   const handleLogoutModalClose = () => {
     setIsCheckModal(false);
   };
+
   return (
     <>
-      <div style={{ backgroundColor: "#f5f5f5" }}>
-        <Helmet>
-          <title>Campick | 프로필</title>
-        </Helmet>
-        <Header profile setIsModal={setIsModal} />
-        <Main>
-          <ProfileCard accountUsername={accountUsername} />
-          <ProfileProduct data={userProducts} />
-          <UserPostList
-            data={userPosts}
-            accountUsername={accountUsername}
-            setLender={setLender}
-          />
-        </Main>
-
-        <Navbar profile />
-      </div>
+      <Helmet>
+        <title>Campick | 프로필</title>
+      </Helmet>
+      <Header profile setIsModal={setIsModal} />
+      <Main style={{ backgroundColor: "#f2f2f2" }}>
+        {isLoading ? (
+          <Splash />
+        ) : (
+          <>
+            <ProfileCard accountUsername={accountUsername} />
+            <ProfileProduct data={userProducts} />
+            {userPosts.length !== 0 ?
+            <UserPostList
+              data={userPosts}
+              accountUsername={accountUsername}
+              setLender={setLender}
+            />: null}
+          </>
+        )}
+      </Main>
+      <Navbar profile />
       {isModal && (
         <DarkBackground onClick={handleModalClose}>
           <ModalWrap>

@@ -4,6 +4,10 @@ import iconDot from "../../assets/icons/icon-dot.svg";
 import iconHeartedInactive from "../../assets/icons/heartInactive.png";
 import iconHeartedActive from "../../assets/icons/heartActive.png";
 import comment from "../../assets/icons/icon-comment.svg";
+import { Swiper, SwiperSlide } from "swiper/react"; // basic
+import "swiper/css";
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 import {
   PostArticle,
   ProfileDiv,
@@ -36,7 +40,13 @@ import { userpostDelete } from "../../api/userpostDeleteApi";
 import { DeletePostToast } from "../../components/toast/Toast";
 import PostMap from "./PostMap";
 import { GradientOverlay } from "../community/Community.style";
-export default function PostItem({ data, commentCount, setLender, location }) {
+export default function PostItem({
+  data,
+  commentCount,
+  setLender,
+  location,
+  viewPost,
+}) {
   const [isHearted, setIsHearted] = useState(false);
   const [heartCount, setHeartCount] = useState(data.heartCount);
   const [isPostModal, setIsPostModal] = useState(false);
@@ -100,11 +110,11 @@ export default function PostItem({ data, commentCount, setLender, location }) {
   const handlePostDeleteCheckModalClose = () => {
     setIsPostDeleteCheckModal(false);
   };
+  console.log("이미지",data.image.split(","))
 
   return (
     <>
       <PostArticle>
-        
         <ProfileDiv>
           <ProfileNav to={`/profile/${data && data.author.accountname}`}>
             <ProfileImg
@@ -115,25 +125,37 @@ export default function PostItem({ data, commentCount, setLender, location }) {
           <WrapperDiv>
             <ProfileNavs>
               <span>{data && data.author.username}</span>
-              <span>
-                @ {data && data.author.accountname}</span>
+              <span>@ {data && data.author.accountname}</span>
             </ProfileNavs>
             <ModalBtn onClick={handlePostModalOptionClick}>
               <DotImg src={iconDot} alt="아이콘 버튼 " />
             </ModalBtn>
           </WrapperDiv>
         </ProfileDiv>
-        
+
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
+        <Link to={!viewPost && `../community/${data.id}`}>
         <ImgBox>
-        
-          <Cover src={data && data.image} alt="업로드한 이미지" />
-          <GradientOverlay/>
+        <Swiper
+        slidesPerView={1}
+        spaceBetween={30}
+        navigation={true}
+        modules={[Navigation]}>
+          {data && data.image.split(",").map((item)=>
+          <SwiperSlide>
+            <Cover src={item} alt="업로드한 이미지" />
+            <GradientOverlay/>
           <PostMap location = {location}/>
-        </ImgBox>
+            </SwiperSlide>
+          )}
+          
+          
         
+        </Swiper>
+        </ImgBox>
+        </Link>
         <WrapperDiv>
           <Icons>
             <IconHeart
@@ -143,7 +165,7 @@ export default function PostItem({ data, commentCount, setLender, location }) {
               isClicked={isClicked}
             ></IconHeart>
             <IconSpan>{heartCount}</IconSpan>
-            <Link to={`../../community/${data && data.id}`}>
+            <Link to={`../community/${data && data.id}`}>
               <IconComment src={comment} alt="댓글 이동 버튼"></IconComment>
             </Link>
             <IconSpan>{commentCount}</IconSpan>

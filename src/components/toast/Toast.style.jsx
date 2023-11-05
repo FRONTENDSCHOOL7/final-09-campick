@@ -11,6 +11,7 @@ export const ToastContainer = styled.div`
   background-color: #ffff;
   display: flex;
   align-items: center;
+  z-index: 1000;
 `;
 
 export const ToastMsg = styled.span`

@@ -53,6 +53,7 @@ export const GradientOverlay = styled.div`
   background-blend-mode: multiply;
   object-fit: cover;
   z-index: 20; // 그라데이션을 앞으로 가져오기
+  border-radius: 0 0 10px 10px;
 `;
 
 export const PointIcon = styled.img`

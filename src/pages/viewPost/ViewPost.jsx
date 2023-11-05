@@ -98,8 +98,14 @@ export default function ViewPost() {
       </Helmet>
       <HeaderText text={""} />
       <WrapViewPost>
-        
-        {data && <PostItem data={data} commentCount={commentCount} location = {data && JSON.parse(data.content).location}/>}
+        {data && (
+          <PostItem
+            data={data}
+            commentCount={commentCount}
+            location={data && JSON.parse(data.content).location}
+            viewPost={viewPost}
+          />
+        )}
         <CommentSection>
           {comments &&
             [...comments].map(comment => (
@@ -110,7 +116,6 @@ export default function ViewPost() {
               />
             ))}
         </CommentSection>
-        
 
         <WrapCommentWrite>
           <CommentProfileImage

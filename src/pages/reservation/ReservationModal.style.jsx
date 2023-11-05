@@ -38,12 +38,13 @@ export const ProductPrice = styled.p`
   text-align: center;
   margin-top: 5px;
   font-size: 17px;
-  color : var(--primary-color);
+  color: var(--primary-color);
+  word-break: break-all;
 `;
 
 export const ProfileUsername = styled.span`
   margin-bottom: 1px;
-  font-size : 13px;
+  font-size: 13px;
 `;
 export const ProfileAccountname = styled.span`
   color: var(--font-primary-color);

@@ -23,6 +23,7 @@ export const InputStyle = styled.input`
   border: none;
   padding: 6px 0 6px 6px;
   border-bottom: 1px solid #dbdbdb;
+  
 
   &:focus {
     outline: none;

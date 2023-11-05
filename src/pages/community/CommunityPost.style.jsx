@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import removeIcon from "../../assets/icons/icon-delete.png"
 
 export const WrapperMyCampsiteRegister = styled.section`
   width: 100%;
@@ -92,4 +93,63 @@ export const TextareaStyle = styled.textarea`
     /* Microsoft Edge */
     color: #dbdbdb; /* 원하는 색상으로 변경하세요. */
   }
+`;
+export const ImagesUl = styled.ul`
+  gap:10px;
+  display: flex;
+
+`;
+export const ImagesLi = styled.li`
+  position: relative;
+  width: 100px;
+`;
+export const ImagesInputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap:10px;
+`;
+export const ImageView = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  position: absolute;
+`;
+export const LabelButton = styled.label`
+  width: 100px;
+  height: 100px;
+  background-color: #c3c3c3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border : 2px solid #9e9e9e;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+  flex-shrink: 0;
+  &:hover{
+    opacity: 0.8;
+    transition: 0.3s;
+  }
+`;
+export const DeleteButton = styled.button`
+  width: 22px;
+  height: 22px;
+  top: 6px;
+  right: 6px;
+  background: url(${removeIcon}) no-repeat center / contain;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: 0.3s;
+  &:hover{
+    opacity: 0.8;
+    transition: 0.3s;
+  }
+`;
+export const UploadImagesIcon = styled.img`
+  width: 50px;
+  height: 50px;
+  opacity: 0.7;
 `;

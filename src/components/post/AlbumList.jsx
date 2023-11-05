@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 const Img = styled.img`
   width: 114px;
@@ -7,5 +8,7 @@ const Img = styled.img`
   object-fit: cover;
 `;
 export default function AlbumList({ data }) {
-  return <Img src={data.image}></Img>;
+  return <Link to={`../community/${data.id}`}>
+    <Img src={data.image.split(",")[0]}/>
+    </Link>;
 }
