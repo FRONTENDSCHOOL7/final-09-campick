@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { productList } from "../../api/productListApi";
 import { followList } from "../../api/followListApi";
 import Feed from "../../components/campsiteFeed/campsiteFeed";
 import ReservationModal from "./ReservationModal";
 import Header from "../../components/header/Header";
+import LabelFilter from "./LabelFilter";
 import Splash from "../splash/Splash";
 import NoFriendsMessage from "../../assets/image/nocamper.png";
 import {
@@ -22,6 +23,7 @@ export default function Reservation() {
   const [opModal, setOpModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [productId, setProductId] = useState("");
+  const [selectedLabels, setSelectedLabels] = useState([]);
 
   useEffect(() => {
     const accountname = localStorage.getItem("accountname");
@@ -53,6 +55,33 @@ export default function Reservation() {
     );
   }, [productInfo]);
 
+  const handleLabelClick = useCallback(label => {
+    setSelectedLabels(prevLabels => {
+      if (label === "전체상품") {
+        // '전체상품'을 선택하면 모든 라벨 선택 해제
+        return [];
+      } else {
+        if (prevLabels.includes(label)) {
+          // 이미 선택된 라벨을 다시 클릭하면 제거
+          return prevLabels.filter(l => l !== label);
+        } else {
+          // 새로운 라벨을 추가
+          return [...prevLabels, label];
+        }
+      }
+    });
+  }, []);
+
+  const filteredProducts = useMemo(() => {
+    if (selectedLabels.length === 0) return sortProduct;
+
+    return sortProduct.filter(product => {
+      const labels = JSON.parse(product.itemName).labels;
+      // 모든 선택된 라벨이 제품에 포함되어 있는지 확인
+      return selectedLabels.every(label => labels.includes(label));
+    });
+  }, [sortProduct, selectedLabels]);
+
   return (
     <>
       <Header />
@@ -69,7 +98,11 @@ export default function Reservation() {
             </h1>
             {opModal && <ReservationModal productId={productId} />}
             <ProductSection>
-              {sortProduct.map(item => (
+              <LabelFilter
+                onLabelClick={handleLabelClick}
+                selectedLabels={selectedLabels}
+              />
+              {filteredProducts.map(item => (
                 <Feed
                   reservation
                   key={item.id}

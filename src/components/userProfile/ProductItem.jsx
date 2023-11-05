@@ -11,7 +11,7 @@ import {
   WrapProductTag,
   ProductContainer,
 } from "../../components/campsiteFeed/campsiteFeed.style";
-export default function ProductItem({ data }) {
+export default function ProductItem({ data, onLabelClick }) {
   return (
     <ProductContainer>
       <ProductTitle>{`${data.author.username}님의 캠핑장`}</ProductTitle>
@@ -25,7 +25,9 @@ export default function ProductItem({ data }) {
           </ProductLocation>
           <WrapProductTag>
             {JSON.parse(data.itemName).labels.map(item => (
-              <ProductTag key={item}>{item}</ProductTag>
+              <ProductTag key={item} onClick={() => onLabelClick(item)}>
+                {item}
+              </ProductTag>
             ))}
           </WrapProductTag>
         </WrapSpan>
