@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { WrapperLabel, LabelButton } from "./LabelFilter.style";
-import { Swiper, SwiperSlide } from "swiper/react"; // basic
-import { FreeMode } from "swiper/modules";
-
-import "swiper/css"; //basic
+import { WrapperLabel, LabelButton, ViewMoreButton } from "./LabelFilter.style";
+import more from "../../assets/icons/more.svg";
+import close from "../../assets/icons/close.svg";
 
 const LabelFilter = ({ onLabelClick }) => {
   const [selectedLabels, setSelectedLabels] = useState(["전체상품"]);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const initialVisibleCount = 6;
 
   const labels = [
     "전체상품",
@@ -48,25 +49,30 @@ const LabelFilter = ({ onLabelClick }) => {
     onLabelClick(label);
   };
 
+  const toggleViewMore = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const visibleLabels = isExpanded
+    ? labels
+    : labels.slice(0, initialVisibleCount);
+
   return (
     <WrapperLabel>
-      <Swiper
-        spaceBetween={0}
-        slidesPerView={"auto"}
-        freeMode={true}
-        modules={[FreeMode]}
-      >
-        {labels.map(label => (
-          <SwiperSlide key={label}>
-            <LabelButton
-              selected={selectedLabels.includes(label)}
-              onClick={() => handleClick(label)}
-            >
-              {label}
-            </LabelButton>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {visibleLabels.map(label => (
+        <LabelButton
+          selected={selectedLabels.includes(label)}
+          onClick={() => handleClick(label)}
+        >
+          {label}
+        </LabelButton>
+      ))}
+      {labels.length > initialVisibleCount && (
+        <ViewMoreButton
+          onClick={toggleViewMore}
+          backgroundImage={isExpanded ? close : more}
+        ></ViewMoreButton>
+      )}
     </WrapperLabel>
   );
 };
