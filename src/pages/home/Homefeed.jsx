@@ -9,17 +9,18 @@ import HomeCampsiteFeed from "../../components/campsiteFeed/HomeCampsiteFeed";
 import { followList } from "../../api/followListApi";
 import { productList } from "../../api/productListApi";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router";
 import Splash from "../splash/Splash";
 import Header from "../../components/header/Header";
-import { styled } from "styled-components";
+import ReservationModal from "../reservation/ReservationModal";
+import { Screen } from "../reservation/Reservation.style";
 
 export default function Homefeed() {
   const [data, setData] = useState("");
   const [followingList, setFollowingList] = useState("");
   const [productInfo, setProductInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
+  const [opModal, setOpModal] = useState(false);
+  const [productId, setProductId] = useState("");
 
   useEffect(() => {
     async function fetchHomefeed() {
@@ -56,14 +57,27 @@ export default function Homefeed() {
         <title>Campick | 홈화면</title>
       </Helmet>
       <Header />
+      <Screen
+        onClick={() => setOpModal(false)}
+        close={opModal ? true : undefined}
+      />
 
       <Home>
         {isLoading ? (
           <Splash />
         ) : (
           <>
+            <h1 className="a11y-hidden">
+              광고 배너와 팔로우한 유저들이 등록한 예약 가능한 캠핑장, 게시물을
+              볼 수 있는 홈화면 입니다.
+            </h1>
+            {opModal && <ReservationModal productId={productId} />}
             <MainSlider />
-            <HomeCampsiteFeed productInfo={productInfo} />
+            <HomeCampsiteFeed
+              productInfo={productInfo}
+              setOpModal={setOpModal}
+              setProductId={setProductId}
+            />
             <PostList data={data} />
           </>
         )}

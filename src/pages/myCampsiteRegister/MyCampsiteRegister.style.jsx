@@ -67,11 +67,6 @@ export const UploadButtonText = styled.p`
   }
 `;
 
-export const GoBackButton = styled.img`
-  cursor: pointer;
-  margin-right: 10px;
-`;
-
 export const MapSelectedBtn = styled.button`
   font-family: "TheJamsil", sans-serif;
   font-size: 14px;

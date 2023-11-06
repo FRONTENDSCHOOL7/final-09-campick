@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ProductContainer = styled.div`
+export const ProductContainer = styled.li`
   margin: 0 8px 0 8px;
   border-radius: 10px;
   display: flex;
@@ -29,7 +29,7 @@ export const WrapSpan = styled.div`
   justify-content: center;
   margin-left: 10px;
 `;
-export const ProductName = styled.span`
+export const ProductName = styled.h3`
   font-size: 14px;
   width: 10rem;
   overflow: hidden;

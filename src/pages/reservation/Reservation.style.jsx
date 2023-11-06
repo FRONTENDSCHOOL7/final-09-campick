@@ -9,7 +9,7 @@ export const UserProductMain = styled.main`
   }
   position: relative;
 `;
-export const ProductSection = styled.section`
+export const ProductSection = styled.ul`
   margin: 10px 0 10px 0;
   display: flex;
   flex-direction: column;

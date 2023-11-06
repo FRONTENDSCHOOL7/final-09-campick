@@ -13,18 +13,12 @@ import {
   InputStyle,
   Label,
   LabelStyle,
-  Submitbutton,
 } from "../../components/form/form.style";
 import MapModal from "../../components/kakaomap/MapModal";
 import { ModalBackdrop } from "../../components/kakaomap/MapModal.style";
 import { Helmet } from "react-helmet-async";
 import { campsiteregister } from "../../api/campsiteregisterApi";
 import imageValidation from "../../imageValidation";
-import {
-  ToastContainer,
-  ToastMsg,
-  ToastMsgBold,
-} from "../profileSetup/profileSetup.style";
 import { useNavigate } from "react-router-dom";
 import HeaderSubmit from "../../components/header/HeaderSubmit";
 import {
@@ -211,7 +205,6 @@ export default function MyCampsiteRegister() {
             type="text"
             value={companyName}
             onChange={validation}
-            required
             placeholder="2-15자 이내여야 합니다."
           />
           {warnings.companyName && (
@@ -225,7 +218,6 @@ export default function MyCampsiteRegister() {
             type="text"
             value={price}
             onChange={validation}
-            required
             placeholder="숫자만 입력가능 합니다."
           />
           {warnings.price && <Incorrect>{warnings.price}</Incorrect>}

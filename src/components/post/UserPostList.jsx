@@ -8,7 +8,6 @@ import {
   AlbumBtn,
   AlbumSection,
 } from "./UserPostList.style";
-import { DeletePostToast } from "../toast/Toast";
 
 export default React.memo(function UserPostList({ data, setLender }) {
   const [listView, setListView] = useState(true);
@@ -40,7 +39,7 @@ export default React.memo(function UserPostList({ data, setLender }) {
                 data={item}
                 commentCount={item.commentCount}
                 setLender={setLender}
-                location = {item && JSON.parse(item.content).location}
+                location={item && JSON.parse(item.content).location}
               />
             ))}
         </section>

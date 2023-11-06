@@ -77,7 +77,13 @@ export default function Signup() {
       <Helmet>
         <title>Campick | 회원가입</title>
       </Helmet>
-      <WrapperLoginEmail>
+      <WrapperLoginEmail
+        onSubmit={() => {
+          navigate("./profileSetup", {
+            state: { email: email, password: password },
+          });
+        }}
+      >
         <Title>이메일로 회원가입</Title>
         <WrapForm>
           <WrapEmailPw>
@@ -111,15 +117,7 @@ export default function Signup() {
               <Incorrect>* 비밀번호는 6자 이상이어야 합니다.</Incorrect>
             )}
 
-            <Submitbutton
-              type="button"
-              disabled={!(!validEmail && validPassword)}
-              onClick={() => {
-                navigate("./profileSetup", {
-                  state: { email: email, password: password },
-                });
-              }}
-            >
+            <Submitbutton disabled={!(!validEmail && validPassword)}>
               다음
             </Submitbutton>
           </WrapEmailPw>

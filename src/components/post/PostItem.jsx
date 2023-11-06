@@ -62,8 +62,7 @@ export default function PostItem({
 
   const heartedActive = async () => {
     try {
-      const res = await heart(data.id);
-      console.log(res.hearted);
+      await heart(data.id);
     } catch (error) {
       console.error("error", error);
     }
@@ -71,8 +70,7 @@ export default function PostItem({
 
   const heartedInactive = async () => {
     try {
-      const res = await unheart(data.id);
-      console.log(res.hearted);
+      await unheart(data.id);
     } catch (error) {
       console.error("error", error);
     }
@@ -110,8 +108,6 @@ export default function PostItem({
   const handlePostDeleteCheckModalClose = () => {
     setIsPostDeleteCheckModal(false);
   };
-  console.log("이미지", data.image.split(","));
-  console.log(viewPost);
   return (
     <>
       <PostArticle>
@@ -146,7 +142,7 @@ export default function PostItem({
             >
               {data &&
                 data.image.split(",").map(item => (
-                  <SwiperSlide>
+                  <SwiperSlide key={item}>
                     <Cover src={item} alt="업로드한 이미지" />
                     <GradientOverlay />
                     <PostMap location={location} />
@@ -161,7 +157,7 @@ export default function PostItem({
               src={isHearted ? iconHeartedActive : iconHeartedInactive}
               alt="좋아요 아이콘"
               onClick={handleHeartClick}
-              isClicked={isClicked}
+              isclicked={isClicked.toString()}
             ></IconHeart>
             <IconSpan>{heartCount}</IconSpan>
             <Link to={!viewPost && `../community/${data && data.id}`}>

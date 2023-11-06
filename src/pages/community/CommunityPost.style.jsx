@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import removeIcon from "../../assets/icons/icon-delete.png"
+import removeIcon from "../../assets/icons/icon-delete.png";
 
 export const WrapperMyCampsiteRegister = styled.section`
   width: 100%;
@@ -65,7 +65,7 @@ export const GoBackButton = styled.img`
 
 //게시글작성 input style
 export const TextareaStyle = styled.textarea`
-  font-family: 'TheJamsil';
+  font-family: "TheJamsil";
   width: 302px;
   min-height: 100px;
   resize: none; // 사용자가 크기를 변경할 수 없도록 함
@@ -95,9 +95,8 @@ export const TextareaStyle = styled.textarea`
   }
 `;
 export const ImagesUl = styled.ul`
-  gap:10px;
+  gap: 10px;
   display: flex;
-
 `;
 export const ImagesLi = styled.li`
   position: relative;
@@ -106,7 +105,7 @@ export const ImagesLi = styled.li`
 export const ImagesInputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  gap:10px;
+  gap: 10px;
 `;
 export const ImageView = styled.img`
   width: 100px;
@@ -123,12 +122,12 @@ export const LabelButton = styled.label`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  border : 2px solid #9e9e9e;
+  border: 2px solid #9e9e9e;
   cursor: pointer;
   opacity: 0.6;
   transition: 0.3s;
   flex-shrink: 0;
-  &:hover{
+  &:hover {
     opacity: 0.8;
     transition: 0.3s;
   }
@@ -143,7 +142,7 @@ export const DeleteButton = styled.button`
   cursor: pointer;
   opacity: 0.4;
   transition: 0.3s;
-  &:hover{
+  &:hover {
     opacity: 0.8;
     transition: 0.3s;
   }

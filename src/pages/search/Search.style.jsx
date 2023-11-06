@@ -13,7 +13,7 @@ export const SearchInputStyle = styled.input`
   }
 `;
 
-export const SearchResultWrapper = styled.div`
+export const SearchResultWrapper = styled.ul`
   width: 100%;
   height: calc(100vh - 50px);
   overflow-y: scroll;
@@ -27,7 +27,7 @@ export const SearchResultWrapper = styled.div`
   }
 `;
 
-export const SearchResultForm = styled.form`
+export const SearchResultLi = styled.li`
   width: calc(100% - 8px);
   height: 50px;
   padding-bottom: 10px;

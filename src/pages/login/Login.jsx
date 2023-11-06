@@ -11,11 +11,7 @@ import {
   LoginModal,
   ButtonWrapper,
 } from "./Login.style";
-import {
-  ToastContainer,
-  ToastMsg,
-  ToastMsgBold,
-} from "../../components/toast/Toast.style";
+import { NotAvailable } from "../../components/toast/Toast";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -35,18 +31,6 @@ const Login = () => {
     setShowNotAvailable(true);
     setTimeout(() => setShowNotAvailable(false), 3000);
   };
-
-  const NotAvailable = () => (
-    <>
-      {showNotAvailable && (
-        <ToastContainer>
-          <ToastMsg>
-            현재 <ToastMsgBold>지원하지 않는 기능</ToastMsgBold>입니다!
-          </ToastMsg>
-        </ToastContainer>
-      )}
-    </>
-  );
 
   return (
     <Background>
@@ -83,7 +67,7 @@ const Login = () => {
           </ButtonWrapper>
         </LoginModal>
       )}
-      <NotAvailable />
+      <NotAvailable showNotAvailable={showNotAvailable} />
     </Background>
   );
 };

@@ -14,14 +14,6 @@ export const Home = styled.div`
   }
 `;
 
-export const LogoImg = styled.img`
-  width: 41px;
-  height: 25px;
-  cursor: pointer;
-`;
-export const Search = styled.img`
-  cursor: pointer;
-`;
 export const MainSliderStyle = styled.div`
   .swiper {
     margin-top: 10px;

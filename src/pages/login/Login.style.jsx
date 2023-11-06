@@ -57,7 +57,7 @@ const moveUpSub = keyframes`
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-80%);
+    transform: translateY(-105%);
   }
 `;
 

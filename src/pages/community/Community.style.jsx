@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Background = styled.div`
+export const Background = styled.main`
   background-color: #f2f2f2;
   width: 390px;
   height: calc(100vh - 105px);
@@ -58,15 +58,15 @@ export const UploadLink = styled(Link)`
     z-index: 100;
   }
 `;
-export const CommunityImageSet = styled.div`
+export const CommunityImageSet = styled.section`
   display: flex;
   padding: 18px;
 `;
-export const LeftImages = styled.div`
+export const LeftImages = styled.ul`
   flex: 1;
   margin-right: 8px;
 `;
-export const RightImages = styled.div`
+export const RightImages = styled.ul`
   flex: 1;
   margin-left: 8px;
   margin-top: 30px;
