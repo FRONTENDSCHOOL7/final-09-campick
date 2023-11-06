@@ -38,9 +38,7 @@
 </div>
 
 ## 3. 기술 및 개발 환경
-
----
-
+ <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img alt="Styled-Components" src="https://img.shields.io/badge/Styled Components-DB7093.svg?&style=for-the-badge&logo=styled-components&logoColor=white"/>
 ## 4. 폴더 구조
 
 ---
@@ -71,11 +69,12 @@ src
 - ✍️ Post
   - 게시글 등록/삭제/신고
   - 캠핑 위치 정보 등록
-  - 이미지 최대 ?장 업로드
+  - 이미지 최대 3장 업로드
   - 유저 게시글 목록
   - 팔로잉 게시글 목록
 - 💬 Coment
   - 댓글 등록
+  - 댓글 삭제
 - 👤 Profile
   - 개인 프로필
   - 프로필 수정
