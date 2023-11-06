@@ -15,8 +15,7 @@ export const ModalWrap = styled.div`
 
 export const ProductImg = styled.img`
   width: 100%;
-  height: auto;
-  overflow: hidden;
+  aspect-ratio: 1;
 `;
 
 export const ProductProfileWrapper = styled.div`
