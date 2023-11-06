@@ -8,27 +8,26 @@ export const SearchInputStyle = styled.input`
   background: var(--Gray-6, #f2f2f2);
   border: 0;
   padding-left: 16px;
-  &:focus-visible{
+  &:focus-visible {
     outline-color: var(--primary-color);
   }
-  
 `;
 
-export const SearchResultWrapper = styled.div`
-    width: 100%;
-    height: calc(100vh - 50px);
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    padding: 20px 16px 20px 16px;
-    box-sizing: border-box;
+export const SearchResultWrapper = styled.ul`
+  width: 100%;
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 20px 16px 20px 16px;
+  box-sizing: border-box;
   &::-webkit-scrollbar {
     display: none;
   }
 `;
 
-export const SearchResultForm = styled.form`
+export const SearchResultLi = styled.li`
   width: calc(100% - 8px);
   height: 50px;
   padding-bottom: 10px;

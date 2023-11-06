@@ -43,9 +43,18 @@ export const CommentTime = styled.p`
 `;
 export const CommentText = styled.p`
   width: 100%;
-  max-width: 260px;
+  max-width: 290px;
   font-size: 14px;
   color: #333333;
+  word-break: break-all;
   white-space: pre-line;
   line-height: 1.3em;
+  text-overflow: wrap;
+`;
+export const DeleteCommentButton = styled.button`
+  background-color: red; // 삭제 버튼의 스타일을 정의
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 `;

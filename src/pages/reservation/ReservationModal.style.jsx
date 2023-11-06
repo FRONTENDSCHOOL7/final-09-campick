@@ -59,18 +59,17 @@ export const ProductTagWrap = styled.div`
 `;
 export const SwiperWrapper = styled.div`
   .swiper-button-prev,
-  .swiper-button-next{
-    color: #FFF;
-    transform:scale(0.8) ;
+  .swiper-button-next {
+    color: #fff;
+    transform: scale(0.8);
     transition: 0.2s;
     opacity: 0.6;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  
-    &:hover{
-      transform:scale(0.9) ;
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    &:hover {
+      transform: scale(0.9);
       transition: 0.2s;
       opacity: 1.5;
     }
   }
-
 `;

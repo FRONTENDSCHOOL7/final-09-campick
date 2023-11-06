@@ -9,7 +9,7 @@ export const TextWithIcon = styled.div`
   margin-left: 9px;
   margin-top: 155px;
 `;
-export const CommunityImageContainer = styled.div`
+export const CommunityImageContainer = styled.li`
   position: relative; // 상대 위치로 설정
   display: flex;
   width: 170px;
@@ -80,7 +80,7 @@ export const communityPostImage = styled.img`
   cursor: pointer;
 `;
 
-export const Address = styled.p`
+export const Address = styled.span`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

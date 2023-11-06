@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WrapperProfileSetup = styled.div`
+export const WrapperProfileSetup = styled.section`
   width: 100%;
   justify-content: center;
   box-sizing: border-box;

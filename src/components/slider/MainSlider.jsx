@@ -1,5 +1,5 @@
 import React from "react";
-import { SliderItem, SliderWrapper, StyledSlider } from "./MainSlider.style";
+import { SliderItem, SliderWrapper } from "./MainSlider.style";
 import Slide1 from "../../assets/temp-img/homefeed-ad-1.png";
 import Slide2 from "../../assets/temp-img/homefeed-ad-2.jpeg";
 import Slide3 from "../../assets/temp-img/homefeed-ad-3.jpg";
@@ -25,13 +25,13 @@ export default function MainSlider() {
         modules={[Autoplay, Pagination]}
       >
         <SwiperSlide>
-          <SliderItem src={Slide1} alt="첫번째 슬라이드" />
+          <SliderItem src={Slide1} alt="광고 슬라이드 1" />
         </SwiperSlide>
         <SwiperSlide>
-          <SliderItem src={Slide2} alt="두번째 슬라이드" />
+          <SliderItem src={Slide2} alt="광고 슬라이드 2" />
         </SwiperSlide>
         <SwiperSlide>
-          <SliderItem src={Slide3} alt="세번째 슬라이드" />
+          <SliderItem src={Slide3} alt="광고 슬라이드 3" />
         </SwiperSlide>
       </Swiper>
     </SliderWrapper>
