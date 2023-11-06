@@ -108,7 +108,6 @@ export default function PostItem({
   const handlePostDeleteCheckModalClose = () => {
     setIsPostDeleteCheckModal(false);
   };
-
   return (
     <>
       <PostArticle>
@@ -161,7 +160,7 @@ export default function PostItem({
               isclicked={isClicked.toString()}
             ></IconHeart>
             <IconSpan>{heartCount}</IconSpan>
-            <Link to={`../community/${data && data.id}`}>
+            <Link to={!viewPost && `../community/${data && data.id}`}>
               <IconComment src={comment} alt="댓글 이동 버튼"></IconComment>
             </Link>
             <IconSpan>{commentCount}</IconSpan>

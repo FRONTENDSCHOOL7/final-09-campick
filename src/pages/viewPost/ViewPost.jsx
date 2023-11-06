@@ -103,7 +103,7 @@ export default function ViewPost() {
             data={data}
             commentCount={commentCount}
             location={data && JSON.parse(data.content).location}
-            viewPost={viewPost}
+            viewPost
           />
         )}
         <CommentSection>

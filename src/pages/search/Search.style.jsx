@@ -68,3 +68,27 @@ export const SearchResultAccountName = styled.p`
   text-overflow: ellipsis;
   max-width: 100%;
 `;
+export const SearchNotice = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: calc(100vh - 65vh);
+  gap: 29px;
+`;
+export const NoticeImg = styled.img`
+  width: 110px;
+  height: 64px;
+`;
+export const NoticeText = styled.p`
+  color: var(--font-primary-color);
+  opacity: 0.6;
+`;
+export const SeeMoreBtn = styled.button`
+  padding: 10px 0px;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: Var(--primary-color);
+    color: #fff;
+  }
+`;
