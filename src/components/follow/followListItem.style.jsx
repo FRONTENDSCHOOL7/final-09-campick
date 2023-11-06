@@ -30,6 +30,7 @@ export const UserImg = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
 `;
 export const UserInfoWrap = styled.div`
   display: flex;
@@ -48,7 +49,7 @@ export const UserIntro = styled.span`
   color: var(--font-primary-color);
 `;
 export const FollowBtn = styled.button`
-  font-family: 'TheJamsil';
+  font-family: "TheJamsil";
   width: 56px;
   font-size: 12px;
   padding: 7px 0px;

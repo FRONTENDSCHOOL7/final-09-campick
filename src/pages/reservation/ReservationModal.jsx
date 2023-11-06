@@ -66,7 +66,7 @@ export default function ReservationModal({ productId }) {
     >
       <ProductProfileWrapper>
         <ProfileUsername>
-          {data && data.author.username}님의 캠핑장{" "}
+          {data && data.author.username}님의 캠핑장
         </ProfileUsername>
         <ProfileAccountname>
           @ {data && data.author.accountname}
@@ -85,6 +85,7 @@ export default function ReservationModal({ productId }) {
           }}
           navigation={true}
           modules={[Navigation]}
+          style={{ maxHeight: "300px" }}
         >
           <SwiperSlide>
             <ProductImg
