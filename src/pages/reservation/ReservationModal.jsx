@@ -111,18 +111,22 @@ export default function ReservationModal({ productId }) {
             ))}
         </ProductTagWrap>
       </ProductProfileWrapper>
-
-      <div style={{ padding: "10px" }}>
-        <Link to={"/reservation/chat"}>
-          <Submitbutton style={{ marginTop: "5px" }}>
-            채팅으로 캠핑장 문의하기
+      {data && (
+        <div style={{ padding: "10px" }}>
+          <Link to="/reservation/chat" state={{ data }}>
+            <Submitbutton style={{ marginTop: "5px" }}>
+              채팅으로 캠핑장 문의하기
+            </Submitbutton>
+          </Link>
+          <Submitbutton onClick={onClick} style={{ marginTop: "5px" }}>
+            캠핑장 예약하기
           </Submitbutton>
-        </Link>
-        <Submitbutton onClick={onClick} style={{ marginTop: "5px" }}>
-          캠핑장 예약하기
-        </Submitbutton>
-        <CompleteToast showCompleteToast={showReservationToast} text={"예약"} />
-      </div>
+          <CompleteToast
+            showCompleteToast={showReservationToast}
+            text={"예약"}
+          />
+        </div>
+      )}
     </ModalWrap>
   );
 }

@@ -21,11 +21,14 @@ import {
   ChatTitle,
 } from "./Chat.style";
 import uploadPic from "../../assets/icons/img-button.svg";
+import ChatUrl from "./ChatUrl";
+import { useLocation } from "react-router-dom";
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const messagesEndRef = useRef(null);
+  const location = useLocation();
 
   const handleInputChange = e => {
     setUserInput(e.target.value);
@@ -66,9 +69,10 @@ export default function Chat() {
       <Helmet>
         <title>Campic | 예약 채팅창</title>
       </Helmet>
-      <HeaderText text={"campic"} />
+      <HeaderText text={location.state.data.author.username} />
       <HomeContainer>
-        <ChatTitle>campic</ChatTitle>
+        <ChatTitle>campick</ChatTitle>
+        <ChatUrl url={location.state.data.link} />
         <ChatBox>
           <Column>
             <MessageRow>

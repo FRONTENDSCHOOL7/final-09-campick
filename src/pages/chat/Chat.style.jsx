@@ -9,6 +9,9 @@ export const HomeContainer = styled.main`
   ::-webkit-scrollbar {
     width: 0px;
   }
+  &::-webkit-scrollbar {
+    display: none;
+  }
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
@@ -91,4 +94,29 @@ export const ChatTitle = styled.h1`
   overflow: hidden;
   padding: 0;
   position: absolute;
+`;
+
+export const ChatUrlWrapper = styled.section`
+  width: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  margin: 15px 15px 0 15px;
+`;
+export const ChatUrlA = styled.a`
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  transition: 0.3s;
+  border: 1px solid var(--primary-disabled-color);
+  padding: 10px;
+  border-radius: 20px;
+  color: #707070;
+
+  &:hover {
+    color: white;
+    background-color: var(--primary-disabled-color);
+    transition: 0.3s;
+  }
 `;
