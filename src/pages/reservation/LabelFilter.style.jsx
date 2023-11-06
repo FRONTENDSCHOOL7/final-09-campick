@@ -9,6 +9,18 @@ export const WrapperLabel = styled.section`
   }
 `;
 
+export const ViewMoreButton = styled.button`
+  background-image: url(${props => props.backgroundImage});
+  width: 12px;
+  height: 12px;
+  margin-left: 13px;
+  margin-top: 7px;
+  cursor: pointer;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+`;
+
 export const LabelButton = styled.button`
   font-family: "TheJamsil", sans-serif;
   font-size: 12px;
