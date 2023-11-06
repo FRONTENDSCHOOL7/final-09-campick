@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import chat from "../../assets/icons/icon-message-circle.svg";
+import chat from "../../assets/icons/chat.svg";
 import share from "../../assets/icons/icon-share.svg";
 export const ProfileWrapper = styled.section`
   background-color: #fff;
