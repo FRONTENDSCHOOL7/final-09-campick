@@ -105,7 +105,7 @@ export const IconHeart = styled.img`
   margin-right: 5px;
   cursor: pointer;
   animation: ${props =>
-    props.isclicked
+    props.isclicked === "true"
       ? css`
           ${pulse} 0.5s
         `
