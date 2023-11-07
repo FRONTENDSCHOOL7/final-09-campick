@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import defaultProfileImage from "../../assets/image/profile-default-image.jpg";
 import HeaderSearch from "../../components/header/HeaderSearch";
 import bus from "../../assets/icon/favicon.png";
+import { Helmet } from "react-helmet-async";
 export default function Search() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -53,6 +54,9 @@ export default function Search() {
 
   return (
     <>
+      <Helmet>
+        <title>Campick | 검색</title>
+      </Helmet>
       <HeaderSearch handleInputChange={handleInputChange} />
       <SearchResultWrapper>
         {searchKeyword.length > 0 ? (

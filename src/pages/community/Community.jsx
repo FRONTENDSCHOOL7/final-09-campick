@@ -19,6 +19,7 @@ import Splash from "../splash/Splash";
 import NoFriendsMessage from "../../assets/image/nocamper.png";
 import { CommunityImageSet } from "./Community.style";
 import { RightImages } from "./Community.style";
+import { Helmet } from "react-helmet-async";
 
 const Community = () => {
   const [data, setData] = useState([]);
@@ -39,6 +40,9 @@ const Community = () => {
   return (
     <>
       <Header />
+      <Helmet>
+        <title>Campick | 커뮤니티</title>
+      </Helmet>
       <Background>
         {isLoading ? (
           <Splash style={SplashStyle} />

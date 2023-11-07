@@ -1,6 +1,6 @@
 import { Wrapper } from "./styles/Wrapper";
 import Router from "./routes/Router.jsx";
-import background from "../src/assets/image/backgroundImg.png";
+import background from "../src/assets/image/background3.png";
 import { styled } from "styled-components";
 function App() {
   return (
