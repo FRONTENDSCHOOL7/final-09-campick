@@ -7,6 +7,8 @@ import ReservationModal from "./ReservationModal";
 import Header from "../../components/header/Header";
 import LabelFilter from "./LabelFilter";
 import Splash from "../splash/Splash";
+import { Helmet } from "react-helmet-async";
+
 import NoFriendsMessage from "../../assets/image/nocamper.png";
 import {
   NoFriendsImage,
@@ -85,6 +87,9 @@ export default function Reservation() {
   return (
     <>
       <Header />
+      <Helmet>
+        <title>Campick | 예약</title>
+      </Helmet>
       <Screen
         onClick={() => setOpModal(false)}
         close={opModal ? true : undefined}
