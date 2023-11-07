@@ -10,14 +10,26 @@ export const WrapperLabel = styled.section`
 `;
 
 export const ViewMoreButton = styled.button`
-  background-image: url(${props => props.backgroundImage});
-  width: 12px;
-  height: 12px;
-  margin-left: 13px;
-  margin-top: 7px;
+  position: relative;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-top: 3px;
   cursor: pointer;
   text-align: center;
-  background-size: cover;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+
+  background-image: url(${props => props.backgroundImage});
+  background-size: contain;
   background-position: center;
 `;
 
