@@ -149,7 +149,7 @@
 
 | 로그인 페이지 | 홈 화면 | 검색 페이지 |
 |-------|-------|-------|
-| ![4  로그인 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/6ba2bb7c-1c30-47c6-bd83-80d9f6aec49e) |  | ![6.검색페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cfc14ccf-6e4a-40a8-8123-356a503173b6) |
+| ![4.로그인 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/6ba2bb7c-1c30-47c6-bd83-80d9f6aec49e) | ![5.홈화면 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/e5801107-7698-4524-8563-3e7add7bf6b8) | ![6.검색페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cfc14ccf-6e4a-40a8-8123-356a503173b6) |
 
 ### 2) 예약
 | 예약 페이지 | 예약 상세보기 페이지 | 예약 채팅 페이지 |
@@ -159,16 +159,18 @@
 ### 3) 커뮤니티
 | 커뮤니티 페이지 | 댓글 및 좋아요 기능 | 게시물 작성 페이지 |
 |-------|-------|-------|
-| 내용1 | ![11.커뮤니티 댓글 및 좋아요 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf7ae2f2-ac90-4667-9dba-65144927be6d) | 내용3 |
+| 내용1 | ![11.커뮤니티 댓글 및 좋아요 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf7ae2f2-ac90-4667-9dba-65144927be6d) | ![12.커뮤니티 게시글 작성 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/86371bfa-76db-4788-a628-78c127eb6a52)
+ |
 
 ### 4) 프로필
 | 프로필 페이지 | 프로필 수정 페이지 | 게시물 삭제 기능 |
 |-------|-------|-------|
-| ![13.내 프로필 및 팔로잉 팔로워 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/16c02aa7-c292-4ea3-aec0-323446f0cffa) | ![14.내 프로필 수정 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf8c1110-830f-4732-a65a-fdc57e34b01c) | 내용3 |
+| ![13.내 프로필 및 팔로잉 팔로워 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/16c02aa7-c292-4ea3-aec0-323446f0cffa) | ![14.내 프로필 수정 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf8c1110-830f-4732-a65a-fdc57e34b01c) | ![15.내 프로필 게시물 삭제 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/f1c5bffa-121a-4e60-83cc-f0ec88a0dfd9) |
 
 | 캠핑장 등록 페이지 | 로그아웃 기능 | 404 페이지 |
 |-------|-------|-------|
 | ![16.내 프로필 캠핑장 등록 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/e2d76244-cd3c-40cb-89e7-ee3d6b0481a2) | ![17.로그아웃 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/2c21270e-d158-4f74-9feb-fbd36fe70ad6) | ![18.404 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/80518390-856b-402b-8efc-af51c7fd31d3) |
+
 ## 8. 주요코드
 
 ---
