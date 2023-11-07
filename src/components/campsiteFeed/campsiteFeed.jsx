@@ -1,4 +1,3 @@
-import { Label } from "../form/form.style";
 import {
   WrapContents,
   ProductTitle,

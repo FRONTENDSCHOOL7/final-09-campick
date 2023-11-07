@@ -42,7 +42,7 @@
 
 | FrontEnd | BackEnd | Design | 협업방식 | 컨벤션 |
 | :----: | :----: | :----: | :----: | :----: |
-| <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/styledcomponents-CC6699?style=flat-square&logo=styledcomponents&logoColor=white">   <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black"> <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> | 제공된 API | <img src="https://img.shields.io/badge/figma-FBCEB1?style=flat-square&logo=figma&logoColor=white"> | <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=Discord&logoColor=white"> | <img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black">  |
+| <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/styledcomponents-CC6699?style=flat-square&logo=styledcomponents&logoColor=white">   <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black"> <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> | 제공된 API | <img src="https://img.shields.io/badge/figma-FBCEB1?style=flat-square&logo=figma&logoColor=white"> | <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=Discord&logoColor=white"> | <img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black"> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> | 
 
 </div>
 
@@ -140,9 +140,23 @@
 ## 7. 기능 UI
 
 ---
+<img src="https://file.notion.so/f/f/94e4a305-f804-42b2-b151-9faf892ffa79/15da53fb-176d-417c-8041-363c035922c8/KakaoTalk_20231106_162228762.png?id=02994811-b37d-493a-b269-a6458cddad9f&table=block&spaceId=94e4a305-f804-42b2-b151-9faf892ffa79&expirationTimestamp=1699421810058&signature=Ey693zUuuDkVic2Jcm3ke1U2ZmRvi1kDlkSdX6ddhXk&downloadName=KakaoTalk_20231106_162228762.png"/>
 
-순서도 & 와이어 프레임
+| 시작 화면 | 회원가입 페이지 | 프로필 설정 페이지 |
+|-------|-------|-------|
+| 내용1 | 내용2 | 내용3 |
 
+| 로그인 페이지 | 홈 화면 | 검색 페이지 |
+|-------|-------|-------|
+| 내용1 | 내용2 | 내용3 |
+
+| 예약 페이지 | 피드 페이지 |  |
+|-------|-------|-------|
+| 내용1 | 내용2 | 내용3 |
+
+| 예약 페이지 | 피드 페이지 |  |
+|-------|-------|-------|
+| 내용1 | 내용2 | 내용3 |
 ## 8. 주요코드
 
 ---
