@@ -159,7 +159,8 @@
 ### 3) 커뮤니티
 | 커뮤니티 페이지 | 댓글 및 좋아요 기능 | 게시물 작성 페이지 |
 |-------|-------|-------|
-| 내용1 | ![11.커뮤니티 댓글 및 좋아요 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf7ae2f2-ac90-4667-9dba-65144927be6d) | ![12.커뮤니티 게시글 작성 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/86371bfa-76db-4788-a628-78c127eb6a52) |
+| ![10.커뮤니티 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/8bb318a9-771d-4adf-982f-4b537457ce1b)
+ | ![11.커뮤니티 댓글 및 좋아요 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf7ae2f2-ac90-4667-9dba-65144927be6d) | ![12.커뮤니티 게시글 작성 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/86371bfa-76db-4788-a628-78c127eb6a52) |
 
 ### 4) 프로필
 | 프로필 페이지 | 프로필 수정 페이지 | 게시물 삭제 기능 |
