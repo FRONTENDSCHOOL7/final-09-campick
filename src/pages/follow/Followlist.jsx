@@ -18,8 +18,8 @@ export default function Followlist() {
       setData(res);
     };
     getFollowList();
-  }, []);
-  console.log(accountUsername);
+  }, [accountUsername, followPage]);
+
   return (
     <>
       <Helmet>
@@ -30,7 +30,7 @@ export default function Followlist() {
       <HeaderText
         text={followPage === "follower" ? "Followers" : "Following"}
       />
-      <main style ={{height: "calc(100vh - 105px)"}}>
+      <main style={{ height: "calc(100vh - 105px)" }}>
         <h1 className="a11y-hidden">
           {`${accountUsername}의 ${followPage}페이지`}
         </h1>
