@@ -142,21 +142,33 @@
 ---
 <img src="https://file.notion.so/f/f/94e4a305-f804-42b2-b151-9faf892ffa79/15da53fb-176d-417c-8041-363c035922c8/KakaoTalk_20231106_162228762.png?id=02994811-b37d-493a-b269-a6458cddad9f&table=block&spaceId=94e4a305-f804-42b2-b151-9faf892ffa79&expirationTimestamp=1699421810058&signature=Ey693zUuuDkVic2Jcm3ke1U2ZmRvi1kDlkSdX6ddhXk&downloadName=KakaoTalk_20231106_162228762.png"/>
 
+### 1) 홈
 | 시작 화면 | 회원가입 페이지 | 프로필 설정 페이지 |
 |-------|-------|-------|
-| 내용1 | 내용2 | 내용3 |
+| ![1.시작 화면](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/e9c963b5-4199-45c1-b372-dba50f5c8100) | ![2.회원가입 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/91ff3a81-31b9-4cda-8736-36d2bfc4c7a6) | ![3.회원가입 프로필 설정 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/7c0b478d-e360-4281-a531-1ccbad995675) |
 
-| 로그인 페이지 | 홈 화면 | 검색 페이지 |
+| 로그인 페이지 | 홈 화면 | 검색 페이지 |
 |-------|-------|-------|
-| 내용1 | 내용2 | 내용3 |
+| ![4  로그인 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/6ba2bb7c-1c30-47c6-bd83-80d9f6aec49e) |  | ![6.검색페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cfc14ccf-6e4a-40a8-8123-356a503173b6) |
 
-| 예약 페이지 | 피드 페이지 |  |
+### 2) 예약
+| 예약 페이지 | 예약 상세보기 페이지 | 예약 채팅 페이지 |
 |-------|-------|-------|
-| 내용1 | 내용2 | 내용3 |
+| ![7.예약 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/355510f5-b52f-4ca0-a9f3-67b5d20505b5) | ![8.예약 상세보기 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/6dac7421-fa45-4930-bd69-9499f14eef29) | ![9.예약 채팅 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/df36c172-12e0-4697-8eb9-8e83f4fddc58) |
 
-| 예약 페이지 | 피드 페이지 |  |
+### 3) 커뮤니티
+| 커뮤니티 페이지 | 댓글 및 좋아요 기능 | 게시물 작성 페이지 |
 |-------|-------|-------|
-| 내용1 | 내용2 | 내용3 |
+| 내용1 | ![11.커뮤니티 댓글 및 좋아요 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf7ae2f2-ac90-4667-9dba-65144927be6d) | 내용3 |
+
+### 4) 프로필
+| 프로필 페이지 | 프로필 수정 페이지 | 게시물 삭제 기능 |
+|-------|-------|-------|
+| ![13.내 프로필 및 팔로잉 팔로워 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/16c02aa7-c292-4ea3-aec0-323446f0cffa) | ![14.내 프로필 수정 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf8c1110-830f-4732-a65a-fdc57e34b01c) | 내용3 |
+
+| 캠핑장 등록 페이지 | 로그아웃 기능 | 404 페이지 |
+|-------|-------|-------|
+| ![16.내 프로필 캠핑장 등록 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/e2d76244-cd3c-40cb-89e7-ee3d6b0481a2) | ![17.로그아웃 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/2c21270e-d158-4f74-9feb-fbd36fe70ad6) | ![18.404 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/80518390-856b-402b-8efc-af51c7fd31d3) |
 ## 8. 주요코드
 
 ---
