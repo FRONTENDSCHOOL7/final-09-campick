@@ -140,6 +140,7 @@
 ## 7. 기능 UI
 
 ---
+<img src="https://file.notion.so/f/f/94e4a305-f804-42b2-b151-9faf892ffa79/15da53fb-176d-417c-8041-363c035922c8/KakaoTalk_20231106_162228762.png?id=02994811-b37d-493a-b269-a6458cddad9f&table=block&spaceId=94e4a305-f804-42b2-b151-9faf892ffa79&expirationTimestamp=1699421810058&signature=Ey693zUuuDkVic2Jcm3ke1U2ZmRvi1kDlkSdX6ddhXk&downloadName=KakaoTalk_20231106_162228762.png"/>
 
 순서도 & 와이어 프레임
 
