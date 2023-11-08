@@ -19,10 +19,9 @@ import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
-
 import KakaoMapMain from "../../components/kakaomap/KakaomapMain";
 
-export default function ReservationModal({ productId }) {
+export default function ReservationModal({ productId, setOpModal }) {
   const [data, setData] = useState("");
   const [showReservationToast, setShowReservationToast] = useState(false);
   const [imageHeight, setImageHeight] = useState(0);
@@ -43,7 +42,6 @@ export default function ReservationModal({ productId }) {
     };
     getProductData();
   }, [productId]);
-  console.log(data);
 
   const onClick = async e => {
     e.preventDefault();
@@ -51,7 +49,7 @@ export default function ReservationModal({ productId }) {
       setShowReservationToast(true);
       setTimeout(() => {
         setShowReservationToast(false);
-        window.location.reload();
+        setOpModal(false);
       }, 1000);
     } catch (error) {
       console.error("예약 실패");

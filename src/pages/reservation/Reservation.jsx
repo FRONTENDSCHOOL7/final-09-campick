@@ -104,7 +104,9 @@ export default function Reservation() {
             <h1 className="a11y-hidden">
               유저가 등록한 상품을 예약하기 위한 페이지입니다.
             </h1>
-            {opModal && <ReservationModal productId={productId} />}
+            {opModal && (
+              <ReservationModal productId={productId} setOpModal={setOpModal} />
+            )}
             <ProductSection>
               <LabelFilter
                 onLabelClick={handleLabelClick}
