@@ -11,18 +11,19 @@
 
 ## 0. 목차
 
----
+
 - 
 ## 1. 프로젝트 소개
 
----
+![그림1](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/89963228/3ffc3a49-eb1a-4ab4-8d15-0efa11321264)
+
 
 - 프로젝트 기간 : 2023.10.12 ~ 2023.11.7
 -
 
 ## 2. 팀원 소개
 
----
+
 
 박재웅 9조 프로젝트팀을 소개합니다!
 
@@ -58,7 +59,7 @@
 
 ## 5. 폴더 구조
 
----
+
 
 ```
 🏠 campic
@@ -102,7 +103,6 @@
 
 ## 6. 구현 기능
 
----
 
 - 🙂 Account
   - 로그인/로그아웃
@@ -136,13 +136,13 @@
   - 캠핑장 예약하기
 - ## Calendar
   
-  ---
+
   
   <img width="842" alt="개발 일정" src="https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/3076870b-6a8c-44d5-817e-0401e4649d6f">
 
 ## 7. 기능 UI
 
----
+
 
 <img width="5151" alt="기능 순서도" src="https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/422fef1a-cc8e-409d-b732-b6f87a8f6736">
 
@@ -176,11 +176,11 @@
 
 ## 8. 주요코드
 
----
+
 
 ## 9. 후기
 
----
+
 
 - 김건희
 - 박재웅
