@@ -9,7 +9,7 @@ import {
 import Logo from "../../assets/icons/logo-header.png";
 import SearchImage from "../../assets/icons/icon-search.svg";
 import { useNavigate } from "react-router";
-import { ModalBtn, DotImg } from "../post/post.style";
+import { ModalBtn, DotImg } from "../post/Post.style";
 import iconDot from "../../assets/icons/icon-dot.svg";
 
 export default function Header({ profile, setIsModal }) {

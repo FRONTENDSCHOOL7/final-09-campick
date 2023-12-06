@@ -10,7 +10,7 @@ import {
   WrapSpan,
   WrapProductTag,
   ProductContainer,
-} from "./campsiteFeed.style";
+} from "./CampsiteFeed.style";
 import React from "react";
 
 export default function Feed({

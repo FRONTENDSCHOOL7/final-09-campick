@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { productList } from "../../api/productListApi";
 import { followList } from "../../api/followListApi";
-import Feed from "../../components/campsiteFeed/campsiteFeed";
+import Feed from "../../components/campsiteFeed/CampsiteFeed";
 import ReservationModal from "./ReservationModal";
 import Header from "../../components/header/Header";
 import LabelFilter from "./LabelFilter";

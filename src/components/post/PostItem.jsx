@@ -25,7 +25,7 @@ import {
   IconComment,
   IconSpan,
   PostData,
-} from "./post.style";
+} from "./Post.style";
 import { heart, unheart } from "../../api/viewpostApi";
 import {
   DarkBackground,

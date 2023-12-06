@@ -22,7 +22,7 @@ import {
   CheckConfirm,
   ModalText,
 } from "../modal/Modal.style";
-import { DotImg, ModalBtn } from "../post/post.style";
+import { DotImg, ModalBtn } from "../post/Post.style";
 import { DeletePostToast } from "../toast/Toast";
 
 export default function Comment({

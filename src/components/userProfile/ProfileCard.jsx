@@ -13,7 +13,7 @@ import {
   ProfileBtnWrap,
   ProfileBtn,
   ChatShare,
-} from "./profile.style";
+} from "./Profile.style";
 import { unfollow } from "../../api/unfollowApi";
 import { follow } from "../../api/followApi";
 import { userInfo } from "../../api/userInfoApi";
@@ -81,7 +81,7 @@ export default function ProfileCard({ accountUsername }) {
       </ProfileIntro>
       {!accountUsername ? (
         <ProfileBtnWrap>
-          <ProfileBtn to = {"edit"}>프로필 수정</ProfileBtn>
+          <ProfileBtn to={"edit"}>프로필 수정</ProfileBtn>
           <ProfileBtn to={"/product/upload"}>내 캠핑장 등록</ProfileBtn>
         </ProfileBtnWrap>
       ) : (

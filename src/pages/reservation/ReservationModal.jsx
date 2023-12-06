@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { productDetail } from "../../api/productDetailApi";
 import { Submitbutton } from "../../components/form/form.style";
-import { ProductTag } from "../../components/campsiteFeed/campsiteFeed.style";
+import { ProductTag } from "../../components/campsiteFeed/CampsiteFeed.style";
 import { Link } from "react-router-dom";
 import {
   ModalWrap,
