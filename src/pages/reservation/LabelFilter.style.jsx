@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const WrapperLabel = styled.section`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 10px;
+  margin: 10px 10px;
   .swiper-slide {
     width: auto;
   }
@@ -34,12 +34,13 @@ export const ViewMoreButton = styled.button`
 `;
 
 export const LabelButton = styled.button`
-  font-family: "TheJamsil", sans-serif;
   font-size: 12px;
   background-color: ${props => (props.selected ? "var(--primary-color)" : "")};
-  color: ${props => (props.selected ? "var(--font-white-color)" : "#767676")};
+  color: ${props =>
+    props.selected ? "var(--font-white-color)" : "var(--font-primary-color)"};
   border: 1px solid
-    ${props => (props.selected ? "var(--primary-color)" : "#767676")};
+    ${props =>
+      props.selected ? "var(--primary-color)" : "var(--font-primary-color)"};
   border-radius: 44px;
   padding: 5px 8px 5px 8px;
   margin: 3px;
