@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import {
   Title,
   WrapForm,
@@ -7,6 +8,11 @@ import {
   Incorrect,
   Submitbutton,
 } from "../../components/form/Form.style.jsx";
+import { CompleteToast } from "../../components/toast/Toast.jsx";
+import {
+  WrongExtensionToast,
+  SizeOverToast,
+} from "./../../components/toast/Toast";
 import {
   WrapperProfileSetup,
   DescriptionText,
@@ -16,22 +22,14 @@ import {
   FormElement,
   LabelStyle,
   ImageInput,
-  LabelStyleImg,
 } from "./ProfileSetup.style.jsx";
-import profilePic from "../../assets/icons/profilePic.svg";
-import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
-import { Helmet } from "react-helmet-async";
-import imageValidation from "../../imageValidation.js";
 import { accountNameValid } from "../../api/accountNameApi.js";
 import { signup } from "../../api/signupApi.js";
-import { CompleteToast } from "../../components/toast/Toast.jsx";
-import {
-  WrongExtensionToast,
-  SizeOverToast,
-} from "./../../components/toast/Toast";
+import imageValidation from "../../imageValidation.js";
+import profilePic from "../../assets/icons/profilePic.svg";
+import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
 
 const ProfileSetup = () => {
-  const exptext = /^[A-Za-z0-9._]+$/;
   const location = useLocation();
   const email = location.state.email;
   const password = location.state.password;
@@ -48,6 +46,25 @@ const ProfileSetup = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const exptext = /^[A-Za-z0-9._]+$/;
+    const checkValidUserId = async () => {
+      if (userId.length >= 1) {
+        if (exptext.test(userId)) {
+          const res = await accountNameValid({
+            user: { accountname: userId },
+          });
+          if (res.message === "사용 가능한 계정ID 입니다.") {
+            setValidUserId(false);
+          } else if (res.message === "이미 가입된 계정ID 입니다.") {
+            setValidUserId("checkUserId");
+          }
+        } else {
+          setValidUserId("validUserId");
+        }
+      } else {
+        setValidUserId(false);
+      }
+    };
     const timer = setTimeout(() => {
       checkValidUserId();
     }, 300);
@@ -58,6 +75,7 @@ const ProfileSetup = () => {
   }, [userId]);
 
   useEffect(() => {
+    const exptext = /^[A-Za-z0-9._]+$/;
     const isUserNameValid = userName.length >= 2 && userName.length <= 10;
     const isUserIdValid = exptext.test(userId) && validUserId === false;
 
@@ -69,23 +87,20 @@ const ProfileSetup = () => {
   }, [userName, userId, validUserId]);
 
   const onChange = event => {
-    if (event.target.name === "username") {
-      setUserName(event.target.value);
-    } else if (event.target.name === "userid") {
-      setUserId(event.target.value);
-    } else if (event.target.name === "userintro") {
-      setIntro(event.target.value);
-    }
-  };
+    const { name, value } = event.target;
 
-  const handleInputChange = e => {
-    const value = e.target.value;
-    setUserName(value);
+    if (name === "username") {
+      setUserName(value);
 
-    if (value.length >= 2 && value.length <= 10) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
+      if (value.length >= 2 && value.length <= 10) {
+        setIsValid(true);
+      } else {
+        setIsValid(false);
+      }
+    } else if (name === "userid") {
+      setUserId(value);
+    } else if (name === "userintro") {
+      setIntro(value);
     }
   };
 
@@ -98,25 +113,6 @@ const ProfileSetup = () => {
       setShowSizeOverToast,
       setShowWrongExtensionToast,
     );
-  };
-
-  const checkValidUserId = async () => {
-    if (userId.length >= 1) {
-      if (exptext.test(userId)) {
-        const res = await accountNameValid({
-          user: { accountname: userId },
-        });
-        if (res.message === "사용 가능한 계정ID 입니다.") {
-          setValidUserId(false);
-        } else if (res.message === "이미 가입된 계정ID 입니다.") {
-          setValidUserId("checkUserId");
-        }
-      } else {
-        setValidUserId("validUserId");
-      }
-    } else {
-      setValidUserId(false);
-    }
   };
 
   const handleSubmit = async e => {
@@ -136,16 +132,12 @@ const ProfileSetup = () => {
       },
     };
 
-    try {
-      await signup(data);
-      setShowProfileEditToast(true);
-      setTimeout(() => {
-        setShowProfileEditToast(false);
-        navigate("/");
-      }, 1000);
-    } catch (error) {
-      console.error("회원가입 실패");
-    }
+    await signup(data);
+    setShowProfileEditToast(true);
+    setTimeout(() => {
+      setShowProfileEditToast(false);
+      navigate("/");
+    }, 1000);
   };
 
   return (
@@ -159,15 +151,23 @@ const ProfileSetup = () => {
 
         <WrapForm onSubmit={handleSubmit}>
           <Upload>
-            <LabelStyleImg htmlFor="user-image">사용자 이미지</LabelStyleImg>
+            <label htmlFor="user-image" className="a11y-hidden">
+              사용자 프로필 이미지
+            </label>
             <ImageInput
               type="file"
               id="user-image"
               accept="image/*"
               onChange={handleImageInputChange}
             />
-            <ProfileImage src={selectedImage || profilePic} alt="" />{" "}
-            <ImageButton src={profileImageUploadButton} alt="" />
+            <ProfileImage
+              src={selectedImage || profilePic}
+              alt="사용자 프로필 이미지"
+            />
+            <ImageButton
+              src={profileImageUploadButton}
+              alt="이미지 업로드 버튼"
+            />
           </Upload>
 
           <FormElement>
@@ -178,7 +178,7 @@ const ProfileSetup = () => {
               name="username"
               placeholder="2~10자 이내여야 합니다."
               value={userName}
-              onChange={handleInputChange}
+              onChange={onChange}
             />
             {!isValid && <Incorrect>* 2~10자 이내여야 합니다.</Incorrect>}
           </FormElement>
