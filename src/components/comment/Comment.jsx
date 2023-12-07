@@ -12,7 +12,7 @@ import {
   CommentText,
   CommentTime,
   WrapCommentFollower,
-} from "./comment.style";
+} from "./Comment.style";
 import {
   DarkBackground,
   ModalWrap,

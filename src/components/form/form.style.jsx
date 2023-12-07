@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const WrapForm = styled.form`
+  //.
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +24,6 @@ export const InputStyle = styled.input`
   border: none;
   padding: 6px 0 6px 6px;
   border-bottom: 1px solid #dbdbdb;
-  
 
   &:focus {
     outline: none;
@@ -72,9 +72,11 @@ export const Submitbutton = styled.button`
   cursor: ${({ disabled }) => (disabled === true ? "not-allowed" : "pointer")};
   &:hover {
     transition: 0.5s;
-    color: ${({ disabled }) => (disabled === true ? "" : "var(--primary-color)")};
+    color: ${({ disabled }) =>
+      disabled === true ? "" : "var(--primary-color)"};
     background-color: ${({ disabled }) => (disabled === true ? "" : "white")};
-    border: 2px solid ${({ disabled }) => (disabled === true ? "" : "var(--primary-color)")};
+    border: 2px solid
+      ${({ disabled }) => (disabled === true ? "" : "var(--primary-color)")};
   }
 `;
 

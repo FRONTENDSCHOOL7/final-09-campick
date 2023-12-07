@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const WrapComment = styled.div`
+  //.
   display: flex;
   align-items: flex-start;
   gap: 15px;

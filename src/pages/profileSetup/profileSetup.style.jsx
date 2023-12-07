@@ -5,6 +5,7 @@ export const WrapperProfileSetup = styled.section`
   justify-content: center;
   box-sizing: border-box;
   padding: 54px 34px 0px 34px;
+  //.
 `;
 
 export const DescriptionText = styled.p`

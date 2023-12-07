@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const PostArticle = styled.article`
   padding: 16px 16px 10px 16px;
-
   border-bottom: 1px solid #c4c4c4;
 `;
 export const ProfileDiv = styled.div`
@@ -69,7 +68,6 @@ export const ImgBox = styled.div`
     transition: 0.2s;
     opacity: 0.6;
     text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
     &:hover {
       transform: scale(0.9);
       transition: 0.2s;

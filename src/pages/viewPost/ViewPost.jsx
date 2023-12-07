@@ -9,7 +9,7 @@ import {
   WrapCommentWrite,
   CommentProfileImage,
   CommentInputArea,
-} from "../viewPost/viewPost.style";
+} from "../viewPost/ViewPost.style";
 import { Helmet } from "react-helmet-async";
 import { viewPost } from "../../api/viewpostApi";
 import { myInfo } from "../../api/myInfoApi";

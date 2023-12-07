@@ -12,6 +12,7 @@ export const FollowListWrap = styled.ul`
   &::-webkit-scrollbar {
     display: none;
   }
+  // .
 `;
 export const UserWrap = styled.li`
   display: flex;

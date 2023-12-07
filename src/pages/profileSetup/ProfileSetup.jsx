@@ -6,7 +6,7 @@ import {
   InputStyle,
   Incorrect,
   Submitbutton,
-} from "../../components/form/form.style.jsx";
+} from "../../components/form/Form.style.jsx";
 import {
   WrapperProfileSetup,
   DescriptionText,
@@ -17,7 +17,7 @@ import {
   LabelStyle,
   ImageInput,
   LabelStyleImg,
-} from "./profileSetup.style.jsx";
+} from "./ProfileSetup.style.jsx";
 import profilePic from "../../assets/icons/profilePic.svg";
 import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
 import { Helmet } from "react-helmet-async";

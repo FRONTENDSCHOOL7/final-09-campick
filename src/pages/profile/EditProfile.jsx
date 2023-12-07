@@ -10,14 +10,14 @@ import {
   ProfileImage,
   Upload,
   WrapperProfileSetup,
-} from "../profileSetup/profileSetup.style";
+} from "../profileSetup/ProfileSetup.style";
 import {
   Incorrect,
   InputStyle,
   Title,
   WrapForm,
-} from "../../components/form/form.style";
-import { Submitbutton } from "../../components/form/form.style";
+  Submitbutton,
+} from "../../components/form/Form.style";
 import {
   CompleteToast,
   SizeOverToast,

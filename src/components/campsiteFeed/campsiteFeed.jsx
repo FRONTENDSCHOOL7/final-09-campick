@@ -20,6 +20,7 @@ export default function Feed({
   reservation,
   title,
 }) {
+  //.
   return (
     <>
       <ProductContainer>

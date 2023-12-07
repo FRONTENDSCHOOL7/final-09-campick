@@ -8,7 +8,7 @@ import {
   Title,
   WrapEmailPw,
   WrapForm,
-} from "../../components/form/form.style";
+} from "../../components/form/Form.style";
 import { Helmet } from "react-helmet-async";
 import { login } from "../../api/loginApi";
 import { useNavigate } from "react-router-dom";

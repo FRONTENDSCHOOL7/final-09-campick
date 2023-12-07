@@ -7,7 +7,7 @@ import {
   Username,
   UserIntro,
   FollowBtn,
-} from "../follow/followListItem.style";
+} from "../follow/FollowListItem.style";
 import { unfollow } from "../../api/unfollowApi";
 import { follow } from "../../api/followApi";
 

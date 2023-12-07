@@ -1,6 +1,6 @@
 import React from "react";
 import { GoBackImg, GobackButton, HeaderWrapper } from "./Header.style";
-import { Submitbutton } from "../form/form.style";
+import { Submitbutton } from "../form/Form.style";
 import arrow from "../../assets/icons/arrow-left.svg";
 
 export default function HeaderSubmit({ handleSubmitButton }) {
