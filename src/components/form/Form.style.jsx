@@ -17,6 +17,8 @@ export const WrapEmailPw = styled.div`
 export const LabelStyle = styled.label`
   color: #767676;
   font-size: 12px;
+  display: flex;
+  align-items: center;
 `;
 
 export const InputStyle = styled.input`
