@@ -33,7 +33,6 @@ export default function MyCampsiteRegister() {
   const [location, setLocation] = useState("");
   const [registerLink, setRegisterLink] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedAddress, setSelectedAddress] = useState(null);
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [showSizeOverToast, setShowSizeOverToast] = useState(false);
   const [showRegisterCompleteToast, setShowRegisterCompleteToast] =
@@ -56,7 +55,6 @@ export default function MyCampsiteRegister() {
   const handleAddressSelected = selected => {
     // 선택된 주소 받는 함수
     if (selected && selected.address_name) {
-      setSelectedAddress(selected);
       setLocation(selected.address_name);
       setCompanyName(selected.place_name);
       setRegisterLink(selected.place_url);
