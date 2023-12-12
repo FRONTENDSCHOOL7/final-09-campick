@@ -63,6 +63,7 @@ export const ImgBox = styled.div`
   position: relative;
   .swiper-button-prev,
   .swiper-button-next {
+    z-index: 1000;
     color: #fff;
     transform: scale(0.8);
     transition: 0.2s;

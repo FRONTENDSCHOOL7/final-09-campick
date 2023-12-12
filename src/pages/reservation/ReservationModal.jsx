@@ -21,6 +21,7 @@ import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 
 import KakaoMapMain from "../../components/kakaomap/KakaomapMain";
+import { WrapperMyCampsiteRegister } from "../myCampsiteRegister/MyCampsiteRegister.style";
 
 export default function ReservationModal({ productId }) {
   const [data, setData] = useState("");
