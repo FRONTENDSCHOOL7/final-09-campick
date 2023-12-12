@@ -6,9 +6,7 @@ import close from "../../assets/icons/close.svg";
 const LabelFilter = ({ onLabelClick }) => {
   const [selectedLabels, setSelectedLabels] = useState(["전체상품"]);
   const [isExpanded, setIsExpanded] = useState(false);
-
   const initialVisibleCount = 6;
-
   const labels = [
     "전체상품",
     "가족",
@@ -42,7 +40,9 @@ const LabelFilter = ({ onLabelClick }) => {
       setSelectedLabels(
         prevLabels =>
           prevLabels.includes(label)
-            ? prevLabels.filter(l => l !== label && l !== "전체상품") // 이미 선택된 라벨이라면, 그 라벨 제거
+            ? prevLabels.length === 1
+              ? [...prevLabels.filter(l => l !== label), "전체상품"]
+              : prevLabels.filter(l => l !== label && l !== "전체상품") // 이미 선택된 라벨이라면, 그 라벨 제거
             : [...prevLabels.filter(l => l !== "전체상품"), label], // 만약 선택되지 않은 라벨이라면, 그 라벨 추가하고 "전체상품" 제거
       );
     }
@@ -61,6 +61,7 @@ const LabelFilter = ({ onLabelClick }) => {
     <WrapperLabel>
       {visibleLabels.map(label => (
         <LabelButton
+          key={label}
           selected={selectedLabels.includes(label)}
           onClick={() => handleClick(label)}
         >

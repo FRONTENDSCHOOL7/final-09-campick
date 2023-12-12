@@ -1,15 +1,11 @@
+import { Helmet } from "react-helmet-async";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { productList } from "../../api/productListApi";
-import { followList } from "../../api/followListApi";
 import Feed from "../../components/campsiteFeed/CampsiteFeed";
 import ReservationModal from "./ReservationModal";
 import Header from "../../components/header/Header";
 import LabelFilter from "./LabelFilter";
 import Splash from "../splash/Splash";
-import { Helmet } from "react-helmet-async";
-
-import NoFriendsMessage from "../../assets/image/nocamper.png";
 import {
   NoFriendsImage,
   ProductSection,
@@ -17,7 +13,9 @@ import {
   SplashStyle,
   UserProductMain,
 } from "./Reservation.style";
-import { WrapperMyCampsiteRegister } from "../myCampsiteRegister/MyCampsiteRegister.style";
+import { productList } from "../../api/productListApi";
+import { followList } from "../../api/followListApi";
+import NoFriendsMessage from "../../assets/image/nocamper.png";
 
 export default function Reservation() {
   const [followingList, setFollowingList] = useState([]);
@@ -81,7 +79,8 @@ export default function Reservation() {
     return sortProduct.filter(product => {
       const labels = JSON.parse(product.itemName).labels;
       // 모든 선택된 라벨이 제품에 포함되어 있는지 확인
-      return selectedLabels.every(label => labels.includes(label));
+
+      return selectedLabels.some(label => labels.includes(label));
     });
   }, [sortProduct, selectedLabels]);
 
@@ -106,11 +105,11 @@ export default function Reservation() {
               유저가 등록한 상품을 예약하기 위한 페이지입니다.
             </h1>
             {opModal && <ReservationModal productId={productId} />}
+            <LabelFilter
+              onLabelClick={handleLabelClick}
+              selectedLabels={selectedLabels}
+            />
             <ProductSection>
-              <LabelFilter
-                onLabelClick={handleLabelClick}
-                selectedLabels={selectedLabels}
-              />
               {filteredProducts.map(item => (
                 <Feed
                   reservation

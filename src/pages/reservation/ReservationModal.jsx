@@ -1,8 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { productDetail } from "../../api/productDetailApi";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react"; // basic
+import "swiper/css";
+import "swiper/css/pagination";
+import { Navigation } from "swiper/modules";
+import { CompleteToast } from "../../components/toast/Toast";
+import KakaoMapMain from "../../components/kakaomap/KakaomapMain";
 import { Submitbutton } from "../../components/form/Form.style";
 import { ProductTag } from "../../components/campsiteFeed/CampsiteFeed.style";
-import { Link } from "react-router-dom";
 import {
   ModalWrap,
   ProductImg,
@@ -14,23 +19,13 @@ import {
   ProductPrice,
   SwiperWrapper,
 } from "./ReservationModal.style";
-import { CompleteToast } from "../../components/toast/Toast";
-import { Swiper, SwiperSlide } from "swiper/react"; // basic
-import "swiper/css";
-import "swiper/css/pagination";
-import { Navigation } from "swiper/modules";
-
-import KakaoMapMain from "../../components/kakaomap/KakaomapMain";
-import { WrapperMyCampsiteRegister } from "../myCampsiteRegister/MyCampsiteRegister.style";
-
+import { productDetail } from "../../api/productDetailApi";
 export default function ReservationModal({ productId }) {
   const [data, setData] = useState("");
   const [showReservationToast, setShowReservationToast] = useState(false);
   const [imageHeight, setImageHeight] = useState(0);
-
   // 이미지 엘리먼트의 참조를 생성합니다.
   const imageRef = useRef(null);
-
   // 이미지가 로드되면 높이를 상태 변수에 설정하는 함수
   const handleImageLoaded = () => {
     const height = imageRef.current.clientHeight;
@@ -44,7 +39,6 @@ export default function ReservationModal({ productId }) {
     };
     getProductData();
   }, [productId]);
-  console.log(data);
 
   const onClick = async e => {
     e.preventDefault();
@@ -109,7 +103,7 @@ export default function ReservationModal({ productId }) {
         <ProductTagWrap>
           {data &&
             JSON.parse(data.itemName).labels.map(label => (
-              <ProductTag>{label}</ProductTag>
+              <ProductTag key={label}>{label}</ProductTag>
             ))}
         </ProductTagWrap>
       </ProductProfileWrapper>
