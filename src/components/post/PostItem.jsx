@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import iconDot from "../../assets/icons/icon-dot.svg";
-import iconHeartedInactive from "../../assets/icons/heartInactive.png";
-import iconHeartedActive from "../../assets/icons/heartActive.png";
-import comment from "../../assets/icons/icon-comment.svg";
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+
+import { DeletePostToast } from "../../components/toast/Toast";
+
 import {
   PostArticle,
   ProfileDiv,
@@ -25,8 +24,9 @@ import {
   IconComment,
   IconSpan,
   PostData,
+  PostMapWrapper,
+  PointIcon,
 } from "./Post.style";
-import { heart, unheart } from "../../api/viewpostApi";
 import {
   DarkBackground,
   ModalWrap,
@@ -36,10 +36,17 @@ import {
   CheckConfirm,
   ModalText,
 } from "../modal/Modal.style";
-import { userpostDelete } from "../../api/userpostDeleteApi";
-import { DeletePostToast } from "../../components/toast/Toast";
-import PostMap from "./PostMap";
 import { GradientOverlay } from "../community/Community.style";
+
+import { userpostDelete } from "../../api/userpostDeleteApi";
+import { heart, unheart } from "../../api/viewpostApi";
+
+import point from "../../assets/image/point.png";
+import iconDot from "../../assets/icons/icon-dot.svg";
+import iconHeartedInactive from "../../assets/icons/heartInactive.png";
+import iconHeartedActive from "../../assets/icons/heartActive.png";
+import comment from "../../assets/icons/icon-comment.svg";
+
 export default function PostItem({
   data,
   commentCount,
@@ -145,7 +152,10 @@ export default function PostItem({
                   <SwiperSlide key={item}>
                     <Cover src={item} alt="업로드한 이미지" />
                     <GradientOverlay />
-                    <PostMap location={location} />
+                    <PostMapWrapper>
+                      <PointIcon src={point} alt="pointIcon" />
+                      {location}
+                    </PostMapWrapper>
                   </SwiperSlide>
                 ))}
             </Swiper>

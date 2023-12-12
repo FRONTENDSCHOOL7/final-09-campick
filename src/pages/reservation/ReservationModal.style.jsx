@@ -1,16 +1,13 @@
 import styled from "styled-components";
 
 export const ModalWrap = styled.div`
-  position: fixed;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  margin: 30px 33px;
   width: 322px;
   height: auto;
   background-color: #fff;
   z-index: 100;
   border-radius: 20px;
-  justify-content: center;
 `;
 
 export const ProductImg = styled.img`
@@ -64,11 +61,15 @@ export const SwiperWrapper = styled.div`
     transition: 0.2s;
     opacity: 0.6;
     text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
+    display: none;
     &:hover {
       transform: scale(0.9);
       transition: 0.2s;
       opacity: 1.5;
     }
+  }
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    display: none;
   }
 `;

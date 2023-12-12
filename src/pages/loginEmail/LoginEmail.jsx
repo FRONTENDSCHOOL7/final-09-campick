@@ -40,6 +40,7 @@ export default function LoginEmail() {
 
   async function userLogin(e) {
     e.preventDefault();
+
     const res = await login(email, pw);
     if (res && res.hasOwnProperty("user")) {
       localStorage.setItem("token", res.user.token);

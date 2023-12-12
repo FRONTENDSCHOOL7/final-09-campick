@@ -63,6 +63,7 @@ export const ImgBox = styled.div`
   position: relative;
   .swiper-button-prev,
   .swiper-button-next {
+    z-index: 1000;
     color: #fff;
     transform: scale(0.8);
     transition: 0.2s;
@@ -126,4 +127,37 @@ export const PostData = styled.p`
 `;
 export const HomePostTitle = styled.h2`
   margin: 12px auto 0 10px;
+`;
+export const PostSection = styled.section`
+  background-color: white;
+  border-radius: 10px;
+  border: 0.5px solid #dbdbdb;
+  margin: 0 8px 0 8px;
+  flex-basis: 300px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const PostMapWrapper = styled.div`
+  display: flex;
+
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  color: #fff;
+  z-index: 100;
+`;
+export const PointIcon = styled.img`
+  width: 12px;
+  height: 14px;
+  margin-right: 5px;
+`;
+export const AlbumImg = styled.img`
+  width: 114px;
+  height: 114px;
+  border-radius: 10px;
+  object-fit: cover;
 `;

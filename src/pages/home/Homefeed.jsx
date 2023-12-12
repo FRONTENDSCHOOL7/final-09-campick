@@ -3,7 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import PostList from "../../components/post/PostList";
 import { homefeedApi } from "../../api/homefeedApi";
 
-import { Home, LogoImg, MainSliderStyle, Search } from "./Homefeed.style";
+import { Home } from "./Homefeed.style";
 import MainSlider from "../../components/slider/MainSlider";
 import HomeCampsiteFeed from "../../components/campsiteFeed/HomeCampsiteFeed";
 import { followList } from "../../api/followListApi";
