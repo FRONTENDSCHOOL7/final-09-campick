@@ -1,5 +1,3 @@
-// Community.jsx
-
 import React, { useEffect, useState } from "react";
 import {
   Background,
@@ -7,18 +5,18 @@ import {
   LeftImages,
   NoFriendsImage,
   SplashStyle,
+  UploadLink,
+  CommunityImageSet,
+  RightImages,
 } from "./Community.style";
 import Navbar from "../../components/navbar/Navbar";
 import { homefeedApi } from "../../api/homefeedApi";
 import upload from "../../assets/icons/uploadButton.svg";
-import { UploadLink } from "./Community.style";
 import { Link } from "react-router-dom";
 import CommunityItem from "../../components/community/CommunityItem";
 import Header from "../../components/header/Header";
 import Splash from "../splash/Splash";
 import NoFriendsMessage from "../../assets/image/nocamper.png";
-import { CommunityImageSet } from "./Community.style";
-import { RightImages } from "./Community.style";
 import { Helmet } from "react-helmet-async";
 
 const Community = () => {
