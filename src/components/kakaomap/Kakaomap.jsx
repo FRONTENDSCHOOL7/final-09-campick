@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
+  MapWrapper,
   ModalMapListItemAddress,
   ModalMapListItemTitle,
   ModalMapListPhoneNumber,
@@ -46,7 +47,7 @@ export default function Kakaomap({ searchPlace, onSelectedAddress }) {
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
       center: new kakao.maps.LatLng(37.5665, 126.978), //지도의 중심좌표. 서울 중심.
-      level: 5, //지도의 레벨(확대, 축소 정도)
+      level: 6, //지도의 레벨(확대, 축소 정도)
     };
 
     var map = new kakao.maps.Map(container, options);
@@ -126,14 +127,7 @@ export default function Kakaomap({ searchPlace, onSelectedAddress }) {
 
   return (
     <>
-      <div
-        id="map"
-        style={{
-          width: "100%",
-          height: "300px",
-          borderRadius: "10px",
-        }}
-      ></div>
+      <MapWrapper id="map" />
       <ResultList id="result-list">
         {Places.map((item, i) => (
           <WrapperAddress

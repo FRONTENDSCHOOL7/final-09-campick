@@ -95,3 +95,9 @@ export const ModalMapListPhoneNumber = styled.span`
   color: ${props => (props.selected ? "white" : "var(--font-primary-color)")};
   font-size: 12px;
 `;
+
+export const MapWrapper = styled.div`
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+`;
