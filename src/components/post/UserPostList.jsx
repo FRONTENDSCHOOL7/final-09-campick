@@ -9,7 +9,7 @@ import {
   AlbumSection,
 } from "./UserPostList.style";
 
-export default React.memo(function UserPostList({ data, setLender }) {
+export default React.memo(function UserPostList({ data, setUserPosts }) {
   const [listView, setListView] = useState(true);
   const [albumView, setAlbumView] = useState(false);
   const handleListView = () => {
@@ -24,6 +24,7 @@ export default React.memo(function UserPostList({ data, setLender }) {
       setListView(!listView);
     }
   };
+
   return (
     <PostSection>
       <PostHeader>
@@ -38,8 +39,8 @@ export default React.memo(function UserPostList({ data, setLender }) {
                 key={item.id}
                 data={item}
                 commentCount={item.commentCount}
-                setLender={setLender}
                 location={item && JSON.parse(item.content).location}
+                setUserPosts={setUserPosts}
               />
             ))}
         </section>

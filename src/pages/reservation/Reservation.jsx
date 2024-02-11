@@ -94,6 +94,7 @@ export default function Reservation() {
         onClick={() => setOpModal(false)}
         close={opModal ? true : undefined}
       />
+      {opModal && <ReservationModal productId={productId} />}
       <UserProductMain>
         {isLoading ? (
           <Splash style={SplashStyle} />
@@ -104,7 +105,7 @@ export default function Reservation() {
             <h1 className="a11y-hidden">
               유저가 등록한 상품을 예약하기 위한 페이지입니다.
             </h1>
-            {opModal && <ReservationModal productId={productId} />}
+
             <LabelFilter
               onLabelClick={handleLabelClick}
               selectedLabels={selectedLabels}

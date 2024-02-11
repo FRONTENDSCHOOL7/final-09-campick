@@ -1,15 +1,14 @@
+import { Helmet } from "react-helmet-async";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { userPost } from "../../api/userpostApi";
 import { productList } from "../../api/productListApi";
-import { Helmet } from "react-helmet-async";
 import ProfileCard from "../../components/userProfile/ProfileCard";
 import Navbar from "../../components/navbar/Navbar";
 import UserPostList from "../../components/post/UserPostList";
 import ProfileProduct from "../../components/userProfile/ProfileProduct";
 import Splash from "../splash/Splash";
-import styled from "styled-components";
-
 import Header from "../../components/header/Header";
 import {
   ModalWrap,
@@ -20,21 +19,26 @@ import {
   CheckButtonWrap,
   CheckLogout,
 } from "../../components/modal/Modal.style";
+import { userInfo } from "../../api/userInfoApi";
+import { myInfo } from "../../api/myInfoApi";
 export default function Profile() {
   const [userPosts, setUserPosts] = useState("");
   const [userProducts, setUserProducts] = useState("");
-  const { accountUsername } = useParams();
+  const [userData, setUserData] = useState("");
   const [isModal, setIsModal] = useState(false);
   const [isCheckModal, setIsCheckModal] = useState(false);
-  const [lender, setLender] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-
+  const { accountUsername } = useParams();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (accountUsername) {
       const getUserInfo = async () => {
         const postRes = await userPost(accountUsername);
         const productRes = await productList(accountUsername, 3);
+        const userInfoRes = await userInfo(accountUsername);
+
+        setUserData(userInfoRes);
         setUserPosts(postRes);
         setUserProducts(productRes);
         setIsLoading(false);
@@ -47,14 +51,15 @@ export default function Profile() {
           localStorage.getItem("accountname"),
           3,
         );
-
+        const userInfoRes = await myInfo();
+        setUserData(userInfoRes);
         setUserPosts(postRes);
         setUserProducts(productRes);
         setIsLoading(false);
       };
       getMyInfo();
     }
-  }, [accountUsername, lender]);
+  }, [accountUsername]);
 
   const handleModalClose = e => {
     setIsModal(false);
@@ -71,7 +76,7 @@ export default function Profile() {
   const handleLogoutModalClose = () => {
     setIsCheckModal(false);
   };
-  console.log("userpost", userPosts.post);
+
   return (
     <>
       <Helmet>
@@ -87,13 +92,13 @@ export default function Profile() {
               내가 팔로우, 팔로잉한 유저와 내가 올린 캠핑장과 게시물을 볼 수
               있는 내 프로필 페이지 입니다.
             </h1>
-            <ProfileCard accountUsername={accountUsername} />
+            <ProfileCard accountUsername={accountUsername} data={userData} />
             <ProfileProduct data={userProducts} />
             {userPosts.post.length >= 1 ? (
               <UserPostList
                 data={userPosts}
+                setUserPosts={setUserPosts}
                 accountUsername={accountUsername}
-                setLender={setLender}
               />
             ) : null}
           </>

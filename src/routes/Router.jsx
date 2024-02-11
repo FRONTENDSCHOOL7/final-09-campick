@@ -37,13 +37,10 @@ export default function Router() {
         </Route>
         <Route path="/profile/" element={<Outlet />}>
           <Route path="" element={<Profile />} />
-          <Route path="community/:post_id" element={<ViewPost />} />
           <Route path="*" element={<Error />} />
-          <Route path="" element={<Profile />} />
           <Route path="edit" element={<EditProfile />} />
           <Route path=":accountUsername" element={<Outlet />}>
             <Route path="" element={<Profile />} />
-
             <Route path=":follow/" element={<Followlist />} />
           </Route>
         </Route>

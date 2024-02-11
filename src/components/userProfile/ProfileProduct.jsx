@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Feed from "../campsiteFeed/CampsiteFeed";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Feed from "../campsiteFeed/CampsiteFeed";
 import { ProductTitle } from "../campsiteFeed/CampsiteFeed.style";
 import emptyCampsite from "../../assets/image/empty-campsite.jpg";
 export default React.memo(function ProfileProduct({ data }) {
@@ -12,7 +12,6 @@ export default React.memo(function ProfileProduct({ data }) {
   useEffect(() => {
     setProducts(data);
   }, [data]);
-  console.log(data);
 
   return products && products.length > 0 ? (
     <ProductSection>

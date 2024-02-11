@@ -4,9 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-
 import { DeletePostToast } from "../../components/toast/Toast";
-
 import {
   PostArticle,
   ProfileDiv,
@@ -37,10 +35,8 @@ import {
   ModalText,
 } from "../modal/Modal.style";
 import { GradientOverlay } from "../community/Community.style";
-
 import { userpostDelete } from "../../api/userpostDeleteApi";
 import { heart, unheart } from "../../api/viewpostApi";
-
 import point from "../../assets/image/point.png";
 import iconDot from "../../assets/icons/icon-dot.svg";
 import iconHeartedInactive from "../../assets/icons/heartInactive.png";
@@ -50,9 +46,8 @@ import comment from "../../assets/icons/icon-comment.svg";
 export default function PostItem({
   data,
   commentCount,
-  setLender,
   location,
-  viewPost,
+  setUserPosts,
 }) {
   const [isHearted, setIsHearted] = useState(false);
   const [heartCount, setHeartCount] = useState(data.heartCount);
@@ -115,6 +110,7 @@ export default function PostItem({
   const handlePostDeleteCheckModalClose = () => {
     setIsPostDeleteCheckModal(false);
   };
+
   return (
     <>
       <PostArticle>
@@ -139,7 +135,7 @@ export default function PostItem({
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
-        <Link to={!viewPost && `../community/${data.id}`}>
+        <Link to={`/community/${data.id}`}>
           <ImgBox>
             <Swiper
               slidesPerView={1}
@@ -170,7 +166,7 @@ export default function PostItem({
               isclicked={isClicked.toString()}
             ></IconHeart>
             <IconSpan>{heartCount}</IconSpan>
-            <Link to={!viewPost && `../community/${data && data.id}`}>
+            <Link to={`/community/${data && data.id}`}>
               <IconComment src={comment} alt="댓글 이동 버튼"></IconComment>
             </Link>
             <IconSpan>{commentCount}</IconSpan>
@@ -200,7 +196,12 @@ export default function PostItem({
                 onClick={async () => {
                   setDeleteMsg(await userpostDelete(data.id));
                   setTimeout(async () => {
-                    setLender(pre => !pre);
+                    setUserPosts(pre => {
+                      return {
+                        ...pre,
+                        post: pre.post.filter(v => v.id !== data.id),
+                      };
+                    });
                   }, 500);
                 }}
               >

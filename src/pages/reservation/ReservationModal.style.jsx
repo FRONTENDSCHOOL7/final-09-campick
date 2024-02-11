@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const ModalWrap = styled.div`
   position: absolute;
-  margin: 30px 33px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 322px;
   height: auto;
   background-color: #fff;

@@ -1,7 +1,9 @@
+import { Helmet } from "react-helmet-async";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PostItem from "../../components/post/PostItem";
 import Comment from "../../components/comment/Comment";
+import HeaderText from "../../components/header/HeaderText";
 import {
   CommentSection,
   WrapViewPost,
@@ -10,11 +12,9 @@ import {
   CommentProfileImage,
   CommentInputArea,
 } from "../viewPost/ViewPost.style";
-import { Helmet } from "react-helmet-async";
 import { viewPost } from "../../api/viewpostApi";
 import { myInfo } from "../../api/myInfoApi";
 import { uploadComment, getCommentList } from "../../api/commentApi";
-import HeaderText from "../../components/header/HeaderText";
 
 export default function ViewPost() {
   const { post_id } = useParams();
@@ -103,7 +103,6 @@ export default function ViewPost() {
             data={data}
             commentCount={commentCount}
             location={data && JSON.parse(data.content).location}
-            viewPost
           />
         )}
         <CommentSection>
