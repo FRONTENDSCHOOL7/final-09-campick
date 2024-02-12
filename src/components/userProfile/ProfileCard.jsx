@@ -47,7 +47,7 @@ export default React.memo(function ProfileCard({ accountUsername, data }) {
       });
     }
   };
-  console.log("카드");
+
   return (
     <ProfileWrapper>
       <ProfileInfoWrap>

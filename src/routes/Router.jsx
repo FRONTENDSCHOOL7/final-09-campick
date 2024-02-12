@@ -41,20 +41,15 @@ export default function Router() {
           <Route path="edit" element={<EditProfile />} />
           <Route path=":accountUsername" element={<Outlet />}>
             <Route path="" element={<Profile />} />
+            <Route path="*" element={<Error />} />
             <Route path=":follow/" element={<Followlist />} />
           </Route>
         </Route>
-        <Route path="/product/" element={<Outlet />}>
-          <Route path="" element={<Error />} />
-          <Route path="*" element={<Error />} />
-          <Route path="upload/" element={<MyCampsiteRegister />} />
-        </Route>
-        <Route path="/community" element={<Community />} />
+        <Route path="/product/upload" element={<MyCampsiteRegister />} />
         <Route path="/search" element={<Search />} />
         <Route path="/community/" element={<Outlet />}>
           <Route path="" element={<Community />} />
           <Route path="*" element={<Error />} />
-          <Route path="" element={<Community />} />
           <Route path="communitypost" element={<CommunityPost />} />
           <Route path=":post_id/" element={<ViewPost />} />
         </Route>

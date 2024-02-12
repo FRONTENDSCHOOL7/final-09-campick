@@ -30,7 +30,7 @@ export default function Profile() {
   const [isLoading, setIsLoading] = useState(true);
   const { accountUsername } = useParams();
   const navigate = useNavigate();
-
+  console.log("렌더링");
   useEffect(() => {
     if (accountUsername) {
       const getUserInfo = async () => {
@@ -63,18 +63,17 @@ export default function Profile() {
 
   const handleModalClose = e => {
     setIsModal(false);
+    setIsCheckModal(false);
   };
   const handleCheckModal = e => {
     setIsModal(false);
     setIsCheckModal(true);
+    e.stopPropagation();
   };
   const accountLogout = e => {
     localStorage.removeItem("token");
     localStorage.removeItem("accountname");
     navigate("/");
-  };
-  const handleLogoutModalClose = () => {
-    setIsCheckModal(false);
   };
 
   return (
@@ -94,7 +93,7 @@ export default function Profile() {
             </h1>
             <ProfileCard accountUsername={accountUsername} data={userData} />
             <ProfileProduct data={userProducts} />
-            {userPosts.post.length >= 1 ? (
+            {userPosts?.post?.length >= 1 ? (
               <UserPostList
                 data={userPosts}
                 setUserPosts={setUserPosts}
@@ -114,7 +113,7 @@ export default function Profile() {
         </DarkBackground>
       )}
       {isCheckModal && (
-        <DarkBackground onClick={handleLogoutModalClose}>
+        <DarkBackground onClick={handleModalClose}>
           <CheckModalWrap>
             <CheckMsg>로그아웃하시겠어요?</CheckMsg>
             <CheckButtonWrap>

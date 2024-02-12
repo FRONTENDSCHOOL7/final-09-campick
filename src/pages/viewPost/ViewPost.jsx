@@ -27,7 +27,6 @@ export default function ViewPost() {
   const [isUploading, setIsUploading] = useState(false);
   const [commentCount, setCommentCount] = useState(0);
   const [lender, setLender] = useState(true);
-
   const loadMyInfo = async () => {
     try {
       const getMyInfo = await myInfo();

@@ -50,7 +50,7 @@ export default function Homefeed() {
     }
     getProduct();
   }, [followingList]);
-
+  console.log("렌더링");
   return (
     <>
       <Helmet>
