@@ -38,12 +38,16 @@ export default function Reservation() {
 
   useEffect(() => {
     async function getProduct() {
+      const arr = [];
       if (followingList.length > 0) {
-        followingList.map(async item => {
-          const products = await productList(item.accountname, 5);
-          setProductInfo(pre => [...pre, ...products]);
-        });
+        await Promise.all(
+          followingList.map(async item => {
+            const products = await productList(item.accountname, 5);
+            arr.push(...products);
+          }),
+        );
       }
+      setProductInfo(arr);
     }
     getProduct();
   }, [followingList]);
@@ -75,7 +79,6 @@ export default function Reservation() {
 
   const filteredProducts = useMemo(() => {
     if (selectedLabels.length === 0) return sortProduct;
-
     return sortProduct.filter(product => {
       const labels = JSON.parse(product.itemName).labels;
       // 모든 선택된 라벨이 제품에 포함되어 있는지 확인
@@ -83,7 +86,7 @@ export default function Reservation() {
       return selectedLabels.some(label => labels.includes(label));
     });
   }, [sortProduct, selectedLabels]);
-
+  console.log(selectedLabels);
   return (
     <>
       <Header />
@@ -106,10 +109,7 @@ export default function Reservation() {
               유저가 등록한 상품을 예약하기 위한 페이지입니다.
             </h1>
 
-            <LabelFilter
-              onLabelClick={handleLabelClick}
-              selectedLabels={selectedLabels}
-            />
+            <LabelFilter onLabelClick={handleLabelClick} />
             <ProductSection>
               {filteredProducts.map(item => (
                 <Feed

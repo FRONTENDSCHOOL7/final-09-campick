@@ -41,16 +41,23 @@ export default function Homefeed() {
 
   useEffect(() => {
     async function getProduct() {
-      followingList &&
-        followingList.map(async item => {
-          const products = await productList(item.accountname, 5);
-          setProductInfo(pre => [...pre, ...products]);
-          setIsLoading(false);
-        });
+      const arr = [];
+      if (followingList.length > 0) {
+        await Promise.all(
+          followingList.map(async item => {
+            const products = await productList(item.accountname, 5);
+            console.log(products);
+            arr.push(...products);
+          }),
+        );
+      }
+
+      setProductInfo(arr);
     }
+
     getProduct();
   }, [followingList]);
-  console.log("렌더링");
+
   return (
     <>
       <Helmet>
