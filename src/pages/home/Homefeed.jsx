@@ -41,7 +41,7 @@ export default function Homefeed() {
 
   useEffect(() => {
     async function getProduct() {
-      const arr = [];
+      let arr = [];
       if (followingList.length > 0) {
         await Promise.all(
           followingList.map(async item => {

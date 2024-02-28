@@ -23,6 +23,7 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/homefeed" element={<Homefeed />} />
+
         <Route path="/reservation" element={<Outlet />}>
           <Route path="" element={<Reservation />} />
           <Route path="chat" element={<Chat />} />

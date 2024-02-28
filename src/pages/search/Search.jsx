@@ -27,22 +27,17 @@ export default function Search() {
     setPage(1); // 검색 키워드 상태 업데이트
   };
 
-  // 디바운스를 위한 입력값 타이머
-  const [timer, setTimer] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    if (timer) {
-      clearTimeout(timer);
-    }
-
-    const newTimer = setTimeout(async () => {
+    let timer;
+    timer = setTimeout(async () => {
       if (searchKeyword) {
         const results = await searchUser(searchKeyword);
         setSearchResults(results);
+        console.log("렌더링");
       }
     }, 400);
-    setTimer(newTimer);
-    console.log("렌더링");
+
     return () => {
       clearTimeout(timer);
     };

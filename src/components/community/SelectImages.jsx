@@ -19,16 +19,21 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
 
-export default function SelectImages({ warnings, images, onUpload, onDelete }) {
+export default function SelectImages({
+  warnings,
+  images,
+  onUpload,
+  onDelete,
+  setShowWrongExtensionToast,
+}) {
   const handleImageInputChange = e => {
     if (!e.target.files || e.target.files.length === 0) {
       return;
     }
-    if (images.length > 3) {
-      alert("이미지는 최대 3개까지 업로드 가능합니다.");
-    } else {
-      onUpload(e.target.files, e.target.files.length);
-    }
+
+    onUpload(e.target.files, e.target.files.length, setShowWrongExtensionToast);
+
+    e.target.value = "";
   };
 
   return (
@@ -38,6 +43,7 @@ export default function SelectImages({ warnings, images, onUpload, onDelete }) {
         <LabelButton htmlFor="imageUpload">
           <UploadImagesIcon src={imagesuploadimage} alt="이미지 업로드" />
         </LabelButton>
+
         <Swiper
           spaceBetween={10}
           slidesPerView={images.length > 1 ? 2 : 1}
@@ -68,7 +74,6 @@ export default function SelectImages({ warnings, images, onUpload, onDelete }) {
         accept="image/*"
         multiple={true}
       />
-
       {warnings.image && <Incorrect>{warnings.image}</Incorrect>}
     </WrapperMyCampsiteInput>
   );

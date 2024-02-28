@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import {
   TextareaStyle,
   WrapperMyCampsiteInput,
@@ -61,7 +61,6 @@ export default function CommunityPost() {
   }
 
   async function handleSubmitButton() {
-    // 동기 처리
     let newWarnings = {};
 
     if (images.length === 0) newWarnings.image = "이미지를 업로드해주세요.";
@@ -69,12 +68,12 @@ export default function CommunityPost() {
     if (!postText) newWarnings.postText = "게시글을 입력해주세요.";
 
     setWarnings(newWarnings);
-
     if (!Object.values(newWarnings).some(w => w)) {
       try {
         let image;
         if (images.length === 0) image = "";
         else {
+          console.log(images);
           image = images
             .map(image => `https://api.mandarin.weniv.co.kr/${image}`)
             .join(",");
@@ -120,6 +119,7 @@ export default function CommunityPost() {
           images={images}
           onUpload={onUpload}
           onDelete={onDelete}
+          setShowWrongExtensionToast={setShowWrongExtensionToast}
         />
         <MapSelectedBtn onClick={openModal} style={{ margin: "0" }}>
           지도에서 위치 선택하기

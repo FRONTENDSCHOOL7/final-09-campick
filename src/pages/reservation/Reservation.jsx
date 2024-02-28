@@ -20,12 +20,10 @@ import NoFriendsMessage from "../../assets/image/nocamper.png";
 export default function Reservation() {
   const [followingList, setFollowingList] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
-  const [sortProduct, setSortProduct] = useState([]);
   const [opModal, setOpModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [productId, setProductId] = useState("");
   const [selectedLabels, setSelectedLabels] = useState([]);
-
   useEffect(() => {
     const accountname = localStorage.getItem("accountname");
     async function getFollowingList() {
@@ -33,33 +31,33 @@ export default function Reservation() {
       setFollowingList(list);
       setIsLoading(false); // 데이터 로딩이 끝났음을 표시
     }
+
     getFollowingList();
   }, []);
 
   useEffect(() => {
     async function getProduct() {
-      const arr = [];
+      let arr = [];
       if (followingList.length > 0) {
         await Promise.all(
           followingList.map(async item => {
             const products = await productList(item.accountname, 5);
+
             arr.push(...products);
           }),
         );
+
+        setProductInfo(arr);
       }
-      setProductInfo(arr);
     }
     getProduct();
   }, [followingList]);
 
-  useEffect(() => {
-    setSortProduct(
-      [...productInfo].sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      }),
+  const sortProduct = useMemo(() => {
+    return [...productInfo].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
     );
   }, [productInfo]);
-
   const handleLabelClick = useCallback(label => {
     setSelectedLabels(prevLabels => {
       if (label === "전체상품") {
@@ -76,7 +74,6 @@ export default function Reservation() {
       }
     });
   }, []);
-
   const filteredProducts = useMemo(() => {
     if (selectedLabels.length === 0) return sortProduct;
     return sortProduct.filter(product => {
@@ -86,7 +83,7 @@ export default function Reservation() {
       return selectedLabels.some(label => labels.includes(label));
     });
   }, [sortProduct, selectedLabels]);
-  console.log(selectedLabels);
+  console.log("렌더링");
   return (
     <>
       <Header />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css";
@@ -183,7 +183,7 @@ export default function PostItem({
                 check
                 onClick={async () => {
                   setDeleteMsg(await userpostDelete(data.id));
-                  setTimeout(async () => {
+                  setTimeout(() => {
                     setUserPosts(pre => {
                       return {
                         ...pre,
