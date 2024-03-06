@@ -28,6 +28,7 @@ export default function HomeCampsiteFeed({
 
       <HomeCampSiteList>
         <Swiper
+          wrapperTag="ul"
           spaceBetween={
             productInfo && productInfo.length >= 3
               ? -40
@@ -47,7 +48,7 @@ export default function HomeCampsiteFeed({
         >
           {productInfo &&
             productInfo.map(item => (
-              <SwiperSlide key={item.id}>
+              <SwiperSlide key={item.id} tag="li">
                 <HomeCampsiteItem data={item} onClick={handleOnClickItem} />
               </SwiperSlide>
             ))}

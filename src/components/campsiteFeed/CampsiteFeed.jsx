@@ -34,6 +34,7 @@ export default function Feed({
                 setProductId(data.id);
                 setOpModal(true);
               }}
+              aria-label="상품 상세 모달창 가기 버튼"
             >
               <ProductImage src={data.itemImage} alt="" />
             </ProductBtn>

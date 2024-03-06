@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ProductContainer = styled.li`
+export const ProductContainer = styled.article`
   //.
   margin: 0 8px 0 8px;
   border-radius: 10px;

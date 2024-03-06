@@ -17,6 +17,7 @@ export default React.memo(function ProfileProduct({ data }) {
     <ProductSection>
       <ProductTitle>{`${data[0].author.username}님의 캠핑장`}</ProductTitle>
       <Swiper
+        wrapperTag="ul"
         spaceBetween={0}
         slidesPerView={1}
         pagination={{
@@ -25,7 +26,7 @@ export default React.memo(function ProfileProduct({ data }) {
         modules={[Pagination]}
       >
         {products.map(item => (
-          <SwiperSlide style={{ margin: "0" }} key={item.id}>
+          <SwiperSlide style={{ margin: "0" }} key={item.id} tag="li">
             <Feed key={item.id} data={item} title={false} />
           </SwiperSlide>
         ))}

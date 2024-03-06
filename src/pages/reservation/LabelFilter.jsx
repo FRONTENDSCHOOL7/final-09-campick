@@ -72,6 +72,7 @@ const LabelFilter = ({ onLabelClick }) => {
         <ViewMoreButton
           onClick={toggleViewMore}
           backgroundImage={isExpanded ? close : more}
+          aria-label="더보기 버튼"
         ></ViewMoreButton>
       )}
     </WrapperLabel>
