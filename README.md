@@ -2,27 +2,28 @@
 
 ---
 
-배포 URL :
+배포 URL : https://campick9.netlify.app/
 
 ## 테스트 계정
 
-- ID :
-- PW :
+- ID : campick09@naver.com
+- PW : 123123
 
 ## 0. 목차
 
----
 
+- 
 ## 1. 프로젝트 소개
 
----
+![그림1](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/89963228/3ffc3a49-eb1a-4ab4-8d15-0efa11321264)
+
 
 - 프로젝트 기간 : 2023.10.12 ~ 2023.11.7
 -
 
 ## 2. 팀원 소개
 
----
+
 
 박재웅 9조 프로젝트팀을 소개합니다!
 
@@ -49,16 +50,18 @@
 ## 4. 프로젝트 일정
 
 | 주차                       |                                                                                                                                                              |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| :--------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **1주차**<br>(10/13 ~ 10/19)   | - 주제 선정, 기술 스택 및 협업툴 결정 (`Notion`, `Discord`, `Figma`, `Figjam`)<br>- GitProject, GitIssue 템플릿 적용, Figma 디자인 작업 및 기획, 컨벤션 설정 |
 | **2주차**<br>(10/20 ~ 10/24 )  | - 초기 개발환경 세팅<br>- 공통 컴포넌트 분석 및 작업,API분석                                                                  |
 | **3주차**<br>(10/25 ~ 11/1) | - 페이지별 필수 기능 구현                                                                                                                    |
 | **4주차**<br>(11/1 ~ 11/8) | - 필수 기능 구현 1차 완료 및 디자인 수정<br>- 추가기능 구현 (좋아요, 이미지 여러장 업로드,댓글 등) <br>- 배포<br>- 프로젝트를 시연해보며 보이는 에러 수정<br>- README 작성                  |
 
-
+- ## Calendar
+  
+  <img width="842" alt="개발 일정" src="https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/3076870b-6a8c-44d5-817e-0401e4649d6f">
 ## 5. 폴더 구조
 
----
+
 
 ```
 🏠 campic
@@ -71,76 +74,45 @@
 │  ├─ favicon.ico
 │  └─ index.html
 └─ 📂 src
-  ├─ 📂 api     ───────────────────── 📲 
-  ├─ 📂 assets  ───────────────────── 🧸 
+  ├─ 📂 api     ───────────────────── 📲 Api 함수
+  ├─ 📂 assets  ───────────────────── 🧸 아이콘,이미지 소스
   ├─ 📂 components
-  │  ├─ 📂 campsiteFeed ───────────── 📦 
-  │  ├─ 📂 comment ────────────────── 📦 
-  │  ├─ 📂 community  ─────────────── 📦 
-  │  ├─ 📂 follow   ───────────────── 📦 
-  │  ├─ 📂 form   ─────────────────── 📦 
-  │  ├─ 📂 header   ───────────────── 📦 
-  │  ├─ 📂 kakaomap   ─────────────── 📦 
-  │  ├─ 📂 login   ────────────────── 📦 
-  │  ├─ 📂 modal   ────────────────── 📦 
-  │  ├─ 📂 navbar   ───────────────── 📦 
-  │  ├─ 📂 post   ─────────────────── 📦 
-  │  ├─ 📂 slider   ───────────────── 📦 
-  │  ├─ 📂 toast   ────────────────── 📦 
-  │  └─ 📂 userProfile   ──────────── 📦 
+  │  ├─ 📂 campsiteFeed ───────────── 📦 홈피드,예약페이지,프로필페이지에서 사용되 상품 컴포넌트
+  │  ├─ 📂 comment ────────────────── 📦 댓글 페이지에 사용되는 컴포넌트
+  │  ├─ 📂 community  ─────────────── 📦 커뮤니티 페이지에사용되는 컴포넌트
+  │  ├─ 📂 follow   ───────────────── 📦 팔로잉,팔로워 페이지에 사용되는 컴포넌트
+  │  ├─ 📂 form   ─────────────────── 📦 로그인, 회원가입에 사용되는 공통 컴포넌트 
+  │  ├─ 📂 header   ───────────────── 📦 페이지마다 상단에 사용되는 헤더 컴포넌트
+  │  ├─ 📂 kakaomap   ─────────────── 📦 상품,게시물 등록에 사용되는 컴포넌트
+  │  ├─ 📂 login   ────────────────── 📦 첫 화면에 사용되는 컴포넌트
+  │  ├─ 📂 modal   ────────────────── 📦 모달에 사용되는 컴포넌트
+  │  ├─ 📂 navbar   ───────────────── 📦 페이지 하단 사용되는 컴포넌트
+  │  ├─ 📂 post   ─────────────────── 📦 홈피드,커뮤니티,프로필에 사용되는 게시물 관련 컴포넌트
+  │  ├─ 📂 slider   ───────────────── 📦 슬라이더 기능 컴포넌트
+  │  ├─ 📂 toast   ────────────────── 📦 알림창 관련 컴포넌트
+  │  └─ 📂 userProfile   ──────────── 📦 프로필 페이지에 사용되는 컴포넌트
   ├─ 📂 hooks ─────────────────────── ♻️ 커스텀 훅 폴더
   │  └─ useImagesUpload.js
   ├─ App.js
   ├─ index.js
-  ├─ 📂 pages   ───────────────────── 📲 라우팅이 적용된 주로 API를 요청하는 페이지 폴더
+  ├─ 📂 pages   ───────────────────── 📲 라우팅이 적용될 주요 page 컴포넌트
   ├─ 📂 styles   ──────────────────── 💄 전역으로 적용할 css 파일들이 포함된 폴더
   │  ├─ Wrapper.jsx
   │  └─ GlobalStyle.js  
-  └─ 📂 routes    ─────────────────── 🧸
+  └─ 📂 routes    ─────────────────── 🧸 
     
 ```
 
-## 6. 구현 기능
+## 6. 역할 분담
 
----
+![역할분담](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/3af01238-4a5a-45b0-842d-ba5d3197ebbe)
 
-- 🙂 Account
-  - 로그인/로그아웃
-  - 로그인/ 회원가입/프로필 유효성 검사
-  - 회원가입 진행
-  - 프로필 정보 설정
-- ✍️ Post
-  - 게시글 등록/삭제/신고
-  - 캠핑 위치 정보 등록
-  - 이미지 최대 3장 업로드
-  - 유저 게시글 목록
-  - 팔로잉 게시글 목록
-- 💬 Coment
-  - 댓글 등록
-  - 댓글 삭제
-- 👤 Profile
-  - 개인 프로필
-  - 프로필 수정
-  - 팔로우/언팔로우
-  - 팔로우/팔로잉 리스트
-  - 로그아웃
-- 🔎 Search
-  - 유저 검색
-- ❤️ Like
-  - 게시물 좋아요 및 취소
-- 🏕️ Campsite
-  - 캠핑장 등록/예약
-  - 캠핑장 리스트
-  - 캠핑장 상세
-  - 캠핑장 문의하기
-  - 캠핑장 예약하기
-- ## Calendar
-  -
 
 ## 7. 기능 UI
 
----
-<img src="https://file.notion.so/f/f/94e4a305-f804-42b2-b151-9faf892ffa79/15da53fb-176d-417c-8041-363c035922c8/KakaoTalk_20231106_162228762.png?id=02994811-b37d-493a-b269-a6458cddad9f&table=block&spaceId=94e4a305-f804-42b2-b151-9faf892ffa79&expirationTimestamp=1699421810058&signature=Ey693zUuuDkVic2Jcm3ke1U2ZmRvi1kDlkSdX6ddhXk&downloadName=KakaoTalk_20231106_162228762.png"/>
+
+
+<img width="5151" alt="기능 순서도" src="https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/422fef1a-cc8e-409d-b732-b6f87a8f6736">
 
 ### 1) 홈
 | 시작 화면 | 회원가입 페이지 | 프로필 설정 페이지 |
@@ -149,7 +121,7 @@
 
 | 로그인 페이지 | 홈 화면 | 검색 페이지 |
 |-------|-------|-------|
-| ![4  로그인 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/6ba2bb7c-1c30-47c6-bd83-80d9f6aec49e) |  | ![6.검색페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cfc14ccf-6e4a-40a8-8123-356a503173b6) |
+| ![4.로그인 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/6ba2bb7c-1c30-47c6-bd83-80d9f6aec49e) | ![5.홈화면 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/e5801107-7698-4524-8563-3e7add7bf6b8) | ![6.검색페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cfc14ccf-6e4a-40a8-8123-356a503173b6) |
 
 ### 2) 예약
 | 예약 페이지 | 예약 상세보기 페이지 | 예약 채팅 페이지 |
@@ -159,23 +131,24 @@
 ### 3) 커뮤니티
 | 커뮤니티 페이지 | 댓글 및 좋아요 기능 | 게시물 작성 페이지 |
 |-------|-------|-------|
-| 내용1 | ![11.커뮤니티 댓글 및 좋아요 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf7ae2f2-ac90-4667-9dba-65144927be6d) | 내용3 |
+| ![10.커뮤니티 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/8bb318a9-771d-4adf-982f-4b537457ce1b) | ![11.커뮤니티 댓글 및 좋아요 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf7ae2f2-ac90-4667-9dba-65144927be6d) | ![12.커뮤니티 게시글 작성 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/0b584fac-538f-4146-8d1a-15558992d3c4) |
 
 ### 4) 프로필
 | 프로필 페이지 | 프로필 수정 페이지 | 게시물 삭제 기능 |
 |-------|-------|-------|
-| ![13.내 프로필 및 팔로잉 팔로워 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/16c02aa7-c292-4ea3-aec0-323446f0cffa) | ![14.내 프로필 수정 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf8c1110-830f-4732-a65a-fdc57e34b01c) | 내용3 |
+| ![13.내 프로필 및 팔로잉 팔로워 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/16c02aa7-c292-4ea3-aec0-323446f0cffa) | ![14.내 프로필 수정 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/cf8c1110-830f-4732-a65a-fdc57e34b01c) | ![15.내 프로필 게시물 삭제 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/f1c5bffa-121a-4e60-83cc-f0ec88a0dfd9) |
 
 | 캠핑장 등록 페이지 | 로그아웃 기능 | 404 페이지 |
 |-------|-------|-------|
 | ![16.내 프로필 캠핑장 등록 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/e2d76244-cd3c-40cb-89e7-ee3d6b0481a2) | ![17.로그아웃 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/2c21270e-d158-4f74-9feb-fbd36fe70ad6) | ![18.404 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/80518390-856b-402b-8efc-af51c7fd31d3) |
+
 ## 8. 주요코드
 
----
+
 
 ## 9. 후기
 
----
+
 
 - 김건희
 - 박재웅
