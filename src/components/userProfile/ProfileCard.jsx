@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ProfileWrapper,
   ProfileInfoWrap,
@@ -13,41 +13,38 @@ import {
   ProfileBtnWrap,
   ProfileBtn,
   ChatShare,
-} from "./profile.style";
+} from "./Profile.style";
 import { unfollow } from "../../api/unfollowApi";
 import { follow } from "../../api/followApi";
-import { userInfo } from "../../api/userInfoApi";
-import { myInfo } from "../../api/myInfoApi";
-export default function ProfileCard({ accountUsername }) {
-  const [userData, setUserData] = useState("");
+
+export default React.memo(function ProfileCard({ accountUsername, data }) {
+  const [userData, setUserData] = useState(data);
   const myAccountname = localStorage.getItem("accountname");
-  const [lenders, setLenders] = useState(true);
-
   useEffect(() => {
-    if (accountUsername) {
-      const getUserInfo = async () => {
-        const res = await userInfo(accountUsername);
-
-        setUserData(res);
-      };
-      getUserInfo();
-    } else {
-      const getMyInfo = async () => {
-        const res = await myInfo();
-
-        setUserData(res);
-      };
-      getMyInfo();
-    }
-  }, [accountUsername, lenders]);
+    setUserData(data);
+  }, [data]);
 
   const handlefollowBtn = async () => {
     if (userData.isfollow) {
       await unfollow(userData.accountname);
-      setLenders(pre => !pre);
+
+      setUserData(pre => {
+        return {
+          ...pre,
+          isfollow: !pre.isfollow,
+          followerCount: pre.followerCount - 1,
+        };
+      });
     } else {
       await follow(userData.accountname);
-      setLenders(pre => !pre);
+
+      setUserData(pre => {
+        return {
+          ...pre,
+          isfollow: !pre.isfollow,
+          followerCount: pre.followerCount + 1,
+        };
+      });
     }
   };
 
@@ -81,7 +78,7 @@ export default function ProfileCard({ accountUsername }) {
       </ProfileIntro>
       {!accountUsername ? (
         <ProfileBtnWrap>
-          <ProfileBtn to = {"edit"}>프로필 수정</ProfileBtn>
+          <ProfileBtn to={"edit"}>프로필 수정</ProfileBtn>
           <ProfileBtn to={"/product/upload"}>내 캠핑장 등록</ProfileBtn>
         </ProfileBtnWrap>
       ) : (
@@ -98,4 +95,4 @@ export default function ProfileCard({ accountUsername }) {
       )}
     </ProfileWrapper>
   );
-}
+});

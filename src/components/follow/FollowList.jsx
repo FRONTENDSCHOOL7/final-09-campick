@@ -1,6 +1,6 @@
 import React from "react";
 import FollowListItem from "./FollowListItem";
-import { FollowListWrap } from "./followListItem.style";
+import { FollowListWrap } from "./FollowListItem.style";
 export default function FollowList({ data }) {
   return (
     <FollowListWrap>

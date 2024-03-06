@@ -41,13 +41,19 @@ export default function Homefeed() {
 
   useEffect(() => {
     async function getProduct() {
-      followingList &&
-        followingList.map(async item => {
-          const products = await productList(item.accountname, 5);
-          setProductInfo(pre => [...pre, ...products]);
-          setIsLoading(false);
-        });
+      let arr = [];
+      if (followingList.length > 0) {
+        await Promise.all(
+          followingList.map(async item => {
+            const products = await productList(item.accountname, 5);
+            arr.push(...products);
+          }),
+        );
+      }
+
+      setProductInfo(arr);
     }
+
     getProduct();
   }, [followingList]);
 

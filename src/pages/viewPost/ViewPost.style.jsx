@@ -9,6 +9,7 @@ export const WrapViewPost = styled.section`
   &::-webkit-scrollbar {
     display: none;
   }
+  //.
 `;
 
 export const CommentSection = styled.section`

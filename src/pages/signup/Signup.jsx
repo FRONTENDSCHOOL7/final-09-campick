@@ -1,6 +1,6 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { WrapperLoginEmail } from "../loginEmail/LoginEmail.style";
+import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import {
   Incorrect,
   InputStyle,
@@ -9,46 +9,38 @@ import {
   Title,
   WrapEmailPw,
   WrapForm,
-} from "../../components/form/form.style";
-import { Helmet } from "react-helmet-async";
+} from "../../components/form/Form.style";
+import { WrapperLoginEmail } from "../loginEmail/LoginEmail.style";
 import { emailValid } from "../../api/signupApi";
-import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
   const [email, setEmail] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
   const [validPassword, setValidPassword] = useState(true);
-
+  const [isPwSame, setIsPwSame] = useState(false);
   const navigate = useNavigate();
 
-  const checkValidEmail = async () => {
-    if (email.length >= 1) {
-      if (exptext.test(email)) {
-        const res = await emailValid({ user: { email: email } });
-        if (res.message === "사용 가능한 이메일 입니다.") {
-          setValidEmail(false);
-        } else if (res.message === "이미 가입된 이메일 주소 입니다.") {
-          setValidEmail("checkEmail");
+  useEffect(() => {
+    const exptext = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.(com|net)$/;
+    const checkValidEmail = async () => {
+      if (email.length >= 1) {
+        if (exptext.test(email)) {
+          const res = await emailValid({ user: { email: email } });
+          if (res.message === "사용 가능한 이메일 입니다.") {
+            setValidEmail(false);
+          } else if (res.message === "이미 가입된 이메일 주소 입니다.") {
+            setValidEmail("checkEmail");
+          }
+        } else {
+          setValidEmail("validEmail");
         }
       } else {
-        setValidEmail("validEmail");
+        setValidEmail(false);
       }
-    } else {
-      setValidEmail(false);
-    }
-  };
+    };
 
-  const checkValidPw = () => {
-    if (password.length < 6) {
-      setValidPassword(false);
-    } else {
-      setValidPassword(true);
-    }
-  };
-
-  useEffect(() => {
     const timer = setTimeout(() => {
       console.log("나타남");
       checkValidEmail();
@@ -61,16 +53,43 @@ export default function Signup() {
   }, [email]);
 
   useEffect(() => {
+    const checkValidPw = () => {
+      if (password.length < 6) {
+        setValidPassword(false);
+      } else {
+        setValidPassword(true);
+      }
+    };
     checkValidPw();
   }, [password]);
 
+  useEffect(() => {
+    if (password === checkPassword) {
+      setIsPwSame(true);
+    } else {
+      setIsPwSame(false);
+    }
+  }, [password, checkPassword]);
+
   const onChange = event => {
-    if (event.target.type === "email") {
+    if (event.target.name === "email") {
       setEmail(event.target.value);
-    } else if (event.target.type === "password") {
+    } else if (event.target.name === "password") {
       setPassword(event.target.value);
+    } else if (event.target.name === "checkPassword") {
+      setCheckPassword(event.target.value);
     }
   };
+
+  useEffect(() => {
+    if (checkPassword !== "") {
+      if (password === checkPassword) {
+        setIsPwSame(true);
+      } else {
+        setIsPwSame(false);
+      }
+    }
+  }, [password, checkPassword]);
 
   return (
     <>
@@ -116,11 +135,27 @@ export default function Signup() {
             {password.length > 0 && !validPassword && (
               <Incorrect>* 비밀번호는 6자 이상이어야 합니다.</Incorrect>
             )}
-
-            <Submitbutton disabled={!(!validEmail && validPassword)}>
-              다음
-            </Submitbutton>
           </WrapEmailPw>
+          <WrapEmailPw>
+            <LabelStyle htmlFor="passwordCheckInput">비밀번호 확인</LabelStyle>
+            <InputStyle
+              type="password"
+              name="checkPassword"
+              id="passwordCheckInput"
+              placeholder="비밀번호를 한 번 더 입력해 주세요."
+              onChange={onChange}
+              value={checkPassword}
+            />
+            {checkPassword && !isPwSame && (
+              <Incorrect>* 비밀번호가 일치하지 않습니다.</Incorrect>
+            )}
+          </WrapEmailPw>
+
+          <Submitbutton
+            disabled={!(email && !validEmail && validPassword && isPwSame)}
+          >
+            다음
+          </Submitbutton>
         </WrapForm>
       </WrapperLoginEmail>
     </>

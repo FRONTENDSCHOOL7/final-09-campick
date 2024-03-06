@@ -13,7 +13,7 @@ import {
   InputStyle,
   Label,
   LabelStyle,
-} from "../../components/form/form.style";
+} from "../../components/form/Form.style";
 import MapModal from "../../components/kakaomap/MapModal";
 import { ModalBackdrop } from "../../components/kakaomap/MapModal.style";
 import { Helmet } from "react-helmet-async";

@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
-
 const GlobalStyles = createGlobalStyle`
     @font-face {
     font-family: 'TheJamsilBold';
@@ -25,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
         url('https://cdn.jsdelivr.net/gh/webfontworld/TheJamsil/TheJamsil-Regular.ttf') format("truetype");
     font-display: swap;
 }
-
+    
     :root {
         //예시 
         // --gray:#C4C4C4;
@@ -41,16 +40,16 @@ const GlobalStyles = createGlobalStyle`
 
     }
     
-   .a11y-hidden {
-     clip: rect(1px, 1px, 1px, 1px);
-     clip-path: inset(50%);
-     width: 1px;
-     height: 1px;
-     margin: -1px;
-     overflow: hidden;
-     padding: 0;
-     position: absolute;
-   }
+    .a11y-hidden {
+        clip: rect(1px, 1px, 1px, 1px);
+        clip-path: inset(50%);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+    }
     ${reset}
     body {
         display:flex;
@@ -62,12 +61,14 @@ const GlobalStyles = createGlobalStyle`
     }
     a{
         text-decoration: none;
-        color:inherit
+        color:inherit;
+        font-family:'TheJamsil',sans-serif;
     }
     button{
         border:none;
         background-color:inherit;
         padding:0;
+        font-family:'TheJamsil',sans-serif;
     }
     input{
         &:-webkit-autofill,
@@ -78,7 +79,8 @@ const GlobalStyles = createGlobalStyle`
             -webkit-transition: background-color 9999s ease-out;
             -webkit-box-shadow: 0 0 0px 1000px 'var(--white);' inset !important;
             -webkit-text-fill-color: 'var(--white);' !important;
-  }
+        }
+        font-family:'TheJamsil',sans-serif;
     }
 `;
 <div></div>;

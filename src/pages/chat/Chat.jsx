@@ -4,7 +4,7 @@ import {
   CommentInputArea,
   CommentUploadButton,
   CommentProfileImage,
-} from "../viewPost/viewPost.style";
+} from "../viewPost/ViewPost.style";
 import { Helmet } from "react-helmet-async";
 import HeaderText from "../../components/header/HeaderText";
 import {

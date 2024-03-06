@@ -1,6 +1,6 @@
 import React from "react";
 import error from "../../assets/icons/error.png";
-import { Submitbutton } from "../../components/form/form.style";
+import { Submitbutton } from "../../components/form/Form.style";
 import { ErrorIcon, WrapperError, ErrorText } from "./Error.style";
 
 const Error = () => {

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const PostArticle = styled.article`
   padding: 16px 16px 10px 16px;
-
   border-bottom: 1px solid #c4c4c4;
 `;
 export const ProfileDiv = styled.div`
@@ -64,12 +63,12 @@ export const ImgBox = styled.div`
   position: relative;
   .swiper-button-prev,
   .swiper-button-next {
+    z-index: 1000;
     color: #fff;
     transform: scale(0.8);
     transition: 0.2s;
     opacity: 0.6;
     text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
     &:hover {
       transform: scale(0.9);
       transition: 0.2s;
@@ -104,12 +103,13 @@ export const IconHeart = styled.img`
   height: 19px;
   margin-right: 5px;
   cursor: pointer;
+
   animation: ${props =>
-    props.isclicked === "true"
+    props.isclicked
       ? css`
           ${pulse} 0.5s
         `
-      : "none"}; // css 헬퍼 함수로 감싸줌
+      : "none"};
 `;
 
 export const IconComment = styled.img`
@@ -128,4 +128,37 @@ export const PostData = styled.p`
 `;
 export const HomePostTitle = styled.h2`
   margin: 12px auto 0 10px;
+`;
+export const PostSection = styled.section`
+  background-color: white;
+  border-radius: 10px;
+  border: 0.5px solid #dbdbdb;
+  margin: 0 8px 0 8px;
+  flex-basis: 300px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const PostMapWrapper = styled.div`
+  display: flex;
+
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  color: #fff;
+  z-index: 100;
+`;
+export const PointIcon = styled.img`
+  width: 12px;
+  height: 14px;
+  margin-right: 5px;
+`;
+export const AlbumImg = styled.img`
+  width: 114px;
+  height: 114px;
+  border-radius: 10px;
+  object-fit: cover;
 `;

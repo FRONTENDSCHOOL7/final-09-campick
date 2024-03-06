@@ -1,38 +1,36 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { Helmet } from "react-helmet-async";
+import HeaderText from "../../components/header/HeaderText";
+import {
+  Incorrect,
+  InputStyle,
+  Title,
+  WrapForm,
+  Submitbutton,
+} from "../../components/form/Form.style";
+import {
+  CompleteToast,
+  SizeOverToast,
+  WrongExtensionToast,
+} from "../../components/toast/Toast";
 import {
   DescriptionText,
   FormElement,
   ImageButton,
   ImageInput,
   LabelStyle,
-  LabelStyleImg,
   ProfileImage,
   Upload,
   WrapperProfileSetup,
-} from "../profileSetup/profileSetup.style";
-import {
-  Incorrect,
-  InputStyle,
-  Title,
-  WrapForm,
-} from "../../components/form/form.style";
-import { Submitbutton } from "../../components/form/form.style";
-import {
-  CompleteToast,
-  SizeOverToast,
-  WrongExtensionToast,
-} from "../../components/toast/Toast";
-import { useNavigate } from "react-router";
-import profilePic from "../../assets/icons/profilePic.svg";
-import imageValidation from "../../imageValidation";
+} from "../profileSetup/ProfileSetup.style";
 import { accountNameValid } from "../../api/accountNameApi";
-import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
 import { editprofile } from "../../api/editProfileApi";
-import HeaderText from "../../components/header/HeaderText";
+import imageValidation from "../../imageValidation";
+import profilePic from "../../assets/icons/profilePic.svg";
+import profileImageUploadButton from "../../assets/icons/profileImageUploadButton.svg";
 
 export default function EditProfile() {
-  const exptext = /^[A-Za-z0-9._]+$/;
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
   const [validUserId, setValidUserId] = useState("");
@@ -43,10 +41,28 @@ export default function EditProfile() {
   const [showWrongExtensionToast, setShowWrongExtensionToast] = useState(false);
   const [showSizeOverToast, setShowSizeOverToast] = useState(false);
   const [showProfileEditToast, setShowProfileEditToast] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
+    const exptext = /^[A-Za-z0-9._]+$/;
+    const checkValidUserId = async () => {
+      if (userId.length >= 1) {
+        if (exptext.test(userId)) {
+          const res = await accountNameValid({
+            user: { accountname: userId },
+          });
+          if (res.message === "사용 가능한 계정ID 입니다.") {
+            setValidUserId(false);
+          } else if (res.message === "이미 가입된 계정ID 입니다.") {
+            setValidUserId("checkUserId");
+          }
+        } else {
+          setValidUserId("validUserId");
+        }
+      } else {
+        setValidUserId(false);
+      }
+    };
     const timer = setTimeout(() => {
       checkValidUserId();
     }, 300);
@@ -57,6 +73,7 @@ export default function EditProfile() {
   }, [userId]);
 
   useEffect(() => {
+    const exptext = /^[A-Za-z0-9._]+$/;
     const isUserNameValid = userName.length >= 2 && userName.length <= 10;
     const isUserIdValid = exptext.test(userId) && validUserId === false;
 
@@ -68,23 +85,20 @@ export default function EditProfile() {
   }, [userName, userId, validUserId]);
 
   const onChange = event => {
-    if (event.target.name === "username") {
-      setUserName(event.target.value);
-    } else if (event.target.name === "userid") {
-      setUserId(event.target.value);
-    } else if (event.target.name === "userintro") {
-      setIntro(event.target.value);
-    }
-  };
+    const { name, value } = event.target;
 
-  const handleInputChange = e => {
-    const value = e.target.value;
-    setUserName(value);
+    if (name === "username") {
+      setUserName(value);
 
-    if (value.length >= 2 && value.length <= 10) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
+      if (value.length >= 2 && value.length <= 10) {
+        setIsValid(true);
+      } else {
+        setIsValid(false);
+      }
+    } else if (name === "userid") {
+      setUserId(value);
+    } else if (name === "userintro") {
+      setIntro(value);
     }
   };
 
@@ -92,30 +106,11 @@ export default function EditProfile() {
     imageValidation(
       e,
       1,
-      150,
+      320,
       setSelectedImage,
       setShowSizeOverToast,
       setShowWrongExtensionToast,
     );
-  };
-
-  const checkValidUserId = async () => {
-    if (userId.length >= 1) {
-      if (exptext.test(userId)) {
-        const res = await accountNameValid({
-          user: { accountname: userId },
-        });
-        if (res.message === "사용 가능한 계정ID 입니다.") {
-          setValidUserId(false);
-        } else if (res.message === "이미 가입된 계정ID 입니다.") {
-          setValidUserId("checkUserId");
-        }
-      } else {
-        setValidUserId("validUserId");
-      }
-    } else {
-      setValidUserId(false);
-    }
   };
 
   const handleSubmit = async e => {
@@ -159,15 +154,23 @@ export default function EditProfile() {
 
         <WrapForm onSubmit={handleSubmit}>
           <Upload>
-            <LabelStyleImg htmlFor="user-image">사용자 이미지</LabelStyleImg>
+            <label htmlFor="user-image" className="a11y-hidden">
+              사용자 프로필 이미지
+            </label>
             <ImageInput
               type="file"
               id="user-image"
               accept="image/*"
               onChange={handleImageInputChange}
             />
-            <ProfileImage src={selectedImage || profilePic} alt="" />{" "}
-            <ImageButton src={profileImageUploadButton} alt="" />
+            <ProfileImage
+              src={selectedImage || profilePic}
+              alt="사용자 프로필 이미지"
+            />
+            <ImageButton
+              src={profileImageUploadButton}
+              alt="이미지 업로드 버튼"
+            />
           </Upload>
 
           <FormElement>
@@ -178,7 +181,7 @@ export default function EditProfile() {
               name="username"
               placeholder="2~10자 이내여야 합니다."
               value={userName}
-              onChange={handleInputChange}
+              onChange={onChange}
             />
             {!isValid && <Incorrect>* 2~10자 이내여야 합니다.</Incorrect>}
           </FormElement>

@@ -10,7 +10,7 @@ import {
   WrapSpan,
   WrapProductTag,
   ProductContainer,
-} from "./campsiteFeed.style";
+} from "./CampsiteFeed.style";
 import React from "react";
 
 export default function Feed({
@@ -20,6 +20,7 @@ export default function Feed({
   reservation,
   title,
 }) {
+  //.
   return (
     <>
       <ProductContainer>
@@ -34,11 +35,11 @@ export default function Feed({
                 setOpModal(true);
               }}
             >
-              <ProductImage src={data.itemImage} />
+              <ProductImage src={data.itemImage} alt="" />
             </ProductBtn>
           ) : (
             <ProductBtn>
-              <ProductImage src={data.itemImage} />
+              <ProductImage src={data.itemImage} alt="" />
             </ProductBtn>
           )}
           <WrapSpan>
