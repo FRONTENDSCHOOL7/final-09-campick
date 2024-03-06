@@ -28,8 +28,16 @@ export default React.memo(function UserPostList({ data, setUserPosts }) {
   return (
     <PostSection>
       <PostHeader>
-        <ListBtn liston={`${listView}`} onClick={handleListView} />
-        <AlbumBtn albumon={`${albumView}`} onClick={handleAlbumView} />
+        <ListBtn
+          liston={`${listView}`}
+          onClick={handleListView}
+          aria-label="게시물 리스트 보기 버튼"
+        />
+        <AlbumBtn
+          albumon={`${albumView}`}
+          onClick={handleAlbumView}
+          aria-label="게시물 앨범 보기 버튼"
+        />
       </PostHeader>
       {listView ? (
         <section>

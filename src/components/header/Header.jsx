@@ -42,7 +42,7 @@ export default function Header({ profile, setIsModal }) {
               setIsModal(true);
             }}
           >
-            <DotImg src={iconDot} />
+            <DotImg src={iconDot} alt="로그아웃 버튼" />
           </ModalBtn>
         </>
       )}
