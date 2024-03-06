@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-
 import { DeletePostToast } from "../../components/toast/Toast";
-
 import {
   PostArticle,
   ProfileDiv,
@@ -37,10 +35,8 @@ import {
   ModalText,
 } from "../modal/Modal.style";
 import { GradientOverlay } from "../community/Community.style";
-
 import { userpostDelete } from "../../api/userpostDeleteApi";
 import { heart, unheart } from "../../api/viewpostApi";
-
 import point from "../../assets/image/point.png";
 import iconDot from "../../assets/icons/icon-dot.svg";
 import iconHeartedInactive from "../../assets/icons/heartInactive.png";
@@ -50,17 +46,16 @@ import comment from "../../assets/icons/icon-comment.svg";
 export default function PostItem({
   data,
   commentCount,
-  setLender,
   location,
-  viewPost,
+  setUserPosts,
 }) {
-  const [isHearted, setIsHearted] = useState(false);
+  const [isHearted, setIsHearted] = useState(data.hearted);
   const [heartCount, setHeartCount] = useState(data.heartCount);
   const [isPostModal, setIsPostModal] = useState(false);
   const [isPostDeleteCheckModal, setIsPostDeleteCheckModal] = useState(false);
   const [isReportModal, setIsReportModal] = useState(false);
   const [deleteMsg, setDeleteMsg] = useState("");
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState("");
   const formatCreatedAt = createdAt => {
     const date = new Date(createdAt);
     const options = { year: "numeric", month: "numeric", day: "numeric" };
@@ -68,19 +63,11 @@ export default function PostItem({
   };
 
   const heartedActive = async () => {
-    try {
-      await heart(data.id);
-    } catch (error) {
-      console.error("error", error);
-    }
+    await heart(data.id);
   };
 
   const heartedInactive = async () => {
-    try {
-      await unheart(data.id);
-    } catch (error) {
-      console.error("error", error);
-    }
+    await unheart(data.id);
   };
 
   const handleHeartClick = () => {
@@ -93,13 +80,8 @@ export default function PostItem({
       setIsHearted(true);
       setHeartCount(heartCount + 1);
     }
-    setIsClicked(true);
-    setTimeout(() => setIsClicked(false), 500);
+    setIsClicked(Math.random());
   };
-
-  useEffect(() => {
-    setIsHearted(data.hearted);
-  }, [data.hearted]);
 
   const handlePostModalOptionClick = () => {
     data.author.accountname === localStorage.getItem("accountname")
@@ -115,6 +97,7 @@ export default function PostItem({
   const handlePostDeleteCheckModalClose = () => {
     setIsPostDeleteCheckModal(false);
   };
+
   return (
     <>
       <PostArticle>
@@ -139,7 +122,7 @@ export default function PostItem({
         <ProfileContent>
           {data && JSON.parse(data.content).content}
         </ProfileContent>
-        <Link to={!viewPost && `../community/${data.id}`}>
+        <Link to={`/community/${data.id}`}>
           <ImgBox>
             <Swiper
               slidesPerView={1}
@@ -167,10 +150,11 @@ export default function PostItem({
               src={isHearted ? iconHeartedActive : iconHeartedInactive}
               alt="좋아요 아이콘"
               onClick={handleHeartClick}
-              isclicked={isClicked.toString()}
+              isclicked={isClicked}
+              key={isClicked}
             ></IconHeart>
             <IconSpan>{heartCount}</IconSpan>
-            <Link to={!viewPost && `../community/${data && data.id}`}>
+            <Link to={`/community/${data && data.id}`}>
               <IconComment src={comment} alt="댓글 이동 버튼"></IconComment>
             </Link>
             <IconSpan>{commentCount}</IconSpan>
@@ -199,8 +183,13 @@ export default function PostItem({
                 check
                 onClick={async () => {
                   setDeleteMsg(await userpostDelete(data.id));
-                  setTimeout(async () => {
-                    setLender(pre => !pre);
+                  setTimeout(() => {
+                    setUserPosts(pre => {
+                      return {
+                        ...pre,
+                        post: pre.post.filter(v => v.id !== data.id),
+                      };
+                    });
                   }, 500);
                 }}
               >

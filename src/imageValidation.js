@@ -63,7 +63,6 @@ const handlingData = async (dataURL, setSelectedImage) => {
 
   const formData = new FormData();
   formData.append("image", file);
-  console.log(formData);
   const resData = await uploadImage(formData);
 
   const imageUrl = `${API_URL}/` + resData.filename;

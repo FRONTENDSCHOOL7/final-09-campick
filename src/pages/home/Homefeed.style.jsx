@@ -5,7 +5,6 @@ export const Home = styled.div`
   background: var(--Gray-6, #f2f2f2);
   display: flex;
   flex-direction: column;
-  /* padding: 10px 0 10px 0; */
   gap: 10px;
   overflow-y: scroll;
 

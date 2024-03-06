@@ -21,7 +21,7 @@ export default function Header({ profile, setIsModal }) {
     <HeaderWrapper>
       {!profile ? (
         <>
-          <LogoWrapper href="/homefeed">
+          <LogoWrapper to="/homefeed">
             <LogoImg src={Logo} alt="캠픽 로고" />
           </LogoWrapper>
           <SearchButton
@@ -34,7 +34,7 @@ export default function Header({ profile, setIsModal }) {
         </>
       ) : (
         <>
-          <LogoWrapper href="/homefeed">
+          <LogoWrapper to="/homefeed">
             <LogoImg src={Logo} alt="캠픽 로고" />
           </LogoWrapper>
           <ModalBtn

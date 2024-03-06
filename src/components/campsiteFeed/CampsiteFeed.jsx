@@ -35,11 +35,11 @@ export default function Feed({
                 setOpModal(true);
               }}
             >
-              <ProductImage src={data.itemImage} />
+              <ProductImage src={data.itemImage} alt="" />
             </ProductBtn>
           ) : (
             <ProductBtn>
-              <ProductImage src={data.itemImage} />
+              <ProductImage src={data.itemImage} alt="" />
             </ProductBtn>
           )}
           <WrapSpan>

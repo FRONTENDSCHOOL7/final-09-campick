@@ -32,7 +32,6 @@ const KakaoMapMain = ({ address, mapheight }) => {
     });
   }, [address, mapheight]);
 
-  console.log(`${mapheight.toString()}px` === "215px");
   return <MapWrapper id="map" height={mapheight.toString()} />;
 };
 

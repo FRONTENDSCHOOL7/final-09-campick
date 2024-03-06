@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
@@ -18,9 +19,11 @@ export const LogoImg = styled.img`
 `;
 export const SearchImg = styled.img`
   cursor: pointer;
+  width: 24px;
+  height: 24px;
 `;
 
-export const LogoWrapper = styled.a``;
+export const LogoWrapper = styled(Link)``;
 
 export const SearchButton = styled.button``;
 

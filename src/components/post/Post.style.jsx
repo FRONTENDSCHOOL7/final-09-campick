@@ -103,12 +103,13 @@ export const IconHeart = styled.img`
   height: 19px;
   margin-right: 5px;
   cursor: pointer;
+
   animation: ${props =>
-    props.isclicked === "true"
+    props.isclicked
       ? css`
           ${pulse} 0.5s
         `
-      : "none"}; // css 헬퍼 함수로 감싸줌
+      : "none"};
 `;
 
 export const IconComment = styled.img`
