@@ -46,7 +46,6 @@ export default function Homefeed() {
         await Promise.all(
           followingList.map(async item => {
             const products = await productList(item.accountname, 5);
-            console.log(products);
             arr.push(...products);
           }),
         );

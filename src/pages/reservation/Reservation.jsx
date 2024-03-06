@@ -29,7 +29,7 @@ export default function Reservation() {
     async function getFollowingList() {
       const list = await followList(accountname, "following");
       setFollowingList(list);
-      setIsLoading(false); // 데이터 로딩이 끝났음을 표시
+      setIsLoading(false);
     }
 
     getFollowingList();
@@ -42,11 +42,9 @@ export default function Reservation() {
         await Promise.all(
           followingList.map(async item => {
             const products = await productList(item.accountname, 5);
-
             arr.push(...products);
           }),
         );
-
         setProductInfo(arr);
       }
     }
@@ -78,12 +76,11 @@ export default function Reservation() {
     if (selectedLabels.length === 0) return sortProduct;
     return sortProduct.filter(product => {
       const labels = JSON.parse(product.itemName).labels;
-      // 모든 선택된 라벨이 제품에 포함되어 있는지 확인
-
+      // 선택된 라벨이 제품에 포함되어 있는지 확인
       return selectedLabels.some(label => labels.includes(label));
     });
   }, [sortProduct, selectedLabels]);
-  console.log("렌더링");
+
   return (
     <>
       <Header />

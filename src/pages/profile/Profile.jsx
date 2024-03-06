@@ -30,7 +30,7 @@ export default function Profile() {
   const [isLoading, setIsLoading] = useState(true);
   const { accountUsername } = useParams();
   const navigate = useNavigate();
-  console.log("렌더링");
+
   useEffect(() => {
     if (accountUsername) {
       const getUserInfo = async () => {
