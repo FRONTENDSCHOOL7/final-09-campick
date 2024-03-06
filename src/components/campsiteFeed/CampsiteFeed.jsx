@@ -38,7 +38,7 @@ export default function Feed({
               <ProductImage src={data.itemImage} alt="" />
             </ProductBtn>
           ) : (
-            <ProductBtn>
+            <ProductBtn aria-label="상품 사진">
               <ProductImage src={data.itemImage} alt="" />
             </ProductBtn>
           )}

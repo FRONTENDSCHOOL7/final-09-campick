@@ -59,7 +59,7 @@ export default React.memo(function ProfileCard({ accountUsername, data }) {
           </FollowNumber>
           <Follow>followers</Follow>
         </ProfileFollow>
-        <ProfileImg src={userData && userData.image} />
+        <ProfileImg src={userData && userData.image} alt="유저 프로필" />
         <ProfileFollow
           to={accountUsername ? `following` : `${myAccountname}/following`}
         >
