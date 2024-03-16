@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   ProfileWrapper,
   ProfileInfoWrap,
@@ -47,6 +47,16 @@ export default React.memo(function ProfileCard({ accountUsername, data }) {
       });
     }
   };
+  function debounce(func, delay) {
+    let timer;
+    return function () {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(), delay);
+    };
+  }
+  const handleFollowClick = debounce(() => {
+    handlefollowBtn();
+  }, 300);
 
   return (
     <ProfileWrapper>
@@ -86,7 +96,7 @@ export default React.memo(function ProfileCard({ accountUsername, data }) {
           <ChatShare $chat="true" />
           <ProfileBtn
             $follow={userData && userData.isfollow === true ? "false" : "true"}
-            onClick={e => handlefollowBtn(e)}
+            onClick={e => handleFollowClick(e)}
           >
             {userData && userData.isfollow ? "팔로우 취소" : "팔로우"}
           </ProfileBtn>

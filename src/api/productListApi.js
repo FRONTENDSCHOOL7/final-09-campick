@@ -1,5 +1,7 @@
-export const productList = async (accountname, limit) => {
-  const reqUrl = `https://api.mandarin.weniv.co.kr/product/${accountname}/?limit=${limit}`;
+export const productList = async (accountname, limit, currentPage) => {
+  const reqUrl = `https://api.mandarin.weniv.co.kr/product/${accountname}/?limit=${limit}&skip=${
+    currentPage * 3
+  }`;
 
   try {
     const res = await fetch(reqUrl, {

@@ -13,14 +13,13 @@ import {
 } from "./CampsiteFeed.style";
 import React from "react";
 
-export default function Feed({
+export default React.memo(function Feed({
   data,
   setProductId,
   setOpModal,
   reservation,
   title,
 }) {
-  //.
   return (
     <>
       <ProductContainer>
@@ -59,4 +58,4 @@ export default function Feed({
       </ProductContainer>
     </>
   );
-}
+});

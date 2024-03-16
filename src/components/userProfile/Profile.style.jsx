@@ -64,7 +64,7 @@ export const ProfileBtnWrap = styled.div`
   gap: 15px;
   color: var(--font-primary-color);
 `;
-export const ProfileBtn = styled(Link)`
+export const ProfileBtn = styled.button`
   font-size: 14px;
   background-color: ${props => (props.$follow === "true" ? `#7CB45B` : `#fff`)};
   color: ${props => (props.$follow === "true" ? "#fff" : "#767676")};
