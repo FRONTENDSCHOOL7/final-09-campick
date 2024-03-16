@@ -30,36 +30,41 @@ export default function Profile() {
   const [isLoading, setIsLoading] = useState(true);
   const { accountUsername } = useParams();
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     if (accountUsername) {
       const getUserInfo = async () => {
-        const postRes = await userPost(accountUsername);
-        const productRes = await productList(accountUsername, 3);
-        const userInfoRes = await userInfo(accountUsername);
-
-        setUserData(userInfoRes);
-        setUserPosts(postRes);
-        setUserProducts(productRes);
+        if (!currentPage) {
+          const postRes = await userPost(accountUsername);
+          const userInfoRes = await userInfo(accountUsername);
+          setUserData(userInfoRes);
+          setUserPosts(postRes);
+        }
+        const productRes = await productList(accountUsername, 3, currentPage);
+        setUserProducts(preProduct => [...preProduct, ...productRes]);
         setIsLoading(false);
       };
       getUserInfo();
     } else {
       const getMyInfo = async () => {
-        const postRes = await userPost(localStorage.getItem("accountname"));
+        if (!currentPage) {
+          const postRes = await userPost(localStorage.getItem("accountname"));
+          const userInfoRes = await myInfo();
+          setUserData(userInfoRes);
+          setUserPosts(postRes);
+        }
         const productRes = await productList(
           localStorage.getItem("accountname"),
           3,
+          currentPage,
         );
-        const userInfoRes = await myInfo();
-        setUserData(userInfoRes);
-        setUserPosts(postRes);
-        setUserProducts(productRes);
+        setUserProducts(preProduct => [...preProduct, ...productRes]);
         setIsLoading(false);
       };
       getMyInfo();
     }
-  }, [accountUsername]);
+  }, [accountUsername, currentPage]);
 
   const handleModalClose = e => {
     setIsModal(false);
@@ -92,7 +97,11 @@ export default function Profile() {
               있는 내 프로필 페이지 입니다.
             </h1>
             <ProfileCard accountUsername={accountUsername} data={userData} />
-            <ProfileProduct data={userProducts} />
+            <ProfileProduct
+              data={userProducts}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+            />
             {userPosts?.post?.length >= 1 ? (
               <UserPostList
                 data={userPosts}

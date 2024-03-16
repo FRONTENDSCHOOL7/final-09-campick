@@ -7,7 +7,11 @@ import "swiper/css/pagination";
 import Feed from "../campsiteFeed/CampsiteFeed";
 import { ProductTitle } from "../campsiteFeed/CampsiteFeed.style";
 import emptyCampsite from "../../assets/image/empty-campsite.jpg";
-export default React.memo(function ProfileProduct({ data }) {
+export default React.memo(function ProfileProduct({
+  data,
+  setCurrentPage,
+  currentPage,
+}) {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     setProducts(data);
@@ -22,6 +26,10 @@ export default React.memo(function ProfileProduct({ data }) {
         slidesPerView={1}
         pagination={{
           clickable: true,
+        }}
+        onReachEnd={() => {
+          if (data.length === (currentPage + 1) * 3)
+            setCurrentPage(pre => pre + 1);
         }}
         modules={[Pagination]}
       >
