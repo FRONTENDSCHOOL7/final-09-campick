@@ -1,7 +1,15 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import chat from "../../assets/icons/chat.svg";
 import share from "../../assets/icons/icon-share.svg";
+const btnProperty = css`
+  font-size: 14px;
+  background-color: ${props => (props.$follow === "true" ? `#7CB45B` : `#fff`)};
+  color: ${props => (props.$follow === "true" ? "#fff" : "#767676")};
+  padding: 10px 25px;
+  border: solid 1px var(--font-placeholder-color);
+  border-radius: 30px;
+`;
 export const ProfileWrapper = styled.section`
   background-color: #fff;
   padding: 27px;
@@ -64,17 +72,21 @@ export const ProfileBtnWrap = styled.div`
   gap: 15px;
   color: var(--font-primary-color);
 `;
-export const ProfileBtn = styled.button`
-  font-size: 14px;
-  background-color: ${props => (props.$follow === "true" ? `#7CB45B` : `#fff`)};
-  color: ${props => (props.$follow === "true" ? "#fff" : "#767676")};
-  padding: 10px 25px;
-  border: solid 1px var(--font-placeholder-color);
-  border-radius: 30px;
+export const FollowBtn = styled.button`
+  ${btnProperty}
   &:hover {
-    color: ${props => (props.$follow === "false" ? `#767676` : `#fff`)};
+    color: ${props => (props.$follow === "false" ? `#767676` : `#7CB45B`)};
     background-color: ${props =>
+      props.$follow === "false" ? "#DBDBDB" : "#FFF"};
+    border-color: ${props =>
       props.$follow === "false" ? "#DBDBDB" : "#7CB45B"};
+  }
+`;
+export const ProfileBtn = styled(Link)`
+  ${btnProperty}
+  &:hover {
+    color: #fff;
+    background-color: #7cb45b;
   }
 `;
 export const ChatShare = styled.button`

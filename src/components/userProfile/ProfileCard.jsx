@@ -13,12 +13,14 @@ import {
   ProfileBtnWrap,
   ProfileBtn,
   ChatShare,
+  FollowBtn,
 } from "./Profile.style";
 import { unfollow } from "../../api/unfollowApi";
 import { follow } from "../../api/followApi";
 
 export default React.memo(function ProfileCard({ accountUsername, data }) {
   const [userData, setUserData] = useState(data);
+  console.log(data.isfollow);
   const myAccountname = localStorage.getItem("accountname");
   useEffect(() => {
     setUserData(data);
@@ -94,12 +96,12 @@ export default React.memo(function ProfileCard({ accountUsername, data }) {
       ) : (
         <ProfileBtnWrap>
           <ChatShare $chat="true" />
-          <ProfileBtn
+          <FollowBtn
             $follow={userData && userData.isfollow === true ? "false" : "true"}
             onClick={e => handleFollowClick(e)}
           >
             {userData && userData.isfollow ? "팔로우 취소" : "팔로우"}
-          </ProfileBtn>
+          </FollowBtn>
           <ChatShare />
         </ProfileBtnWrap>
       )}
