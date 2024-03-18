@@ -20,7 +20,6 @@ import { follow } from "../../api/followApi";
 
 export default React.memo(function ProfileCard({ accountUsername, data }) {
   const [userData, setUserData] = useState(data);
-  console.log(data.isfollow);
   const myAccountname = localStorage.getItem("accountname");
   useEffect(() => {
     setUserData(data);
