@@ -9,7 +9,7 @@
 - ID : campick09@naver.com
 - PW : 123123
 
-## 0. 목차
+
 
 
 - 
@@ -17,9 +17,9 @@
 
 ![그림1](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/89963228/3ffc3a49-eb1a-4ab4-8d15-0efa11321264)
 
+CAMPICK은 자신이 다녀왔던 캠핑장에 대한 정보와 후기를 남겨 서로 공유하고 자신의 캠핑 상품을 등록하고 예약할 수 있는 SNS플랫폼입니다.
+사용자는 분위기 특색을 담아 상품을 등록할 수 있으며 분위기 맞는 캠핑장을 골라 예약할 수 있습니다. 
 
-- 프로젝트 기간 : 2023.10.12 ~ 2023.11.7
--
 
 ## 2. 팀원 소개
 
@@ -46,6 +46,12 @@
 | <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/styledcomponents-CC6699?style=flat-square&logo=styledcomponents&logoColor=white">   <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black"> <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> | 제공된 API | <img src="https://img.shields.io/badge/figma-FBCEB1?style=flat-square&logo=figma&logoColor=white"> | <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=Discord&logoColor=white"> | <img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black"> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> | 
 
 </div>
+
+### 기술적 의사결정
+|기술|사용 이유|
+|------|---|
+|React|-HTML과 유사한 문법을 사용하여 컴포넌트의 구조를 보다 직관적으로 파악할 수 있고, 개발자 경험을 향상시킵니다.<br> -컴포넌트 기반으로 UI를 구성하여 재사용성을 높이고 유지보수에 용이합니다.<br>-다양한 라이브러리와 도구들이 개발되어 있어서 확장성이 띄어나 생산성을 높일수 있습니다.|
+|Styled-Components|-자바스크립트를 통한 동적스타일링이 가능하여 상황맞는 css스타일을 유연하게 처리할 수 있습니다.<br>-각각 컴포넌트의 내에서만 스타일이 적용되어 전역 스타일 충돌을 방지하여 유지보수에 용이합니.|
 
 ## 4. 프로젝트 일정
 
@@ -142,15 +148,143 @@
 |-------|-------|-------|
 | ![16.내 프로필 캠핑장 등록 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/e2d76244-cd3c-40cb-89e7-ee3d6b0481a2) | ![17.로그아웃 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/2c21270e-d158-4f74-9feb-fbd36fe70ad6) | ![18.404 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/80518390-856b-402b-8efc-af51c7fd31d3) |
 
-## 8. 주요코드
+## 8. 트러블 슈팅
+<details>
+	<summary><b>비동기 함수 반복문</b></summary>
+문제점: 팔로우한 유저의 상품들의 데이터를 가져올 수 있는 api가 제공되지 않음
+
+ ```jsx
+useEffect(() => {
+    const accountname = localStorage.getItem("accountname");
+    async function getFollowingList() {
+      const list = await followList(accountname, "following");
+      setFollowingList(list);
+      setIsLoading(false);
+    }
+
+    getFollowingList();
+  }, []);
+```
+
+```jsx
+useEffect(() => {
+    async function getProduct() {
+      let arr = [];
+      if (followingList.length > 0) {
+        await Promise.all(
+          followingList.map(async item => {
+            const products = await productList(item.accountname, 5);
+            arr.push(...products);
+          }),
+        );
+        arr.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setProductInfo(arr);
+      }
+    }
+    getProduct();
+  }, [followingList]);
+```
+**해결 방법**: <br>1.팔로잉 리스트를 가져올 수 있는 api를 써서 followingList(state)에 저장 <br>2.팔로잉 리스트가 state에 담기면 followingList에 map를 사용해 유저의 상품리스트를 가져올 수 있는 api를 사용하여 productList(state)에 각 유저의 상품리스트를 저장한다. 이 때 map메서드의 콜백함수가 비동기 처리를 기다려주지 않아 Promise.all를 사용하여 해결
+</details>
+
+<details>
+	<summary><b>이미지 여러장 업로드</b></summary>
+문제점: 이미지 업로드 api에서 10MB이상은 업로드 할 수 없어 3장업로드가 안되는 현상이 발생함
+
+ ```jsx
+const useImagesUpload = () => {
+  const [images, setImages] = useState([]);
+
+  const onUpload = async (files, length, setShowWrongExtensionToast) => {
+    if (images.length + length > 3)
+      return alert("이미지는 최대 3개까지 업로드 할 수 있습니다.");
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+    };
+
+    const formData = new FormData();
+    await Promise.all(
+      Array.from(files).map(async file => {
+        const fileExtension = file.name.split(".").pop().toLowerCase();
+        if (
+          ALLOWED_EXTENSIONS.includes(`.${fileExtension}`) &&
+          file.size <= MAX_SIZE
+        ) {
+          try {
+            const compressedImageFile = await imageCompression(file, options);
+            const fromBlobToFile = new File(
+              [compressedImageFile],
+              "image.jpeg",
+            );
+            formData.append("image", fromBlobToFile);
+          } catch (error) {
+            console.error(error);
+          }
+        } else {
+          setShowWrongExtensionToast(true);
+          setTimeout(() => {
+            setShowWrongExtensionToast(false);
+          }, 1000);
+        }
+      }),
+    );
+
+    try {
+      const data = await uploadImages(formData);
+      const filenames = data.map(data => data.filename);
+      setImages(prev => [...prev, ...filenames]);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+```
 
 
+**해결 방법**: <br>1.imageCompression를 통해 압축을 통해 해결.이미지 최적화하여 성능을 향상시켜 사용자 경험을 향상시키는 결과를 얻음
+</details>
 
-## 9. 후기
+<details>
+	<summary><b>팔로우,언팔로우 버튼클릭시 발생하는 버그</b></summary>
+문제점: 팔로우,언팔로우 버튼 여러번 클릭시 비동기 작업이 여러번 호출되어 팔로우,언팔로우 행위가 여러번 동작하는 버그가 발
+
+ ```jsx
+const handlefollowBtn = async () => {
+    if (userData.isfollow) {
+      await unfollow(userData.accountname);
+
+      setUserData(pre => {
+        return {
+          ...pre,
+          isfollow: !pre.isfollow,
+          followerCount: pre.followerCount - 1,
+        };
+      });
+    } else {
+      await follow(userData.accountname);
+
+      setUserData(pre => {
+        return {
+          ...pre,
+          isfollow: !pre.isfollow,
+          followerCount: pre.followerCount + 1,
+        };
+      });
+    }
+  };
+  function debounce(func, delay) {
+    let timer;
+    return function () {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(), delay);
+    };
+  }
+  const handleFollowClick = debounce(() => {
+    handlefollowBtn();
+  }, 300);
+```
 
 
+**해결 방법**: <br>1.클로저 함수를 반환하는 디바운스 함수 구현<br>2.버튼 여러번 클릭시 마지막 클릭이외에 setTimeout의 id값을 clearTimeout를 통해 취소하고 마지막 클릭에만 setTimeout를 통한 콜백함수 호출하게함
+</details>
 
-- 김건희
-- 박재웅
-- 장소진
-- 조효은
