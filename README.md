@@ -12,7 +12,7 @@
 
 
 
-- 
+  
 ## 1. 프로젝트 소개
 
 ![그림1](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/89963228/3ffc3a49-eb1a-4ab4-8d15-0efa11321264)
@@ -53,7 +53,10 @@ CAMPICK은 자신이 다녀왔던 캠핑장에 대한 정보와 후기를 남겨
 |React|-HTML과 유사한 문법을 사용하여 컴포넌트의 구조를 보다 직관적으로 파악할 수 있고, 개발자 경험을 향상시킵니다.<br> -컴포넌트 기반으로 UI를 구성하여 재사용성을 높이고 유지보수에 용이합니다.<br>-다양한 라이브러리와 도구들이 개발되어 있어서 확장성이 띄어나 생산성을 높일수 있습니다.|
 |Styled-Components|-자바스크립트를 통한 동적스타일링이 가능하여 상황맞는 css스타일을 유연하게 처리할 수 있습니다.<br>-각각 컴포넌트의 내에서만 스타일이 적용되어 전역 스타일 충돌을 방지하여 유지보수에 용이합니.|
 
-## 4. 프로젝트 일정
+## 4.기획
+- [와이어프레임 및 디자인](https://www.figma.com/file/CY7zrkkh916x2b2kzsr1BI/(%ED%94%BC%EA%B7%B8%EB%A7%88)-%EB%B0%95%EC%9E%AC%EC%9B%85-9%EC%A1%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?type=design&node-id=0%3A1&mode=design&t=CzyWs5NfIoIo9EXf-1)
+
+## 5. 프로젝트 일정
 
 | 주차                       |                                                                                                                                                              |
 | :--------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -65,7 +68,7 @@ CAMPICK은 자신이 다녀왔던 캠핑장에 대한 정보와 후기를 남겨
 - ## Calendar
   
   <img width="842" alt="개발 일정" src="https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/3076870b-6a8c-44d5-817e-0401e4649d6f">
-## 5. 폴더 구조
+## 6. 폴더 구조
 
 
 
@@ -109,12 +112,12 @@ CAMPICK은 자신이 다녀왔던 캠핑장에 대한 정보와 후기를 남겨
     
 ```
 
-## 6. 역할 분담
+## 7. 역할 분담
 
 ![역할분담](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/3af01238-4a5a-45b0-842d-ba5d3197ebbe)
 
 
-## 7. 기능 UI
+## 8. 기능 UI
 
 
 
@@ -148,7 +151,7 @@ CAMPICK은 자신이 다녀왔던 캠핑장에 대한 정보와 후기를 남겨
 |-------|-------|-------|
 | ![16.내 프로필 캠핑장 등록 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/e2d76244-cd3c-40cb-89e7-ee3d6b0481a2) | ![17.로그아웃 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/2c21270e-d158-4f74-9feb-fbd36fe70ad6) | ![18.404 페이지](https://github.com/FRONTENDSCHOOL7/final-09-campick/assets/138555977/80518390-856b-402b-8efc-af51c7fd31d3) |
 
-## 8. 트러블 슈팅
+## 9. 트러블 슈팅
 <details>
 	<summary><b>비동기 함수 반복문</b></summary>
 문제점: 팔로우한 유저의 상품들의 데이터를 가져올 수 있는 api가 제공되지 않음
